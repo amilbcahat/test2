@@ -1,0 +1,52 @@
+<section class="submissions container">
+    <header class="page_title container">
+        <div class="breadcrumbs">
+        </div>
+
+        <!-- ##Breadcrumbs should only show on challenge-specific submission lists-->
+        <!-- sort mode toggle -->
+
+      <h1 class="pull-left">Submissions</h1>
+
+      <h3 class="page_title-subtitle">
+          <% if (collection.challenge && collection.challenge.get('name')) { %>for <%= collection.challenge.get('name') %><% } %>
+      </h3>
+
+      <div class="margin-small top pull-right btn-group submissions_filters-buttons">
+        <!-- strip trailing slash -->
+        <a href=<%= collection.pageURL().slice(0, -1) %> class="backbone btn btn-white active"><span class="icon-text">Sort by Challenge</span></a>
+        <a href=<%= collection.pageURL() + "all" %>  class="backbone btn btn-white"><span class="icon-text">Sort by Date</span></a>
+      </div>
+    </header>
+    <div class="submissions_list text-center table-wrap">
+        <% if(collection.total > 0) { %>
+        <div class="row push list-header grey-header margin-large bottom submissions_list-header">
+            <div class="span4">
+                <p class="submissions-title"><strong>Problem</strong></p>
+            </div>
+            <div class="span2 submissions-language">
+                <p><strong>Language</strong></p>
+            </div>
+            <div class="span2 submissions-time">
+                <p><strong>Time</strong></p>
+            </div>
+            <div class="span3">
+                <p><strong>Result</strong></p>
+            </div>
+            <div class="span1">
+                <p><strong>Score</strong></p>
+            </div>
+        </div>
+            <% } else if (collection.sync_status) { %>
+            <div class="light-wrap padding">
+                <p>You have not made any submissions yet.</p>
+                <p class="text-center block-margin"><a href="/categories" class="btn btn-green btn-large backbone">View Challenges</a></p>
+            </div>
+            <% } %>
+        <div class="submissions-list-wrapper"></div>
+    </div>
+
+    <div class="pagination-wrap clearfix pagination-wrapper">
+    </div>
+
+</section>

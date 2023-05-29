@@ -1,0 +1,49 @@
+<style>
+    table.sentence, table.prisonerdilemma, table.sentence th, table.prisonerdilemma th, table.sentence td, table.prisonerdilemma td {
+        border: 1px solid #222;
+    }
+    table.sentence td, table.prisonerdilemma td {
+        width: 110px;
+        height: 35px;
+        text-align: center;
+    }
+</style>
+<div>
+    <p style="font-size: 20px;" class="m">Game #<span class="game-no">0</span></p>
+    <table class="prisonerdilemma" style="margin: 0 auto;">
+        <tbody>
+            <tr>
+                <td style="position: relative; width: 110px; height: 57px;"><div style="z-index: -10; top: 0px; width: 0px; height: 0px; padding: 0px; margin: 0px; left: 0px; position: absolute; border-bottom: 55px solid #eee; border-right: 110px solid #fff;"></div><p style="margin: 0px; text-align: right;">Player 1 &rarr;</p><p style="margin: 0px; text-align: left; color: #111;">Player 2 &darr;</p></td>
+                <td>betray</td>
+                <td>cooperate</td>
+            </tr>
+            <tr>
+                <td>betray</td>
+                <td class="d-d">0</td>
+                <td class="c-d">0</td>
+            </tr>
+            <tr>
+                <td>cooperate</td>
+                <td class="d-c">0</td>
+                <td class="c-c">0</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <table class="sentence" style="margin: 0 auto;">
+        <tbody>
+            <tr>
+                <td colspan="2">Sentence (in Months)</td>
+            </tr>
+            <tr>
+                <td>Player 1</td>
+                <td class="sentence-player1">0</td>
+            </tr>
+            <tr>
+                <td>Player 2</td>
+                <td class="sentence-player2">0</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

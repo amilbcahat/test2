@@ -1,0 +1,50 @@
+<div class="padded settings_content-pane">
+  <div class="settings_content-group">
+    <h3>Email Subscriptions</h3>
+    <p class="aside mlB msT">HackerRank will send you email about the following topics:</p>
+    <div class="clearfix">
+      <div class="formgroup horizontal checkbox hr_checkbox psB">
+        <div class="email-option">
+          <input id="challenge_added" class="js-switch" name="challenge_added" type="checkbox" <% if (model.challenge_added) { %> checked <% } %>/>
+        </div>
+        <span class="pref-label">Notifications About New Challenges</span>
+      </div>
+      <div class="formgroup horizontal checkbox hr_checkbox psB">
+        <div class="email-option">
+          <input id="manual_bot_challenge" class="js-switch" name="manual_bot_challenge" type="checkbox" <% if (model.manual_bot_challenge) { %> checked <% } %>/>
+        </div>
+        <span class="pref-label">Notifications About Users Challenging Your Bots</span>
+      </div>
+      <div class="formgroup horizontal checkbox hr_checkbox psB">
+        <div class="email-option">
+          <input id="rank_down" class="js-switch" name="rank_down" type="checkbox" <% if (model.rank_down) { %> checked <% } %>/>
+        </div>
+        <span class="pref-label">Notifications About Your Rank Changing</span>
+      </div>
+      <div class="formgroup horizontal checkbox hr_checkbox psB">
+        <div class="email-option">
+          <input id="upcoming_contest" class="js-switch" name="upcoming_contest" type="checkbox" <% if (model.upcoming_contest) { %> checked <% } %>/>
+        </div>
+        <span class="pref-label">Notifications About Upcoming Contests</span>
+      </div>
+      <div class="formgroup horizontal checkbox hr_checkbox psB">
+        <div class="email-option">
+          <input id="forum" name="forum" class="js-switch" type="checkbox" <% if (model.forum) { %> checked <% } %>/>
+        </div>
+        <span class="pref-label">Notifications About Forum Activity</span>
+      </div>
+      <div class="formgroup horizontal checkbox hr_checkbox psB">
+        <div class="email-option">
+          <input id="signedup_contest" class="js-switch" name="signedup_contest" type="checkbox" <% if (model.signedup_contest) { %> checked <% } %>/>
+        </div>
+        <span class="pref-label">Notifications About Contests You Signed Up For</span>
+      </div>
+      <div class="formgroup horizontal checkbox hr_checkbox psB">
+        <div class="email-option">
+          <input id="editorials" class="js-switch" name="editorials" type="checkbox" <% if (model.editorials) { %> checked <% } %>/>
+        </div>
+        <span class="pref-label">Editorials for Contests You Participated In</span>
+      </div>
+    </div>
+  </div>
+</div>

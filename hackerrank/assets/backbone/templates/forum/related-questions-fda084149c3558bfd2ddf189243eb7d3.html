@@ -1,0 +1,9 @@
+<p class="alpha">Related Questions</p>
+<ul class="unstyled">
+<% _.each(collection, function(question) { %>
+    <li><a class="backbone" href="<%= HR.appController.get_contest_namespace() %>/challenges/<%=challenge.get('slug')%>/forum/questions/<%= question.id %>"><%= question.title %></a></li>
+<%}) %>
+</ul>
+<p class="small">
+    <a class="backbone" href="<%= HR.appController.get_contest_namespace() %>/challenges/<%=challenge.get('slug')%>/forum/questions">← All <%= challenge.get('name') %> Questions</a>
+</p>

@@ -1,0 +1,70 @@
+<span class="nav-logo">
+                <a href="tests" class="HackerRankLogo backbone page_header-logo none js-nav-link">
+                    <!--?xml version='1.0' encoding='utf-8'?-->
+                    <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                    <svg width="156" height="45" ><image xlink:href="/assets/brand/HRX_logo_wordmark.svg" src="/assets/brand/HRX_logo_wordmark.png" width="156" height="45" ></image ></svg>
+                </a>
+            </span><!-- end .nav-logo -->
+<% if (!model.authkey && model.company) { %>
+<span class="nav-login-patch">
+
+                <div class="admin-dropdown page_header_dropdown-toggle pull-right" id="profile-menu">
+                    <a class="backbone dropdown-toggle page_header-userbtn" href="" data-toggle="dropdown">
+                        <div class="hre-username pull-left">
+                            <% if (model.firstname) { %>
+                                <%= _.escape(model.firstname) %>
+                            <% } else { %>
+                                <%= _.escape(model.email) %>
+                            <% } %>
+                        </div>
+                        <i class="icon-down-open-mini"></i>
+
+                        <div class="clear"></div>
+                    </a>
+                    <ul class="unstyled dropdown-menu page_header_dropdown">
+                        <li class="navigation_hackos">
+                            <% if (_model.invites_count()) { %>
+                            <span class="navigation_hackos-heading">Invites Left:</span>
+                            <span class="navigation_hackos-count">
+                                <%= _model.invites_count() %>
+                            </span>
+                            <% } %>
+                        </li>
+                        <li><a href="settings" class="js-nav-link">Settings</a></li>
+                        <li><a href="payments" class="js-nav-link">Payment</a></li>
+                        <li><a href="/xrest/users/logout" class="logout-button">Logout</a></li>
+                    </ul>
+                </div>
+
+            </span>
+
+
+<input type="text" id="candidate-search-box-gl" class="nav-input pull-right" placeholder="Search Candidates" <% if(term) { %> value="<%= term %>" <% } %>/>
+
+<ul class="selector-nav-tabs hre-margin">
+    <li <%if(activeSection == 'tests') { %> class="active" <% } %>><a href="tests" id="navigate-to-tests" class="js-nav-link">TESTS</a></li>
+    <% if (model.company && model.company.codepair && model.company.codepair == 1) { %>
+    <li <%if(activeSection == 'interviews') { %> class="active" <% } %>><a href="interviews" id="navigate-to-interviews" class="js-nav-link">CODEPAIR</a></li>
+    <% } %>
+    <li <%if(activeSection == 'library') { %> class="active" <% } %>><a href="library" id="navigate-to-library" class="js-nav-link">LIBRARY</a></li>
+
+    <% trial_expires_in = model.company.trial_expires_in %>
+    <% if (trial_expires_in && trial_expires_in <= 31) { %>
+        <% if (trial_expires_in <= 14) { %>
+            <% width = parseInt((trial_expires_in / 14) * 100, 10) + '%' %>
+        <% } else { %>
+            <% width = parseInt((trial_expires_in / 31) * 100, 10) + '%' %>
+        <% } %>
+    <div class="pull-left mlL">
+        <div class="mlT txt-white fnt-sz-mid">
+            <div class="dark-theme-progress small">
+                <div class="base">
+                    <div class="cover progress-done" style="width: <%= width %>"></div>
+                </div>
+            </div>
+            <span class="msL" style="position:relative; top:-2px"><a href="payments" class="txt-white white-underline js-nav-link"><%= trial_expires_in %> days left</a></span>
+        </div>
+    </div>
+    <% } %>
+</ul>
+<% } %>

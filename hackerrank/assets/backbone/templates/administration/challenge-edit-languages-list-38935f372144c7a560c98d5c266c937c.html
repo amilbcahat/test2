@@ -1,0 +1,32 @@
+<div class="language-card">
+    <div class="span11pct">
+        <!-- <input type="checkbox"/> -->
+        <span class="np-spacing">&nbsp;&nbsp;</span>
+        <b><%= language_data.title %></b>
+    </div>
+    <div class="span37pct slider-result no-border">
+      <span class="time-value">
+          <% if (model.get_checker_limit("time", language_key)) { %>
+              <%= model.get_checker_limit("time", language_key) %>
+          <% } else { %>
+              <%= language_data.def_time %>
+          <% } %>
+      </span> s
+    </div>
+    <div class="span37pct margin-left-20 slider-result no-border">
+      <span class="mem-value">
+          <% if (model.get_checker_limit("mem", language_key)) { %>
+              <%= model.get_checker_limit("mem", language_key) %>
+          <% } else { %>
+              <%= language_data.def_mem %>
+          <% } %>
+      </span> MB
+    </div>
+    <div class="pull-right text-right controls">
+        <a class="cursor gray-text edit-lang"><i class="icon-pencil"></i></a>
+        <a class="cursor cancel hide">&#215;</a>
+    </div>
+    <div class="clearfix"></div>
+
+    <div class="language-card-dropdown"></div>
+</div>

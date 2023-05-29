@@ -1,0 +1,157 @@
+<div class="mjA test-data-container">
+    <div class="msL">
+        <div class="container-header mlB bold">
+            Question Summary
+        </div>
+        <div class="row">
+            <div class="span2 bold">
+                ID
+            </div>
+            <div class="span12 value">
+                <%= model.id %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <div class="span2 bold">
+                Preview
+            </div>
+            <div class="span12 value">
+                <%= model.preview %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <div class="span2 bold">
+                Unique ID
+            </div>
+            <div class="span12 value">
+                <%= model.unique_id %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <div class="span2 bold">
+                Type
+            </div>
+            <div class="span12 value">
+                <%= model.type %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <% if (model.user.id) { %>
+        <div class="row mmL msT msB">
+            <a href="#" class="show-sub-section" data-link-container="owner-section">Show Owner Info <i
+                    class="icon-down-open-mini"></i></a>
+            <a href="#" class="hide-sub-section hidden" data-link-container="owner-section">Hide Owner Info <i
+                    class="icon-up-open-mini"></i></a>
+        </div>
+        <div class="owner-section hidden msL">
+            <div class="container-header msB bold">
+                Owner
+            </div>
+            <div class="row">
+                <div class="span2 bold">
+                    ID
+                </div>
+                <div class="span12 value">
+                    <%= model.user.id %>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="row">
+                <div class="span2 bold">
+                    Name
+                </div>
+                <div class="span12 value">
+                    <%= model.user.firstname %>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="row">
+                <div class="span2 bold">
+                    Company ID
+                </div>
+                <div class="span12 value">
+                    <%= model.user.company_id %>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <% } %>
+
+        <% if (model.company.id) { %>
+        <div class="row mmL msT msB">
+            <a href="#" class="show-sub-section" data-link-container="company-section">Show Company Info <i
+                    class="icon-down-open-mini"></i></i></a>
+            <a href="#" class="hide-sub-section hidden" data-link-container="company-section">Hide Company Info <i
+                    class="icon-up-open-mini"></i></i></a>
+        </div>
+        <div class="company-section hidden msL">
+            <div class="container-header msB bold">
+                Company
+            </div>
+            <div class="row">
+                <div class="span2 bold">
+                    ID
+                </div>
+                <div class="span12 value">
+                    <%= model.company.id %>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="row">
+                <div class="span2 bold">
+                    Name
+                </div>
+                <div class="span12 value">
+                    <%= model.company.name %>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <% } %>
+
+        <hr>
+
+        <div class="new-user-form-container">
+            <% if(model.owner == -1 || model.owner == 0 || model.owner == 41872) { %>
+            <div class="message-box error mlA">
+                This is a library Question. Are you sure you want to change it's owner ?
+            </div>
+            <% } %>
+            <div class="container-header mlB bold">
+                New Owner
+            </div>
+            <form id="new-owner-form">
+                <div class="msT msB">
+                    <div class="span2">Search By :</div>
+                    <div class="span14 search-radio-grp">
+                        <label class="span1">
+                            <input id="search-fields-id" name="search-field" type="radio" value="id" <% if(searchBy ==
+                            'id') {
+                            %> checked='checked' <% } %>/>ID
+                        </label>
+                        <label class="span3">
+                            <input id="search-fields-name" name="search-field" type="radio"
+                                   value="name" <% if(searchBy == 'name') { %> checked='checked' <% } %> />Name
+                        </label>
+
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <div class="msT msB">
+                    <div class="span2 msT">New Owner:</div>
+                    <div class="span14"></div>
+                    <input type="hidden" id="user-select2" class="wide">
+                </div>
+            </form>
+        </div>
+
+        <a href="#" class="btn btn-primary" id="change-test-owner-submit">Change Owner</a>
+    </div>
+</div>

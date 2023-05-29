@@ -1,0 +1,26 @@
+<% if(model.length == 0) {%>
+<h5 class="small mlT mmB">Contest History</h5>
+  <% if (hacker === HR.profile().get('username') ) { %>
+    <p class="mlB aside">You have not participated in any events yet.</p>
+    <p class=" text-center"><a href="/" class="btn btn-text">View Contests</a></p>
+  <% } else { %>
+    <p class="mlB aside"><%= hacker %> has not participated in any events yet.</p>
+  <% } %>
+<% } %>
+<% _.each( model , function(event,index) { %>
+    <div class="profile-events-item">
+        <p><strong><%= event.name %></strong>
+            <% if (event.ended && event.rank != "" ) { %>
+                &bull; <span class="aside">placed <%= event.rank %></span>
+            <% } else if (event.started && event.rank != "") { %>
+                &bull; <span class="aside">currently <%= event.rank %></span>
+            <% } %>
+
+         <% if (event.ended) { %>
+            <a href="/contests/<%= event.slug %>/leaderboard" class="btn btn-text btn-small pull-right backbone psT"><i class="icon-trophy icon--single"></i></a>
+         <% } else { %>
+            <a href="/contests/<%= event.slug %>/" class="btn btn-text pull-right backbone">Join</a>
+         <% } %>
+         </p>
+    </div>
+<% }); %>

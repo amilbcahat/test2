@@ -1,0 +1,2 @@
+HR.appController.addTemplate("backbone/templates/challenge-request",function(obj){{var __p="";Array.prototype.join}with(obj||{})__p+='<div class="challenge-input codeeditor-wrapper"></div>\n';return __p});
+//# sourceMappingURL=challenge-request-afdb780fbc02119ab429f2aea41d2f17.js.map

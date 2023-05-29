@@ -1,0 +1,95 @@
+<style>
+    .dt-sleektable tbody tr:hover
+    {
+        background-color: #DDD;
+        cursor: pointer;
+    }
+</style>
+<p class='datatable-title'>
+    <% if (showTitle) { %>
+    <label class="label-title-underline mjL msT">
+        <%= title %>
+    </label>
+    <% } %>
+
+
+    <% if (typeof showSelect !== 'undefined' && showSelect && typeof selectOptions !== 'undefined') { %>
+    <div class='pull-right'>
+        <select id='choose'>
+            <% _.each(selectOptions, function (v, k) { %>
+                <option value='<%- k %>'><%- v %></option>
+            <% }); %>
+        </select>
+    </div>
+    <% } %>
+    <div class='clear_float'></div>
+</p>
+
+
+<p class="mjL mdT">
+    <div class="row">
+        <div class="pull-left mjL">
+            Filter by:
+        </div>
+    </div>
+    <div class="row">
+        <div class="pull-left mjL filter-query">
+            <form id="email-filter">
+                <label class="fnt-sz-mid">Email</label>
+                <input id="email" type="text" class="" style="margin-bottom:0; font-size:14px; padding:5px; width:250px;" placeholder="Search by email" autocomplete="off" />
+            </form>
+        </div>
+        <div class="pull-left msL filter-type <%= quickpadView? "hidden" : "" %>" >
+            <label class="fnt-sz-mid" style="margin-bottom:0px;">User Type</label>
+            <select id="email-type">
+                <% if(!quickpadView) { %>
+                <option value="all" selected>All</option>
+                <option value="interviewer">Interviewer</option>
+                <option value="candidate">Candidate</option>
+                <option  value="owner">Owner</option>
+                <% } else { %>
+                <option selected value="owner">Owner</option>
+                <% } %>
+            </select>
+        </div>
+        <% if(quickpadView) { %>
+        <div class="pull-left msL filter-quickpad" >
+            <form id="quickpad-name-filter">
+                <label class="fnt-sz-mid">Quickpad name</label>
+                <input id="quickpad-title" type="text" class="" style="margin-bottom:0; font-size:14px; padding:5px;" placeholder="Search" />
+            </form>
+        </div>
+        <% } %>
+        <div class="pull-left msL filter-status">
+            <label class="fnt-sz-mid" style="margin-bottom:0px;">Status</label>
+            <select id="thumbs">
+                <option value="0" selected>All</option>
+                <option value="1">Thumbs Down</option>
+                <option value="2">Thumbs Up</option>
+            </select>
+        </div>
+        <div class="pull-left msL mdB">
+            <label class="fnt-sz-mid">Date range</label>
+            <input style="margin-bottom:0; font-size:14px; padding: 5px; width:210px;" class="js-daterange" type="text"  placeholder="Date range" id="daterange" /><a class="js-dateclear txt-alt-grey hidden" style="cursor:pointer;"><i class="icon2-status_wrong mmL"></i></a>
+            <!-- <div class="input-icon" style="position:relative; top:-3px;">
+                <input type="text" class="txt_box input-large" id="daterange">
+                <i class="icon-calendar"></i>
+            </div> -->
+            <!-- <a class="js-dateclear hidden txt-alt-grey" style="cursor:pointer;"><i class="icon2-status_wrong mmL"></i></a> -->
+            <a href="<%= Backbone.history.fragment %>" class="js-filterclear js-backbone" style="display:none;">Clear All</a>
+        </div>
+    </div>
+</p>
+<br/>
+<table class="dt-sleektable table" id="datatable<%= typeof id_suffix === 'undefined' ? '' : id_suffix %>" cellpadding="0" cellspacing="0" border="0" style="overflow: none; width: 100%; margin-bottom:20px !important;">
+    <thead>
+        <tr class='sleekhead'>
+            <% _.each(fields, function (field) { %>
+            <th class='<%= field.className %>'><%= field.name %></th>
+            <% }); %>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>

@@ -1,0 +1,13 @@
+<div style="width: 500px;">
+    <p class="message"></p>
+    Upload file as your submissions
+    <br>
+    <form enctype="multipart/form-data">
+        <input type="file" name="source_file" />
+        <input type="hidden" name="challenge_id" value="<%= data.challenge_id %>" />
+        <input type="hidden" name="level" value="<%= data.level %>" />
+        <input type="hidden" name="contest_id" value="<%= data.contest_id %>" />
+        <input type="hidden" name="language" value="<%= data.parent.header.getLanguage() %>" />
+        <input type="hidden" name="is_file_upload" value="1" />
+    </form>
+</div>

@@ -1,0 +1,64 @@
+<div class="span-xl-16">
+    <div class="<% if (actions =='download') { %>mlT mlB<% } else { %>question-item-container <% } %>">
+        <table width="100%" class="<% if (actions !='download') { %>mlB<% } %>">
+            <tr>
+                <td width="40%"><span class="fnt-wt-600 <% if (actions =='download') { %>"> <h4 class="msR"> Question -  <%- question.question_index %> </h4> <% } else { %> txt-alt-grey"> <%=hrqn[question.type]%>
+                <%} if (question.name){ %>
+                  &nbsp;&nbsp;</span><strong><%-question.name%></strong></td>
+                <% } %>
+                <td width="13%" class="fnt-sz-small"><span class="fnt-wt-600 txt-alt-grey">SCORE: </span><strong><%=question.points%> points</strong></td>
+                <% if (actions != 'download' && question.testcasescount && _.keys(question.testcasescount).length > 0) { %>
+                <td width="26%" class="fnt-sz-small" style="text-align:right;">
+                    <span class="fnt-wt-600 txt-alt-grey">TESTCASES: </span>
+                    <strong><%=_.reduce(_.values(question.testcasescount), function(m, n){ return m + n }, 0)%> (<%=question.samples.split(",").length%> sample)</strong>
+                </td>
+                <% } %>
+                <% if(actions != 'download') { %>
+                <td width="20%" class="fnt-sz-small text-right">
+                    <%_.each(question.tags_array, function(tag) { %>
+                    <span class="block-highlight"><%=tag%></span>
+                    <% }); %>
+                </td>
+                <% } %>
+            </tr>
+        </table>
+        <% if (actions =='download') { %><hr /><% } %>
+        <div class="row no-margin">
+            <div class="span12 no-padding msT">
+                <div class="<%if (!noexpand) {%>text-ellipsis-oneline<%}%> js-qcontent">
+                    <%=question.question%>
+                    <% if(question.type == "mcq") { %>
+                        <ul style="list-style-type: none; margin-left:-30px; margin-top:20px;">
+                        <% var i=1;_.each(question.options, function(name) { %>
+                          <li><% if ((""+i) == question.answer) { %><img class='mcq-opt-img' src="/assets/mcq_options/img_mcq_ny.png" />&nbsp;&nbsp;<% } else { %><img class='mcq-opt-img' src="/assets/mcq_options/img_mcq_nn.png" />&nbsp;&nbsp;<% } %><%= name %></li>
+                        <% ;i++;}); %>
+                        </ul>
+                    <% } else if (question.type == "multiple_mcq") { %>
+                        <ul style="list-style-type: none; margin-left:-30px; margin-top:20px;">
+                        <% var i =1, ans = question.answer;
+                           _.each(question.options, function(name) { %>
+                          <li>
+                          <% if ($.inArray(i, ans) != -1) { %>
+                            <img class='mcq-opt-img' src="/assets/mcq_options/img_mcq_ny.png" />&nbsp;&nbsp;
+                          <% } else { %>
+                            <img class='mcq-opt-img' src="/assets/mcq_options/img_mcq_nn.png" />&nbsp;&nbsp;
+                          <% } %>
+                          <%= name %></li>
+                        <% i++}); %>
+                        </ul>
+                    <% } %>
+                </div>
+                <%if (!noexpand) {%>
+                <a class="block js-toggleHeight" href="#" data-state="collapsed" >expand <i class="icon-down-open"></i></a>
+                <%}%>
+            </div>
+            <% if (actions && actions != 'download' ) { %>
+                <% if (test.questions_array.indexOf(question.id.toString()) != -1) { %>
+                <a href="#" class="btn btn-alert mlT pull-right js-remove-question" style="width:140px;" data-qid="<%=question.id%>" data-quid="<%=question.unique_id%>">Remove</a>
+                <% } else { %>
+                <a href="#" class="btn btn-primary mlT pull-right js-add-question" style="width:140px;" data-qid="<%=question.id%>" data-quid="<%=question.unique_id%>">Add</a>
+                <% } %>
+            <% } %>
+        </div>
+    </div>
+</div>

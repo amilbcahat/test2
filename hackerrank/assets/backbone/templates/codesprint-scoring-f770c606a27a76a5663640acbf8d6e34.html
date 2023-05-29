@@ -1,0 +1,89 @@
+<div class="container">
+    <header class="page-title container">
+        <h1>Contest Scoring</h1>
+    </header>
+    <div class="light-wrap faq clearfix">
+        <% if (model.custom_documentation) { %>
+        <%= model.custom_documentation %>
+        <% } else { %>
+        <div class="questions span5 pull-left">
+            <ul class="unstyled general">
+                <li><a class="backbone" href="/scoring/score-evaluation">Overall Scoring</a></li>
+                <li><a class="backbone" href="/scoring/leaderboard">Overall Leaderboard</a></li>
+                <li><a class="backbone" href="/scoring/leaderboard-challenge">Challenge Leaderboard</a></li>
+                
+                <li><a class="backbone" href="/scoring/code-golf">Code Golf</a></li>
+                <li><a class="backbone" href="/scoring/algorithmic-challenges">Algorithmic Challenges</a></li>
+                <li><a class="backbone" href="/scoring/single-player-games">Single Player Games</a></li>
+                <li><a class="backbone" href="/scoring/competitive-games">Competitive Game Scoring</a></li>
+            </ul>           
+        </div>
+
+        <div class="content span10 pull-left">
+
+            <h2 id="score-evaluation">Scoring and Leaderboards</h2>  
+
+            <h3 id="score-evaluation">Overall Scoring</h3>
+                <p>Each challenge will have its own scoring formula and maximum score. The formulas for each type of challenge are explained below. Your total score will simply be the sum of all your scores. 
+                </p>
+
+            <section id="leaderboard">
+                <h3>Overall Leaderboard</h3>
+                <p>
+                    The Leaderboard will rank everyone in order of their total scores. The contests winners will be the top people on the leaderboard. 
+                </p>
+            </section>
+
+            <section id="leaderboard-challenge">
+                <h3>Challenge Leaderboards</h3>
+                <p>
+                    Each challenge will have its own leaderboard which will rank people by their scores for that challenge only. The score for each challenge will depend upon the type of the challenge it is.
+                </p>
+            </section>
+
+            <h2 id="score-evaluation">Scoring for Challenge Types</h2>            
+           
+            <section id="code-golf">
+                <h3>Code Golf</h3>
+                <p>In the code golf challenges, the goal is to write a correct solution with the shortest possible code. 
+                A submission that passes all test cases will receive a score based on the character length of the source code, including spaces and new-lines. The shorter your code is, the higher you will score. The specific scoring details will be given in the challenge statement.</p>
+            </section>
+            <section id="algorithmic-challenges">
+                <h3>Algorithmic Challenges</h3>
+                <p>The algorithmic challenges come with test cases which are increasingly difficult to pass. </p>
+                <p>The score will be based on the percentage of tests cases which your code passes. For example, if you pass 5 out of 10 tests cases, you will receive the points allotted for those 5 passed test cases of that challenge. A correct and optimal solution will pass all test cases. </p>
+            </section>
+            <section id="single-player-games">
+                <h3>Single Player Games</h3>
+                <p>Single player games involve your code interacting with an environment. The game ends when a terminating condition is reached. Scoring and terminating conditions are game dependant and the same will be explained in the problem description.</p>
+            </section>
+
+            <section id="competitive-games">
+                <h3>Competitive Games</h3>
+                <p>In game challenges, your Bot will play against a large sample of other contestants' bots to see how it performs. Your score will then be calculated with a Bayesian Approximation formula to reach a statistically accurate ranking. More details are below.</p>
+            
+                <h4>Details</h4>
+                <p>Two-player games are evaluated based on <a href="http://jmlr.csail.mit.edu/papers/volume12/weng11a/weng11a.pdf" target="_blank">Bayesian Approximation</a>. Each game has 3 possible outcomes - win, loss or a draw. A win will have 1 associated with it, 0.5 for a draw and 0 for a loss.</p>
+                <p> Given &#956;<sub>i</sub>, &#963;<sup>2</sup><sub>i</sub> of Player i, we use the Bradley-Terry full pair update rules.</p>
+                <p>We obtain &#937;<sub>i</sub> and &#916;<sub>i</sub> for every player i using the following steps.</p>
+                <p>For q = 1,......,k, q!=i,</p>
+                <p>where <strong>q</strong> are the number of bots competing in a game</p>
+                <p class="math"><img src="https://s3.amazonaws.com/hr-logos/bayesian2.gif"/></p>
+                <p>where &#946; is the uncertainty in the score and is kept constant at 25/6.</p>
+                <p class="math"><img src="https://s3.amazonaws.com/hr-logos/bayesian3-1.png"/><img src="https://s3.amazonaws.com/hr-logos/bayesian3-2.png"/></p>
+                <p>where &gamma;<sub>q</sub> = &sigma;<sub>i</sub>/c<sub>iq</sub> and r(i) is the rank of a player i at the end of a game.</p>
+                <p>We get<p>
+                <p class="math"><img src="https://s3.amazonaws.com/hr-logos/bayesian4.gif"/></p>
+                <p>Now, the individual skills are updated using </p>
+                <p>j = 1,......,n<sub>i</sub></p>
+                <p class="math"><img src="https://s3.amazonaws.com/hr-logos/bayesian6.gif"/></p>
+                <p>where &kappa; = 0.0001. Its used to always have a positive standard deviation &#963;.</p>
+                <p>Score for every player is given as </p>
+                <p class="math"><img src="https://s3.amazonaws.com/hr-logos/bayesian7.png"/></p>
+                <p>&mu; for a new bot is kept at 25 and &sigma; at 25/3.</p>
+            </section>
+            
+        </div>
+        <% } %>
+    </div>
+</div>

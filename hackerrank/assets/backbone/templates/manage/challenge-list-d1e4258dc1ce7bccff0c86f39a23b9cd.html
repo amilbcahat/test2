@@ -1,0 +1,57 @@
+<style>
+  .row
+  {
+    margin-left: 0px;
+  }
+</style>
+<section class="submissions container">
+  <header class="page-title container">
+    <div class="block row">
+      <ul class="pull-left breadcrumb unstyled horizontal">
+          <li><a href="/manage/" class="backbone">Manage Home</a><i class="icon-right-open-big divider"></i></li>
+          <li><a href="/manage/challenge/" class="backbone">My Challenges</a><i class="icon-right-open-big divider"></i></li>
+      </ul>
+    </div>
+    <div class="row">
+        <h1 class="span10" style="margin-left:0px">
+            <div class="title-img"></div>
+            My Challenges
+        </h1>
+        <div class="span6" style="text-align:right">
+          <form style="margin:0px;"><input type="text" class="search" placeholder="Filter Challenge" />
+          <button class="btn btn-medium search" style="margin-bottom:8px;">Go</button></form>
+          <a class="btn btn-large backbone" href="/manage/challenge/edit/new">New Challenge</a>
+        </div>
+    </div>
+  </header>
+  <div class="light-wrap table-wrap text-center span16">
+    <div class="table-head row">
+      <% if(collection.total != 0){ %>
+      <div class="span1">
+        <p>#</p>
+      </div>
+      <div class="span4">
+        <p>Challenge Name</p>
+      </div>
+      <div class="span2">
+        <p>Type</p>
+      </div>
+      <div class="span3">
+        <p>Contest</p>
+      </div>
+      <div class="span2">
+        <p>Submissions</p>
+      </div>
+      <div class="span3">
+        <p></p>
+      </div>
+      <% } else { %>
+        <p>You have not submitted any challenges yet.</p>
+      <% } %>
+    </div>
+    <div class="challenge-list-wrapper">
+    </div>
+  </div>
+  <div class="pagination-wrap clearfix pagination-wrapper" style="margin-bottom:20px;">
+  </div>
+</section>

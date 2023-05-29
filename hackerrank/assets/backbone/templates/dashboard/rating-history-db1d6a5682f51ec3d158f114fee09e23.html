@@ -1,0 +1,34 @@
+<ul id="rating-tabs" class="unstyled nav nav-tabs">
+    <% _.each(model, function(item) { %>
+        <li <%= item.id == 1 ? "class = 'active'" : "" %> ><a href="#tab<%- item.id %>" data-toggle="tab"><%= item.text %></a></li>
+    <% }); %>
+</ul>
+<div class="tab-content">
+    <% _.each(model, function(item) { %>
+        <div id="tab<%- item.id %>" class="tab-pane<%- item.id == 1 ? " active" : "" %>" >
+            <div class="<%- item.id %>-history-chart">
+            </div>
+            <% if (rating[item.text]) { %>
+                <div class="profile_group light-wrap">
+                    <p class="profile_group-title">CONTEST PERFORMANCE</p>
+                    <p class="contest_stats">
+                        <span class="alpha contest_stats-name">Participated contests:</span>
+                        <span><%= item.count %></span>
+                    </p>
+                    <p class="contest_stats">
+                        <span class="alpha contest_stats-name">Title:</span>
+                        <span><%= rating[item.text].title %></span>
+                    </p>
+                    <p class="contest_stats">
+                        <span class="alpha contest_stats-name">Score:</span>
+                        <span><%= rating[item.text].rating.round() %></span>
+                    </p>
+                    <p class="contest_stats">
+                        <span class="alpha contest_stats-name">Rank:</span>
+                        <span><%= rating[item.text].rank %></span>
+                    </p>
+                </div>
+            <% } %>
+        </div>
+    <% }); %>
+</div>

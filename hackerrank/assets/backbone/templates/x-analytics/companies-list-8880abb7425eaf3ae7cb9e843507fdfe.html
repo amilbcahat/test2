@@ -1,0 +1,70 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL">Companies Dashboard</h3>
+</div>
+<div class="overflow-content" id="control-overflow">
+    <div class="actions-row mlA">
+        <div class="span5">
+            <div class="span2 msT">Type</div>
+            <div class="btn-group">
+                <a href="#" class="btn payment-type-change <% if(paymentType == 'paid') { %> active <% } %>" data-payment-type="paid">Paid</a>
+                <a href="#" class="btn payment-type-change <% if(paymentType == 'unpaid') { %> active <% } %>" data-payment-type="unpaid">Unpaid</a>
+            </div>
+        </div>
+
+        <div class="span6">
+            <div class="span2 msT">Duration</div>
+            <div class="btn-group">
+                <a class="btn duration-change <% if(duration == 'daily') { %> active <% } %>" data-duration="daily">Daily</a>
+                <a class="btn duration-change <% if(duration == 'weekly') { %> active <% } %>" data-duration="weekly">Weekly</a>
+                <a class="btn duration-change <% if(duration == 'monthly') { %> active <% } %>" data-duration="monthly">Monthly</a>
+            </div>
+        </div>
+
+        <div class="span5">
+            <div class="span2 msT">Data Type</div>
+            <div class="btn-group">
+                <a class="btn data-type-change <% if(dataType == 'figures') { %> active <% } %>" data-data-type="figures">Figures</a>
+                <a class="btn data-type-change <% if(dataType == 'difference') { %> active <% } %>" data-data-type="difference">Difference</a>
+            </div>
+        </div>
+    </div>
+
+
+        <div class="span16 main-content">
+            <table cellpadding="0" cellspacing="0" border="0" class="dash-table table dt-sleektable">
+                <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Name</td>
+                    <td>Tests</td>
+                    <td>Invites</td>
+                    <td>Interviews</td>
+                    <td>Created At</td>
+                </tr>
+
+                </thead>
+                <tbody>
+                    <% _.each(companies, function(company) { %>
+                        <tr>
+                            <td><%= company.id %></td>
+                            <td><%= HR.util.htmlEncode(company.name) %></td>
+                            <td>
+                                <span class="<% if(dataType == 'difference') { %> hidden <% } %>"><%= company.tests_count %></span>
+                                <span class="<% if(dataType == 'figures') { %> hidden <% } %>"><%= company.tests_diff %></span>
+                            </td>
+                            <td>
+                                <span class="<% if(dataType == 'difference') { %> hidden <% } %>"><%= company.invites_count %></span>
+                                <span class="<% if(dataType == 'figures') { %> hidden <% } %>"><%= company.invites_diff %></span>
+                            </td>
+                            <td>
+                                <span class="<% if(dataType == 'difference') { %> hidden <% } %>"><%= company.interviews_count %></span>
+                                <span class="<% if(dataType == 'figures') { %> hidden <% } %>"><%= company.interviews_diff %></span>
+                            </td>
+                            <td><%= company.created_at %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <!--</div>-->
+    </div>
+</div>

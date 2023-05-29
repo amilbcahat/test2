@@ -1,0 +1,77 @@
+<section class="sampletemplate container public-profile">
+    <div class="profile-header clearfix">
+        <div class="pic-wrap75 pic-wrap white">
+	        <img src="<%= model.avatar %>" height="75" width="75">
+	    </div>
+	    <hgroup>
+            <h2><%= model.name %></h2>
+            <h3><%= model.username %></h3>
+        </hgroup>
+        <ul class="profile-rank horizontal unstyled">
+            <li class="first light-wrap">Rank<span class="profile-rank"><%= model.rank || "N/A" %></span></li>
+            <li class="last light-wrap">Score<span class="profile-score"><%= _.isNumber(model.score) ? Math.floor(1000*model.score)/1000 : "N/A" %></span></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="span11">
+            <div class="profile-contests profile-graph">
+                <div class="light-wrap">
+                    <h5 class="profile-boxtitle">Progress Graph</h5>
+                    <% if (_.isNumber(model.rank)) { %>
+                    <div id="profile-graph-view" style="padding-top:10px; height:270px;">
+                        <%= HR.appController.viewLoader(64) %>
+                    </div>
+                    <% } else { %>
+                    <p>No activity yet</p>
+                    <% } %>
+                </div>
+            </div>
+	        <div class="profile-contests profile-events">
+                <div class="light-wrap">
+                    <h5 class="profile-boxtitle">Event History<a id="event" class="view-more" href="#" style="display:none;">View More</a></h5>
+                    <div class="profile-event-view" style="padding-top:10px;">
+                        <%= HR.appController.viewLoader(64) %>
+                    </div>
+                </div>
+	        </div>
+	        <div id="test" class="profile-contests">
+                <div class="light-wrap">
+                    <h5 class="profile-boxtitle">Forum Posts<a id="post" class="view-more" href="#" style="display:none;">View More</a></h5>
+                    <div class="profile-post-view">
+                        <%= HR.appController.viewLoader(64) %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pull-right span5">
+            <div class="profile-networks">
+                <div class="light-wrap">
+                    <h5 class="profile-boxtitle">User Details</h5>
+                    <% if (model.country){ %>
+                        <p>
+                            <i class="icon-location"></i>
+                            <%= model.country %>
+                        </p>
+                    <% } if (model.school){ %>
+                        <p>
+                            <i class="icon-graduation-cap"></i>
+                            <%= model.school %>
+                        </p>
+                    <% } if (model.company){ %>
+                        <p>
+                            <i class="icon-briefcase"></i>
+                            <%= model.company %>
+                        </p>
+                    <% } %>
+                    <p>
+                        <% if (model.languages == "") { %>
+                            <%= model.name %> has not started coding yet.
+                        <% }else { %>
+                            <b>Codes in:</b> <%= _.map(model.languages, function(lang){ return lang_display_mapping[lang] }).join(', ')  %>
+                        <% } %>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

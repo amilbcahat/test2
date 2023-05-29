@@ -1,0 +1,99 @@
+<section class="submissions container">
+  <div class="container--inner">
+    <header class="row">
+      <h1 class="span16">
+        <div class="title-img"></div>
+        Apply to <% if (companies.length === 1) { %><%= companies[0].name %><% } else { %>Companies<% } %>
+      </h1>
+    </header>
+    <div class="row">
+      <div class="pull-right right span4 update-applicant-profile-container">
+        <a class="btn btn-link update-applicant-btn">Update Applicant Profile</a>
+        <span class="help-prompt">
+          <i class="icon-help-circled icon-single"></i>
+          <span class="help-text help-text-right">Applicant profile will be sent to the
+            recruiters of the companies you have applied to.</span>
+        </span>
+      </div>
+      <div class="hide pull-right right span4 cancel-update-applicant-profile-container">
+        <a class="btn btn-link cancel-update-applicant-btn">Close <i class="icon-cancel-small"></i></a>
+      </div>
+    </div>
+    <div class="row hide applicant-profile-editor">
+      <p class="m bold" style="margin-bottom: 10px;">Your applicant profile will be
+        shared with the recruiters of the companies you applied for</p>
+      <form class="edit-contest">
+        <div class="control-group span16">
+          <div class="span8" style="margin-left:0px;">
+            <label class="control-label span3" for="hacker_name">Full Name</label>
+            <div class="controls span4" style="margin-left:20px;">
+              <input name="hacker_name" type="text" value="<%= model.hacker_name %>"  placeholder="Your Full Name" />
+            </div>
+          </div>
+          <div class="span8" style="margin-left:0px;">
+            <label class="control-label span3" for="contact_number">Contact Number</label>
+            <div class="controls span4" style="margin-left:20px;">
+              <input name="hacker_phone" type="text" placeholder="+1 (877) 878 7908" value="<%= model.contact_number %>" />
+            </div>
+          </div>
+        </div>
+        <div class="control-group span16">
+          <div class="span8" style="margin-left:0px;">
+            <label class="control-label span3" for="hacker_country">Country</label>
+            <div class="controls span4" style="margin-left:20px;">
+              <input name="hacker_country" type="text" value="<%= model.hacker_country %>" placeholder="United States" />
+            </div>
+          </div>
+          <div class="span8" style="margin-left:0px;">
+            <label class="control-label span3" for="hacker_country">School</label>
+            <div class="controls span4" style="margin-left:20px;">
+              <input name="hacker_school" type="text" placeholder="Hacker School" />
+            </div>
+          </div>
+        </div>
+        <div class="control-group span16">
+          <div class="span16" style="margin-left:0px;">
+            <label class="control-label span3" for="homepage">About You</label>
+            <textarea name="hacker_about" class="span11 editor" style="margin-left:20px;"><%= model.hacker_hack %></textarea>
+          </div>
+        </div>
+        <div class="control-group span16">
+          <div class="span9" style="margin-left:0px;">
+            <label class="control-label span3" for="homepage">Resume</label>
+            <div class="controls span4" style="margin-left:20px;">
+              <a class="btn btn-text upload-resume-btn">Upload <% if (profile.get('resume_url')) { %>a new resume<% } %></a>
+            </div>
+            <div class="span1 upload-resume-input">
+              <input name="hacker_resume" class="hacker_resume" type="file" style="padding: 0px; margin: 0px; width: 0px; height: 0px;"/>
+              <small id="hacker_resume_status"></small>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="resume-iframe">
+        <% if (profile.get('resume_url')) { %>
+        <iframe src="https://docs.google.com/viewer?url=<%= profile.get('resume_url') %>&embedded=true"
+                width="600" height="780" style="border: none; margin-left: 222px; margin-top: 20px;"></iframe>
+        <% } %>
+      </div>
+    </div>
+    <div class="control-group span16">
+      <table id="companies" class="table table-bordered table-striped span15">
+        <% _.each (companies, function( company, index ){ %>
+        <tr>
+          <td style="width:210px;">
+            <input <% if(companies.length < 2) { %>class="hide" checked<% } %> id="company<%= company.id %>"
+                      type="checkbox" style="margin:40px 0; float:left; width:20px; height:20px;" value="<%= company.id %>" />
+                   <label class="company span3" for="company<%= company.id %>">
+                     <img class="company-img" src="https://s3.amazonaws.com/hackerrank-companies/<%= company.logo %>"
+                          alt="<%= company.name %>" />
+          </td>
+          <td>
+            <p><%= company.pitch %></p>
+          </td>
+        </tr>
+        <%  }) %>
+      </table>
+    </div>
+  </div>
+</section>

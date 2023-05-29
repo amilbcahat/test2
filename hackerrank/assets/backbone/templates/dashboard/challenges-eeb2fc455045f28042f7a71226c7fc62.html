@@ -1,0 +1,162 @@
+<div class="container">
+   <div class="page_narrow">
+        <% if (contest.slug == 'master') { %>
+        <div class="pull-left content_group--block content_side track-nav-wrapper">
+            <div>
+                <header class="sidebar_cap msT">Current Track</header>
+                <div class="sidebar--block psA plL plR mlB">
+                    <% if (current_track.name) { %>
+                        <h4 class="msB"><%= current_track.name %></h4>
+                        <% if (HR.profile().isLoggedIn()) { %>
+                            <div class="msB"><small class="bold">
+                                <span class="zeta">Score: </span><span class="mmR"><%= (current_track.hacker_progress || {}).score || 0 %>pts</span>
+                                <span class="zeta">Level: </span><span class="mmR"><%= (current_track.hacker_progress || {}).title || "N/A" %></span>
+                            </small></div>
+                            <div class=""><small class="zeta bold">Next Challenge: </small></div>
+                            <% if (recommended_challenge && recommended_challenge.get('name')) { %>
+                                <div class="bold"><small><a class="backbone" href="/challenges/<%= recommended_challenge.get('slug') %>" class="title-link"><%- recommended_challenge.get('name') %></a></small></div>
+                            <% } %>
+                        <% } %>
+                    <% } %>
+                </div>
+            </div>
+            <div>
+                <div class="sidebar--block sidebar_list" id="challengeAccordion">
+
+                  <% _.each(categories.models, function(category) {
+                    if (!is_track_view || category.get('slug') == activeCategory) { %>
+                    <a class="sidebar_list-heading challenges_tracks-toggle <%= activeCategory == category.get('slug') ? 'active current':'' %>" data-slug="<%= category.get('slug') %>" data-toggle="collapse" data-parent="#challengeAccordion" href="#<%= category.get('slug') %>-wrapper"><i class=" <%= (activeCategory == category.get('slug')) ? 'icon-down-open': 'icon-right-open' %> pull-right"></i> <%= category.get("name") %></a>
+                    <ul class="<%= category.get('slug') %>-wrapper <%= (activeCategory == category.get('slug')) ? 'in': '' %> accordion-body collapse sidebar_subset" id="<%= category.get('slug') %>-wrapper">
+                        <% _.each(category.children().models, function(track) { %>
+                        <li class="<%= track.active ? 'active':'' %> sidebar_list-item">
+                            <a class="backbone change-track challenges_trackname" data-track="<%= track.get('slug') %>" href="<%= track.pageURL() %>">
+                                <%= track.get('name') %>
+                            </a>
+                        </li>
+                        <% }) %>
+                    </ul>
+                    <% }}) %>
+                </div>
+            </div>
+        </div>
+        <% } else { %>
+        <div class="pull-left content_group--block content_side">
+            <div>
+                <header class="sidebar_cap msT">Current Contest</header>
+                <div class="sidebar--block psA plL plR mlB">
+                    <h4 class="msB"><%= contest.name %></h4>
+                    <div class="msB"><small class="bold"><!--
+                        <span class="zeta time_remaining">Time Remaining: </span><span class="current-contest-countdown"></span> -->
+                        <span class="zeta">Current Rank: </span><%= contest.rank || "N/A" %>
+                    </small></div>
+                </div>
+            </div>
+            <div>
+                <header class="msB zeta bold small text-center">
+                    <a class="btn btn-text backbone" href="<%= HR.appController.current_contest_namespace %>/leaderboard"><%= contest.submitted_hackers_count %> hackers </a> have submitted code
+                </header>
+                <div class="sidebar--block psA">
+                    <% _.each(recent_hackers, function(hacker) { %>
+                        <a href="/<%= hacker.username %>" data-username="<%= hacker.username %>" class="hacker-wrap <%= hacker.is_online ? 'online' : 'offline' %>" ><img src="<%= hacker.avatar %>" height="40" width="40" class="avatar mmA" onerror="this.onerror=null; this.src='https://d3rpyts3de3lx8.cloudfront.net/hackerrank/assets/gravatar.jpg';"></a>
+                    <% }) %>
+                </div>
+                <div class="text-center"><a href="/contests/<%= contest.slug %>/leaderboard" class="btn btn-link msT backbone">View Leaderboard</a></div>
+            </div>
+        </div>
+        <% } %>
+
+        <div class="pull-right content_group--block content_primary tab-content">
+            <div class="content_header">
+                <% if (contest.slug != "master") { %>
+                <span class="bold challenge-breadcrumbs zeta small pull-left"><a href="/contests" class="zeta backbone"><i class="icon--left icon-left-open"></i>All contests</a></span>
+                <div class="pull-right btn-group psT">
+                    <a href="/contests/<%= contest.slug %>/submissions" class="btn btn-link green backbone">Review Submissions</a>
+                    <a href="/contests/<%= contest.slug %>/leaderboard" class="btn btn-link green backbone">Leaderboard</a>
+                </div>
+                <% } else { %>
+                <div>
+                    <span class="bold challenge-breadcrumbs zeta small">
+                        <% if (currentCategories.models[0]) { %><%= currentCategories.models[0].get("name") %><% } %>
+                        <i class="icon-right-open icon--single msL msR"></i>
+                        <% if (currentCategories.models[1]) { %><%= currentCategories.models[1].get("name") %><% } %>
+                    </span>
+                </div>
+                <% } %>
+            </div>
+            <div class="tab-pane active">
+                <div class="<%= (filter == null)? 'hide': ''%> challengeslist_filters" id="challenges-filters">
+                    <div class="close">&times;</div>
+                    <div class="clearfix">
+                        <div>
+                            <p class="small challengeslist_filters-header">Only show challenges that are:</p>
+                            <form id="filter-form" class="clearfix">
+                                <div class="countrol-group clearfix">
+                                    <div class="controls">
+                                        <% if (profile.id) { %>
+                                            <% if ($.inArray('incomplete', filters) >= 0) { %>
+                                            <label class="pull-left filter-checkbox active" for="showUnattempted">
+                                                <input type="checkbox" id="showUnattempted" value="incomplete" checked>
+                                                <i class="status-indicator filter"></i>
+                                                <span class="challenges-filters_label">Incomplete</span>
+                                            </label>
+                                            <% } else {%>
+                                            <label class="pull-left filter-checkbox" for="showUnattempted">
+                                                <input type="checkbox" id="showUnattempted" value="incomplete"><i class="status-indicator"></i><span class="challenges-filters_label">Incomplete</span>
+                                            </label>
+                                            <% } %>
+                                            <% if ($.inArray('complete', filters) >= 0) { %>
+                                            <label class="pull-left filter-checkbox active" for="showAttempted">
+                                                <input type="checkbox" id="showAttempted" value="complete" checked>
+                                                <i class="status-indicator filter"></i>
+                                                <span class="challenges-filters_label">Completed</span>
+                                            </label>
+                                            <% } else {%>
+                                            <label class="pull-left filter-checkbox" for="showAttempted">
+                                                <input type="checkbox" id="showAttempted" value="complete"><i class="status-indicator"></i><span class="challenges-filters_label">Completed</span>
+                                            </label>
+                                            <% } %>
+                                        <% } %>
+                                        <% if ($.inArray('sponsored', filters) >= 0) { %>
+                                        <label class="pull-left filter-checkbox active" for="showSponsored">
+                                            <input type="checkbox" id="showSponsored" value="sponsored" checked>
+                                            <i class="status-indicator filter"></i>
+                                            <span class="challenges-filters_label">Sponsored</span>
+                                        </label>
+                                        <% } else {%>
+                                        <label class="pull-left filter-checkbox" for="showSponsored">
+                                            <input type="checkbox" id="showSponsored" value="sponsored"><i class="status-indicator"></i><span class="challenges-filters_label">Sponsored</span>
+                                        </label>
+                                        <% } %>
+                                    </div>
+                                </div>
+                                <div class="control-group challengeslist_filters-tags">
+                                    <p class="small challengeslist_filters-header">Show challenges from these categories:</p>
+                                    <div class="controls">
+                                        <label class="">
+                                            <input type="hidden" id="tag-list" data-element='tag-list' value="<%= (select2filters != undefined)? select2filters : '' %>"/>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="control-group challengeslist_filters-buttons">
+                                    <div class="controls">
+                                        <button id="submit-filters" type="btn" class="btn btn-green backbone pull-right">Apply filters</button>
+                                        <button id="clear-filters" type="btn" class="btn btn-alert backbone pull-right">Clear filters</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <% if (activeTag == "all") { %>
+                    <div class="row plL right content_subheader">
+                        <div class="span5 sort-title"><a class="sort_wrap backbone" href="#">Challenge Title<span class="sort_icons-group"><i class="icon-up-dir"></i><i class="icon-down-dir"></i></span></a></div>
+                        <div class="span2 sort-date"><a class="sort_wrap backbone" href="#">Release Date<span class="sort_icons-group"><i class="icon-up-dir"></i><i class="icon-down-dir"></i></span></a></div>
+                    </div>
+                <% } %>
+                <div class="challenges-list"></div>
+                <div class="challengeslist_pagination-wrapper pagination-wrapper">
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>

@@ -1,0 +1,84 @@
+<div class="company-data-container">
+    <div class="msL">
+        <div class="container-header mlB bold">
+            Summary
+        </div>
+        <div class="row">
+            <div class="span2 bold">
+                ID
+            </div>
+            <div class="span12 value">
+                <%= model.id %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <div class="span2 bold">
+                Name
+            </div>
+            <div class="span12 value">
+                <%= model.name %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <div class="span2 bold">
+                Owner
+            </div>
+            <div class="span12 value">
+                <%= model.owner.firstname %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <div class="span2 bold">
+                Plan
+            </div>
+            <div class="span12 value">
+                <%= model.plan_name %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <div class="span2 bold">
+                Locked ?
+            </div>
+            <div class="span12 value">
+                <%= model.locked %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <% if(model.plan_name == 'Trial') { %>
+        <div class="row">
+            <div class="span2 bold">
+                Trial Expires On
+            </div>
+            <div class="span12 value">
+                <%= moment(model.payment_date).format('DD/MM/YYYY') %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <% } %>
+        <div class="row">
+            <div class="span2 bold">
+                Days left in trial
+            </div>
+            <div class="span12 value">
+                <%= model.plan_name == 'Trial' ? model.days_left : '-' %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="msT msB">
+        <div class="span2 msT">Set New Expiry Date: </div>
+        <input type="text" class="wide" id="new-payment-date">
+    </div>
+
+    <div class="row no-margin plT">
+        <div class="span-xs-16 span-md-16">
+            <button type="submit" id="extend-trial" class="btn btn-primary btn-mid <% if(!(model.plan_name == 'Trial' || model.plan_name == 'Free')) { %> disabled <% } %>">Apply
+            </button>
+        </div>
+    </div>
+</div>

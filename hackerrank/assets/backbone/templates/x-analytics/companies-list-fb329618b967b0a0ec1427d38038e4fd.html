@@ -1,0 +1,163 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL">Companies Dashboard</h3>
+</div>
+<div class="overflow-content" id="control-overflow">
+    <div class="actions-row mjA">
+
+        <div class="msT">
+                <div class="span2 msT">View</div>
+                <div class="btn-group">
+                    <a class="btn view-type-change <% if(viewType == 'dataUsage') { %> active btn-primary <% } %>" data-view-type="dataUsage">Data Usage</a>
+                    <a class="btn view-type-change <% if(viewType == 'licenseUsage') { %> active btn-primary <% } %>" data-view-type="licenseUsage">License Usage</a>
+                </div>
+            </div>
+
+        <div class="msT">
+            <div class="span2 msT">Company Type</div>
+            <div class="btn-group">
+                <a href="#" class="btn payment-type-change <% if(paymentType == 'paid') { %> active btn-primary <% } %>"
+                   data-payment-type="paid">Paid</a>
+                <a href="#" class="btn payment-type-change <% if(paymentType == 'active_trials') { %> active btn-primary <% } %>"
+                   data-payment-type="active_trials">Active Trials</a>
+                <a href="#" class="btn payment-type-change <% if(paymentType == 'expired_trials') { %> active btn-primary <% } %>"
+                   data-payment-type="expired_trials">Expired Trials</a>
+                <a href="#" class="btn payment-type-change <% if(paymentType == 'locked') { %> active btn-primary <% } %>"
+                   data-payment-type="locked">Locked</a>
+            </div>
+        </div>
+
+
+        <div class="msT">
+            <div class="span2 msT">Duration</div>
+            <div class="btn-group">
+                <a class="btn duration-change <% if(duration == 'daily') { %> active btn-primary <% } %>" data-duration="daily">Yesterday</a>
+                <a class="btn duration-change <% if(duration == 'weekly') { %> active btn-primary <% } %>" data-duration="weekly">Last
+                    7 days</a>
+                <a class="btn duration-change <% if(duration == 'monthly') { %> active btn-primary <% } %>" data-duration="monthly">Last
+                    30 days</a>
+                <a class="btn duration-change <% if(duration == 'quarterly') { %> active btn-primary <% } %>"
+                   data-duration="quarterly">Last 90 days</a>
+                <a class="btn custom-duration-change <% if(duration == 'custom') { %> active btn-primary <% } %>"
+                   data-duration="custom">Custom</a>
+            </div>
+        </div>
+
+        <div class="msT date-range-container <% if(duration != 'custom') { %> hidden <% } %>">
+            <form class="form-horizontal msL mjT">
+                <fieldset class="plR">
+                    <div class="control-group">
+                        <label class="control-label" for="date-range-select">Select Duration:</label>
+
+                        <div class="controls">
+                            <div class="input-prepend">
+                                <span class="add-on"><i class="icon-calendar"></i></span><input type="text" name="date-range-select" id="date-range-select" value="<%= startDate + ' - ' + endDate %>"/>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <hr>
+
+
+    <div class="main-content">
+        <table cellpadding="0" cellspacing="0" border="0" class="dash-table hidden table dt-sleektable">
+            <col class="small">
+            <col class="large">
+            <col class="jumbo">
+            <col class="large">
+            <col class="small">
+            <col class="small">
+            <col class="small">
+            <col class="small">
+            <col class="small">
+            <col class="small">
+            <col class="small">
+            <col class="small">
+            <% if(viewType == 'licenseUsage') { %>
+                <col class="small">
+                <col class="small">
+            <% } %>
+            <col class="mid">
+            <col class="mid">
+            <thead>
+            <tr>
+                <td rowspan="2" colspan="1">ID</td>
+                <td rowspan="2" colspan="1">Name</td>
+                <td rowspan="2" colspan="1">Email</td>
+                <td rowspan="2" colspan="1">Plan</td>
+                <% if(viewType == 'dataUsage') { %>
+                    <td rowspan="1" colspan="2" class="taC">Tests</td>
+                    <td rowspan="1" colspan="2" class="taC">Invites</td>
+                    <td rowspan="1" colspan="2" class="taC">Attempts</td>
+                    <td rowspan="1" colspan="2" class="taC">Interviews</td>
+                <% } %>
+                <% if(viewType == 'licenseUsage') { %>
+                    <td rowspan="1" colspan="2" class="taC">Teams</td>
+                    <td rowspan="1" colspan="2" class="taC">Admin</td>
+                    <td rowspan="1" colspan="2" class="taC">Recruiters</td>
+                    <td rowspan="1" colspan="2" class="taC">Developers</td>
+                    <td rowspan="1" colspan="2" class="taC">Users</td>
+                <% } %>
+                <td colspan="1" rowspan="2">Overall Growth</td>
+                <td colspan="1" rowspan="2">Creation Date</td>
+            </tr>
+            <tr>
+                <td rowspan="1" colspan="1">Count</td>
+                <td rowspan="1" colspan="1">Growth</td>
+                <td rowspan="1" colspan="1">Count</td>
+                <td rowspan="1" colspan="1">Growth</td>
+                <td rowspan="1" colspan="1">Count</td>
+                <td rowspan="1" colspan="1">Growth</td>
+                <td rowspan="1" colspan="1">Count</td>
+                <td rowspan="1" colspan="1">Growth</td>
+                <% if(viewType == 'licenseUsage') { %>
+                    <td rowspan="1" colspan="1">Count</td>
+                    <td rowspan="1" colspan="1">Growth</td>
+                <% } %>
+            </tr>
+
+            </thead>
+            <tbody>
+            <% _.each(companies, function(company) { %>
+            <tr data-company-id="<%= company.id %>">
+                <td><%= company.id %></td>
+                <td><%= HR.util.htmlEncode(company.name) %></td>
+                <td><%= HR.util.htmlEncode(company.email) %></td>
+                <td><%= company.plan %></td>
+
+                <% if(viewType == 'dataUsage') { %>
+                    <td><%= company.tests_count %></td>
+                    <td><%= company.tests_diff %></td>
+                    <td><%= company.invites_count %></td>
+                    <td><%= company.invites_diff %></td>
+                    <td><%= company.attempts_count %></td>
+                    <td><%= company.attempts_diff %></td>
+                    <td><%= company.interviews_count %></td>
+                    <td><%= company.interviews_diff %></td>
+                    <td><%= company.overall_usage_growth %></td>
+                <% } %>
+
+                <% if(viewType == 'licenseUsage') { %>
+                    <td><%= company.teams_count %></td>
+                    <td><%= company.teams_diff %></td>
+                    <td><%= company.admins_count %></td>
+                    <td><%= company.admins_diff %></td>
+                    <td><%= company.recruiters_count %></td>
+                    <td><%= company.recruiters_diff %></td>
+                    <td><%= company.developers_count %></td>
+                    <td><%= company.developers_diff %></td>
+                    <td><%= company.users_count %></td>
+                    <td><%= company.users_diff %></td>
+                    <td><%= company.overall_license_growth %></td>
+                <% } %>
+
+                <td><%= company.created_at %></td>
+            </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>

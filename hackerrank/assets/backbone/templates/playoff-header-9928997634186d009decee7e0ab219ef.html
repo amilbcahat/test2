@@ -1,0 +1,9 @@
+<h1><%= contest.name %></h1>
+<h3>Round <%= round_data.current_round %></h3>
+<div class="round-wrap">
+    <h4><%= round_data.total_players %> players</h4>
+    <div class="nav-arrows clearfix block-center">
+        <a href="<%= HR.appController.get_current_contest_namespace() %>/playoffs/<%= challenge.slug %>/round/<%= round_data.current_round-1 %>" class="view-last backbone" <% if (round_data.current_round == 1) { %> style="display:none" <% }%> ></a>
+        <a href="<%= HR.appController.get_current_contest_namespace() %>/playoffs/<%= challenge.slug %>/round/<%= round_data.current_round+1 %>" class="view-next backbone" <% if (round_data.current_round == round_data.total_rounds) { %> style="display:none" <% } %>></a>
+    </div>
+</div>

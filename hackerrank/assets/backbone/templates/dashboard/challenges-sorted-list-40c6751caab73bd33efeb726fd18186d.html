@@ -1,0 +1,19 @@
+<div id="contest-challenges-problem" class="challengeslist_challenge challenge-sorted-list-item clearfix">
+    <div class="row padding-large left right challengeslist_challenge-body<% if (contest != null && contest.slug != 'master') { %> full-width<% } %>">
+        <div class="span5">
+            <h2 class="small challengeslist_challenge-title"><a href="<%= baseURL %>"><%= model.name %></a></h2>
+        </div>
+        <div class="span3 challengeslist_challenge-date">
+            <span><% if (model.created_at) { %> <%= $.format.date(model.created_at, "MMM d, yyyy") %> <% } else { %> - <%} %></span>
+        </div>
+        <div class="span3 pull-right">
+            <% if(model.can_be_viewed) { %>
+                <a href="<%= baseURL %>" data-slug="<%= model.slug %>"
+                   class="btn <%= model.attempted ? 'btn-line' : 'btn-line inverse' %> backbone start pull-right challengelist_button"
+                   data-analytics="<%= model.attempted? 'TryAgain' : 'SolveChallenge' %>">
+                    <%= model.attempted? 'Try Again' : 'Solve Challenge' %>
+                </a>
+            <% } %>
+        </div>
+    </div>
+</div>

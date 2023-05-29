@@ -1,0 +1,14 @@
+<% if(model.length == 0) { %>
+  <% if (hacker === HR.profile().get('username') ) { %>
+    <p class="block-margin text-center">You have not commented on any discussions.</p>
+<!-- ** COMMENT: Don't show button until we have set up a main-page discussion board. Currently only set up for individual challenges **
+      <p class="text-center"><a href="/" class="btn btn-primary">View Discussion Boards</a></p> -->
+  <% } else { %>
+    <p class="block-margin text-center"><%= hacker %> has not commented on any discussions.</p>
+  <% } %>
+<% } %>
+<% _.each( model , function(post,index) { %>
+    <p class="margin-small top"><%= post.text %>
+       <span class="aside small">(<%= post.time %>)</span>
+    </p>
+<% }); %>

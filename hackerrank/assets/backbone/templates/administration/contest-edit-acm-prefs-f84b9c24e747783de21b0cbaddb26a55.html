@@ -1,0 +1,90 @@
+<div class="msL">
+  <p class="aside block-margin margin-large">Configurations for setting up
+    ACM style Contest.
+  </p>
+
+  <h3>Leaderboard</h3>
+
+  <!-- ACM Style -->
+  <div class="formgroup horizontal row">
+    <label for="acm_leaderboard" class="pull-left span3">ACM Style Leaderboard</label>
+    <div class="block span8 profile-input pull-left">
+      <div class="checkbox-container">
+        <input <% if (_model.acm_leaderboard) { %>checked="checked"<% } %> id="acm_leaderboard" class="hidden-checkbox" type="checkbox"/>
+      </div>
+      <div class="left grey-text state hide acm_leaderboard"></div>
+      <small class="error name span12"></small>
+    </div>
+  </div>
+
+  <!-- Penalty -->
+  <div class="formgroup horizontal row">
+    <label for="penalty" class="pull-left span3">Penalty</label>
+    <div class="block span8 profile-input pull-left">
+      <input id="penalty" class="span2" <% if (_model.penalty) { %>value="<%= _model.penalty %>"<% } %> type="text"/>
+      <div class="left span4 psT grey-text state hide penalty"></div>
+      <small class="error name span12"></small>
+    </div>
+  </div>
+
+  <!-- Penalize Compilation Error -->
+  <div class="formgroup horizontal row">
+    <label for="penalize_compilation_error" class="pull-left span3">Penalize Compilation Error</label>
+    <div class="block span8 profile-input pull-left">
+      <div class="checkbox-container">
+        <input <% if (_model.penalize_compilation_error) { %>checked="checked"<% } %> id="penalize_compilation_error" class="hidden-checkbox" type="checkbox"/>
+      </div>
+      <div class="left grey-text state hide penalize_compilation_error"></div>
+      <small class="error name span12"></small>
+    </div>
+  </div>
+
+  <!-- Freeze Leaderboard Time -->
+  <div class="formgroup horizontal row">
+    <label for="leaderboard_freeze_time_epoch" class="pull-left span3">Freeze Leaderboard at</label>
+    <div class="block span8 profile-input pull-left">
+      <input id="leaderboard_freeze_time_epoch" class="span2" <% if (_model.leaderboard_freeze_time_epoch) { %>value="<%= _model.leaderboard_freeze_time_epoch %>"<% } %> type="text"/>
+      <div class="left span4 psT grey-text state hide leaderboard_freeze_time_epoch"></div>
+      <small class="error name span12"></small>
+    </div>
+  </div>
+
+  <h3>Forum</h3>
+
+  <!-- Retricted Forum -->
+  <div class="formgroup horizontal row">
+    <label for="acm_forum" class="pull-left span3">Restricted Forum</label>
+    <div class="block span8 profile-input pull-left">
+      <div class="checkbox-container">
+        <input <% if (_model.acm_forum) { %>checked="checked"<% } %> id="acm_forum" class="hidden-checkbox" type="checkbox"/>
+      </div>
+      <div class="left grey-text state hide acm_forum"></div>
+      <small class="error name span12"></small>
+    </div>
+  </div>
+
+  <h3>Teams</h3>
+
+  <!-- Team Contest -->
+  <div class="formgroup horizontal row">
+    <label for="team_event" class="pull-left span3">Enable Teams</label>
+    <div class="block span8 profile-input pull-left">
+      <div class="checkbox-container">
+        <input <% if (_model.team_event) { %>checked="checked"<% } %> id="team_event" class="hidden-checkbox" type="checkbox"/>
+      </div>
+      <div class="left grey-text state hide team_event"></div>
+      <small class="error name span12"></small>
+    </div>
+  </div>
+
+  <!-- Team Size -->
+  <div class="formgroup horizontal row">
+    <label for="max_team_size" class="pull-left span3">Maximum Team Size</label>
+    <div class="block span8 profile-input pull-left">
+      <input id="max_team_size" class="span2" <% if (_model.max_team_size) { %>value="<%= _model.max_team_size %>"<% } else { %>value="3"<% } %> type="text"/>
+      <div class="left span4 psT grey-text state hide max_team_size"></div>
+      <small class="error name span12"></small>
+    </div>
+  </div>
+
+</div>

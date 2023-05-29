@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="span4">
+	    <p><a class="challenge-slug backbone" href="<%= challenge.pageURL() %>"><%= challenge.get('name') %></a></p>
+    </div>
+    <div class="span2">
+	    <p><%= lang_display_mapping[model.get('language')] || model.get('language') %></p>
+    </div>
+    <div class="span2" style='white-space: nowrap;'>
+	    <p style='font-size: 14px;'><%= model.get('time_ago') %> ago</p>
+    </div>
+    <div class="span3">
+	    <p style='font-size: 14px;'><%= model.get('status') %> <% if (model.get('status_code') == 0) { %><img src="/assets/queued.gif" /><% } %></p>
+    </div>
+    <div class="span1">
+	  <p><%= model.get('score') %></p>
+    </div>
+    <div class="span2 pull-right">
+	    <p class="btn-wrap"><a href="<%= model.pageURL() %>" class="btn btn-white view-results backbone">View Results</a></p>
+    </div>
+</div>

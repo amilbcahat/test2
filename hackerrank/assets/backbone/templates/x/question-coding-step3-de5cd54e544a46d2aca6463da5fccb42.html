@@ -1,0 +1,100 @@
+<div class="mjA">
+    <div class="formgroup">
+        <label>Test Cases</label>
+        <p class="txt-alt-grey-dark span9 no-padding">A testcase consists of input values to the program along with corresponding output the program is expected to produce. Inputs will be fed to the program's STDIN and output will be expected in STDOUT.</p>
+        <div class="clear"></div>
+        <p class="txt-alt-grey-dark span9 no-padding">You can have a look at some <a href="https://github.com/interviewstreet/sampleproblems" target="_blank" class="normal-underline">sample problems with their testcase files</a></p>
+    </div>
+    <div class="clear"></div>
+</div><!-- end .mjA -->
+
+<style>
+.testcase-operations .btn-small, .testcase-operations input {
+    height: 30px;
+}
+.score-grp button.error {
+    border-color: #f65039;
+}
+</style>
+
+<label class="mjL">Testcase for current question</label>
+<div class="mjL row testcase-operations">
+    <div class="pull-left btn-group msB msR">
+        <button href="#" class="btn btn-small js-add-testcase"><i class="icon-plus"></i> Add testcase</button>
+        <button href="#" class="btn btn-small js-upload-testcases"><i class="icon2-upload fnt-sz-small"></i> Upload as .zip</button>
+    </div>
+    <div class="batch-operations pull-left" style="display:none;">
+        <div class="pull-left dropdown">
+            <button class="btn btn-default btn-small js-change-type">
+            <i class="icon icon-chart-bar"></i>
+            Change Difficulty
+            <i class="icon icon-down-open"></i></button>
+            <div class="box">
+                <div class="option js-change-difficulty">Easy</div>
+                <div class="option js-change-difficulty">Medium</div>
+                <div class="option js-change-difficulty">Hard</div>
+            </div>
+        </div>
+        <div class="input-btn-group pull-left msL score-grp">
+            <form name="score-change">
+                <input type="text" class="score small" style="padding:4px 5px; width:80px;" />
+                <button class="btn btn-default btn-small js-change-score" type="submit" ><i class="icon icon2-edit " style="
+                font-size:0.7em"></i>Change Score</button>
+            </form>
+        </div>
+        <div class="btn-group pull-left msL">
+            <button class="btn btn-default btn-small js-mark-sample"><i class="icon icon-lock-open"></i>Mark Sample</button>
+            <button class="btn btn-default btn-small js-download"><i class="icon icon-download"></i>Download</button>
+        </div>
+        <div class="btn-group pull-left msL">
+            <button class="btn btn-default btn-alert btn-small js-delete"><i class="icon icon2-delete fnt-sz-small "></i>Delete</button>
+        </div>
+        <div class="pull-left operation-loader" style="display:none;">
+            <span class="inline-throbber loading" style="top:2px;">  </span>
+        </div>
+    </div>
+</div>
+<table style="width:94%; margin:10px auto;" class="table table-radius table-out-border fnt-sz-mid">
+    <thead>
+        <tr class="prominent txt-alt-grey">
+            <th>
+                <input type="checkbox" class="js-select-all" />
+                <span style="margin-left:15px;">NAME</span>
+            </th>
+            <th>DIFFICULTY</th>
+            <th>SCORE</th>
+            <th>INPUT SIZE</th>
+            <th>OUTPUT SIZE</th>
+            <th>EDIT/DOWNLOAD/DELETE</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    <% if (testCasesFetched) { %>
+        <% if (testcases.length == 0) { %>
+        <tr>
+            <td colspan="6" class="fnt-wt-600 m">No testcase has been added</td>
+        </tr>
+        <% } %>
+    <% } else { %>
+        <tr>
+            <td colspan="6" class="fnt-wt-600 m">Fetching Test Cases</td>
+        </tr>
+    <% } %>
+    </tbody>
+</table>
+
+<div class="mjA">
+    <div class="row no-margin plT">
+        <div class="span-xs-16 span-md-16">
+            <button type="submit" class="btn btn-primary btn-mid save-question"><% if(model.type == 'approx') { %> Save & Proceed </button><% } else { %> Save Question </button>
+
+            <em>or</em>
+            <button type="button" class="btn btn-mid js-save-and-add"> Save & Add another </button><% } %>
+        </div>
+    </div>
+</div>
+
+
+<div id="testcase-modal-container"></div>
+<div id="testcase-alert-modal-container"></div>

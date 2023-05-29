@@ -1,0 +1,143 @@
+<div class="bg-light-grey height-100">
+    <div class="row">
+        <center>
+            <div class="padding-top-20">
+                <h2 class="headline"><%=test.name%></h2>
+            </div>
+            <% if (test.logged_in && test.attempt_done) { %>
+            <p class="font20 f-weight-600">YOU HAVE COMPLETED THE TEST.</p>
+            <br/>
+            <p class="text-center">
+                <img src="/assets/icons/test-completed.png" />
+            </p>
+            <%} else { %>
+
+
+            <div class="padding-20">
+                <span class="ico-questions" /><span class="grey"><%- test.questions_count %> questions
+                <% if (test.sectional) {%>(with sections)<%}%>
+                </span>
+                <span class="ico-time" /><span class="grey test-duration"><%- test.duration %> minutes</span>
+            </div>
+            <% } %>
+        </center>
+
+        <div class="container--flex plB plT block-center white-block main-content">
+
+            <% if (!test.logged_in) {%>
+            <h3 class="challengeslist_challenge-title green msB">INSTRUCTIONS</h3>
+            <%=test.instructions%>
+            <% if (test.sectional) {%>
+                <br/>
+                <p><strong>Note: </strong><ul>
+                <li>This test has sections, each with some alotted time.</li>
+                <li>Closing a section manually will carry-over the remaining time into the next section.</li>
+                </ul>
+                </p>
+            <%}%>
+            <hr></hr>
+            <div class="alert mlB hide" id="error-message">
+                <header>Use a Title please (conveys what error clearly)</header>
+                <p>This is the default alert style. Use it to communicate errors or important information that the user must be aware of, especially if the action may result in an error or compilation issue.</p>
+            </div>
+
+            <form id="test-login-form">
+                <div class="formgroup">
+                    <p class="text-center msB"><strong>Please fill all the details mentioned below</strong></p>
+                </div>
+
+                <div class="formgroup horizontal">
+                    <label class="span-lg-6 span-md-8 support-long-text">Email address</label>
+                    <div class="block span-lg-10 span-md-8">
+                        <input type="text" class="with-help wide" name="email">
+                    </div>
+                </div>
+
+                <% if (!test.auth_valid) {%>
+                <div class="formgroup horizontal">
+                    <label class="span-lg-6 span-md-8 support-long-text">Password</label>
+                    <div class="block span-lg-10 span-md-8">
+                        <input type="password" class="with-help wide" name="password">
+                    </div>
+                </div>
+                <% } %>
+
+                <% _.each(test.collect_info, function(item) {
+                    item.field_name = "user_" + item.field_name;
+                %>
+                <div class="formgroup horizontal">
+                    <label class="span-lg-6 span-md-8 support-long-text"><%= item.title %></label>
+                    <div class="block span-lg-10 span-md-8">
+                        <% if (item.field_name == "user_resume") { %>
+                        <input type="file" class="with-help wide" name="<%- item.field_name %>">
+                        <% } else if (item.field_name == "user_gender") { %>
+                        <label class="widget"><input type="radio" name="<%- item.field_name %>"> Male</label>
+                        <label class="widget"><input type="radio" name="<%- item.field_name %>"> Female</label>
+                        <% } else if (item.field_name == "user_degree") { %>
+                        <select name="user_degree" class="with-help wide">
+                            <option value="" selected="selected">Choose your degree</option>
+                            <option value="B.E">B.E</option>
+                            <option value="B.Tech">B.Tech</option>
+                            <option value="M.Tech">M.Tech</option>
+                            <option value="Dual Degree">Dual Degree</option>
+                            <option value="B.C.A.">B.C.A.</option>
+                            <option value="M.C.A.">M.C.A.</option>
+                            <option value="B.B.A.">B.B.A.</option>
+                            <option value="M.B.A.">M.B.A.</option>
+                            <option value="B.Com">B.Com</option>
+                            <option value="M.Com">M.Com</option>
+                            <option value="B.Cs">B.Cs</option>
+                            <option value="B.Arch">B.Arch</option>
+                            <option value="B.Pharm">B.Pharm</option>
+                            <option value="B.Sc">B.Sc</option>
+                            <option value="M.Sc">M.Sc</option>
+                            <option value="B.A.">B.A.</option>
+                            <option value="M.A.">M.A.</option>
+                        </select>
+                        <% } else { %>
+                        <input type="text" class="with-help wide" name="<%- item.field_name %>">
+                        <% } %>
+                    </div>
+                </div>
+                <% }); %>
+
+                <div class="formgroup">
+                    <div class="span-lg-6 span-md-8">
+                        <input type="checkbox" name="acknowledge" id="acknowledge" class="pull-right" style="margin-top:10px;"/>
+                    </div>
+                    <div class="span-lg-10 span-md-8"><label  for="acknowledge">I acknowledge that all answers will be provided solely by me, and that I will not consult any other person, or use any external resource.</label></div>
+                </div>
+
+                <div class="formgroup horizontal">
+                    <br/>
+                    <center>
+                        <button class="btn btn-primary btn-large margin-20 test-submit">Submit</button>
+                    </center>
+                </div>
+            </form>
+
+            <%} else if (test.logged_in && !test.attempt_done) {%>
+            <div class="alert alert-info">
+                <header>Already logged in.</header>
+                <p>You are already logged into this test -- redirecting you into the test...</p>
+            </div>
+            <% } else if  (test.logged_in && test.attempt_done){ %>
+                <div class="formgroup">
+                    <h3 class="challengeslist_challenge-title green msB">Feedback</h3>
+                    <p>How did you like the test? What can we do to improve your experience?</p>
+                    <br/>
+                    <textarea name="candidate-comment" rows="6" style="width:100%;" class="feedback-text"></textarea>
+                    <br/>
+                    <button class="btn btn-primary btn-large test-submit-feedback">Submit & logout</button>&nbsp;&nbsp;&nbsp;<a class="test-logout" href="javascript:void(0)">Just logout</a>
+                </div>
+            </div>
+            <% } %>
+        </div>
+
+        <center>
+        <img class="margin-20" src="assets/brand/powered_by.png" />
+        </center>
+
+    </div><!-- end .row -->
+
+</div><!-- end .bg-light-grey -->

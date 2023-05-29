@@ -1,0 +1,86 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL">Interviews</h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Schedule interview</h3>
+</div>
+<div class="overflow-content" id="control-overflow">
+    <% if (HR.currentUser && HR.currentUser.get('role') !== "developer") { %>
+    <!-- any contents add here -->
+    <div class="mjA">
+        <h4 class="msB">
+            QUICK PAD
+        </h4>
+        <p class="txt-alt-grey">If you want to start an interview immediately click below:</p>
+        <form name="quick-pad-form">
+            <div class="inline-block mdT">
+                <input type="text" class="no-margin wide" placeholder="name of the pad" name="quick-pad-title"><button type="submit" class="btn btn-primary margin-large right mdL" name="quick-pad-button">Create a quick pad</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="block-divider text-center">
+        <span class="fnt-wt-600">Or</span>
+    </div>
+
+    <form name="schedule-interview-form" method="post">
+        <div class="mjA">
+            <h4 class="msB">
+                SETUP AN INTERVIEW
+            </h4>
+            <p class="txt-alt-grey">If you want to set up an interview pad for use by another member of your team, use the interface below:</p>
+
+            <div class="inline-block mlT">
+                <label class="msB"><span class="step-number-green msR">1</span> Pick a time slot</label>
+                <input type="text" id="start_date" class="date start" value="<%= moment(model.from).format('M-D-YYYY') %>" name="interview-start-date"  placeholder="Start date" style="width:225px">
+                <input type="text" class="msL time start" id="start_date" value="<%= moment(model.from).format('HH:mm') %>" name="interview-start-time" style="width:105px"  placeholder="Start time">
+                <input type="hidden" id="timezones" class="wide msB msL" value="<%= HR.currentUser.get("timezone") %>">
+                <select class="msL" name="interview-duration">
+                    <option value="30" <% if (time_diff == 30) { %>selected<% } %>>30 minutes</option>
+                    <option value="45" <% if (time_diff == 45) { %>selected<% } %>>45 minutes</option>
+                    <option value="60" <% if (time_diff == 60) { %>selected<% } %>>1 hour</option>
+                    <option value="90" <% if (time_diff == 30) { %>selected<% } %>>1.5 hours</option>
+                    <option value="120" <% if (time_diff == 30) { %>selected<% } %>>2 hours</option>
+                    <option value="150" <% if (time_diff == 30) { %>selected<% } %>>2.5 hours</option>
+                    <option value="180" <% if (time_diff == 30) { %>selected<% } %>>3 hours</option>
+                    <option value="240" <% if (time_diff == 30) { %>selected<% } %>>4 hours</option>
+                    <% if (! _.contains([30,45,60,90,120,150,180,240], time_diff)) { %>
+                    <option value="<%- time_diff %>" selected><%- time_diff %> minutes</option>
+                    <% } %>
+                </select>
+
+            </div>
+
+            <div class="inline-block mlT">
+                <label class="msB"><span class="step-number-green msR">2</span> Enter candidate's information</label>
+                <div id="interview-candidates-container">
+                </div>
+            </div>
+
+            <div class="inline-block mlT">
+                <label class="msB"><span class="step-number-green msR">3</span> Enter interviewer's information</label>
+                <div id="interview-interviewers-container">
+                </div>
+            </div>
+
+            <div class="soft-divider"></div>
+
+            <div class="inline-block mlT">
+                <label class="msB">Notes</label>
+                <textarea placeholder="Add notes for your interview. This will be shared among your team members only" class="xwide tall resizex" name="interview-notes"></textarea>
+            </div>
+            <div class="inline-block mlT">
+                <label class="msB">Resume</label>
+                <input type="file" name="resume" title="Choose a file">
+            </div>
+        </div>
+
+        <!--IMPORTANT: USE ONLY BUTTONS IN THIS DIV. This div should stay at the bottom of the contents in this .overflow-content div, no matter what -->
+        <div id="responsive-bottom-holder" class="responsive-bottom-holder">
+            <button type="submit" class="btn btn-primary btn-mid" name="schedule-interview-button">Create interview</button>
+        </div>
+    </form>
+    <% } else { %>
+    <div class="mjA">
+        You are not allowed to create an interview
+    </div>
+    <% } %>
+</div><!-- end .overflow-content -->

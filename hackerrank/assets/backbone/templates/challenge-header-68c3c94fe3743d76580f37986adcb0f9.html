@@ -1,0 +1,22 @@
+<header class="page-title">
+    <div class="clearfix">
+        <h1 class="hr_tour-challenge-name pull-left">
+            <%= model.name %>
+            <span class="acm-challenge-balloon-large" style="background-color: <%= model.color %>"></span>
+        </h1>
+        <% if(model.locked) { %>
+        <div class="pull-right challenge-title-note">
+            <a rel="tooltip" data-original-title="Any furthur submissions will not be considered for leaderboard." id="locked-popover" class="active-link pull-right">
+              <small class="label label-important"><i class="icon-lock"></i>locked</small>
+            </a>
+        </div>
+        <% } %>
+    </div>
+    <% if (model.company) { %><div class="apply-blob"></div><% } %>
+    <ul class="nav-tabs nav">
+        <li id="problemTab" <% if (activeTab == 'problem') { %> class="active" <% } %> ><a class="hr-problem-link" href="<%= baseURL %>"><i class="icon-doc-text"></i> Problem</a></li>
+        <li id="submissionsTab" <% if (activeTab == 'submissions') { %> class="active" <% } %> ><a class="hr-submissions-link" href="<%= baseURL %>/submissions"><i class="icon-list-bullet-small"></i> Submissions</a></li>
+        <% if (contest.get('kind') != 'acm') { %><li id="leaderboardTab" <% if (activeTab == 'leaderboard') { %> class="active" <% } %> ><a class="hr-leaderboard-link" href="<%= baseURL %>/leaderboard"><i class="icon-trophy"></i> Leaderboard</a></li><% } %>
+        <li id="forumTab" <% if (activeTab == 'forum') { %> class="active" <% } %> ><a class="hr-forum-link" href="<%= baseURL %>/forum/questions"><i class="icon-comment"></i> Discussions</a></li>
+    </ul>
+</header>

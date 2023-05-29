@@ -1,0 +1,29 @@
+<br>
+<% _.each(_collection, function(model) { %>
+    <% var submission = _.first(_.filter(model.submissions, function(submission) { return (submission.status == 2) })) %>
+    <% if (submission) { %>
+        <p style="font-size: 20px;"><strong><%= model.challenge.name %></strong></p>
+        <div class="row">
+          <% if (submission.kind == 1) { %>
+            <div class="span4 pull-left">
+              <% var score = (model.challenge.score * submission.score) %>
+              <% var _score = 0; if ((score % 1) == 0) { _score = score } else { _score = score.toFixed(2) } %>
+              <strong>Score: <%= _score %>/<%= model.challenge.score %></strong>
+            </div>
+            <% if (submission.testcase_status) { %>
+            <div class="span5 pull-right right">
+              <% var passed = _.filter(submission.testcase_status, function (status) { return (status == 1)}).length %>
+              <strong><%= passed %>/<%= submission.testcase_status.length %> Testcases Passed</strong>
+            </div>
+            <% } %>
+          <% } else if (submission.kind == 2) { %>
+            <p><strong>Games: <%= submission.game_total %>(Total) <%= submission.game_won %>(Won) <%= submission.game_lost %>(Lost) <%= submission.game_tied %>(Tied)</strong></p>
+          <% } %>
+          <div class="clearfix"></div>
+        </div>
+        <p style="border: 1px solid #c2c7d0;border-bottom: 0px;padding: 0px 7px;text-align: right;background: #eee;font-weight: bold;"
+            ><%= lang_display_mapping[submission.language] %></p>
+        <textarea data-language="<%= submission.language %>"><%= submission.code %></textarea>
+        <hr>
+    <% } %>
+<% }); %>

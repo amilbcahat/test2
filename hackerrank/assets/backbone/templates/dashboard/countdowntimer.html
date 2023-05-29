@@ -1,0 +1,18 @@
+<h4 class="contest-status">
+    <small>
+        <% if (model.ended()) { %>
+        The contest has ended. Further submissions will not affect the leaderboard.
+        <% } else if (model.started()) { %>
+        The contest is in progress.
+          <% if (model.get('epoch_endtime') !== null && model.nextMilestone()) { %>
+          It ends
+          <abbr class="countdown timeago endtime cursor contest-countdown">
+          </abbr>.
+          <% } %>
+        <% } else { %>
+        The contest has not yet started. It begins
+        <abbr class="countdown timeago starttime cursor">
+        </abbr>.
+        <% } %>
+    </small>
+</h4>

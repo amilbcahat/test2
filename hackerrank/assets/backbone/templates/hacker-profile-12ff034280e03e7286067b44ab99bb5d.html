@@ -1,0 +1,161 @@
+<section class="container profile">
+    <div class="content_wrap wide">
+        <div class="padded track-nav-wrapper sidebar--inline">
+            <header class="text-center profile_sidebar-header">
+                <p class="profile_hackerhandle"><strong><%= model.username %></strong></p>
+                <p class="profile_hackername"><% if (model.id === HR.profile().get('id')) { %>This is you<% } else { %><%= model.name %><% } %></p>
+                <% if (model.country){ %>
+                <p class="profile_location"><i class="icon-location"></i> <%= model.country %></p>
+                <% } %>
+                <img src="<%= model.avatar %>" height="100" width="100" class="block-center avatar profile_image margin-large top bottom">
+                <p class="profile_rating"><%= model.current_rating.overall.title %></p>
+                <% if (model.name) { %>
+                <% } %>
+            </header>
+            <div class="profile_sidebar-body">
+                <% if (model.hack == "") { %>
+
+                <% if (model.id === HR.profile().get('id')) { %><p class="profile_biggesthack"><strong>Biggest Hack</strong><a href="/settings/profile" class="btn btn-small pull-right">Complete your Profile</a></p><% } else { %><% } %>
+
+                <% } else { %>
+                <p class="profile_biggesthack"><strong>Biggest Hack</strong><br><%= _.escape(model.hack || "") %></p>
+                <% } %>
+                <p class="profile_languages">
+                    <% if (model.languages == "") { %>
+                    <% } else { %>
+                        <% var languages = model.languages
+                           if (!_.isArray(languages)) {
+                               languages = languages.split(',');
+                           }
+                           %>
+                        <strong>
+                        <% if (model.id === HR.profile().get('id')) { %>
+                            <span>You code in</span>
+                        <% } else { %>
+                            <span><%= model.username %> codes in</span>
+                        <% } %>
+                        </strong> <%= _.map(languages, function(lang){ return lang_display_mapping[lang] }).join(', ')  %>
+                    <% } %>
+                </p>
+				<ul class="unstyled horizontal profile_social">
+                    <% if (model.website) { %>
+				        <li class="profile_social-link"><a href="<% if (model.website.indexOf("http") != 0) { %>http://<% } %><%= _.escape(model.website || "") %>"><i class="icon-globe"></i>
+                        <% if (model.website.indexOf("http") != 0) { %>http://<% } %><%= _.escape(model.website || "") %></a></li>
+                    <% } %>
+<!-- 					<li class="profile_social-link"><a href="http://www.elouwebdesign.com"><i class="icon-facebook"></i></a></li>
+					<li class="profile_social-link"><a href="http://www.elouwebdesign.com"><i class="icon-github"></i></a></li>
+					<li class="profile_social-link"><a href="http://www.elouwebdesign.com"><i class="icon-twitter"></i></a></li> -->
+				</ul>
+			</div>
+			<!--<div class="profile_sidebar-teams">
+			    <h4>Teams</h4>
+			    <p><strong>School:</strong> <%= model.school %></p>
+			    <p><strong>Company:</strong> <%= model.company %></p>
+			</div>-->
+			<footer class="profile_sidebar-footer">
+			    <p class="btn-wrap text-center">
+			    <% if ( model.id === HR.profile().get('id') ) { %>
+			        <p class="btn-wrap text-center margin-large top"><a class="btn" href="/settings/profile">Edit Profile</a></p>
+			    <% } else { %>
+			        <p class="btn-wrap text-center margin-large top"><a class="btn btn-green send-message">Message <%= model.username %></a></p>
+			    <% } %>
+			    </p>
+			</footer>
+        </div>
+
+        <div class="content--inline tab-content">
+            <div class="profile_group profile_graph">
+                <p class="clearfix">
+                    <span class="pull-left"><strong>Your progress</strong></span>
+                    <span class="pull-right align-right alpha beta">
+                        <strong>Rank: </strong><%= model.current_rating.overall.rank %>
+                        <strong class="padding-large left">Score: </strong>
+
+                    </span>
+                </p>
+                <div id="profile-graph-view" class="margin-small top">
+                <% if (_.isNumber(model.rank)) { %>
+                    <%= HR.appController.viewLoader(64) %>
+                <% } else { %>
+                    <% if ( model.id === HR.profile().get('id') ) { %>
+                        <p class="block-margin text-center">Solve your first challenge to see your progress graph.</p>
+                        <p class="text-center"><a href="/categories" class="btn btn-primary profile_blankstate-btn backbone">View Challenges</a></p>
+                    <% } else { %>
+                        <p class="block-margin text-center"><%= model.username %> has not solved any challenges yet.</p>
+                    <% } %>
+                </p>
+				<ul class="unstyled horizontal profile_social">
+                    <% if (model.website) { %>
+				        <li class="profile_social-link"><a href="<% if (model.website.indexOf("http") != 0) { %>http://<% } %><%= _.escape(model.website || "") %>"><i class="icon-globe"></i>
+                        <% if (model.website.indexOf("http") != 0) { %>http://<% } %><%= _.escape(model.website || "") %></a></li>
+                    <% } %>
+<!-- 					<li class="profile_social-link"><a href="http://www.elouwebdesign.com"><i class="icon-facebook"></i></a></li>
+					<li class="profile_social-link"><a href="http://www.elouwebdesign.com"><i class="icon-github"></i></a></li>
+					<li class="profile_social-link"><a href="http://www.elouwebdesign.com"><i class="icon-twitter"></i></a></li> -->
+				</ul>
+			</div>
+			<!--<div class="profile_sidebar-teams">
+			    <h4>Teams</h4>
+			    <p><strong>School:</strong> <%= model.school %></p>
+			    <p><strong>Company:</strong> <%= model.company %></p>
+			</div>-->
+			<footer class="profile_sidebar-footer">
+			    <p class="btn-wrap text-center">
+			    <% if ( model.id === HR.profile().get('id') ) { %>
+			        <p class="btn-wrap text-center margin-large top"><a class="btn" href="/settings/profile">Edit Profile</a></p>
+			    <% } else { %>
+			    <% } %>
+			    </p>
+			</footer>
+        </div>
+        <div class="content--inline tab-content">
+            <div class="profile_group profile_graph">
+                <p class="clearfix">
+                    <span class="pull-left"><strong>Your progress</strong></span>
+                    <span class="pull-right align-right alpha beta">
+                        <strong>Rank: </strong><%= model.current_rating.overall.rank %>
+                        <strong class="padding-large left">Score: </strong>
+                    </span>
+                </p>
+                <div id="profile-graph-view" class="margin-small top">
+                <% if (_.isNumber(model.rank)) { %>
+                    <%= HR.appController.viewLoader(64) %>
+                <% } else { %>
+                <p class="profile_biggesthack"><strong>Biggest Hack</strong><br><%= _.escape(model.hack || "") %></p>
+                <% } %>
+                <p class="profile_languages">
+                    <% if (model.languages == "") { %>
+                    <% } else { %>
+                        <% var languages = model.languages
+                           if (!_.isArray(languages)) {
+                               languages = languages.split(',');
+                           }
+                           %>
+                        <strong>
+                        <% if (model.id === HR.profile().get('id')) { %>
+                            <span>You code in</span>
+                        <% } else { %>
+                            <span><%= model.username %> codes in</span>
+                        <% } %>
+                        </strong> <%= _.map(languages, function(lang){ return lang_display_mapping[lang] }).join(', ')  %>
+                    <% } %>
+                <% } %>
+                </div>
+            </div>
+            <div class="row row-clear padded profile_feed">
+                <div class="span8 padded">
+                    <p class="profile_group-title">Event History<a id="event" class="view-more hide" href="#">View More</a></p>
+                    <div class="profile-event-view" style="padding-top:10px;">
+                        <%= HR.appController.viewLoader(64) %>
+                    </div>
+                </div>
+                <div class="span8 padded">
+                    <p class="profile_group-title">Forum Activity<a id="post" class="view-more hide" href="#">View More</a></p>
+                    <div class="profile-post-view">
+                        <%= HR.appController.viewLoader(64) %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,38 @@
+<% if (model && model.id) { %>
+<section class="user-profile-edit container">
+    <div class="light-wrap wrap content-wrap narrow container">
+        <div id="profile-settings-sidebar" class="tab-sidebar span3 inline-sidebar">
+            <section class="user-head header clearfix">
+                <img src="<%= model.avatar %>" class="avatar" alt="<%= model.username %>" title="<%= model.username %>" height="75" width="75">
+		        <button class="btn btn-white" id="upload-avatar">Change Avatar</button>
+            </section>
+            <ul class="profile-menu unstyled" id="profileTabs">
+                <li class="active" data-action="profile"><a href="javascript:void(0)" data-toggle="tab">Profile</a></li>
+                <!-- <li data-action="network"><a href="javascript:void(0)" data-toggle="tab">Networks</a></li> -->
+                <!--<li data-action="invitation"><a href="javascript:void(0)" data-toggle="tab">Invitations</a></li>-->
+                <li data-action="facebook-sharing"><a href="javascript:void(0)" data-toggle="tab">Facebook Sharing</a></li>
+                <li data-action="change-password"><a href="javascript:void(0)" data-toggle="tab">Change Password</a></li>
+                <li data-action="email-preferences"><a href="javascript:void(0)" data-toggle="tab">Email Preferences</a></li>
+            </ul>
+            <button class="btn btn-primary block-center disabled" id="save-btn">Save Changes</button>
+        </div>
+        <div class="tab-content inline-content span12 pull-right">
+            <article id="userprofileTab" class="tab-pane profile active"></article>
+            <article id="networkTab" class="tab-pane network"></article>
+            <article id="inviteTab" class="tab-pane invitation"></article>
+            <article id="facebookSharing" class="tab-pane facebook-sharing"></article>
+            <article id="changePassword" class="tab-pane change-password"></article>
+            <article id="emailPreferences" class="tab-pane email-preferences"></article>
+        </div>
+        <strong id="save-success" class="hide">Your changed have been saved</strong>
+    </div>
+</section>
+<% } else { %>
+<section>
+  <div class="light-wrap wrap content-wrap container">
+    <div class="inline-content">
+      Please login to manage your settings.
+    </div>
+  </div>
+</sction>
+<% } %>

@@ -1,0 +1,41 @@
+<table class="table dt-sleektable" id="reports-datatable" cellpadding="0" cellspacing="0" border="0">
+    <thead>
+        <tr>
+            <th>
+                <input class="hr-sleek-input" name="all_checkbox" type="checkbox" id="all_checkbox">
+                <label for="all_checkbox">
+                    <span></span>
+                </label>
+            </th>
+            <% if (invite_mode) {%>
+                <th></th>
+                <th>E-Mail address</th>
+                <th></th>
+                <th>Invite time</th>
+                <th></th>
+                <th></th>
+                <th>Actions</th>
+                <% _.times(test.questions_types.length + test.questions_tags.length, function() {%>
+                <th></th>
+                <% }) %>
+            <%} else {%>
+                <th>Full name</th>
+                <th>E-Mail address</th>
+                <th>Score</th>
+                <th>End time</th>
+                <th>Category</th>
+                <th>Time remaining</th>
+                <th>Report link</th>
+                <% _.each(test.questions_types, function(typ) { %>
+                <th><%= window.istreet.cfg.hrqn[typ] ? window.istreet.cfg.hrqn[typ]: typ %> score</th>
+                <% }) %>
+                <% _.each(test.questions_tags, function(tag) { %>
+                <th><%= HR.util.capitalize(tag) %> score</th>
+                <% }) %>
+            <% } %>
+            <th>Invited by</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>

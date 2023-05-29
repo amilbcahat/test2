@@ -1,0 +1,42 @@
+<section class="container">
+<header class="page-title container">
+<h1 class="span16">
+  <div class="title-img"></div>
+  Apply to <% if (companies.length === 1) { %><%= companies[0].name %><% } else { %>Companies<% } %>
+  </h1>
+  </header>
+  <div class="row light-wrap wrap row" style="margin-left:0px; margin-top:20px;">
+    <table id="companies" class="table table-bordered table-striped span15">
+      <% _.each (companies, function( company, index ){ %>
+      <tr>
+        <td style="width:210px;">
+          <img class="company-img" src="https://s3.amazonaws.com/hackerrank-companies/<%= company.logo %>" alt="<%= company.name %>" />
+          </td>
+          <td>
+              <p><%= company.pitch %></p>
+              <% if(company.solved_challenges.length > 0) { %>
+              <p>
+                    <a href="challenges/<%= company.solved_challenges[0].slug %>/apply/<%= company.slug %>" class="backbone pull-right btn btn-primary margin-top-6px">Apply</a>
+                    </p>
+                <% if(company.unsolved_challenges.length > 0) { %>
+                Solve
+                <% _.each(company.unsolved_challenges, function(challenge) { %>
+                  <a href="challenges/<%= challenge.slug %>" class="backbone"><%= challenge.name %></a>
+                <% }) %> to improve your profile!
+                <% } %>
+              <% } else { %>
+              <p>
+              <% if(company.unsolved_challenges.length > 0) { %>
+              Solve
+              <% _.each(company.unsolved_challenges, function(challenge) { %>
+                <a href="challenges/<%= challenge.slug %>" class="backbone"><%= challenge.name %></a>
+              <% }) %> to apply!
+              <% } %>
+              </p>
+              <% } %>
+          </td>
+        </tr>
+      <%  }) %>
+    </table>
+  </div>
+</section>

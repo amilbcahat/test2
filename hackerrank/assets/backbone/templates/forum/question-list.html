@@ -1,0 +1,47 @@
+<div class="pull-left span11 forum-content">
+    <!--<div class="forum-content-header">-->
+        <!--<ul class="unstyled horizontal nav-tabs">-->
+            <!--<li class="active"><a href="#popular-questions" data-toggle="tab">Popular Questions</a></li>-->
+            <!--<li><a href="#recent-questions" data-toggle="tab">Recent Questions</a></li>-->
+        <!--</ul>-->
+    <!--</div>-->
+    <div class="forum-content-body tab-content">
+        <div class="tab-pane active" id="popular-questions">
+            <% if (_.isEmpty(collection) && _collection.sync_status) { %>
+              Nobody is talking about this challenge yet. Why not <a href="<%= HR.appController.get_current_contest_namespace() %>/challenges/<%= challenge.get('slug') %>/forum/questions/ask" class="backbone">start the first discussion</a>?
+            <% } else if (!_collection.sync_status) { %>
+              <%= HR.appController.viewLoader(64) %>
+            <% } %>
+
+            <div class="question-stub-container"></div>
+
+        </div>
+        <div class="tab-pane" id="recent-questions">
+            <% _.each(collection, function(question) { %>
+
+            <div class="forum-teaser-wrap">
+                <!--<h4>Dots &amp; Boxes</h4>-->
+                <h2 class="small"><a class="backbone" href="<%= HR.appController.get_current_contest_namespace() %>/challenges/<%=challenge.get('slug')%>/forum/questions/<%=question.id%>"><%= question.title %></a></h2>
+                <div class="sub clearfix">
+                  <!--
+                     -<%= question.votes %> votes •
+                     -->
+                     <small class="pull-left">
+                       By <a class="cursor hacker-show" data-action="hacker-modal" data-value="<%= question.hacker_username %>"><%= question.hacker_username %></a><% if (question.hacker_is_admin) { %> <span class="label label-info">STAFF</span><% } %>
+                       <span class="timeago" title="<%=question.created_at%>"></span>
+                       • <a href="<%= HR.appController.get_current_contest_namespace() %>/challenges/<%=challenge.get('slug')%>/forum/questions/<%=question.id%>"><%= question.answers_count %> answer<%= (question.answers_count==1)?'':"s" %></a>&nbsp;
+                       <% if(!_.isEmpty(question.tags)) { %>
+                       • Tags: <em><%= question.tags.join(',&nbsp;') %></em>&nbsp;
+                       <% } %>
+                     </small>
+                    <div class="pull-right">
+                        <!--<a href="/screen/hackerrank/challenge-interface.html" class="btn btn-sub pull-right backbone">Follow</a>-->
+                        <a href="<%= HR.appController.get_current_contest_namespace() %>/challenges/<%= challenge.get('slug') %>/forum/questions/<%= question.id %>" class="btn btn-primary pull-right backbone" data-analytics="Answer Question" >Answer</a>
+                    </div>
+                </div>
+            </div>
+            <%}) %>
+        </div>
+    </div>
+    <div class="pagination-wrap clearfix pagination-wrapper"></div>
+</div>

@@ -1,0 +1,101 @@
+<div class="hre-sidebar" id="hre-sidebar">
+    <div class="sidebar-scroller bottom">
+        <i class="icon-down-open-bold"></i>
+        <i class="icon-up-open-bold"></i>
+    </div>
+
+    <!-- This is the expand and collapse icon that will appear when in smaller screens -->
+    <div class="showfor1024" id="sidebar-menu-icon" style="display: none">
+        <i class="icon-menu-large sidebar-menu-icon"></i>
+    </div>
+
+    <div class="mlA">
+        <p class="sidebar-nav-title"><span class="hidefor1024">EDIT TEST</span></p>
+        <ul class="hre-sidebar-list">
+            <li <% if (!active_nav_link || active_nav_link == 'questions') { %>class="active"<% } %>>
+                <a href="/x/tests/<%- model.id %>/questions" class="js-backbone">
+                <i data-original-title="Questions" class="icon2-questions js-tooltip" data-placement="right"></i>
+                    <span class="hidefor1024">Questions</span>
+                </a>
+            </li>
+            <li <% if (active_nav_link == 'general-settings') { %>class="active"<% } %>>
+                <a href="/x/tests/<%- model.id %>/general-settings" class="js-backbone">
+                    <i data-original-title="General Settings" class="icon2-generalsettings js-tooltip" data-placement="right"></i>
+                    <span class="hidefor1024">General Settings</span>
+                </a>
+            </li>
+            <li <% if (active_nav_link == 'share') { %>class="active"<% } %>>
+                <a href="/x/tests/<%- model.id %>/share" class="js-backbone">
+                    <i data-original-title="Share Test With Team" class="icon2-sharetest js-tooltip" data-placement="right"></i>
+                    <span class="hidefor1024">Share test with team</span>
+                </a>
+            </li>
+            <li <% if (active_nav_link == 'candidate-settings') { %>class="active"<% } %>>
+                <a href="/x/tests/<%- model.id %>/candidate-settings" class="js-backbone">
+                    <i data-original-title="Candidate Settings" class="icon-user js-tooltip" data-placement="right" style="top:1px;"></i>
+                    <span class="hidefor1024">Candidate Settings</span>
+                </a>
+            </li>
+            <li <% if (active_nav_link == 'advanced-settings') { %>class="active"<% } %>>
+                <a href="/x/tests/<%- model.id %>/advanced-settings" class="js-backbone">
+                    <i data-original-title="Advanced Settings" class="icon-cog js-tooltip" data-placement="right" style="top:1px;"></i>
+                    <span class="hidefor1024">Advanced Settings</span>
+                </a>
+            </li>
+        </ul>
+        <div class="clear"></div>
+    </div>
+
+    <span class="dark-divider"></span>
+
+    <div class="mlA">
+        <p class="sidebar-nav-title"><span class="hidefor1024">REPORTS</span></p>
+        <ul class="hre-sidebar-list">
+            <li <% if (active_nav_link == 'all') { %>class="active"<% } %>>
+                <a href="/x/tests/<%- model.id %>/candidates/all" class="js-backbone">
+                    <i data-original-title="All Reports" class="icon2-allreports js-tooltip" data-placement="right"></i>
+                    <span class="hidefor1024">All Reports</span>
+                </a>
+            </li>
+            <li <% if (active_nav_link == 'invited') { %>class="active"<% } %>>
+                <a href="/x/tests/<%- model.id %>/candidates/invited" class="js-backbone">
+                    <i data-original-title="Invited" class="icon-dot-circled js-tooltip" data-placement="right"></i>
+                    <span class="hidefor1024">Invited <span class="pull-right fnt-wt-600"><%= model.invited %></span></span>
+                </a>
+            </li>
+            <li <% if (active_nav_link == 'in-progress') { %>class="active"<% } %>>
+                <a href="/x/tests/<%- model.id %>/candidates/in-progress" class="js-backbone">
+                    <i data-original-title="In Progress" class="icon-adjust js-tooltip" style="top:1px;" data-placement="right"></i>
+                    <span class="hidefor1024">In Progress <span class="pull-right fnt-wt-600"><%= model.inprogress %></span></span>
+                </a>
+            </li>
+            <li <% if (active_nav_link == 'completed') { %>class="active"<% } %>>
+                <a href="/x/tests/<%- model.id %>/candidates/completed" class="js-backbone">
+                    <i data-original-title="Completed" class="icon-circle js-tooltip" style="top:1px;" data-placement="right"></i>
+                    <span class="hidefor1024">Completed <span class="pull-right fnt-wt-600"><%= model.completed %></span></span>
+                </a>
+            </li>
+            <li <% if (active_nav_link == 'completed2') { %>class="active"<% } %>>
+                <a href="/x/tests/<%- model.id %>/candidates/completed/2" class="js-backbone">
+                    <i data-original-title="Qualified" class="icon2-thumbsup js-tooltip" data-placement="right"></i>
+                    <span class="hidefor1024">Qualified <span class="pull-right fnt-wt-600"><%= model.qualified %></span></span>
+                </a>
+            </li>
+            <li <% if (active_nav_link == 'completed3') { %>class="active"<% } %>>
+                <a href="/x/tests/<%- model.id %>/candidates/completed/3" class="js-backbone">
+                    <i data-original-title="Failed" class="icon2-thumbsdown js-tooltip" data-placement="right"></i>
+                    <span class="hidefor1024">Failed <span class="pull-right fnt-wt-600"><%= model.failed %></span></span>
+                </a>
+            </li>
+        </ul>
+        <div class="clear"></div>
+    </div><!-- end .mlA -->
+</div>
+<div class="hre-sidebar-bottom">
+    <div class="sidebar-button-margins">
+        <a href="/x/tests/<%- model.id %>/invite" class="btn btn-primary btn-mid sidebar-full-btn js-backbone"><span class="hidefor1024">Invite Candidates</span><i class="icon2-invitecandidates"></i></a>
+    </div>
+    <div class="sidebar-button-margins">
+        <a href="<%- model.public_url %>" class="btn btn-dark btn-mid sidebar-full-btn" target="_blank"><span class="hidefor1024">Try Test</span><i class="icon2-tryquestion"></i></a>
+    </div>
+</div>

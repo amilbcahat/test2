@@ -1,0 +1,14 @@
+<div class="dashboard_submissions-item">
+    <p>
+        <a class="challenge-slug backbone" href="<%= HR.appController.get_current_contest_namespace() %>/challenges/<%= model.challenge.slug %>">
+        <%= model.challenge.name %>
+        </a>
+    </p>
+    <div class="clearfix dashboard_submissions-meta">
+        <p class="small pull-left"><%= model.time_ago %> ago<!--Submitted in <%= lang_display_mapping[model.language] || model.language %>--></p>
+    <a href="<%= HR.appController.get_current_contest_namespace() %>/submissions/<%= model.kind %>/<%= model.id %>" class="pull-right backbone btn btn-mini">
+        View
+    </a>
+    </div>
+</div>
+

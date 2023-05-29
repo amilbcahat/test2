@@ -1,0 +1,73 @@
+<div class="hre-sidebar">
+
+    <div class="sidebar-scroller bottom">
+        <i class="icon-down-open-bold"></i>
+        <i class="icon-up-open-bold"></i>
+    </div>
+
+    <!-- This is the expand and collapse icon that will appear when in smaller screens -->
+    <div class="showfor1024" id="sidebar-menu-icon" style="display: none">
+        <i class="icon-menu-large sidebar-menu-icon"></i>
+    </div>
+
+    <div class="mlA">
+        <p class="sidebar-nav-title"><span class="hidefor1024">SETTINGS</span></p>
+        <ul class="hre-sidebar-list">
+            <li class="<% if (!active_nav_link || active_nav_link == 'basic') { %> active  <% } %>" >
+                <a href="/x/settings/basic" class="js-backbone">
+                    <i data-original-title="Basic Info" class="icon-cog js-tooltip" data-placement="right" data-toggle="tooltip"></i>
+                    <span class="hidefor1024">Basic Info</span>
+                </a>
+            </li>
+            <li class="<% if (active_nav_link == 'report') { %> active <% } %>">
+                <a href="/x/settings/reports" class="js-backbone">
+                    <i data-original-title="Report Preferences" class="icon2-allreports js-tooltip" data-placement="right"></i>
+                    <span class="hidefor1024">Report Preferences</span>
+                </a>
+            </li>
+            <li class="<% if (active_nav_link == 'email') { %> active <% } %>">
+                <a href="/x/settings/email" class="js-backbone">
+                    <i data-original-title="E-mail Notifications" class="icon2-notifications js-tooltip" data-placement="right"></i>
+                    <span class="hidefor1024">E-mail Notifications</span>
+                </a>
+            </li>
+            <li class="<% if (active_nav_link == 'password') { %> active <% } %>">
+                <a href="/x/settings/password" class="js-backbone">
+                    <i data-original-title="Change Password" class="icon2-password js-tooltip" data-placement="right"></i>
+                    <span class="hidefor1024">Change Password</span>
+                </a>
+            </li>
+            <% if(model.company.pricing_model && model.company.pricing_model == 'user') { %>
+            <li class="<% if (active_nav_link == 'team') { %> active <% } %>">
+                <a href="/x/settings/team" class="js-backbone">
+                    <i data-original-title="Teams Management" class="icon-users js-tooltip" style="top:-1px;" data-placement="right"></i>
+                    <span class="hidefor1024">Teams Management</span>
+                </a>
+            </li>
+            <% } %>
+        </ul>
+        <div class="clear"></div>
+    </div>
+
+    <span class="dark-divider"></span>
+
+    <div class="mlA">
+        <p class="sidebar-nav-title"><span class="hidefor1024">PAYMENT</span></p>
+        <ul class="hre-sidebar-list">
+            <li class="<% if (active_nav_link == 'pricing') { %> active <% } %>">
+                <a href="/x/payments/plans" class="js-backbone">
+                <i data-original-title="Plans" class="icon2-plans js-tooltip" data-placement="right"></i>
+                <span class="hidefor1024">Plans</span>
+            </a>
+            </li>
+            <li class="<% if (active_nav_link == 'cc_details') { %> active <% } %>">
+                <a href="/x/payments/card_details" class="js-backbone">
+                    <i data-original-title="Credit Card Details" class="icon2-creditcarddetails js-tooltip" data-placement="right"></i>
+                    <span class="hidefor1024">Credit Card Details</span>
+                </a>
+            </li>
+        </ul>
+        <div class="clear"></div>
+    </div>
+
+</div>

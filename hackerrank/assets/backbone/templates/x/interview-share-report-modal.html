@@ -1,0 +1,17 @@
+<div class="modal interview-share-report-modal modal-mid" id="interview-share-report-modal">
+    <div class="modal-header" style="height: 13px;">
+        <div class="underline_title set_title pull-left">Share report</div>
+        <button type="button" class="close js-sharelinkclose pull-right" data-dismiss="modal" aria-hidden="true"><span style="font-size: 70%; position: relative; top: -2px;">Close</span> &times;</button>
+    </div>
+    <p class="plA">
+        <div class="input-btn-group msA">
+          <input class="xwide js-reportlink" id="report-link-inp" type="text" value="<%= link %>" />
+          <a id="copy-share-link-report" class="btn copy-report js-copy-url">Copy</a>
+        </div>
+        <div class="alert alert-info mlT mlB">
+            <p>Due to security concerns we are deprecating this feature of using authenticated public URLs to share reports. The above link will only work for a few more days.</p>
+            <br />
+            <p>Once the public URL feature is removed, you will still be able to share the unauthenticated report URL from your browser to a colleague with a HackerRankX account. Or you can download the report as PDF to share with anyone.</p>
+        </div>
+    </p>
+</div>

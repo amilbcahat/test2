@@ -1,0 +1,57 @@
+<div class="padded settings_content-pane">
+    <div class="settings_content-group">
+        <div class="row">
+            <div class="span3">
+                <h3>Teams</h3>
+            </div>
+            <div class="pull-right">
+                <% if (!(_.size(teams.models) == 0 && !teams.sync_status) && (teams.models.length != 0)) { %>
+                <a href="/teams/create" class="btn btn-green inverse backbone">create team</a>
+                <% } %>
+            </div>
+        </div>
+        <br>
+        <p class="aside msT mlB">In order to participate in a contest which only allows teams to participate, please create your team here. You can't create team for a non-team contest.</p>
+    <% if (_.size(teams.models) == 0 && !teams.sync_status) { %>
+      <%= HR.appController.viewLoader(64) %>
+    <% } else { %>
+      <% if (teams.models.length == 0) { %>
+      <p class="block-margin text-center">You are not part of any teams on HackerRank.</p>
+      <p class="text-center block-margin"><a class="backbone btn btn-green" href="<% if (HR.CONTEST_NAMESPACE) { %>/contests/<%= HR.CONTEST_NAMESPACE %><% } %>/teams/create" >Create a new team</a></p>
+      <% } else { %>
+      <div class="row">
+        <div class="span2"><b>Team Name</b></div>
+        <div class="span4"><b>Contest Name</b></div>
+        <div class="span2 m"><b>Status</b></div>
+      </div>
+      <% } %>
+    <% _.each(teams.models, function (team) { %>
+      <div class="row team-row">
+        <div class="span2">
+          <p class="col"><%= team.get("name") %></p>
+        </div>
+        <div class="span4">
+          <p class="col"><%= team.get("contest_name") %></p>
+        </div>
+        <div class="span2 m">
+            <p class="col">
+                <% if (team.get("manager_id") == hacker.get("id")) { %>
+                <span class="label label-info">manager</span>
+                <% } else if (team.get("verified")) { %>
+                <span class="label label-success">verified</span>
+                <% } else { %>
+                <span class="label label-important">not verified</span>
+                <% } %>
+            </p>
+        </div>
+        <div class="span2 m">
+          <p><a href='<% if (HR.CONTEST_NAMESPACE) { %>/contests/<%= HR.CONTEST_NAMESPACE %><% } %>/teams/<%= team.get('id') %>/<% if (team.get("manager_id") == hacker.get("id")) { %>details<% } else { %>view<% } %>' class="btn backbone"><% if (team.get("manager_id") == hacker.get("id")) { %>Modify<% } else { %>View<% } %></a></p>
+        </div>
+        <div class="span2 m">
+          <p><button data-id="<%= team.get('id') %>" class="btn btn-alert remove"><% if (team.get("manager_id") == hacker.get("id")) { %>Delete<% } else { %>Remove<% } %></button></p>
+        </div>
+      </div>
+    <% }); %>
+    <% } %>
+  </div>
+</div>

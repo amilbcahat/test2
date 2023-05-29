@@ -1,0 +1,2 @@
+!function(e){e.fn.completer=function(n,t){t=e.extend({source:function(t,c){e.getJSON("/autocomplete",{fq:"cat:"+n,q:c+"*"},function(e){t.process(_.map(e.models,function(e){return e.name}))})},matcher:function(){return!0}},t),this.typeahead(t)}}(jQuery);
+//# sourceMappingURL=completer-e15fb9866c48cd78885553b31a992b00.js.map

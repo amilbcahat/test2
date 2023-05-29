@@ -1,0 +1,34 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL">Extend Trial</h3>
+</div>
+
+<div class="overflow-content" id="control-overflow">
+    <form id="extend-trial-form" class="mjA">
+        <div class="msT msB">
+            <div class="span2">Search By :</div>
+            <div class="span13 search-radio-grp">
+                <label>
+                    <input id="search-fields-id" name="search-field" type="radio" value="id" <% if(searchBy == 'id') { %> checked='checked' <% } %>/>ID
+                </label>
+                <label>
+                    <input id="search-fields-name" name="search-field" type="radio"
+                           value="name" <% if(searchBy == 'name') { %> checked='checked' <% } %> />Name
+                </label>
+                <label>
+                    <input id="search-fields-email" name="search-field" type="radio" value="email" <% if(searchBy == 'email') { %> checked='checked' <% } %>/>Email
+                </label>
+            </div>
+        </div>
+
+        <div class="msT msB">
+            <div class="span2 msT">Company: </div>
+            <input type="hidden" class="wide" id="company-select2">
+        </div>
+
+        <div class="company-info-section"></div>
+    </form>
+
+    <div class="mjA hidden message-box">
+    </div>
+
+</div>

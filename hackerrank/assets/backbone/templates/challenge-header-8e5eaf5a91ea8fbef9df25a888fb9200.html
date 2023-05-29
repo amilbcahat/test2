@@ -1,0 +1,23 @@
+<header class="page-title container">
+    <div class="clearfix">
+        <div class="breadcrumbs pull-left"></div>
+        <!--<div class="pull-right btn-group challenge_links">
+          <a href="<%= baseURL %>/submissions" class="btn btn-white backbone"><i class="icon-list-bullet-small"></i> <span class="icon-text">Submissions</span></a>
+          <a href="<%= baseURL %>/leaderboard" class="btn btn-white backbone submit" data-analytics="Challenge Leaderboard"><i class="icon-trophy"></i> <span class="icon-text">Leaderboard</span></a>
+          <a href="<%= baseURL %>/forum/questions" class="btn btn-white backbone submit" data-analytics="View Forum"><i class="icon-comment"></i> <span class="icon-text">Discuss</span></a>
+        </div>-->
+    </div>
+    <% h1_span = 13 %>
+    <% model.dynamic && h1_span-- %>
+    <% model.locked && h1_span-- %>
+    <h1 class="hr_tour-challenge-name"><%= model.name %>
+        <% if(model.locked) { %>
+        <div class="pull-right challenge-title-note">
+          <a rel="tooltip" data-original-title="Any furthur submissions will not be considered for leaderboard." id="locked-popover" class="active-link pull-right">
+            <small class="label label-important">locked</small>
+          </a>
+        </div>
+        <% } %>
+    </h1>
+    <% if (model.company) { %><div class="apply-blob"></div><% } %>
+</header>

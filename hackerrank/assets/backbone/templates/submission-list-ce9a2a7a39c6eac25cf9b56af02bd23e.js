@@ -1,0 +1,2 @@
+HR.appController.addTemplate("backbone/templates/submission-list",function(obj){{var __p="";Array.prototype.join}with(obj||{})__p+="Submission LIST\n";return __p});
+//# sourceMappingURL=submission-list-8b6eb4ed0a25965d9a6fffbf70b9de6c.js.map

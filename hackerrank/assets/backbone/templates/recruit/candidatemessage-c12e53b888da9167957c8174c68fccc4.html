@@ -1,0 +1,29 @@
+    <div>
+        <center>
+            <h2 class="headline"><%- (test.name || "Unknown test") %></h2>
+        </center>
+        <div class="white-grid-block main-content">
+            <h3 class="msB">MESSAGE</h3>
+            <div class="alert info mlB">
+                <p><%=message%></p>
+            </div>
+            <br>
+            <%if (test.unique_id) { %>
+            <a href="/tests/<%=test.unique_id%>">Back to main page.</a>
+            <% } %>
+        </div>
+
+        <center>
+            <div class="block">
+            <img class="mlT" src="/assets/brand/powered_by_transparent.png" />
+            <% if (test.logged_in && test.attempt_done) { %>
+                <p class="text-center txt-alt-grey">
+                    Love Programming challenges? </br>
+                    Find more problems and contests at <strong><a href="https://www.hackerrank.com/" class="txt-alt-grey">www.hackerrank.com</a></strong>
+                </p>
+
+            <% } %>
+            </div>
+        </center>
+
+    </div><!-- end .row -->

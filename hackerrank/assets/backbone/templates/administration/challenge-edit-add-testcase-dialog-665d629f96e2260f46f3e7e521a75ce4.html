@@ -1,0 +1,83 @@
+<div style="margin-left: 1em;">
+    <div class="formgroup horizontal row">
+        <div class="span5">
+            <p class="tag pull-left"><b>Tag</b>
+                <span class="help-prompt"><i class="icon-help-circled icon-single"></i><span class="help-text">Tag your testcases to identify them among other testcases.
+                        This data will be private, must be within 18 characters.</span></span>
+            </p>
+            <div class="pull-left">
+                <input name="tag" id="tag" type="text">
+            </div>
+        </div>
+        <div class="span6">
+            <p class="strength pull-left"><b>Strength</b>
+                <span class="help-prompt"><i class="icon-help-circled icon-single"></i><span class="help-text">Relative strength of the testcase.
+                        Used for score distribution. Should be a number</span></span>
+            </p>
+            <div class="pull-left">
+                <input name="strength" id="strength" type="text">
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div>
+            <span class="span2"><b>Sample</b>
+                <span class="help-prompt"><i class="icon-help-circled icon-single"></i><span class="help-text">If enabled, the testcase will no longer be hidden. Generally,
+                        its a good idea to set 1 or 2 testcase(s) as sample, it helps users to debug the their code much easier.</span></span>
+            </span>
+            <span class="span2"><b>Additional</b>
+                <span class="help-prompt"><i class="icon-help-circled icon-single"></i><span class="help-text">If enabled, the testcase will be run after the contest ends.</span></span>
+            </span>
+            <div class="clearfix"></div>
+            <div class="span2"><input name="sample" id="sample" type="checkbox"></div>
+            <div class="span2"><input name="additional" id="additional" type="checkbox"></div>
+        </div>
+    </div>
+    <div class="formgroup horizontal input-testcase-row row">
+        <p class="pull-left"><b>Input</b>
+            <span class="help-prompt"><i class="icon-help-circled icon-single"></i><span class="help-text">Input testcase, will be fed as STDIN for a submission.</span></span>
+        </p>
+        <p class="pull-right radios">
+            <label for="input_radio-editor" class="float-left">editor:
+                <input class="change-value-method" type="radio" data-field="input"
+                       name="input_radio" checked="checked" id="input_radio-editor" value="editor">
+            </label>
+            <label for="input_radio-upload" class="float-left">upload:
+                <input class="change-value-method" type="radio" data-field="input"
+                       name="input_radio" id="input_radio-upload" value="upload">
+            </label>
+        </p>
+        <div class="clearfix"></div>
+        <textarea id="input_textarea"></textarea>
+        <div class="editor_status_bar" id="input_editor_status_bar">Size: 0 B</div>
+    </div>
+    <div class="formgroup horizontal output-testcase-row row">
+        <p class="pull-left"><b>Output</b>
+            <span class="help-prompt"><i class="icon-help-circled icon-single"></i><span class="help-text">Expected output testcase, will be compared with STDOUT of a submission.</span></span>
+        </p>
+        <p class="pull-right radios">
+            <label for="output_radio-editor" class="float-left">editor:
+                <input class="change-value-method" type="radio" data-field="output"
+                       name="output_radio" checked="checked" id="output_radio-editor" value="editor">
+            </label>
+            <label for="output_radio-upload" class="float-left">upload:
+                <input class="change-value-method" type="radio" data-field="output"
+                       name="output_radio" id="output_radio-upload" value="upload">
+            </label>
+        </p>
+        <div class="clearfix"></div>
+        <textarea id="output_textarea"></textarea>
+        <div class="editor_status_bar" id="output_editor_status_bar">Size: 0 B</div>
+    </div>
+    <div class="formgroup horizontal row" style="margin-bottom: 10px;">
+        <p class="text-center">
+            <% if (test_case_index) { %>
+                <button class="btn btn-primary btn-large update-testcase" style="float: none;">Update</button>
+                <span class="nb-spacing">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <button class="btn btn-large cancel-update" style="float: none;">Cancel</button>
+            <% } else { %>
+                <button class="btn btn-primary btn-large save-testcase" style="float: none;">Save</button>
+            <% } %>
+        </p>
+    </div>
+</div>
+<div class="clearfix"></div>

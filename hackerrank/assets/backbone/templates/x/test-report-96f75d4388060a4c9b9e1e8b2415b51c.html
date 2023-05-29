@@ -1,0 +1,29 @@
+<div class="top-fixed-bar support-sub-bar">
+    <h3 class="topbar-h3 mjL"><%- test.name %></h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Reports</h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Candidate Report</h3>
+
+    <a href="#" class="btn btn-line pull-right msA mjR"><i class="icon-left-open"></i> Back</a>
+    <a href="#" class="btn btn-line pull-right msA" style="padding: 8px 10px 10px 14px;"><i class="icon2-download"></i></a>
+    <a href="#" class="btn btn-line pull-right msA" style="padding: 8px 10px 10px 14px;"><i class="icon2-sharetest"></i></a>
+
+    <div class="clear"></div>
+    <div class="sub-top-bar">
+        <ul class="sub-topbar-tabs pull-left mjL">
+            <li <% if (tab == "summary") { %>class="active"<% } %>><a href="#" class="js-report-tab" data-tab="summary">Summary</a></li>
+            <li <% if (tab == "detailed") { %>class="active"<% } %>><a href="#" class="js-report-tab" data-tab="detailed">Detailed</a></li>
+            <li <% if (tab == "timeline") { %>class="active"<% } %>><a href="#" class="js-report-tab" data-tab="timeline">Timeline</a></li>
+        </ul>
+
+        <% if (model.candidate_details && model.candidate_details['full_name']) { %>
+        <h4 class="pull-right txt-alt-dark-grey mdA mjR">Report of <%- model.candidate_details['full_name'] %></h4>
+        <% } else if (model.email) { %>
+        <h4 class="pull-right txt-alt-dark-grey mdA mjR">Report of <%- model.email %></h4>
+        <% } %>
+    </div><!-- end .sub-top-bar -->
+</div><!-- end .top-fixed-bar -->
+
+<div class="overflow-content adjust-two-fixed-bar" id="report-tab">
+    <div id="report-tab-content-container">
+    </div>
+</div><!-- end .overflow-content -->

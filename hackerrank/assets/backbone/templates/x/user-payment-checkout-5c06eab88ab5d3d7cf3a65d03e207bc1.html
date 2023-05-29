@@ -1,0 +1,101 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL">New User Purchase Details</h3>
+</div>
+<div class="overflow-content" id="control-overflow">
+    <div class="mjA">
+
+        <h4>Checkout</h4>
+
+        <form name="checkout-form">
+            <div class="credit-card-details-existing" >
+                <div class="msT msB">
+                    <label>Card Number</label><a href="javascript:;" class="dev-edit-card-details">(edit)</a>
+                    <input type="text" id="card-number" value="<%= model.credit_card_number %>" class="wide" disabled/>
+                </div>
+
+                <div class="msT msB">
+                    <img class="pull-left" src="/assets/secure_payment.png" />
+                    <div class="pull-left common_margin_mid">
+                        InterviewStreet doesn't store your credit card information.<br/>
+                        All payments are handled by <a target="_blank" href="https://www.stripe.com">Stripe</a>.
+                    </div>
+                </div>
+            </div>
+
+            <div class="clear"></div>
+
+            <div class="new-user-details">
+                <div class="msT msB pmA">
+                    <h5>New user details</h5>
+                    <ul class="light-bullet" style="list-style: none;">
+                        <li>Name: <%= user_data.firstname %> <%= user_data.lastname %></li>
+                        <li>Email: <%= user_data.email %></li>
+                        <li>Role: <%= HR.util.capitalize(user_data['role']) %></li>
+                        <li>Permissions: <%= user_data.tests_permission %><%- user_data.questions_permission %><%- user_data.candidates_permission %></li>
+                    </ul>
+                </div>
+            </div>
+
+            <table class="simple-table small-padded" width="90%" cell-spacing="0" cell-padding="0">
+                <thead>
+                <tr class="no-border">
+                    <th>User</th>
+                    <th>Plan</th>
+                    <th>Billing Cycle</th>
+                    <th>Months</th>
+                    <th>Price</th>
+                </tr>
+
+                <tr>
+                    <td><%= user_data.firstname %> <%= user_data.lastname %></td>
+                    <td><%= model.plan_details['name'] %> Plan</td>
+                    <td><%= HR.util.formatDateRange(model.billing_cycle) %></td>
+                    <td>
+
+                    </td>
+                    <td class="fnt-sz-big fnt-wt-600" id="final-amount">$ <%= model.charge %>.00</td>
+                </tr>
+
+                <% if (model.prorated_deduction) { %>
+                <tr class="dashed-border">
+                    <td>Prorated deduction</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="right_align"><span class="usr-amt-total user-amt-txt">$<span class="prorated-deduction">- <%= model.prorated_deduction %></span>.00</span></td>
+                </tr>
+                <% } %>
+
+                <% if (model.credit) { %>
+
+                <tr class="dashed-border">
+                    <td>Credit from current subscription plan</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="right_align"><span class="usr-amt-total user-amt-txt">$<span class="credit"><%= model.credit %></span>.00</span></td>
+                </tr>
+
+                <% } %>
+
+                <tr class="dashed-border">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Total</td>
+                    <td class="right_align"><span class="usr-amt-total user-amt-txt">$<span class="final-amount"><%= total %></span>.00</span></td>
+                </tr>
+
+                </thead>
+            </table>
+
+            <div class="formgroup horizontal">
+                <div class="block">
+                    <input type="password" name="password" placeholder="Enter Password" class="with-help no-margin">
+                    <button type="submit" class="btn btn-primary" data-throbber="show">Make Payment</button>
+                </div>
+            </div>
+        </form>
+        <div class="response-message pmA hidden"></div>
+    </div>
+</div>

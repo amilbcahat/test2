@@ -1,0 +1,1 @@
+HR.TRANSLATION_LANGUAGES = [ "Chinese", "English", "Japanese", "Russian" ];

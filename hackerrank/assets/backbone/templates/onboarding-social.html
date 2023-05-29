@@ -1,0 +1,88 @@
+<section>
+    <header>Welcome to HackerRank, <%= profile.username %>!</strong></header>
+    <article>
+        <div class="plR plL onboarding_modal" style="width: 600px">
+            <p class="msB">Before we give you a quick tour, we recommend connecting to at least one network. This makes it easier to ask for help, directly challenge people you know, and track your progress.</p>
+            <small class="onboarding_hint">Changing schools? You can always update these from your profile settings later on.</small>
+            <div class="left">
+                <div class="formgroup horizontal">
+                    <label for="onboarding_facebook" class="span3">Social</label>
+                    <% if (profile.fb_uid) { %>
+                        <p style="color: #3B5998;" class="static-input"><strong>Connected to Facebook.</strong></p>
+                    <% } else { %>
+                        <a class="btn btn-facebook btn-social"><i class="icon-facebook"></i>Connect</a>
+                    <% } %>
+                </div>
+                <div class="formgroup horizontal">
+                    <label for="onboarding_school" class="span3">School</label>
+                    <input id="onboarding_school" type="text" class="span5" <%if (profile.school) {%> value="<%= profile.school %>" <% } %> >
+                </div>
+                <div class="formgroup horizontal">
+                    <label for="onboarding_company" class="span3">Company</label>
+                    <input id="onboarding_company" type="text" class="span5" <%if (profile.company) {%> value="<%= profile.company %>" <% } %> >
+                </div>
+            </div>
+        </div>
+    </article>
+    <footer>
+        <small class="pull-left zeta psT"><strong>Step 1 of 2</strong></small>
+        <a class="btn btn-primary js_1 js-fake-next">Next <i class="icon-right-open"></i></a>
+        <a class="btn btn-primary js_next-frame js_1 hide">Next <i class="icon-right-open"></i></a>
+    </footer>
+</section>
+
+<section>
+    <header>Welcome to HackerRank, <%= profile.username %>!</header>
+    <article>
+        <div class="plL plR onboarding_modal" style="width: 600px">
+            <p class="msB">HackerRank challenges are organized into <strong>tracks</strong>. Select one that interests you and let's get started!</p>
+            <small class="onboarding_hint">We pre-selected <%= recommended_track.name %>, since it's the most popular track amongst your network.</small>
+            <div class="row psL psR plT">
+                <label for="algorithms-radio" class="onboarding_trackSelect c-1 <% if (recommended_track.slug == 'algorithms') { %>active<% } %>" >
+                    <input type="radio" class="radio" name="favorite" value="algorithms" id="algorithms-radio" <% if (recommended_track.slug == 'algorithms') { %>checked="checked"<% } %> />
+                    <div class="onboarding_trackLabel">
+                        <span class="onboarding_trackTitle">Algorithms</span>
+                        <p class="onboarding_trackDesc"><small>Traditional algorithmic competitive programming challenges</small></p>
+                    </div>
+                </label>
+                <label for="ai-radio" class="onboarding_trackSelect c-2 <% if (recommended_track.slug == 'ai') { %>active<% } %>">
+                    <input type="radio" class="radio" name="favorite" value="ai" id="ai-radio" <% if (recommended_track.slug == 'ai') { %>checked="checked"<% } %> />
+                    <div class="onboarding_trackLabel">
+                        <span class="onboarding_trackTitle">Artificial intelligence</span>
+                        <p class="onboarding_trackDesc"><small>Build Bots and Intelligent Systems</small></p>
+                    </div>
+                </label>
+                <label for="misc-radio" class="onboarding_trackSelect c-3 <% if (recommended_track.slug == 'miscellaneous') { %>active<% } %>">
+                    <input type="radio" class="radio" name="favorite" value="misc" id="misc-radio" <% if (recommended_track.slug == 'miscellaneous') { %>checked="checked"<% } %> />
+                    <div class="onboarding_trackLabel">
+                        <span class="onboarding_trackTitle">Miscellaneous</span>
+                        <p class="onboarding_trackDesc"><small>CodeGolf, Regex and more</small></p>
+                    </div>
+                </label>
+                <label for="fp-radio" class="onboarding_trackSelect c-4 <% if (recommended_track.slug == 'fp') { %>active<% } %>">
+                    <input type="radio" class="radio" name="favorite" value="fp" id="fp-radio" <% if (recommended_track.slug == 'fp') { %>checked="checked"<% } %> />
+                    <div class="onboarding_trackLabel">
+                        <span class="onboarding_trackTitle">Functional Programming</span>
+                        <p class="onboarding_trackDesc"><small>All functions, no state</small></p>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </article>
+    <footer>
+        <small class="pull-left zeta psT"><strong>Step 2 of 2</strong></small>
+        <a class="btn btn-primary js_next-frame">View Challenges <i class="icon-right-open"></i></a></footer>
+    <!-- Google Code for HackerRank Signups Conversion Page -->
+    <script type="text/javascript">
+    /* <![CDATA[ */
+        var google_conversion_id = 984165711;
+        var google_conversion_language = "en";
+        var google_conversion_format = "2";
+        var google_conversion_color = "ffffff";
+        var google_conversion_label = "0qVCCLGfmxEQz9qk1QM";
+        var google_remarketing_only = false;
+        /* ]]> */
+        </script>
+        <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+    </script>
+</section>

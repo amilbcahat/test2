@@ -1,0 +1,26 @@
+<!-- <div class="clearfix">
+    <div style="float: left">
+        <img src="<%- model.sender._data.avatar_url %>" height="25" width="25" class="avatar"/>
+    </div>
+    <div class="float-left span10">
+        <div class="message-from">
+            <div class="message-from">
+                <span><%- model.sender.username %></span>
+                <span class="pull-right"><%- model.created_at %></span>
+            </div>
+        </div>
+        <div class="message-text">
+            <%- model.message %>
+        </div>
+    </div>
+</div>
+ -->
+<div class="message_group">
+    <img src="<%= model.sender._data.avatar_url %>" height="50" width="50" class="avatar">
+    <div class="message_body">
+        <p><%= model.message %></p>
+    </div>
+    <footer class="message_footer">
+        <p><a href="/<%- model.sender.username %>" class="backbone"><%= model.sender.username %></a> &bull; <%= $.timeago(new Date(model.created_at)) %></p>
+    </footer>
+</div>

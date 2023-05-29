@@ -1,0 +1,178 @@
+<% if (team && _.size(hacker.attributes) == 0 && !hacker.sync_status && _.size(team.attributes) == 0 && !team.sync_status) { %>
+<%= HR.appController.viewLoader(64) %>
+<% } else { %>
+    <% if (team && team.get("error") == true) { %>
+        <% HR.router.e404() %>
+    <% } else { %>
+    <section class="manage_teams container">
+        <header class="page-title">
+            <h1>Manage Teams</h1>
+        </header>
+        <div class="wrap narrow content_wrap">
+            <div class="sidebar--inline settings_sidebar">
+                <ul class="tab-list tab-buttons sidebar_list unstyled">
+                    <% if (team) { %>
+                    <li class="sidebar_list-heading <% if (action == 'view') { %>active<% } %>" data-action="view"><a href="javascript:void(0);" data-toggle="tab">View</a></li>
+                    <% } %>
+                    <% if (!team || hacker.get('id') == team.get('manager_id')) { %>
+                    <li class="sidebar_list-heading <% if (action == 'details') { %>active<% } %> <% if (!team) { %> active <% } %>" data-action="details"><a href="javascript:void(0);" data-toggle="tab">Details</a></li>
+                        <% if (team) { %>
+                            <li class="sidebar_list-heading <% if (action == 'members') { %>active<% } %>" data-action="members"><a href="javascript:void(0);" data-toggle="tab">Members</a></li>
+                        <% } %>
+                    <% } %>
+                </ul>
+            </div>
+            <div class="content--inline tab-content pull-right light-wrap">
+                <% if (team && team.sync_status) { %>
+                <article id="view" class="settings_content-pane tab-pane view <% if (action == 'view') { %>active<% } %>">
+                    <div class="settings_content-group padded">
+                        <h2>Team</h2>
+                        <br>
+                        <div class="row">
+                            <div class="span4">
+                                <b>Team Name</b>
+                            </div>
+                            <div class="span5">
+                                <%= team.get('name') %>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="span4">
+                                <b>Team Handle</b>
+                            </div>
+                            <div class="span5">
+                                <%= team.get('slug') %>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="span4">
+                                <b>Team Size</b>
+                            </div>
+                            <div class="span5">
+                                <%= team.get('size') %>/<%= team.get('max_size') %>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="span4">
+                                <b>Contest Name</b>
+                            </div>
+                            <div class="span5">
+                                <%= team.get('contest_name') %>
+                            </div>
+                        </div>
+                        <br>
+                        <h2>Members</h2>
+                        <br>
+                        <% _.each(team.members().models, function (member) { %>
+                        <div class="row">
+                            <div class="span4">
+                                <b><%= member.get('username') %></b>
+                            </div>
+                            <div class="span5">
+                                <% if (!member.get('verified')) { %>
+                                <span class="badge alert">not verified</span>
+                                <% } else if (member.get('hacker_id') == team.get("manager_id")) { %>
+                                <span class="badge info">manager</span>
+                                <% } else { %>
+                                <span class="badge success">verified</span>
+                                <% } %>
+                            </div>
+                        </div>
+                        <% }) %>
+                    </div>
+                </article>
+                <% } %>
+                <% if (!team || hacker.get('id') == team.get('manager_id')) { %>
+                <article id="details" class="settings_content-pane tab-pane <% if (action == 'details') { %>active<% } %> <% if (!team) { %> active <% } %>">
+                    <div class="settings_content-group padded">
+                    <h3>Team Details</h3>
+                    <p class="aside">You can manage the settings of your team here. You'll be able to add members to your team on the next page.</p>
+                    <form>
+                        <div class="formgroup horizontal">
+                            <p class="success hide m"></p>
+                            <p class="error hide m"></p>
+                        </div>
+                        <div class="formgroup horizontal">
+                            <label for="name" class="pull-left span3">Team Name</label>
+                            <div class="block span6 profile-input">
+                                <input id="name" type="text" class="span6" value="<% if (team) { %><%= team.get('name') %><% } %>"/>
+                                <small class="sub-help">Your team's display name</small></br>
+                                <small class="error"></small>
+                            </div>
+                        </div>
+                        <div class="formgroup horizontal">
+                            <label for="slug" class="pull-left span3">Team Handle</label>
+                            <div class="block span6 profile-input">
+                                <input id="slug" type="text" class="span6" value="<% if (team) { %><%= team.get('slug') %><% } %>"/>
+                                <small class="sub-help">A unique url handle for your team</small></br>
+                                <small class="error"></small>
+                            </div>
+                        </div>
+                        <style>
+                            .select2-container {
+                            width: 100%;
+                            margin-left: 0px;
+                            }
+                        </style>
+                        <div class="formgroup horizontal">
+                            <label for="contest_id" class="pull-left span3">Contest</label>
+                            <div class="block span6 profile-input">
+                                <% if (!team) { %>
+                                    <input type="hidden" id="contest_id" class="span6" value=""/>
+                                <% } else { %>
+                                    <input type="text" disabled="disabled" id="contest_id" class="span6" value="<%= team.get('contest_name') %>"/>
+                                <% } %>
+                                <small class="sub-help">The contest your team will be competing in. Not all contests are eligible for team competition.</small></br>
+                                <small class="error"></small>
+                            </div>
+                        </div>
+                        <div class="formgroup horizontal pull-right">
+                            <button class="team-submit btn btn-primary btn-large disabled">Save</button>
+                        </div>
+                    </form>
+                </article>
+                <% if (team) { %>
+                <article id="members" class="tab-pane settings_content-pane <% if (action == 'members') { %>active<% } %>">
+                    <div class="settings_content-group padded">
+                        <h2>Members</h2>
+                        <br>
+                        <% _.each(team.members().models, function (member) { %>
+                        <div class="row">
+                            <div class="span3"><%= member.get('username') %></div>
+                            <div class="span3">
+                                <% if (!member.get('verified')) { %>
+                                <span class="badge alert">not verified</span>
+                                <% } else if (member.get('hacker_id') == team.get("manager_id")) { %>
+                                <span class="badge info">manager</span>
+                                <% } else { %>
+                                <span class="badge success">verified</span>
+                                <% } %>
+                            </div>
+                            <div class="span2"><% if (member.get('hacker_id') != team.get("manager_id")) { %><button class="btn remove-member" data-id="<%= member.get('id') %>">Remove</button><% } %></div>
+                        </div>
+                        <br>
+                        <% }) %>
+                        <% if (team.members().models.length < team.get('max_size')) { %>
+                           <div class="formgroup horizontal">
+                               <p class="success hide m"></p>
+                               <p class="error hide m"></p>
+                           </div>
+                           <div class="row">
+                               <div class="span4">
+                                   <input type="text" class="add-member-username" id="username"/>
+                                   <small class="error"></small>
+                               </div>
+                               <div class="span4">
+                                   <button class="btn add-member-submit">Add Member</button>
+                               </div>
+                           </div>
+                           <% } %>
+                    </div>
+                </article>
+                <% } %>
+                <% } %>
+            </div>
+        </div>
+    </section>
+    <% } %>
+<% } %>

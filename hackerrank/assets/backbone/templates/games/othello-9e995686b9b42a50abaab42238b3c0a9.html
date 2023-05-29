@@ -1,0 +1,49 @@
+<style>
+    .game-grid p {
+        margin: 0px;
+    }
+    h3 {
+        margin: 0px;
+    }
+    .m {
+        text-align: center !important;
+    }
+    .translucent {
+    }
+    .playgame-row {
+        position: fixed;
+    }
+    .playgame-row .btn {
+        margin-top: 70px;
+        z-index: 999;
+    }
+    .game-message {
+        font-weight: bold;
+    }
+</style>
+<div class="game-grid" style="display: block; margin: auto; border-radius: 10px;">
+    <table style="margin: 20px auto;">
+        <tr style="text-align: center">
+            <td style="text-align: center">
+                <% var rows = 8 %>
+                <% var cols = 8 %>
+                <% for (var i = 0; i < rows; i++) { %>
+                    <% for (var j = 0; j < cols; j++) { %>
+                        <% if ( i == 3 && j == 3 ) { %>
+                            <img data-id="<%= i %>-<%= j %>" class="bulb othello-white" src="/assets/othello-white.png" height="24">
+                        <% } else if ( i == 3 && j == 4 ) { %>
+                            <img data-id="<%= i %>-<%= j %>" class="bulb othello-black" src="/assets/othello-black.png" height="24">
+                        <% } else if ( i == 4 && j == 3 ) { %>
+                            <img data-id="<%= i %>-<%= j %>" class="bulb othello-black" src="/assets/othello-black.png" height="24">
+                        <% } else if ( i == 4 && j == 4 ) { %>
+                            <img data-id="<%= i %>-<%= j %>" class="bulb othello-white" src="/assets/othello-white.png" height="24">
+                        <% } else { %>
+                            <img data-id="<%= i %>-<%= j %>" class="bulb" src="/assets/othello-green.png" height="24">
+                        <% } %>
+                    <% } %>
+                    <br/>
+                <% } %>
+            </td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,63 @@
+<div class="mdA">
+    <% if (question.answered === false) { %>
+    <div class="common_margin alert alert-block">
+        <center>This candidate has not answered this question.</center>
+    </div>
+    <% } else { %>
+
+    <!-- Plagiarism -->
+
+    <div class="position-relative">
+        <div class="mdA">
+            Language used: <strong class="langused"><%- question.my_lang.toUpperCase() %></strong>
+        </div>
+        <div class="code-player" id="code-player">
+            <span class="txt-alt-grey fnt-wt-600">
+                <i class="icon-menu-large"></i>&nbsp;PLAY CODE
+            </span>
+            <div class="code_play_slide_wrap" style="display: none">
+                <div class="timeline-slider-wrapper">
+                    <div class="slider" style="width:220px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <pre class="outbox cm-s-default">
+    </pre>
+    <% if (question.compile_status && question.compile_status == "Compilation Failed") { %>
+    <strong>Compilation Failed</strong><br/><br/>
+    Compile Message<br/>
+    <%- question.compile_message %>
+    <% } else { %>
+    <% if (question.submission_testcases) { %>
+    <table style="width:94%; margin:30px auto;" class="table table-radius table-out-border fnt-sz-mid ">
+        <thead>
+            <tr class="prominent txt-alt-grey">
+                <th>TESTCASE</th>
+                <th>TYPE</th>
+                <th>STATUS</th>
+                <th>TIME TAKEN</th>
+                <th>MEMORY USED</th>
+            </tr>
+        </thead>
+        <% _.each (question.submission_testcases, function(testcase, index) { %>
+        <tr>
+            <td><% if (testcase.name) { %><%- testcase.name %><% } else { %>Testcase <%- index %><% } %></td>
+            <td><%- testcase.type %></td>
+            <td>
+                <% if (testcase.compile_status == "Compiled Successfully") { %>
+                <i class="icon2-status_correct txt-green"> </i>Success
+                <% } else { %>
+                <i class="icon2-status_wrong txt-orange"> </i><%- testcase.compile_status %>
+                <% } %>
+            </td>
+            <td><%- Math.round(testcase.time * 100)/100 %> sec</td>
+            <td><%- testcase.memory %></td>
+        </tr>
+        <% }) %>
+    </table>
+    <% } %>
+    <% } %>
+    <% } %>
+</div>
+<div class="clear"></div>

@@ -1,0 +1,1 @@
+(function(){$(document).ready(function(){var a,b,c;return c={lineNumbers:!1,lineWrapping:!0,matchBrackets:!0,mode:"text/x-markdown",indentUnit:4},a=$("#Answer").get(0),a&&(b=CodeMirror.fromTextArea(a,c)),$("#submit").click(function(){return document.location.href="/manage/forum/upload"})})}).call(this)

@@ -1,0 +1,2 @@
+HR.appController.addTemplate("backbone/templates/recruit/question-completesentence",function(obj){{var __p="";Array.prototype.join}with(obj||{})__p+='<div class="span13">\n</div>\n<div class="clear"></div>\n';return __p});
+//# sourceMappingURL=question-completesentence-4d7984d0e8cfec2362461e8ed7bfa187.js.map

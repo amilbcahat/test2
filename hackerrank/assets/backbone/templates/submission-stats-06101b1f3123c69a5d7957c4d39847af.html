@@ -1,0 +1,100 @@
+<!-- I have commented out the status updates. What should happen is, show QUEUED if queued, then show progress bar, and only then show submitted on...games played...etc, which is currently shown
+     If it is not a game, just show the p class stats with the 'submitted on' date -->
+<%
+win_percentage =  Math.round((model.game_won / model.game_played )* 1000)/10;
+if (isNaN(win_percentage))
+    win_percentage = 0;
+if (model.kind=='game') { %>
+<div class="row">
+    <p class="stats span10 no-flow" style="margin-top:5px;">Submitted <a title=""><%= moment(model.created_at_epoch*1000).fromNow() %></a>
+        <% if (model.startLock && !singlePlayer) { %>
+            &bull; <strong class="game-played"><%= model.game_played %></strong> games played &bull; scored <strong><%= model.score %></strong>
+        <% } %>
+    </p>
+
+    <div class="pull-right">
+    <% if (!model.startLock) { %>
+        <% if (model.percent == 0) { %>
+            <p style="margin:5px 0 0 0;">Queued</p>
+        <% } else if (model.percent == 100) { %>
+            <p style="margin:5px 0 0 0;">Processed</p>
+        <% } else { %>
+            <div class="progress-bar clearfix" style="margin-top:0px;">
+                <div class="gutter">
+                    <div class="progress-bar-status" style="width: <%= model.percent %>%;">&nbsp;</div>
+                </div>
+                <p class="play-count"><%= model.game_played %>/<%= model.game_total %> games played</p>
+            </div>
+        <% } %>
+    <% } else {%>
+        <div class="select-wrap large pull-right">
+            <input type="hidden" value="" id="submissions-filter"/>
+            <a href="" class="dropdown-toggle clearfix select-wrap" id="selected-filter" data-toggle="dropdown"><span class="select">
+                <%
+                text = "All "+ model.game_played+ " Games Played" ;
+                switch(model.filter)
+                {
+                    case "won":
+                        text = model.game_won+ " Games Won";
+                        break;
+                    case "lost":
+                        text = model.game_lost+ " Games Lost";
+                        break;
+                    case "tied":
+                        text = model.game_mid_range+ " Games Tied";
+                        break;
+                }
+                %><%= text %>
+            </span><span class="indent"><b class="caret"></b></span></a>
+            <ul class="dropdown-menu unstyled" id="language-select">
+                <li class="change-filter"><a href="<%= HR.appController.get_contest_namespace() %>/submissions/game/<%= model.id  %>/all" class="backbone">All <%= model.game_played %> Games Played</a></li>
+                <li class="change-filter"><a href="<%= HR.appController.get_contest_namespace() %>/submissions/game/<%= model.id  %>/won" class="backbone"><%= model.game_won %> Games Won</a></li>
+                <li class="change-filter"><a href="<%= HR.appController.get_contest_namespace() %>/submissions/game/<%= model.id  %>/tie" class="backbone"><%= model.game_mid_range %> Games Tied</a></li>
+                <li class="change-filter"><a href="<%= HR.appController.get_contest_namespace() %>/submissions/game/<%= model.id  %>/lost" class="backbone"><%= model.game_lost %> Games Lost</a></li>
+                <li><a href="download/submissiongames/<%= model.id %>" target="_blank"> Download All Games </a></li>
+            </ul>
+        </div>
+    <% } %>
+    </div>
+</div>
+<% } else  { %>
+<div class="clearfix no-flow">
+    <p class="span9 ">Submitted <%= moment(model.created_at_epoch*1000).fromNow() %>
+        <% if (model.status_code !== "Queued" && model.status !== "Processing") { %>
+            <% if (model.language !='text') { %> &bull; <strong>Score:</strong> <%= model.score %><% } %>
+        <% } %>
+    </p>
+    <% if (model.status == "Accepted") { %>
+        <p class="status pull-right success">
+    <% } else if (model.status == "Wrong Answer") { %>
+        <p class="status pull-right error">
+    <% } else { %>
+        <p class="status pull-right info">
+    <% } %>
+    <strong>Status:</strong> <%= model.status %></p>
+
+</div>
+    <% if (model.status != "Queued") { %>
+        <div class="light-wrap" style="margin-top:20px;">
+            <% if (model.language !='text' && !_.isEmpty(model.testcase_message)){ %>
+            <div class="no-flow testcases-results">
+                <% for(var i=0; i<model.testcase_message.length; i+=1) { %>
+                <p><span class="testcase-num"># <%= i %></span>
+                <% if (model.testcase_status[i] == 1) { %><i class="icon-ok success"></i><% } else { %><i class="icon-cancel-large error"></i> <% } %>
+                <% if (model.downloadable_test_cases == true) { %>
+                    <a href="#" class="js-download-test-case" testcase-num="<%=i%>" data-analytics="TestCase Purchase">
+                <%}%>
+                    <%= Math.round(parseFloat(model.codechecker_time[i])*100)/100 %>s : <%= model.testcase_message[i] %>
+                <% if (model.downloadable_test_cases == true) { %>
+                    </a>
+                <%}%>
+                </p>
+                <% } %>
+            </div>
+            <% } %>
+            <% if (model.compile_status == 255){ %>
+            <p class="no-flow"><strong>Compilation Message:</strong> <%= model.compile_message %></p>
+            <% } %>
+        </div>
+    <% } %>
+<% } %>

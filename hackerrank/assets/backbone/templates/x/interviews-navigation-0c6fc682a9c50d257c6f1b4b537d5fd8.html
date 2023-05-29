@@ -1,0 +1,64 @@
+<div class="hre-sidebar closed" id="hre-sidebar">
+    <div class="sidebar-scroller bottom hidden">
+        <i class="icon-down-open-bold"></i>
+        <i class="icon-up-open-bold"></i>
+    </div>
+
+    <!-- This is the expand and collapse icon that will appear when in smaller screens -->
+    <div class="sidebar-toggle" id="sidebar-menu-icon">
+        <i class="icon-menu-large sidebar-menu-icon"></i>
+    </div>
+
+    <div class="hre-sidebar-inner">
+        <div class="mlA hre-sidebar-innerblock">
+            <p class="sidebar-nav-title"><span class="hidefor1024">INTERVIEWS</span></p>
+            <ul class="hre-sidebar-list">
+                <li <% if (!active_nav_link || active_nav_link == 'dashboard' || active_nav_link == "") { %>class="active"<% } %>>
+                    <a href="interviews" class="js-backbone hre-sidebar-link"><i data-original-title="Dashboard" data-placement="right" class="js-tooltip icon2-interviews"></i>
+                        <span class="hre-sidebar-label">Dashboard</span>
+                    </a>
+                </li>
+
+                <li <% if (active_nav_link == 'quickpads') { %>class="active"<% } %>>
+                    <a href="interviews/quickpads" class="js-backbone hre-sidebar-link"><i data-original-title="Quick Pads" data-placement="right" class="js-tooltip icon-bolt"></i>
+                        <span class="hre-sidebar-label">Quick Pads</span>
+                    </a>
+                </li>
+
+                <li <% if (active_nav_link == 'upcoming') { %>class="active"<% } %>>
+                    <a href="interviews/upcoming" class="js-backbone hre-sidebar-link"><i data-original-title="Upcoming" data-placement="right" class="js-tooltip icon2-upcoming"></i>
+                        <span class="hre-sidebar-label">Upcoming</span>
+                    </a>
+                </li>
+
+                <li <% if (active_nav_link == 'done') { %>class="active"<% } %>>
+                    <a href="interviews/done" class="js-backbone hre-sidebar-link"><i data-original-title="Completed" data-placement="right" class="js-tooltip icon-circle"></i>
+                        <span class="hre-sidebar-label">Completed</span>
+                    </a>
+                </li>
+
+                <li <% if (active_nav_link == 'thumbsup') { %>class="active"<% } %>>
+                    <a href="interviews/thumbsup" class="js-backbone hre-sidebar-link"><i data-original-title="Thumbs Up" data-placement="right" class="js-tooltip icon2-thumbsup"></i>
+                        <span class="hre-sidebar-label">Thumbs Up</span>
+                    </a>
+                </li>
+
+                <li <% if (active_nav_link == 'thumbsdown') { %>class="active"<% } %>>
+                    <a href="interviews/thumbsdown" class="js-backbone hre-sidebar-link"><i data-original-title="Thumbs Down" data-placement="right" class="js-tooltip icon2-thumbsdown"></i>
+                        <span class="hre-sidebar-label">Thumbs Down</span>
+                    </a>
+                </li>
+
+                <!-- <li><a href="#"><i class="icon-calendar" style="top:-1px;"></i><span class="hidefor1024">Calendar</span></a></li> -->
+            </ul>
+        </div>
+    </div>
+
+    <div class="hre-sidebar-bottom">
+        <div class="sidebar-button-margins">
+            <a href="interviews/new" class="btn btn-primary btn-mid sidebar-full-btn js-backbone">
+                <span class="hre-sidebar-label">New Interview</span><i class="icon2-interviews"></i>
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,159 @@
+<div class="top-fixed-bar">
+    <% if (model.title) { %>
+    <h3 class="topbar-h3 mjL">Interviews</h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i><%- model.title %></h3>
+    <% } else { %>
+    <h3 class="topbar-h3 mjL">Interview</h3>
+    <% } %>
+</div>
+<div class="overflow-content" id="control-overflow">
+    <% if (just_created) { %>
+    <div class="alert alert-success mjA">
+        <header>Pad successfully created</header>
+        <p>A brand new pad has been successfully created for you</p>
+    </div>
+    <% } %>
+    <form name="update-interview-form" method="post">
+    <div class="mjA">
+        <div class="block fnt-wt-600">
+            The pad is available here:<a href="<%- model.interviewer_url %>" class="normal-underline mdL" target="_blank"><%- model.interviewer_url %></a>
+        </div>
+
+        <div class="block fnt-wt-600 mlT">
+            Your interviewer access code is: <input disabled class="mdL" type="text" value="<%- model.access_code %>" />
+        </div>
+
+        <p class="mlT">
+            <span class="fnt-wt-600">Notes:</span> 1. Candidates do not need any access code.
+        </p>
+        <p style="margin-left:57px;">
+            <% if (model.interview_attendants && model.interview_attendants.length > 0) { %>
+            2. Once completed you can view the interview analytics in the <a href="interviews/done" class="normal-underline js-backbone">Completed Interviews</a> section.
+            <% } else { %>
+            2. Once completed you can view the interview analytics in the <a href="interviews/quickpads" class="normal-underline js-backbone">Quickpads</a> section.
+            <% } %>
+        </p>
+    </div>
+
+    <div class="mjA">
+        <label class="fnt-sz-big">Interview Schedule</label>
+        <div class="inline-block mlL displayData">
+            <span class=""><%= HR.util.formatTimeInUserTz(model.from, 'MMM D, YYYY hh:mm A ') + " (" + HR.currentUser.get("timezone") + ")" %></span>
+            <small>Click <a href="http://www.timeanddate.com/worldclock/fixedtime.html?iso=<%= moment(model.from).utc().format('YYYYMMDDTHHmm') %>&msg=CodePair Interview" target="_new">here</a> for time in other timezone</small>
+        </div>
+        <div class="inline-block mlL editData hidden">
+            <input type="text" id="start_date" class="date start" value="<%= HR.util.formatTimeInUserTz(model.from, 'M-D-YYYY') %>" name="interview-start-date"  placeholder="Start date" style="width:225px">
+            <input type="text" class="msL time start" id="start_date" value="<%= HR.util.formatTimeInUserTz(model.from, 'HH:mm') %>" name="interview-start-time"  placeholder="Start time" style="width:105px">
+            <input type="hidden" id="timezones" class="wide msB msL" value="<%= HR.currentUser.get('timezone') %>">
+            <select class="msL" name="interview-duration">
+                <option value="30" <% if (time_diff == 30) { %>selected<% } %>>30 minutes</option>
+                <option value="45" <% if (time_diff == 45) { %>selected<% } %>>45 minutes</option>
+                <option value="60" <% if (time_diff == 60) { %>selected<% } %>>1 hour</option>
+                <option value="90" <% if (time_diff == 30) { %>selected<% } %>>1.5 hours</option>
+                <option value="120" <% if (time_diff == 30) { %>selected<% } %>>2 hours</option>
+                <option value="150" <% if (time_diff == 30) { %>selected<% } %>>2.5 hours</option>
+                <option value="180" <% if (time_diff == 30) { %>selected<% } %>>3 hours</option>
+                <option value="240" <% if (time_diff == 30) { %>selected<% } %>>4 hours</option>
+                <% if (! _.contains([30,45,60,90,120,150,180,240], time_diff)) { %>
+                <option value="<%- time_diff %>" selected><%- time_diff %> minutes</option>
+                <% } %>
+            </select>
+        </div>
+    </div>
+
+    <% if (model.interview_attendants && model.interview_attendants.length > 0) { %>
+
+    <div class="mjT mjB" id="candidate-details-container">
+        <label class="mjL fnt-sz-big">Candidate's information</label>
+        <table style="width:94%; margin:0px auto;" class="table table-radius table-out-border fnt-sz-mid ">
+            <thead>
+                <tr class="prominent txt-alt-grey">
+                    <th width="25%">NAME</th>
+                    <th width="25%">EMAIL</th>
+                    <th width="20%">PHONE NUMBER</th>
+                    <th width="15%">URL</th>
+                    <th width="15%" colspan="1">STATUS</th>
+                </tr>
+            </thead>
+
+            <% _.each (model.candidates, function(candidate) { %>
+            <tr>
+                <td class="fnt-wt-600"><%- candidate.name %></td>
+                <td><%- candidate.email %></td>
+                <td><%- candidate.phone %></td>
+                <td><a href="<%- candidate.url() %>" target="_blank">[link]</a></td>
+                <td>
+                    <a href="#" class="normal-underline js-edit-attendant" data-role="candidate" data-id="<%- candidate.id %>">edit info</a>
+                </td>
+            </tr>
+            <% }); %>
+        </table>
+    </div>
+    <div class="mjT mjB hidden" id="candidate-edit-container">
+    </div>
+
+    <div class="mjT mjB" id="interviewer-details-container">
+        <label class="mjL fnt-sz-big">Interviewer's information <a href="#" class="js-add-interviewer normal-underline fnt-sz-small">(add another interviewer)</a></label>
+        <table style="width:94%; margin:0px auto;" class="table table-radius table-out-border fnt-sz-mid ">
+            <thead>
+                <tr class="prominent txt-alt-grey">
+                    <th width="25%">NAME</th>
+                    <th width="25%">EMAIL</th>
+                    <th width="20%">PHONE NUMBER</th>
+                    <th width="15%">URL</th>
+                    <th width="15%" colspan="1">STATUS</th>
+                </tr>
+            </thead>
+
+            <% _.each (model.interviewers, function(interviewer) { %>
+            <tr>
+                <td class="fnt-wt-600"><%- interviewer.name %></td>
+                <td><%- interviewer.email %></td>
+                <td><%- interviewer.phone %></td>
+                <td><a href="<%- interviewer.url() %>" target="_blank">[link]</a></td>
+                <td>
+                    <a href="#" class="normal-underline js-edit-attendant" data-role="interviewer" data-id="<%- interviewer.id %>">edit info</a>
+                </td>
+            </tr>
+            <% }); %>
+        </table>
+    </div>
+    <% if(model.notes && model.notes != "") { %>
+    <div class="mjT mjB mjL displayData">
+        <label class="fnt-sz-big">Notes</label>
+        <span><%= model.notes %></span>
+    </div>
+    <% } %>
+    <div class="mjT mjB mjL editData hidden">
+        <label class="fnt-sz-big">Notes</label>
+        <textarea placeholder="Add notes for your interview. This will be shared among your team members only" class="xwide tall resizex" name="interview-notes"><%= model.notes %></textarea>
+    </div>
+    <% if(model.resume && model.resume != "") { %>
+    <div class="mjT mjB mjL displayData">
+        <label class="fnt-sz-big">Resume</label>
+        <small><a href="<%= model.resume %>" target="_new"><%= model.resume.split("/").pop() %></a></small>
+    </div>
+    <% } %>
+    <div class="mjT mjB mjL editData hidden">
+        <label class="fnt-sz-big">Resume</label>
+        <input type="file" name="resume" title="Choose a file"><small><a href="<%= model.resume %>" target="_new"><%= model.resume.split("/").pop() %></a></small>
+    </div>
+    <div class="mjT mjB" id="save-container">
+        <div id="responsive-bottom-holder" class="responsive-bottom-holder">
+            <button type="button" class="btn btn-primary btn-mid displayData" name="edit-interview-button">Edit Interview</button>
+            <button type="submit" class="btn btn-primary btn-mid editData hidden" name="update-interview-button">Update Interview</button>
+            <button type="button" class="btn btn-mid editData hidden" name="cancel-button">Cancel</button>
+        </div>
+    </div>
+
+    <% } else { %>
+    <div class="mjT mjB" id="save-container">
+        <div id="responsive-bottom-holder" class="responsive-bottom-holder">
+            <button type="button" class="btn btn-mid js-share-pad">Share</button>
+            <button type="button" class="btn btn-primary btn-mid js-done">Done</button>
+        </div>
+    </div>
+    <% } %>
+    </form>
+    <div id="modal-container"></div>
+</div><!-- end .overflow-content -->

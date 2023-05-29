@@ -1,0 +1,5 @@
+<% if(model.get('confirmed')) { %>
+  <p><%= model.get('email') %></p>
+<% } else { %>
+  <p class="span7 pending"><%= model.get('email') %><small class="pull-right"><%=  model.get('verificationtext') %></small></p>
+<% } %>

@@ -1,0 +1,84 @@
+<div class="container content_wrap">
+    <div class="container--inner">
+        <section class="administration">
+            <header class="page-title">
+                <div class="clearfix">
+                    <h1 class="pull-left">Manage <%= _.capitalize(resource) %></h1>
+                    <button class="btn btn-green backbone span3 pull-right"
+                            href="/administration/<%= resource %>/create">New <%= _.capitalize(resource.substr(0, (resource.length - 1))) %>
+                    </button>
+                </div>
+                <ul class="nav-tabs nav admin-tabbed-nav">
+                    <li <% if (resource == "contests") { %>class="active"<% } %>>
+                        <a href="/administration/contests" class="backbone">Manage Contests</a></li>
+                    <li <% if (resource == "challenges") { %>class="active"<% } %>>
+                        <a href="/administration/challenges" class="backbone">Manage Challenges</a></li>
+                        <div class="pull-right">
+                    <form class="input-icon">
+                        <input type="text" placeholder="search" id="search-text" class="input-medium search-query" autocomplete="off">
+                        <i class="icon-search"></i>
+                    </form>
+                    <div class="search-result hide">
+                        <ul class="unstyled"></ul>
+                    </div>
+                </div>
+                </ul>
+            </header>
+            <div class="table-wrap text-center mlT">
+                <header class="row">
+                    <div class="span5 alignL">
+                        <p><%= _.capitalize(resource.substr(0, (resource.length - 1))) %> Name</p>
+                    </div>
+                    <div class="span3">
+                        <p><%= _.capitalize(resource.substr(0, (resource.length - 1))) %> Slug</p>
+                    </div>
+                    <div class="span4">
+                        <p><%= _.capitalize(resource.substr(0, (resource.length - 1))) %> Owner</p>
+                    </div>
+                    <div class="span3">
+                        <p>Edit</p>
+                    </div>
+                </header>
+                <div class="table-body">
+                <% if (_collection.length == 0) { %>
+                    <div class="zeta">
+                        <% if (collection.sync_status) { %>
+                        No <%= resource %> found
+                        <% } else { %>
+                        <%= HR.appController.viewLoader(64) %>
+                        <% } %>
+                    </div>
+                <% } %>
+                <% _.each(_collection, function (model, index){ %>
+                    <div class="row<% if (index % 2 == 0) { %> row-alt<% } %>">
+                        <div class="span5 alignL">
+                            <p class="msT"><%= _.escape(model.name || 'N/A') %></p>
+                        </div>
+                        <div class="span3">
+                            <p class="msT"><a href="/<%= resource %>/<%= _.escape(model.slug || '') %>">
+                                    <%= _.escape(model.slug || '') %></a></p>
+                        </div>
+                        <div class="span4">
+                            <p class="zeta msT">
+                                <% if (model.hacker_username === null) { %>
+                                    <span class="">&lt;god&gt;</span>
+                                <% } else if (model.hacker_username === false) { %>
+                                    <span class="">[deleted]</span>
+                                <% } else { %>
+                                    <%= model.hacker_username %>
+                                <% } %>
+                            </p>
+                        </div>
+                        <div class="span3">
+                            <p><a class="btn btn-text backbone"
+                                  href="/administration/<%= resource %>/edit/<%= model.id %>">
+                                    <i class="icon-pencil"></i></a></p>
+                        </div>
+                    </div>
+                <% }) %>
+                </div>
+            </div>
+            <div class="pagination-wrap clearfix pagination-wrapper"></div>
+        </section>
+    </div>
+</div>

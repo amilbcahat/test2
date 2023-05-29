@@ -1,0 +1,16 @@
+<div class="message_history">
+    <div class="text-center">
+        <% if (has_more) { %>
+        <a class="btn btn-small btn-white hr_load_more">
+            Load More
+        </a>
+        <% } %>
+    </div>
+    <div class="message_list">
+        <%= HR.appController.viewLoader(64) %>        
+    </div>
+    <div class="messaging_respond">
+        <textarea class="hr_message_text"></textarea>
+        <button class="btn btn-green hr_send">Send</button>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<div><div><div><div>
+
+</div></div></div></div>
+
+<style>
+    .moves {
+        width: 200px;
+        margin: auto;
+        border: 1px solid #333;
+        margin-bottom: 20px;
+    }
+    .moves td {
+        width: 100px;
+        border: 1px solid #333;
+    }
+    .moves tr {
+        border: 1px solid #333;
+    }
+</style>
+<div>
+    <div class="game-grid" style="display: block; margin: auto; border-radius: 10px;">
+       <div class="row">
+          <div class="span8 block-center text-center" style="width: 480px">
+            <div class="span4">
+              <p>Balance: <span class="player1_balance"></span></p>
+            </div>
+            <div class="span4">
+              <p>Balance: <span class="player2_balance"></span></p>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="margin-bottom: 50px">
+          <div class="span8 block-center text-center" style="width: 480px">
+            <div class="span4">
+              <p><span class="player1_bid"></span><br/><span class="player-1"><%= model.player1_username %></span>'s bid</p>
+            </div>
+            <div class="span4">
+              <p><span class="player2_bid"></span><br/><span class="player-2"><%= model.player2_username %></span>'s bid</p>
+            </div>
+          </div>
+        </div>
+        <% var rows = 3; %>
+        <% var columns = 3; %>
+        <table style="margin: 20px auto; border: 2px solid #666;">
+            <% for (i = 0; i < rows; i++) { %>
+            <tr style="height: 80px; width: 240px; background-color: #ddd; border: 2px solid #666;">
+                <% for (j = 0; j < rows; j++) { %>
+                   <td class="<%= i %>-<%= j %>" style="height: 40px; width: 40px; background-color: #eee; border: 2px solid #666; padding: 20px; font-size: 40px; text-align: center;">&nbsp;</td>
+                <% } %>
+            </tr>
+            <% } %>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="settings_content-pane padded">
+  <div class="settings_content-group">
+    <h3>Merge Accounts</h3>
+    <p class="aside msT mlB">Accidentally create two accounts? This combines another account into the one you are currently logged in as.</p>
+    <div class="formgroup">
+      <label for="mergeaccounts">Username of the account to merge with <%=model.username%></label>
+      <div class="input-btn-group">
+          <input id="mergeaccounts" class="wide with-help" type="text" placeholder="username"/>
+          <a class="btn btn-merge">Submit</a>
+      </div>
+      <div><small class="sub-help merge-response"></small></div>
+    </div>
+    <!-- <hr> -->
+    <!-- <p class="clearfix"><a href="" class="pull-right btn btn-alert btn-small">Delete your account</a></p> -->
+  </div>
+  <div class="settings_content-group">
+    <h3>Email Addresses</h3>
+    <p class="aside msT mlB">We will never share your email address or display it publicly.</p>
+    <div class="formgroup horizontal settings-addemail">
+        <label class="span3 settings_email-label">Primary Email</label>
+        <p class="span3 static-input"><%= _.escape(model.email) %></p>
+    </div>
+    <div class="formgroup horizontal mlB">
+        <label class="span3 settings_email-label">Secondary Emails</label>
+        <div  class="pull-left zeta" id="secondary-emails-view"></div>
+    </div>
+  </div>
+  <div class="settings_content-group settings_connections">
+    <h3>Connected Accounts</h3>
+    <p class="aside block-margin margin-large bottom">Connect your other accounts with HackerRank to share your progress and scores and find your friends</p>
+    <div class="clearfix connect-social">
+      <div class="formgroup horizontal">
+          <% if (model.fb_uid) { %>
+          <div class="clearfix mlL">
+            <p class="pull-left"><i class="icon-facebook icon--single icon--large btn btn-facebook"></i></p>
+            <p class="static-input  pull-left mmT"><small class="mlL mlR">Facebook is connected</small></p>
+            <div class="formgroup horizontal checkbox hr_checkbox pull-left">
+                <label for="facebook_allow_opengraph" class="email-option span8 <% if (model.facebook_allow_opengraph) { %> active <% } %>">
+                  <input id="rank_down" name="rank_down" type="checkbox" <% if (model.rank_down) { %> checked <% } %>/>
+                  <span>Share activity to Facebook</span>
+                </label>
+            </div>
+
+          </div>
+          <% } else { %>
+            <p class="mlL"><a class="btn btn-facebook btn-social span4"><i class="icon-facebook"></i> Connect to Facebook</a></p>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

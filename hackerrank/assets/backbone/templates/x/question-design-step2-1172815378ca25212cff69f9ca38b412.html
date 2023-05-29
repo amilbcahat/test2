@@ -1,0 +1,48 @@
+<style>
+.CodeMirror-scroll
+{
+  overflow-x:hidden !important;
+  width: 100%;
+  padding-right:0px;
+}
+</style>
+
+<form name="design-question-step2-form">
+    <div class="mjA">
+        <div class="formgroup">
+            <% var languages = {
+                'javascript': 'Javascript',
+                'css': 'CSS',
+                'html': 'HTML'
+            } %>
+            <label>Add code stubs for the question <span class="fnt-wt-600 txt-alt-grey">(optional)</span></label>
+        </div><!-- end .formgroup -->
+
+    </div><!-- end mjA -->
+
+    <div class="row pjL js-code-stubs-section">
+        <div class="span-xs-16 span-md-9 no-padding">
+            <div class="codeblock-wrapper span16 no-padding">
+                <div class="codeblock-head no-background">
+                    <ul class="nav-tabs nav pull-left no-margin no-border js-code-section-tabs-list">
+                        <% _.each(languages, function(lang_name,lang) { %>
+                        <li class="<% if(lang=='html'){ %>active<% } %>"><a class="js-code-section-tab" data-lang="<%- lang %>" data-id="template_<%- lang %>" href="#"><%- lang_name %></a></li>
+                        <% }) %>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                <% _.each(languages, function(lang_name,lang) { %>
+                    <textarea id="template_<%- lang %>" class="hidden"><%- model[lang + '_template'] %></textarea>
+                <% }); %>
+            </div>
+        </div>
+    </div><!-- end .row -->
+
+    <div class="mjA">
+        <div class="row no-margin plT">
+            <div class="span-xs-16 span-md-16">
+                <button type="submit" class="btn btn-primary btn-mid">Save Question</button>
+            </div>
+        </div>
+    </div>
+</form>

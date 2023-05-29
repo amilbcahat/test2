@@ -1,0 +1,64 @@
+<section class="submissions container">
+  <div class="padded">
+    <header class="clearfix">
+        <div class="page_heading">
+        </div>
+
+      <!-- ##Breadcrumbs should only show on challenge-specific submission lists-->
+      <!-- sort mode toggle -->
+      <div class="page_title">
+          <div class="clearfix">
+              <h1 class="span6">Submissions</h1>
+
+              <div class="margin-small top pull-right btn-group submissions_filters-buttons">
+                <!-- strip trailing slash -->
+                <a href=<%= collection.pageURL() + "all" %>  class="backbone btn btn-white active"><span class="icon-text">Sort by Date</span></a>
+                <a href=<%= collection.pageURL() + "grouped" %> class="backbone btn btn-white"><span class="icon-text">Sort by Challenge</span></a>
+              </div>
+          </div>
+          <h5 class="alpha page_title-subtitle">
+              <% if (collection.challenge && collection.challenge.get('name')) { %>for <%= collection.challenge.get('name') %><% } %>
+          </h5>
+      </div>
+  </header>
+  <div class="submissions_list text-center">
+
+  <% if(collection.total != 0){ %>
+      <div class="table-wrap">
+          <header class="row-clear list-header submissions_list-header">
+              <div class="span4 submissions-title">
+                <p>Problem</p>
+              </div>
+              <div class="span2 submissions-language">
+                <p>Language</p>
+              </div>
+              <div class="span2 submissions-time">
+                <p>Time</p>
+              </div>
+              <div class="span3">
+                <p>Result</p>
+              </div>
+              <div class="span1">
+                <p>Score</p>
+              </div>
+              <div class="span2">
+                <p></p>
+              </div>
+          </header>
+
+          <div class="table-body submissions-list-wrapper table--striped">
+          </div>
+
+          <div class="pagination-wrap clearfix pagination-wrapper">
+          </div>
+      </div>
+      <% } else { %>
+      <div class="light-wrap padded">
+        <p>You have not made any submissions yet.</p>
+        <p class="text-center block-margin"><a href="/categories" class="btn btn-green btn-large backbone">View Challenges</a></p>
+      </div>
+      <% } %>
+
+  </div>
+  </div>
+</section>

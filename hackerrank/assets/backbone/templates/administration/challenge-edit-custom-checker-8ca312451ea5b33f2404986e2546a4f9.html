@@ -1,0 +1,25 @@
+<div class="msL">
+  <p class="aside block-margin margin-large">Add custom checker program
+    for approximation problems
+  </p>
+
+  <!-- Support Custom Checker -->
+  <div class="formgroup horizontal row">
+    <div class="pull-left span3">
+      <label for="custom">Support Custom Checker</label>
+      <div class="left gray-text">Add custom checker for approximation challenges and codegolf.</div>
+    </div>
+    <div class="block span8 profile-input pull-left">
+      <div class="checkbox-container">
+        <input id="custom" class="hidden-checkbox" type="checkbox"
+               <% if (_model.custom) { %>checked="checked"<% } %> />
+      </div>
+      <div class="left gray-text state hide custom"></div>
+      <small class="error name span12"></small>
+    </div>
+  </div>
+
+  <div class="formgroup horizontal row">
+    <div id="codeeditor"></div>
+  </div>
+</div>

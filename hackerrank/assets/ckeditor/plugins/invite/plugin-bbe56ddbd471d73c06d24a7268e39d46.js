@@ -1,0 +1,1 @@
+CKEDITOR.plugins.add("invite",{init:function(a){a.addCommand("invitePreview",{exec:function(a){$("#preview").trigger("click")}}),a.ui.addButton("Invite",{label:"Preview Invite",command:"invitePreview",icon:this.path+"images/preview.png"})}})

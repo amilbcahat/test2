@@ -1,0 +1,28 @@
+<header class="page-title">
+<div class="clearfix">
+  <h1 class="hr_tour-challenge-name pull-left"><%= model.name %></h1>
+  <% if (model.real_dynamic) { %>
+  <div class="pull-right challenge-title-note fullscreen-hide">
+      <strong>Max Score: <%= model.max_score %>pts</strong>
+      <a href="/scoring/dynamic-scoring" target="_blank" rel="tooltip"
+        data-original-title="The score is dynamic based on the number of solves." id="dynamic-popover">
+        <small class="label label-info">dynamic</small>
+      </a>
+  </div>
+  <% } %>
+  <% if(model.locked) { %>
+  <div class="pull-right challenge-title-note">
+    <a rel="tooltip" data-original-title="Any furthur submissions will not be considered for leaderboard." id="locked-popover" class="active-link pull-right">
+      <small class="label label-important"><i class="icon-lock"></i>locked</small>
+    </a>
+  </div>
+  <% } %>
+</div>
+<% if (model.company) { %><div class="container apply-blob"></div><% } %>
+<ul class="nav-tabs nav container">
+  <li class="active"><a class="hr-problem-link backbone" href="<%= baseURL %>"> Problem</a></li>
+  <li><a class="hr-submissions-link backbone" href="<%= baseURL %>/submissions"><i class="icon-list-bullet-small"></i> Submissions</a></li>
+  <li><a class="hr-leaderboard-link backbone" href="<%= baseURL %>/leaderboard"><i class="icon-trophy"></i> Leaderboard</a></li>
+  <li><a class="hr-forum-link backbone" href="<%= baseURL %>/forum/questions"><i class="icon-comment"></i> Discussions</a></li>
+</ul>
+</header>

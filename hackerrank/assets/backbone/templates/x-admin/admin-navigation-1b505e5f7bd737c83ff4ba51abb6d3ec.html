@@ -1,0 +1,146 @@
+<div class="hre-sidebar open admin-sidebar" id="hre-sidebar">
+    <div class="sidebar-scroller bottom hidden">
+        <i class="icon-down-open-bold"></i>
+        <i class="icon-up-open-bold"></i>
+    </div>
+
+    <!-- This is the expand and collapse icon that will appear when in smaller screens -->
+    <div class="sidebar-toggle-admin" id="sidebar-menu-icon">
+        <i class="icon-menu-large sidebar-menu-icon"></i>
+    </div>
+
+    <div class="hre-sidebar-inner full-height">
+        <div class="mlA hre-sidebar-innerblock">
+            <p class="sidebar-nav-title"><span class="hre-sidebar-label">Important Stuff</span></p>
+            <ul class="hre-sidebar-list">
+                <li <% if (active_nav_link == 'switch_user') { %>class="active"<% } %>>
+                <a href="admin/su" class="js-backbone hre-sidebar-link">
+                    <i data-original-title="Switch User" class="icon-users js-tooltip" data-placement="right"></i>
+                    <span class="hre-sidebar-label">Switch User</span>
+                </a>
+                </li>
+            </ul>
+        </div>
+
+        <span class="dark-divider"></span>
+
+        <div class="mlA hre-sidebar-innerblock">
+            <p class="sidebar-nav-title"><span class="hre-sidebar-label">User</span></p>
+            <ul class="hre-sidebar-list">
+                <li <% if (active_nav_link == 'user_change_email') { %>class="active"<% } %>>
+                <a href="admin/user/change_email" class="js-backbone hre-sidebar-link">
+                    <i data-original-title="Change Email Address" class="icon-user js-tooltip" data-placement="right"></i>
+                    <span class="hre-sidebar-label">Change Email Address</span>
+                </a>
+                </li>
+                <!--<li <% if (active_nav_link == 'extend_trial_period') { %>class="active"<% } %>>-->
+                <!--<a href="#" class="js-backbone hre-sidebar-link">-->
+                    <!--<i data-original-title="Extend trial Period" class="icon-plus js-tooltip" data-placement="right"></i>-->
+                    <!--<span class="hre-sidebar-label">Extend trial Period</span>-->
+                <!--</a>-->
+                <!--</li>-->
+
+                <!--<li <% if (active_nav_link == 'add_remove_features') { %>class="active"<% } %>>-->
+                <!--<a href="#" class="js-backbone hre-sidebar-link">-->
+                    <!--<i data-original-title="Add/Remove Features" class="icon-list-add js-tooltip" data-placement="right"></i>-->
+                    <!--<span class="hre-sidebar-label">Add/Remove Features</span>-->
+                <!--</a>-->
+                <!--</li>-->
+
+                <!--<li <% if (active_nav_link == 'add_invites') { %>class="active"<% } %>>-->
+                <!--<a href="#" class="js-backbone hre-sidebar-link">-->
+                    <!--<i data-original-title="Add Invites" class="icon-plus js-tooltip" data-placement="right" style="top:1px;"></i>-->
+                    <!--<span class="hre-sidebar-label">Add Invites</span>-->
+                <!--</a>-->
+                <!--</li>-->
+
+                <!--<li <% if (active_nav_link == 'trials_remaining') { %>class="active"<% } %>>-->
+                <!--<a href="#" class="js-backbone hre-sidebar-link">-->
+                    <!--<i data-original-title="Trials Remaining" class="icon-clock js-tooltip" data-placement="right" style="top:1px;"></i>-->
+                    <!--<span class="hre-sidebar-label">Trials Remaining</span>-->
+                <!--</a>-->
+                <!--</li>-->
+            </ul>
+        </div>
+
+        <span class="dark-divider"></span>
+
+        <div class="mlA hre-sidebar-innerblock">
+            <p class="sidebar-nav-title"><span class="hre-sidebar-label">Tests</span></p>
+            <ul class="hre-sidebar-list">
+                <!--<li <% if (active_nav_link == 'change_test_owner') { %>class="active"<% } %>>-->
+                <!--<a href="#" class="js-backbone hre-sidebar-link">-->
+                    <!--<i data-original-title="Change Test Owner" class="icon-user js-tooltip" data-placement="right"></i>-->
+                    <!--<span class="hre-sidebar-label">Change Test Owner</span>-->
+                <!--</a>-->
+                <!--</li>-->
+
+                <li <% if (active_nav_link == 'duplicate_test') { %>class="active"<% } %>>
+                <a href="admin/test/duplicate" class="js-backbone hre-sidebar-link">
+                    <i data-original-title="Duplicate Test" class="icon-docs js-tooltip" data-placement="right"></i>
+                    <span class="hre-sidebar-label">Duplicate Test</span>
+                </a>
+                </li>
+
+                <!--<li <% if (active_nav_link == 'share_tests') { %>class="active"<% } %>>-->
+                <!--<a href="#" class="js-backbone hre-sidebar-link">-->
+                    <!--<i data-original-title="Share Tests" class="icon-share js-tooltip" style="top:1px;" data-placement="right"></i>-->
+                    <!--<span class="hre-sidebar-label">Share Tests</span>-->
+                <!--</a>-->
+                <!--</li>-->
+
+                <li <% if (active_nav_link == 'add_sections') { %>class="active"<% } %>>
+                <a href="admin/test/add_sections" class="js-backbone hre-sidebar-link">
+                    <i data-original-title="Add Sections" class="icon-list-add js-tooltip" style="top:1px;" data-placement="right"></i>
+                    <span class="hre-sidebar-label">Add Sections</span>
+                </a>
+                </li>
+            </ul>
+        </div><!-- end .mlA -->
+
+        <span class="dark-divider"></span>
+
+        <!--<div class="mlA hre-sidebar-innerblock">-->
+            <!--<p class="sidebar-nav-title"><span class="hre-sidebar-label">Questions</span></p>-->
+            <!--<ul class="hre-sidebar-list">-->
+                <!--<li <% if (active_nav_link == 'change_owner') { %>class="active"<% } %>>-->
+                <!--<a href="#" class="js-backbone hre-sidebar-link">-->
+                    <!--<i data-original-title="Change Owner" class="icon-user js-tooltip" data-placement="right"></i>-->
+                    <!--<span class="hre-sidebar-label">Change Owner</span>-->
+                <!--</a>-->
+                <!--</li>-->
+                <!--<li <% if (active_nav_link == 'duplicate_question') { %>class="active"<% } %>>-->
+                <!--<a href="#" class="js-backbone hre-sidebar-link">-->
+                    <!--<i data-original-title="Duplicate Question" class="icon-docs js-tooltip" data-placement="right"></i>-->
+                    <!--<span class="hre-sidebar-label">Duplicate Question</span>-->
+                <!--</a>-->
+                <!--</li>-->
+                <!--<li <% if (active_nav_link == 'set_score') { %>class="active"<% } %>>-->
+                <!--<a href="#" class="js-backbone hre-sidebar-link">-->
+                    <!--<i data-original-title="Set Score" class="icon-edit js-tooltip" style="top:1px;" data-placement="right"></i>-->
+                    <!--<span class="hre-sidebar-label">Set Score</span>-->
+                <!--</a>-->
+            <!--</ul>-->
+        <!--</div>&lt;!&ndash; end .mlA &ndash;&gt;-->
+
+        <!--<span class="dark-divider"></span>-->
+
+        <!--<div class="mlA hre-sidebar-innerblock">-->
+            <!--<p class="sidebar-nav-title"><span class="hre-sidebar-label">Internal Library</span></p>-->
+            <!--<ul class="hre-sidebar-list">-->
+                <!--<li <% if (active_nav_link == 'libraries') { %>class="active"<% } %>>-->
+                <!--<a href="#" class="js-backbone hre-sidebar-link">-->
+                    <!--<i data-original-title="Libraries" class="icon-menu-large js-tooltip" data-placement="right"></i>-->
+                    <!--<span class="hre-sidebar-label">Libraries</span>-->
+                <!--</a>-->
+                <!--</li>-->
+                <!--<li <% if (active_nav_link == 'question_sets') { %>class="active"<% } %>>-->
+                <!--<a href="#" class="js-backbone hre-sidebar-link">-->
+                    <!--<i data-original-title="Question Sets" class="icon2-questions js-tooltip" data-placement="right"></i>-->
+                    <!--<span class="hre-sidebar-label">Question Sets</span>-->
+                <!--</a>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>&lt;!&ndash; end .mlA &ndash;&gt;-->
+    </div>
+</div>

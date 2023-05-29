@@ -1,0 +1,89 @@
+<div class="container content_wrap">
+    <section class="administration">
+        <!--<div class="breadcrumbs clearfix"></div>-->
+        <header class="page-title">
+            <div class="clearfix baseless-padded">
+                <h1 class="pull-left">Manage <%= _.capitalize(resource) %></h1>
+                <button class="btn btn-primary backbone span3 pull-right"
+                        href="/administration/<%= resource %>/create">New <%= _.capitalize(resource.substr(0, (resource.length - 1))) %></button>
+            </div>
+            <div class="container--inner">
+                <ul class="nav-tabs nav admin-tabbed-nav">
+                    <li <% if (resource == "contests") { %>class="active"<% } %>>
+                        <a href="/administration/contests" class="backbone">Manage Contests</a></li>
+                    <li <% if (resource == "challenges") { %>class="active"<% } %>>
+                        <a href="/administration/challenges" class="backbone">Manage Challenges</a></li>
+                </ul>
+            </div>
+        </header>
+        <div class="horizontal-padded" style="height: 2em;">
+            <div class="pull-right">
+                <form class="form-search">
+                    <input type="text" placeholder="search" id="search-text" class="input-medium search-query" autocomplete="off">
+                    <i class="icon-search"></i>
+                </form>
+                <div class="search-result hide">
+                    <ul class="unstyled"></ul>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div>
+            <div class="table-wrap text-center margin-large top horizontal-padded">
+                <header class="row">
+                    <div class="span5 left-align">
+                        <p><%= _.capitalize(resource.substr(0, (resource.length - 1))) %> Name</p>
+                    </div>
+                    <div class="span3">
+                        <p><%= _.capitalize(resource.substr(0, (resource.length - 1))) %> Slug</p>
+                    </div>
+                    <div class="span4">
+                        <p><%= _.capitalize(resource.substr(0, (resource.length - 1))) %> Owner</p>
+                    </div>
+                    <div class="span3">
+                        <p>Edit</p>
+                    </div>
+                </header>
+                <div class="table-body">
+                <% if (_collection.length == 0) { %>
+                    <div class="gray">
+                        <% if (collection.sync_status) { %>
+                        No <%= resource %> found
+                        <% } else { %>
+                        <%= HR.appController.viewLoader(64) %>
+                        <% } %>
+                    </div>
+                <% } %>
+                <% _.each(_collection, function (model, index){ %>
+                    <div class="row<% if (index % 2 == 0) { %> row-alt<% } %>">
+                        <div class="span5 left-align">
+                            <p><%= _.escape(model.name || 'N/A') %></p>
+                        </div>
+                        <div class="span3">
+                            <p><a href="/<%= resource %>/<%= _.escape(model.slug || '') %>">
+                                    <%= _.escape(model.slug || '') %></a></p>
+                        </div>
+                        <div class="span4">
+                            <p>
+                                <% if (model.hacker_username === null) { %>
+                                    <span class="gray-text">&lt;god&gt;</span>
+                                <% } else if (model.hacker_username === false) { %>
+                                    <span class="gray-text">[deleted]</span>
+                                <% } else { %>
+                                    <%= model.hacker_username %>
+                                <% } %>
+                            </p>
+                        </div>
+                        <div class="span3">
+                            <p><a class="btn btn-text backbone"
+                                  href="/administration/<%= resource %>/edit/<%= model.id %>">
+                                    <i class="icon-pencil"></i></a></p>
+                        </div>
+                    </div>
+                <% }) %>
+                </div>
+            </div>
+            <div class="pagination-wrap clearfix pagination-wrapper"></div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,29 @@
+<div class="span-xl-16">
+    <div class="question-item-container question-set-style position-relative">
+        <div class="question-set-badge"></div>
+        <table width="100%">
+            <tr>
+                <td width="50%"><strong><%-set.title%></strong></td>
+                <td width="25%" class="fnt-sz-small">
+                <span class="fnt-wt-600 txt-alt-grey">QUESTIONS: </span>
+                <%_.each(set.typescount, function(count, typ) { %>
+                    <strong><%=count%> <%=hrqn[typ]%></strong>
+                <% }); %>
+                </td>
+                <td width="25%" class="fnt-sz-small text-right">
+                    <%_.each(set.roles, function(role) { %>
+                    <span class="block-highlight"><%=role%></span>
+                    <% }); %>
+                </td>
+            </tr>
+        </table>
+        <div class="row no-margin">
+            <div class="span12 no-padding msT">
+                <div class="text-ellipsis mdB">
+                    <%=set.desc%>
+                </div>
+            </div>
+            <a href="#" class="btn btn-line mlT pull-right showset" style="width:140px;" data-set="<%=set.id%>" >View set &nbsp;<i class="icon-right-open"></i></a>
+        </div>
+    </div>
+</div>

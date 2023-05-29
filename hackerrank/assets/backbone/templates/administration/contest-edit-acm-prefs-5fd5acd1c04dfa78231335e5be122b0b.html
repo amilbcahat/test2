@@ -1,0 +1,127 @@
+<div class="msL">
+  <p class="aside block-margin margin-large">Configurations for setting up
+    ACM style Contest.
+  </p>
+
+  <h3>Leaderboard</h3>
+
+  <!-- ACM Style -->
+  <div class="formgroup horizontal row">
+    <div class="pull-left span3">
+      <label for="acm_leaderboard">ACM Style Leaderboard</label>
+      <div class="left gray-text">ACM style leaderboard, allows penalty
+        for wrong submissions and allows freezing leaderboard at a specific time.</div>
+    </div>
+    <div class="block span8 profile-input pull-left">
+      <div class="checkbox-container">
+        <input id="acm_leaderboard" class="hidden-checkbox" type="checkbox"
+               <% if (_model.acm_leaderboard) { %>checked="checked"<% } %> />
+      </div>
+      <div class="left gray-text state hide acm_leaderboard"></div>
+      <small class="error name span12"></small>
+    </div>
+  </div>
+
+  <!-- Penalty -->
+  <div class="formgroup horizontal row">
+    <div class="pull-left span3">
+      <label for="penalty">Penalty</label>
+      <div class="left gray-text">Penalty (in seconds) will be applied on each wrong
+        submission.</div>
+    </div>
+    <div class="block span8 profile-input pull-left">
+      <input id="penalty" class="span2" type="text"
+             <% if (_model.penalty) { %>value="<%= _model.penalty %>"<% } %> />
+      <div class="left span4 psT gray-text state hide penalty"></div>
+      <small class="error name span12"></small>
+    </div>
+  </div>
+
+  <!-- Penalize Compilation Error -->
+  <div class="formgroup horizontal row">
+    <div class="pull-left span3">
+      <label for="penalize_compilation_error">Penalize Compilation Error</label>
+      <div class="left gray-text">Penalize submissions with compilation error</div>
+    </div>
+    <div class="block span8 profile-input pull-left">
+      <div class="checkbox-container">
+        <input id="penalize_compilation_error" class="hidden-checkbox" type="checkbox"
+                <% if (_model.penalize_compilation_error) { %>checked="checked"<% } %> />
+      </div>
+      <div class="left gray-text state hide penalize_compilation_error"></div>
+      <small class="error name span12"></small>
+    </div>
+  </div>
+
+  <!-- Freeze Leaderboard Time -->
+  <div class="formgroup horizontal row">
+    <div class="pull-left span3">
+      <label for="leaderboard_freeze_time_epoch">Freeze Leaderboard at</label>
+      <div class="left gray-text">Should be <a href="https://en.wikipedia.org/wiki/Unix_time">Unix Time</a>.
+        Will be ineffective if set post contest endtime. To regenerate the leaderboard
+        post contest, you must contact HackerRank administrators.</div>
+    </div>
+    <div class="block span8 profile-input pull-left">
+      <input id="leaderboard_freeze_time_epoch" class="span2" type="text"
+             <% if (_model.leaderboard_freeze_time_epoch) { %>value="<%= _model.leaderboard_freeze_time_epoch %>"<% } %> />
+      <div class="left span4 psT gray-text state hide leaderboard_freeze_time_epoch"></div>
+      <small class="error name span12"></small>
+    </div>
+  </div>
+
+  <h3>Forum</h3>
+
+  <!-- Retricted Forum -->
+  <div class="formgroup horizontal row">
+    <div class="pull-left span3">
+      <label for="acm_forum">Restricted Forum</label>
+      <div class="left gray-text">Participants can post questions but can't post answers.
+        Only contest moderators will have permission to post answers. This configuration
+        should also be set for individual challenge(s) of the contest.</div>
+    </div>
+    <div class="block span8 profile-input pull-left">
+      <div class="checkbox-container">
+        <input id="acm_forum" class="hidden-checkbox" type="checkbox"
+               <% if (_model.acm_forum) { %>checked="checked"<% } %> />
+      </div>
+      <div class="left gray-text state hide acm_forum"></div>
+      <small class="error name span12"></small>
+    </div>
+  </div>
+
+  <h3>Teams</h3>
+
+  <!-- Team Contest -->
+  <div class="formgroup horizontal row">
+    <div class="pull-left span3">
+      <label for="team_event">Enable Teams</label>
+      <div class="left gray-text">Users can only participate in the team contest
+        if they are part of a team. Individual participation will be disabled,
+        unless they create a team in order to participate.</div>
+    </div>
+    <div class="block span8 profile-input pull-left">
+      <div class="checkbox-container">
+        <input id="team_event" class="hidden-checkbox" type="checkbox"
+               <% if (_model.team_event) { %>checked="checked"<% } %> />
+      </div>
+      <div class="left gray-text state hide team_event"></div>
+      <small class="error name span12"></small>
+    </div>
+  </div>
+
+  <!-- Team Size -->
+  <div class="formgroup horizontal row">
+    <div class="pull-left span3">
+      <label for="max_team_size">Maximum Team Size</label>
+      <div class="left gray-text">Self explanatory. Maximum participants
+        allowed within a team. The minimum value defaults to 1.</div>
+    </div>
+    <div class="block span8 profile-input pull-left">
+      <input id="max_team_size" class="span2" type="text"
+             <% if (_model.max_team_size) { %>value="<%= _model.max_team_size %>"<% } else { %>value="3"<% } %> />
+      <div class="left span4 psT gray-text state hide max_team_size"></div>
+      <small class="error name span12"></small>
+    </div>
+  </div>
+
+</div>

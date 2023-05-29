@@ -1,0 +1,23 @@
+<div class="answer-wrap">
+  <% _.each(collection, function(answer) { %>
+    <div class="answer">
+      <header>
+        <div class="clearfix">
+            <a class="cursor hacker-show pull-left" data-action="hacker-modal" data-value="<%= answer.hacker_username %>" ><img src="<%= answer.hacker_avatar %>" alt="Name" height="50" width="50" class="avatar"></a>
+            <div class="byline pull-left">
+              <a class="cursor hacker-show hacker-name backbone" data-action="hacker-modal" data-value="<%= answer.hacker_username %>" href="/<%= answer.hacker_username %>" ><%= answer.hacker_username %></a><% if (answer.hacker_is_admin) { %> <span class="label label-info">STAFF</span><% } %>
+              <small>
+                <span class="timeago" title="<%=answer.created_at%>"><%= answer.time_ago %></span>
+                <!--&bull;<%=answer.votes%> votes-->
+                <!--TODO: Load answerers by <a href="">Jessica Simpson</a>, <a href="">Monica Lewinsky</a>, <a href="">Brittany Spears</a> <span clas="expand"><a href="">+</a> more</span> -->
+              </small>
+            </div>
+        </div>
+      </header>
+      <div class="body clearfix break-word">
+          <div><%= answer.description_html %></div>
+      </div>
+      <br>
+    </div>
+  <% }); %>
+</div>

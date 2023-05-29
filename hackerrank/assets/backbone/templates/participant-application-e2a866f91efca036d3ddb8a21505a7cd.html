@@ -1,0 +1,149 @@
+<style>
+.floating-message
+{
+  position:fixed;
+  top:10px;
+  right:0px;
+  z-index: 2000;
+  display: none;
+}
+#companies div.span4
+{
+    margin-left: 0px;
+}
+.control-group
+{
+margin-bottom: 10px;
+}
+tr.success td
+{
+  background-color: #dff0d8 !important;
+}
+</style>
+<section class="submissions container">
+  <header class="page-title container">
+    <div class="">
+        <h1 class="span16">
+            <div class="title-img"></div>
+            Apply to <% if (companies.length === 1) { %><%= companies[0].name %><% } else { %>Companies<% } %>
+        </h1>
+    </div>
+  </header>
+  <div class="row light-wrap wrap row" style="margin-left:0px; margin-top:20px;">
+    <% if (errors.length > 0) { %>
+      <div class="message span15 error text-center block-center"><%= errors[0] %></div>
+    <% } else { %>
+    <div class="floating-message span6">
+      <div class="message span5">
+
+      </div>
+    </div>
+    <form class="edit-contest">
+      <div class="control-group span16">
+        <div class="message span15" style="background-color: #fcfcfc; margin-left:20px;">
+
+        </div>
+      </div>
+      <div class="control-group span16">
+        <div class="span8" style="margin-left:0px;">
+          <label class="control-label span3" for="hacker_name">Full Name</label>
+          <div class="controls span4" style="margin-left:20px;">
+              <input id="hacker_name" type="text" value="<%= model.hacker_name %>"  placeholder="Your Full Name" />
+          </div>
+        </div>
+        <div class="span8" style="margin-left:0px;">
+          <label class="control-label span3" for="hacker_username">Handle</label>
+          <div class="controls span4" style="margin-left:20px;">
+              <input id="hacker_username" type="text" disabled="true" placeholder="Your HackerRank handle" value="<%= model.hacker_username %>" />
+          </div>
+        </div>
+      </div>
+      <div class="control-group span16">
+        <div class="span8" style="margin-left:0px;">
+          <label class="control-label span3" for="email">Email</label>
+          <div class="controls span4" style="margin-left:20px;">
+              <input id="email" type="text" value="<%= model.email %>"  placeholder="Your Email Address" />
+          </div>
+        </div>
+        <div class="span8" style="margin-left:0px;">
+          <label class="control-label span3" for="contact_number">Contact Number</label>
+          <div class="controls span4" style="margin-left:20px;">
+              <input id="contact_number" type="text" placeholder="Your Contact Number" value="<%= model.contact_number %>" />
+          </div>
+        </div>
+      </div>
+      <div class="control-group span16">
+        <div class="span8" style="margin-left:0px;">
+          <label class="control-label span3" for="hacker_country">Country</label>
+          <div class="controls span4" style="margin-left:20px;">
+              <input id="hacker_country" type="text" value="<%= model.hacker_country %>" placeholder="Your native country" />
+          </div>
+        </div>
+        <div class="span8" style="margin-left:0px;">
+          <label class="control-label span3" for="homepage">Visa Status</label>
+          <div class="controls span4" style="margin-left:20px;">
+                <select id="visa_status">
+                    <option value="not_applicable">Not Applicable</option>
+                    <option value="available">I have a valid visa</option>
+                    <option value="not_available">I don't have a valid visa</option>
+                </select>
+          </div>
+        </div>
+      </div>
+      <div class="control-group span16">
+        <div class="span8" style="margin-left:0px;">
+          <label class="control-label span3" for="homepage">Resume</label>
+          <div class="controls span4" style="margin-left:20px;">
+              <a href="#" id="resume" class="btn btn-small" >Upload Resume</a>
+              <small id="resume_status"></small>
+          </div>
+        </div>
+        <div class="span8" style="margin-left:0px;">
+          <label class="control-label span3" for="homepage">Role</label>
+          <div class="controls span4" style="margin-left:20px;">
+                <select id="role">
+                    <option value="intern">Intern</option>
+                    <option value="fulltime">Full Time</option>
+                </select>
+          </div>
+        </div>
+      </div>
+      <div class="control-group span16">
+        <label class="control-label span3" for="hacker_hack">Biggest Hack</label>
+        <div class="controls span12">
+          <textarea id="hacker_hack" class="span10 editor"><%= model.hacker_hack %></textarea>
+        </div>
+      </div>
+      <div class="control-group span16">
+        <label class="control-label span15" for="notification">Please send my score, resume, and contact information to the following companies:</label>
+        <br/>
+        <table id="companies" class="table table-bordered table-striped span15">
+            <% _.each (companies, function( company, index ){ %>
+            <tr>
+                <td style="width:210px;">
+                  
+                  <input <% if(companies.length < 2) { %>class="hide" checked<% } %> id="company<%= company.id %>" type="checkbox" style="margin:40px 0; float:left; width:20px; height:20px;" value="<%= company.id %>" />
+                  <label class="company span3" for="company<%= company.id %>">
+                  <img class="company-img" src="https://s3.amazonaws.com/hackerrank-companies/<%= company.logo %>" alt="<%= company.name %>" />
+                </td>
+                <td>
+                  <p><%= company.pitch %></p>
+                </td>
+            </tr>
+            <%  }) %>
+        </table>
+      </div>
+      <br/>
+      <div class="control-group span15">
+        <div class="controls">
+          <button class="btn btn-large btn-primary pull-right save">Apply</button>
+        </div>
+      </div>
+    </form>
+    <% } %>
+  </div>
+</section>
+<script type="text/javascript">
+  (function(a){if(window.filepicker){return}var b=a.createElement("script");b.type="text/javascript";b.async=!0;b.src=("https:"===a.location.protocol?"https:":"http:")+"//api.filepicker.io/v1/filepicker.js";var c=a.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c);var d={};d._queue=[];var e="pick,pickMultiple,read,write,writeUrl,export,convert,store,storeUrl,remove,stat,setKey,constructWidget,makeDropPane".split(",");var f=function(a,b){return function(){b.push([a,arguments])}};for(var g=0;g<e.length;g++){d[e[g]]=f(e[g],d._queue)}window.filepicker=d})(document);
+  filepicker.setKey(HR.PREFETCH_DATA.metadata.filepicker_key);
+</script>

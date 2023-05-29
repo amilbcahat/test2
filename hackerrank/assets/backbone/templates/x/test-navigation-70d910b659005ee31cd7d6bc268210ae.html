@@ -1,0 +1,113 @@
+<div class="hre-sidebar closed" id="hre-sidebar">
+    <div class="sidebar-scroller bottom hidden">
+        <i class="icon-down-open-bold"></i>
+        <i class="icon-up-open-bold"></i>
+    </div>
+
+    <!-- This is the expand and collapse icon that will appear when in smaller screens -->
+    <div class="sidebar-toggle" id="sidebar-menu-icon">
+        <i class="icon-menu-large sidebar-menu-icon"></i>
+    </div>
+
+    <div class="hre-sidebar-inner">
+        <div class="mlA hre-sidebar-innerblock">
+            <p class="sidebar-nav-title"><span class="hre-sidebar-label">EDIT TEST</span></p>
+            <ul class="hre-sidebar-list">
+                <li <% if (!active_nav_link || active_nav_link == 'questions') { %>class="active"<% } %>>
+                    <a href="tests/<%- model.id %>/questions" class="js-backbone hre-sidebar-link">
+                    <i data-original-title="Questions" class="icon2-questions js-tooltip" data-placement="right"></i>
+                        <span class="hre-sidebar-label">Questions</span>
+                    </a>
+                </li>
+                <li <% if (active_nav_link == 'general-settings') { %>class="active"<% } %>>
+                    <a href="tests/<%- model.id %>/general-settings" class="js-backbone hre-sidebar-link">
+                        <i data-original-title="General Settings" class="icon2-generalsettings js-tooltip" data-placement="right"></i>
+                        <span class="hre-sidebar-label">General Settings</span>
+                    </a>
+                </li>
+                <li <% if (active_nav_link == 'share') { %>class="active"<% } %>>
+                    <a href="tests/<%- model.id %>/share" class="js-backbone hre-sidebar-link">
+                        <i data-original-title="Share Test With Team" class="icon2-sharetest js-tooltip" data-placement="right"></i>
+                        <span class="hre-sidebar-label">Share test with team</span>
+                    </a>
+                </li>
+                <li <% if (active_nav_link == 'candidate-settings') { %>class="active"<% } %>>
+                    <a href="tests/<%- model.id %>/candidate-settings" class="js-backbone hre-sidebar-link">
+                        <i data-original-title="Candidate Settings" class="icon-user js-tooltip" data-placement="right" style="top:1px;"></i>
+                        <span class="hre-sidebar-label">Candidate Settings</span>
+                    </a>
+                </li>
+                <li <% if (active_nav_link == 'advanced-settings') { %>class="active"<% } %>>
+                    <a href="tests/<%- model.id %>/advanced-settings" class="js-backbone hre-sidebar-link">
+                        <i data-original-title="Advanced Settings" class="icon-cog js-tooltip" data-placement="right" style="top:1px;"></i>
+                        <span class="hre-sidebar-label">Advanced Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <span class="dark-divider"></span>
+
+        <div class="mlA hre-sidebar-innerblock">
+            <p class="sidebar-nav-title"><span class="hre-sidebar-label">REPORTS</span></p>
+            <ul class="hre-sidebar-list">
+                <li <% if (active_nav_link == 'all') { %>class="active"<% } %>>
+                    <a href="tests/<%- model.id %>/candidates/all" class="js-backbone hre-sidebar-link">
+                        <i data-original-title="All Reports" class="icon2-allreports js-tooltip" data-placement="right"></i>
+                        <span class="hre-sidebar-label">All Reports</span>
+                    </a>
+                </li>
+                <li <% if (active_nav_link == 'invited') { %>class="active"<% } %>>
+                    <a href="tests/<%- model.id %>/candidates/invited" class="js-backbone hre-sidebar-link">
+                        <i data-original-title="Invited" class="icon-dot-circled js-tooltip" data-placement="right"></i>
+                        <span class="hre-sidebar-label">Invited <span class="fnt-wt-600 indicator"><%= model.invited %></span></span>
+                    </a>
+                </li>
+                <li <% if (active_nav_link == 'in-progress') { %>class="active"<% } %>>
+                    <a href="tests/<%- model.id %>/candidates/in-progress" class="js-backbone hre-sidebar-link">
+                        <i data-original-title="In Progress" class="icon-adjust js-tooltip" style="top:1px;" data-placement="right"></i>
+                        <span class="hre-sidebar-label">In Progress <span class="fnt-wt-600 indicator"><%= model.inprogress %></span></span>
+                    </a>
+                </li>
+                <li <% if (active_nav_link == 'completed') { %>class="active"<% } %>>
+                    <a href="tests/<%- model.id %>/candidates/completed" class="js-backbone hre-sidebar-link">
+                        <i data-original-title="Completed" class="icon-circle js-tooltip" style="top:1px;" data-placement="right"></i>
+                        <span class="hre-sidebar-label">Completed <span class="fnt-wt-600 indicator"><%= model.completed %></span></span>
+                    </a>
+                </li>
+                <li <% if (active_nav_link == 'completed2') { %>class="active"<% } %>>
+                    <a href="tests/<%- model.id %>/candidates/completed/2" class="js-backbone hre-sidebar-link">
+                        <i data-original-title="Qualified" class="icon2-thumbsup js-tooltip" data-placement="right"></i>
+                        <span class="hre-sidebar-label">Qualified <span class="fnt-wt-600 indicator"><%= model.qualified %></span></span>
+                    </a>
+                </li>
+                <li <% if (active_nav_link == 'completed3') { %>class="active"<% } %>>
+                    <a href="tests/<%- model.id %>/candidates/completed/3" class="js-backbone hre-sidebar-link">
+                        <i data-original-title="Failed" class="icon2-thumbsdown js-tooltip" data-placement="right"></i>
+                        <span class="hre-sidebar-label">Failed <span class="fnt-wt-600 indicator"><%= model.failed %></span></span>
+                    </a>
+                </li>
+            </ul>
+        </div><!-- end .mlA -->
+    </div>
+    <div class="hre-sidebar-bottom">
+        <div class="sidebar-button-margins">
+            <a href="tests/<%- model.id %>/invite" class="btn btn-primary primary-dark btn-mid sidebar-full-btn js-backbone"><span class="hre-sidebar-label">Invite Candidates</span><i class="icon2-invitecandidates icon--single"></i></a>
+        </div>
+        <div class="sidebar-button-margins">
+            <a href="<%- model.public_url %>" class="btn btn-dark btn-mid sidebar-full-btn" target="_blank"><span class="hre-sidebar-label">Try Test</span><i class="icon2-tryquestion icon--single"></i></a>
+        </div>
+    </div>
+</div>
+<script>
+    $('#sidebar-menu-icon').live ("click", function(){
+        var sidebar = $('#hre-sidebar');
+        var content = $('#hre-content');
+        $(content).toggleClass('open');
+        if ((sidebar).hasClass('open')) {
+            $(sidebar).removeClass('open').addClass('closed');
+        } else {
+            $(sidebar).addClass('open').removeClass('closed');
+        }
+    });
+</script>

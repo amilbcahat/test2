@@ -1,0 +1,31 @@
+<% kind = {
+    code: "Algorithm",
+    game: "Game"
+} %>
+<div class="row<% if (index%2 == 0) { %> row-alt<% } %> row-btn row-clear">
+    <div class="span1">
+      <p><%= index %></p>
+    </div>
+    <div class="span4">
+      <p><%=  model.name %></p>
+    </div>
+    <div class="span2">
+      <p><%=  kind[model.kind] %></p>
+    </div>
+    <div class="span3" style='white-space: nowrap;'>
+      <p style='font-size: 14px; white-space:normal; line-height:1em'>
+        <% _.each( model.contests, function(contest){ %>
+            <a class="backbone" href="/<%= contest.slug %>/challenges"><%= contest.name %></a>,
+        <% }); %>
+      </p>
+    </div>
+    <div class="span2">
+      <p><%=  model.submissions %></p>
+    </div>
+    <div class="span3 pull-right">
+      <p class="btn-wrap btn-group">
+        <a href="/manage/challenge/edit/<%= model.id %>" class="btn backbone">Edit</a>
+        <a href="#" class="btn btn-orange delete">Delete</a>
+      </p>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<td width="30%" class="fnt-wt-600">
+    <span class="txt-alt-grey mdR"> <input class="js-select-tc" value="<%- testcase.id %>" type="checkbox"/> </span>
+    <span class="display-inline-block"><%- testcase.name %><% if (testcase.sample) { %>&nbsp;<i class="icon-right-open-mini"></i><span class="green">Sample</span><% } %></span>
+</td>
+<td width="10%"><%- testcase.type %></td>
+<td width="10%"><%- testcase.score %></td>
+<td width="12%"><%- testcase.input_size %></td>
+<td width="13%"><%- testcase.output_size %></td>
+<td class="js-testcase-row-operation" width="25%">
+    <a href="#" class="inline-block mdA js-edit-testcase" data-tcid="<%- index %>"><i class="txt-alt-grey icon2-edit"></i></a>
+    <a href="#" class="inline-block mdA js-download-testcase"><i class="txt-alt-grey icon2-download"></i></a>
+    <a href="#" class="inline-block mdA js-remove-testcase"><i class="txt-alt-grey icon2-delete"></i></a>
+</td>

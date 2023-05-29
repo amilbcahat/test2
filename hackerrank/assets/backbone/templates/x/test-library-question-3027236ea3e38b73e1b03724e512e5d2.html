@@ -1,0 +1,31 @@
+<div class="span-xl-16">
+    <div class="question-item-container">
+        <table width="100%">
+            <tr>
+                <td width="45%"><span class="fnt-wt-600 txt-alt-grey"><%=hrqn[question.type]%>
+                <%if (question.name){ %>
+                  &nbsp;&nbsp;</span><strong><%-question.name%></strong></td>
+                <% } %>
+                <td width="13%" class="fnt-sz-small"><span class="fnt-wt-600 txt-alt-grey">SCORE: </span><strong><%=question.points%> points</strong></td>
+                <td width="22%" class="fnt-sz-small"><span class="fnt-wt-600 txt-alt-grey">TESTCASE: </span><strong>30 (2 sample)</strong></td>
+                <td width="20%" class="fnt-sz-small text-right">
+                    <span class="block-highlight">Programming</span>
+                    <span class="block-highlight">Java</span>
+                </td>
+            </tr>
+        </table>
+        <div class="row no-margin">
+            <div class="span12 no-padding msT">
+                <div class="text-ellipsis">
+                    <%=question.question%>
+                </div>
+                <a class="block" href="#">expand <i class="icon-down-open"></i></a>
+            </div>
+            <% if (test.questions_array.indexOf(question.id.toString()) != -1) { %>
+            <a href="#" class="btn btn-alert mlT pull-right remove-question" style="width:140px;" data-qid="<%=question.unique_id%>">Remove</a>
+            <% } else { %>
+            <a href="#" class="btn btn-primary mlT pull-right add-question" style="width:140px;" data-qid="<%=question.unique_id%>">Add</a>
+            <% } %>
+        </div>
+    </div>
+</div>

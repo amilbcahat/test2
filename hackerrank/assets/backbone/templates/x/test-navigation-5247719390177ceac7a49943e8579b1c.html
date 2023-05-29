@@ -1,0 +1,66 @@
+<div class="sidebar-scroller bottom">
+    <i class="icon-down-open-bold"></i>
+    <i class="icon-up-open-bold"></i>
+</div>
+
+<!-- This is the expand and collapse icon that will appear when in smaller screens -->
+<div class="showfor1024" id="sidebar-menu-icon">
+    <i class="icon-menu-large sidebar-menu-icon"></i>
+</div>
+
+<div class="mlA">
+    <p class="sidebar-nav-title"><span class="hidefor1024">EDIT TEST</span></p>
+    <ul class="hre-sidebar-list">
+        <li <% if (!active_nav_link || active_nav_link == 'questions') { %>class="active"<% } %>><a href="/x/tests/<%- model.id %>/questions" class="js-backbone"><i class="icon2-questions"></i><span class="hidefor1024">Questions</span></a></li>
+        <li <% if (active_nav_link == 'general-settings') { %>class="active"<% } %>><a href="/x/tests/<%- model.id %>/general-settings" class="js-backbone"><i class="icon2-generalsettings"></i><span class="hidefor1024">General Settings</span></a></li>
+        <li <% if (active_nav_link == 'share') { %>class="active"<% } %>><a href="/x/tests/<%- model.id %>/share" class="js-backbone"><i class="icon2-sharetest"></i><span class="hidefor1024">Share test with team</span></a></li>
+        <li <% if (active_nav_link == 'candidate-settings') { %>class="active"<% } %>><a href="/x/tests/<%- model.id %>/candidate-settings" class="js-backbone"><i class="icon-user" style="top:1px;"></i><span class="hidefor1024">Candidate settings</span></a></li>
+        <li <% if (active_nav_link == 'advanced-settings') { %>class="active"<% } %>><a href="/x/tests/<%- model.id %>/advanced-settings" class="js-backbone"><i class="icon-cog" style="top:1px;"></i><span class="hidefor1024">Advanced settings</span></a></li>
+    </ul>
+    <div class="clear"></div>
+</div>
+
+<span class="dark-divider"></span>
+
+<div class="mlA">
+    <p class="sidebar-nav-title"><span class="hidefor1024">REPORTS</span></p>
+    <ul class="hre-sidebar-list">
+        <li <% if (active_nav_link == 'reports') { %>class="active"<% } %>>
+            <a href="/x/tests/<%- model.id %>/reports" class="js-backbone">
+                <i class="icon2-allreports"></i>
+                <span class="hidefor1024">All Reports</span>
+            </a>
+        </li>
+        <li <% if (active_nav_link == 'not-started') { %>class="active"<% } %>>
+            <a href="/x/tests/<%- model.id %>/candidates/not-started" class="js-backbone">
+                <i class="icon-circle-empty" style="top:1px;"></i>
+                <span class="hidefor1024">Not Started <span class="pull-right fnt-wt-600">145</span></span>
+            </a>
+        </li>
+        <li <% if (active_nav_link == 'in-progress') { %>class="active"<% } %>>
+            <a href="/x/tests/<%- model.id %>/candidates/in-progress" class="js-backbone">
+                <i class="icon-adjust" style="top:1px;"></i>
+                <span class="hidefor1024">In Progress <span class="pull-right fnt-wt-600">85</span></span>
+            </a>
+        </li>
+        <li <% if (active_nav_link == 'completed') { %>class="active"<% } %>>
+            <a href="/x/tests/<%- model.id %>/candidates/completed" class="js-backbone">
+                <i class="icon-circle" style="top:1px;"></i>
+                <span class="hidefor1024">Completed <span class="pull-right fnt-wt-600">1425</span></span>
+            </a>
+        </li>
+        <li <% if (active_nav_link == 'qualified') { %>class="active"<% } %>>
+            <a href="/x/tests/<%- model.id %>/candidates/qualified" class="js-backbone">
+                <i class="icon2-thumbsup"></i>
+                <span class="hidefor1024">Qualified <span class="pull-right fnt-wt-600">72</span></span>
+            </a>
+        </li>
+        <li <% if (active_nav_link == 'failed') { %>class="active"<% } %>>
+            <a href="/x/tests/<%- model.id %>/candidates/failed" class="js-backbone">
+                <i class="icon2-thumbsdown"></i>
+                <span class="hidefor1024">Failed <span class="pull-right fnt-wt-600">1353</span></span>
+            </a>
+        </li>
+    </ul>
+    <div class="clear"></div>
+</div><!-- end .mlA -->

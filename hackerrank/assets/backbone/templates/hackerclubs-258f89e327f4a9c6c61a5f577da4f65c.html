@@ -1,0 +1,61 @@
+<style type="text/css">
+ul#tiles {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+ 
+ul#tiles li {
+  display: inline-block;
+  margin: 0 1em 1em 0;
+  position: relative;
+}
+ 
+span.text-content span {
+  /*display: table-cell;*/
+  text-align: center;
+  vertical-align: middle;
+}
+ 
+ul#tiles li:hover span.text-content {
+  opacity: 1;
+}
+span.text-content {
+  background: rgba(0,0,0,0.5);
+  color: white;
+  cursor: pointer;
+  height: 50px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 310px;
+  opacity: 0;
+  -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  transition: opacity 500ms;
+}
+</style>
+<section class="hackerclubs container--inner">
+    <header class="page-title container">
+        <div class="row">
+            <h1 class="span16 text-center"><!--<div class="title-img"></div> -->Hacker Clubs <% if (collection.slug_title) { %>in <%= collection.slug_title %><% } %></h1>
+        </div>
+    </header>
+    <div class="row light-wrap wrap">
+        <ul id="tiles">
+            <% _.each(_collection, function (model) { %>
+            <li>
+                <img src="<%= model.tile_image %>"/><p class="text-center"><%= model.school_name %> </p>
+                <span class="text-content" style="disply:none !important;"><span>
+                    <div class="back">Number of hackers : <%= model.hackers_count %><br/>
+                        <% if (model.ambassadors.length > 0) { %>
+                        Campus Ambassador<% if (model.ambassadors.length > 1) { %>s<% } %>: <%= model.ambassadors.join(', ') %>
+                        <% } %><br/></div>
+                </span></span>
+            </li>
+            <% }); %>
+        </ul>
+    </div>
+</section>

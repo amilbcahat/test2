@@ -1,0 +1,58 @@
+{
+  "name": "codeshell",
+  "version": "0.0.51",
+  "description": "HackerRank CodeShell",
+  "license": "MIT",
+  "main": [
+    "dist/codeshell.js",
+    "dist/codeshell.css",
+    "dist/skins/codeshell_skin-HackerRank.css"
+  ],
+  "homepage": "https://github.com/interviewstreet/codeshell",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/interviewstreet/codeshell.git"
+  },
+  "keywords": [
+    "hackerrank",
+    "codemirror",
+    "hackerrankx",
+    "interviewstreet"
+  ],
+  "authors": [
+    {
+      "name": "Shiv Deepak",
+      "email": "shiv@hackerrank.com"
+    },
+    {
+      "name": "Anil Gulecha",
+      "email": "anil@hackerrank.com"
+    }
+  ],
+  "ignore": [
+    "package.json",
+    ".gitignore",
+    "test",
+    "test.sh",
+    ".npmignore",
+    "Gruntfile.coffee"
+  ],
+  "dependencies": {
+    "codemirror": "e92998af5dd97c771821f03c223b88442974bc6b",
+    "jquery": "1.8.3",
+    "jquery-ui": "1.8.23",
+    "select2": "3.4.0",
+    "underscore": "1.6.0",
+    "json2": "",
+    "jstorage": "0.4.8",
+    "jquery-cookie": "1.4.1"
+  },
+  "devDependencies": {
+    "bootstrap": "3.1.1",
+    "rjs": "2.1.11"
+  },
+  "private": true,
+  "resolutions": {
+    "jquery": "1.8.3"
+  }
+}

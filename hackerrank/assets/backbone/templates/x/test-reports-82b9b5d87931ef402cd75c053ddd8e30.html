@@ -1,0 +1,59 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL text-ellipsis display-inline-block pull-left" style="max-width:350px;">
+        <%- test.name %>
+    </h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Candidates</h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Reports <span class="js-subtype"></span></h3>
+    <% if(!hideElements) { %>
+    <a href="javascript:;" class="btn btn-line pull-right msA mjR js-pdfdl js-tooltip" style="padding: 8px 10px 10px 14px;" data-original-title="Download PDF" data-placement="bottom">
+        <i class="icon2-download"></i><span> PDF</span>
+    </a>
+    <a href="javascript:;" class="btn btn-line pull-right msA js-csvdl js-tooltip" style="padding: 8px 10px 10px 14px;" data-original-title="Download Excel" data-placement="bottom">
+        <i class="icon2-download"></i><span> Excel</span>
+    </a>
+    <% } %>
+    <a href="javascript:;" class="btn btn-line pull-right msA msR js-refresh js-tooltip" style="padding: 11px 10px 10px 14px;" data-original-title="Refresh" data-placement="bottom">
+        <i class="icon-arrows-ccw"></i>
+    </a>
+</div>
+<div class="overflow-content" id="control-overflow">
+    <div class="mdA">
+        <input style="width:130px; margin-bottom:0;" class="js-search" type="text" placeholder="Email filter"/><a class="js-emailclear txt-alt-grey" style="cursor:pointer;"><i class="icon2-status_wrong mmL"></i></a>
+        <input style="margin-bottom:0;" class="mdL js-daterange" type="text" placeholder="Date range"/><a class="js-dateclear txt-alt-grey" style="cursor:pointer;"><i class="icon2-status_wrong mmL"></i></a>
+        <% if(!hideElements) { %>
+            <div class="dropdown pull-right ">
+                &nbsp;
+                <a class="btn" data-toggle="dropdown" href="#">
+                    <span class="js-dropdowntxt">Candidate status</span>
+                    <i class="icon-down-open-mini msL"></i>
+                </a>
+                <ul class="dropdown-menu" id="menu1">
+                    <% h=window.istreet.cfg.ats; _.each (_.keys(h), function(ats){%>
+                    <li><a href="javascript:void(0)" class="js-filterats" data-attribute-ats="<%=ats%>"><%=h[ats]%></a></li>
+                    <%if (["3","6","10","17"].indexOf(ats) != -1) { %>
+                    <li class="divider"></li>
+                    <%}%>
+                    <% }); %>
+                </ul>
+            </div><!-- end dropdown -->
+
+            <div class="pull-right mmT">
+                <input class="hr-sleek-input" name="qtype_check" type="checkbox" id="qtype_check" <%if (showQuesTypes){%>checked<%}%> >
+                <label for="qtype_check" class="fnt-sz-mid display-inline-block msR">
+                    <span></span>
+                    Question type scores
+                </label>
+                <input class="hr-sleek-input" name="qtags_check" type="checkbox" id="qtags_check" <%if (showTags){%>checked<%}%> >
+                <label for="qtags_check" class="fnt-sz-mid display-inline-block">
+                    <span></span>
+                    Tags scores
+                </label>
+                <!--a class="btn btn-small js-pdfdl">PDF</a-->
+            </div>
+        <% } %>
+    </div><!-- mdA ends here -->
+    <div id="datatable_container">
+        <%= HR.appController.viewLoader()%>
+    </div>
+</div><!-- end overflow-content -->
+<div class="js-modalholder"></div>

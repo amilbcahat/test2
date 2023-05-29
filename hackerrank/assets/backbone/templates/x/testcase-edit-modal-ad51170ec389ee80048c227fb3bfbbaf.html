@@ -1,0 +1,87 @@
+<div class="modal fade in" id="edit-testcase-modal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <div class="underline_title">ADD TEST CASE</div>
+    </div>
+    <form class="testcase-form" name="edit-testcase-form">
+        <div class="modal-body">
+            <div class="row-fluid">
+                <div class="span4">
+                    <div class="txtbox_holder">
+                        <div class="txtbox_text">TEST CASE NAME</div>
+                        <input placeholder="enter test case name" type="text" name="name" class=" txt_box input-large " value="<% if (model.name) { %><%- model.name %><% } else { %>Testcase <%- index %><% } %>">
+                    </div>
+                </div>
+
+                <div class="span4">
+                    <div class="txtbox_holder">
+                        <div class="txtbox_text">TEST CASE DIFFICULTY</div>
+                        <select name="type">
+                            <option value="Easy" <% if (!model.type || model.type == "Easy") { %>selected<% } %>>Easy</option>
+                            <option value="Medium" <% if (model.type == "Medium") { %>selected<% } %>>Medium</option>
+                            <option value="Hard" <% if (model.type == "Hard") { %>selected<% } %>>Hard</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="span4">
+                    <div class="txtbox_holder">
+                        <div class="txtbox_text">TEST CASE SCORE</div>
+                        <input placeholder="enter test case name" type="text" class=" txt_box input-large " name="score" value="<% if (model.score) { %><%- model.score %><% } else { %>10<% } %>">
+                    </div>
+                </div>
+            </div><!-- end .row-fluid -->
+
+            <br/>
+            <!-- <center>
+                <ul class="nav nav-pills tab-nav-center testcases-tab">
+                    <li class="active"><a class="is-a" href="javascript:void(0)" data-tab="text">Paste Test case</a></li>
+                    <li><a class="is-a" href="javascript:void(0)" data-tab="file">Upload Test case</a></li>
+                </ul>
+            </center> -->
+
+            <div class="row-fluid">
+                <div class="span6 input-testcase">
+                    <div class="show-text">
+                    <div class="txtbox_text">INPUT</div>
+                    <textarea placeholder="paste input" class="input-xlarge input" style="height: 135px; width:97%;" name="input"><% if (model.input) { %><%- model.input %><% } %></textarea>
+                    </div>
+                    <div style="height: 113px; width:93%; display: none" class="testcase-upload-wrapper show-upload">
+                        <center>
+                            Upload Input Test case
+                            <input style="line-height: 0px !important; margin-left: 90px; margin-top: 10px;" type="file" class="input" name="input">
+                            <input class="pretty-checkbox" name="input-trim" id="checkbox-01" value="1" type="checkbox" checked data-label="Remove leading/trailing whitespaces from the testcase" />
+                        </center>
+                    </div>
+                </div>
+                <div class="span6 output-testcase">
+                    <div class="show-text">
+                    <div class="txtbox_text">OUTPUT</div>
+                    <textarea placeholder="paste output" class="input-xlarge output" style="height: 135px; width:97%;" name="output"><% if (model.output) { %><%- model.output %><% } %></textarea>
+                    </div>
+                    <div style="height: 113px; width:93%; display: none;" class="testcase-upload-wrapper show-upload">
+                        <center>
+                        Upload Output Test case
+                        <input style="line-height: 0px !important; margin-left: 90px; margin-top: 10px;" type="file" class="output" name="output">
+                        <input class="pretty-checkbox" name="output-trim" id="checkbox-02" value="1" type="checkbox" checked data-label="Remove leading/trailing whitespaces from the testcase" />
+                    </center>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clear_float"></div>
+
+        </div><!-- end .modal-body -->
+        <div class="modal-footer">
+            <div class="fltlft">
+                <span class="light_grey">Mark as sample testcase</span>
+                <div class="switch switch-small">
+                    <input type="checkbox" name="sample" value="sample" id="testcase-sample" <% if (model.sample) { %>checked <% } %>/>
+                </div>
+            </div>
+
+            <a href="javascript:void(0)" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+            <button type="submit" class="modal-button btn btn-primary" data-loading-text="Saving...">Save changes</a>
+        </div>
+    </form>
+</div>

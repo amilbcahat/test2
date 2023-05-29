@@ -1,0 +1,23 @@
+<div class="mjA">
+    <form name="coding-question-step1-form">
+        <div class="formgroup">
+            <label>Problem name</label>
+            <input type="text" name="name" class="wide" value="<% if (model.name) { %><%- model.name %><% } %>">
+        </div>
+
+        <div class="formgroup">
+            <label>Problem statement</label>
+            <p class="txt-alt-grey-dark span9 no-padding">Problem statement should be clear without any ambiguity. Make sure at least 2 or 3 testcases are added, so the candidates can understand the problem statement better.</p>
+            <div class="clear"></div>
+            <!-- add editor here -->
+            <textarea class="editor_width texteditor" name="problem-description" id="problem-description" style="width: 100%"><% if (model.question) { %><%- model.question %><% } %></textarea>
+        </div>
+
+        <div class="row no-margin plT">
+            <div class="span-xs-16 span-md-16">
+                <button type="submit" class="btn btn-primary btn-mid">Save Question</button>
+            </div>
+        </div>
+    </form>
+
+</div><!-- end mjA -->

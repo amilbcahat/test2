@@ -1,0 +1,31 @@
+<% kind = {
+    code: "Algorithm",
+    game: "Game"
+} %>
+<div class="row">
+    <div class="span1">
+      <p><%= index %></p>
+    </div>
+    <div class="span4">
+      <p><%=  model.name %></p>
+    </div>
+    <div class="span2">
+      <p><%=  kind[model.kind] %></p>
+    </div>
+    <div class="span3" style='white-space: nowrap;'>
+      <p style='font-size: 14px; white-space:normal; line-height:1em'>
+        <% _.each( model.contests, function(contest){ %>
+            <a class="backbone" href="/<%= contest.slug %>/challenges"><%= contest.name %></a>,
+        <% }); %>
+      </p>
+    </div>
+    <div class="span2">
+      <p><%=  model.submissions %></p>
+    </div>
+    <div class="span3 pull-right">
+      <p class="btn-wrap">
+        <a href="<%= HR.appController.get_contest_namespace() %>/manage/challenge/edit/<%= model.id %>" class="btn btn-white backbone">Edit</a>
+        <a href="#" class="btn btn-white delete">Delete</a>
+      </p>
+    </div>
+</div>

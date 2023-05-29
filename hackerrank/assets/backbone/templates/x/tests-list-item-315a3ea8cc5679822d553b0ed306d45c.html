@@ -1,0 +1,31 @@
+<div class="row no-margin">
+    <div class="test-name-wrapper">
+        <a href="#" class="pull-left mmR mjL js-toggle-star txt-grey">
+            <i class="icon-star"></i>
+        </a>
+        <div class="pull-left">
+            <a href="/x/tests/<%- model.id %>/questions" class="js-backbone fnt-wt-600 txt-green"><%- model.name %></a>
+            <div class="fnt-sz-small">
+                <span class="fnt-wt-600"><%- model.duration %></span>&nbsp;minute test with&nbsp;<span class="fnt-wt-600"><%- model.questions_count %></span>&nbsp;questions
+            </div>
+        </div>
+    </div>
+    <div class="test-options-wrapper">
+        <div class="test-option-invite-wrapper hide-in-xs">
+            <div class="all-test-options">
+                <% if (HR.currentUser.get('role') == "developer") { %>
+                <a href="javascript:void(0)" class="test-option fnt-wt-600 js-tooltip" data-original-title="You are not allowed to invite candidates for this test"><i class="icon2-invitecandidates"></i>INVITE</a>
+                <% } else { %>
+                <a href="/x/tests/<%- model.id %>/invite" class="js-backbone test-option fnt-wt-600"><i class="icon2-invitecandidates"></i>INVITE</a>
+                <% } %>
+                <a href="/x/tests/<%- model.id %>/candidates/invited" class="test-option pull-right js-backbone"><strong class="txt-navy"><%= model.invited %></strong>&nbsp;invited</a>
+            </div>
+        </div>
+        <div class="test-option-reports-wrapper hide-in-xs">
+            <div class="all-test-options">
+                <a href="/x/tests/<%- model.id %>/candidates/all" class="js-backbone test-option fnt-wt-600"><i class="icon2-testlist_reports"></i>REPORTS</a>
+                <a href="/x/tests/<%- model.id %>/candidates/completed" class="test-option pull-right js-backbone"><strong class="txt-navy"><%= model.attempted %></strong>&nbsp;completed</a>
+            </div>
+        </div>
+    </div><!-- end .test-options-wrapper -->
+</div><!-- end .row -->

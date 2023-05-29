@@ -1,0 +1,41 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL">Duplicate Question</h3>
+</div>
+
+<div class="overflow-content" id="control-overflow">
+    <form id="duplicate-question-form" class="mjA">
+        <div class="msT msB">
+            <div class="span2">Search By :</div>
+            <div class="span13 search-radio-grp">
+                <label>
+                    <input id="search-fields-id" name="search-field" type="radio" value="id" <% if(searchBy == 'id') { %> checked='checked' <% } %>/>ID
+                </label>
+                <label>
+                    <input id="search-fields-name" name="search-field" type="radio"
+                           value="name" <% if(searchBy == 'name') { %> checked='checked' <% } %> />Name/Email
+                </label>
+            </div>
+        </div>
+
+        <div class="msT msB">
+            <div class="span2 msT">Question: </div>
+            <input type="hidden" class="wide" id="question-select2">
+        </div>
+
+        <div class="msT msB">
+            <div class="span2 msT">New User: </div>
+            <input type="hidden" class="wide" id="user-select2">
+        </div>
+
+        <div class="row no-margin plT">
+            <div class="span-xs-16 span-md-16">
+                <button type="submit" id="duplicate-question" class="btn btn-primary btn-mid">Duplicate
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <div class="mjA hidden message-box">
+    </div>
+
+</div>

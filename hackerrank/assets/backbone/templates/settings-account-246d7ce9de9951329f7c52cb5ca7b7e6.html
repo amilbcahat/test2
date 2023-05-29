@@ -1,0 +1,53 @@
+<div class="settings_content-pane padded">
+    <div class="settings_content-group">
+        <h3>Merge Accounts</h3>
+        <p class="aside msT mlB">Accidentally create two accounts? This combines another account into the one you are currently logged in as.</p>
+        <div class="formgroup">
+            <label for="mergeaccounts">Username of the account to merge with <%=model.username%></label>
+            <div class="input-btn-group">
+                <input id="mergeaccounts" class="wide with-help" type="text" placeholder="username"/>
+                <a class="btn btn-merge">Submit</a>
+            </div>
+            <div><small class="sub-help merge-response"></small></div>
+        </div>
+    </div>
+    <div class="settings_content-group">
+        <h3>Email Addresses</h3>
+        <p class="aside msT mlB">We will never share your email address or display it publicly.</p>
+        <div id="settings_emails" class="formgroup horizontal settings-addemail"></div>
+    </div>
+    <div class="settings_content-group settings_connections">
+        <h3>Connected Accounts</h3>
+        <p class="aside block-margin margin-large bottom">Connect your other accounts with HackerRank to share your progress and scores and find your friends</p>
+        <div class="clearfix connect-social">
+            <div class="formgroup horizontal">
+                <% if (model.fb_uid) { %>
+                <div class="clearfix mlL">
+                    <div class="pull-left">
+                        <p class="pull-left"><i class="icon-facebook icon--single icon--large btn btn-facebook"></i></p>
+                        <p class="static-input  pull-left mmT"><small class="mlL mlR">Facebook is connected</small></p>
+                    </div>
+                    <div class="">
+                        <div style="display:inline-block">
+                            <input id="facebook_allow_opengraph" class="js-switch" name="facebook_allow_opengraph" type="checkbox" <% if (model.facebook_allow_opengraph) { %> checked <% } %> />
+                        </div>
+                        <span class="padding-left small">Share activity to Facebook</span>
+                    </div>
+                </div>
+                <% } else { %>
+                <p class="mlL"><a class="btn btn-facebook btn-social span4"><i class="icon-facebook"></i> Connect to Facebook</a></p>
+                <% } %>
+            </div>
+            <div class="formgroup horizontal">
+                <% if (model.gh_uid) { %>
+                <p class="static-input">
+                    <i class="icon-github icon--single icon--large btn btn-github"></i>
+                    <small class="mlL">Connected to Github</small></p>
+                <% } else { %>
+                <p class="mlL"><a class="btn btn-github btn-social span4"><i class="icon-github"></i> Connect to GitHub</a></p>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,102 @@
+<div class="container--inner">
+    <p class="alert info">
+        The classic challenges leaderboard is <a href="/classic_leaderboard" target="_blank">here</a>. Read more about the <a href="/blog/introducing-rating-system" target="_blank">change</a>
+    </p>
+    <header class="page-title">
+        <h1 class="">Leaderboards</h1>
+    </header>
+    <section class="leaderboard pull-left" style="width: 55%" >
+        <div class="pull-left">
+            <p class="bold">Overall Leaderboard</p>
+        </div>
+        <div class="pull-right">
+            <% if (current_hacker && current_hacker.rank) { %>
+                <p class="bold"><span class="zeta">Your Rank: </span><%= current_hacker.rank %><span class="psL zeta">Your Score: </span><%= current_hacker.rating.toFixed(2) %></p>
+            <% } %>
+        </div>
+        <div class="clearfix table-wrap">
+            <ul class="nav-tabs nav ungroup" style="margin-bottom: 1px">
+                <li class="<% if (level == 1) { %>active<% } %> text-center levelTab"><a href="/leaderboard/level/1" data-toggle="tab" data-level="1" class="rg_1 js-leaderboard-tab">O(1)</a></li>
+                <li class="<% if (level == 2) { %>active<% } %> text-center levelTab"><a href="/leaderboard/level/2" data-toggle="tab" data-level="2" class="rg_2 js-leaderboard-tab">O(logN)</a></li>
+                <li class="<% if (level == 3) { %>active<% } %> text-center levelTab"><a href="/leaderboard/level/3" data-toggle="tab" data-level="3" class="rg_3 js-leaderboard-tab">O(N)</a></li>
+                <li class="<% if (level == 4) { %>active<% } %> text-center levelTab"><a href="/leaderboard/level/4" data-toggle="tab" data-level="4" class="rg_4 js-leaderboard-tab">O(N<sup>2</sup>)</a></li>
+                <li class="<% if (level == 5) { %>active<% } %> text-center levelTab"><a href="/leaderboard/level/5" data-toggle="tab" data-level="5" class="rg_5 js-leaderboard-tab">O(2<sup>N</sup>)</a></li>
+            </ul>
+            <header style="background: white">
+                <div class="span-flex-2 text-center">
+                    <p>Rank</p>
+                </div>
+                <div class="span-flex-8">
+                    <p>Hacker</p>
+                </div>
+                <div class="span-flex-3">
+                    <p>Score</p>
+                </div>
+                <div class="span-flex-3 text-center">
+                    <p>Country</p>
+                </div>
+            </header>
+
+            <div id="blank-reason-container" class="table-body text-center">
+                <p class="row blank-reason small plA">
+                </p>
+            </div>
+
+            <div class='tab-content'>
+                <div class='tab-pane active'>
+                    <div id="leaders" class="table-body">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="msT">
+            <a href="/scoring/ratings" target="_blank" class="small">How is this calculated?</a>
+        </p>
+
+        <div class="pagination-wrap clearfix pagination-wrapper mlB msT">
+        </div>
+    </section>
+
+    <section class="js-weekly-leaderboard leaderboard pull-right" style="width: 40%">
+        <div class="pull-left">
+            <p class="bold">Weekly Contest Leaders</p>
+        </div>
+        <% if (weekly_contest && weekly_contest.started) { %>
+            <div class="pull-right">
+                <a href="/<%= weekly_contest.slug %>/challenges" class="backbone bold">View challenges <i class="icon--right icon-right-open"></i></a>
+            </div>
+        <% } %>
+        <div class="clearfix table-wrap">
+            <ul class="nav-tabs nav ungroup" style="margin-bottom: 1px">
+                <li class="<% if (weekly_type == 'today') { %>active<% } %> text-center weeklyTab"><a class="js-weekly" href="" data-toggle="tab" data-type="today">Today</a></li>
+                <li class="<% if (weekly_type == 'yesterday') { %>active<% } %> text-center weeklyTab"><a class="js-weekly" href="" data-toggle="tab" data-type="yesterday">Yesterday</a></li>
+                <li class="<% if (weekly_type == 'week') { %>active<% } %> text-center weeklyTab"><a class="js-weekly" href="" data-toggle="tab" data-type="week">Weekly</a></li>
+            </ul>
+            <header style="background: white">
+                <div class="span-flex-2 text-center">
+                    <p>Rank</p>
+                </div>
+                <div class="span-flex-10">
+                    <p>Hacker</p>
+                </div>
+                <div class="span-flex-4">
+                    <p>Score</p>
+                </div>
+            </header>
+
+            <div class='tab-content'>
+                <div class='tab-pane active'>
+                    <div id="blank-reason-container2" class="table-body text-center">
+                        <p class="row blank-reason small plA">
+                        </p>
+                    </div>
+
+                    <div id="leaders2" class="table-body">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

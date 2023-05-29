@@ -1,0 +1,117 @@
+<header class="page-title">
+    <h1>Settings &#47; Profile</h1>
+</header>
+<div class="fade in">
+    <h3>Social Connect</h3>
+    <br>
+    <div class="clearfix connect-social">
+        <div class="span5 m">
+            <a class="btn-auth btn-facebook" <% if (!(!model.fb_uid && !model.guest)) { %> disabled="disabled" style="zoom: 1; filter: alpha(opacity=30);opacity: 0.3;" <% } %>>
+                Sign in with <b>facebook</b>
+            </a>
+        </div>
+        <div class="span5 m">
+            <a class="btn-auth btn-github" <% if (!(!model.gh_uid && !model.guest)) { %> disabled="disabled" style="zoom: 1; filter: alpha(opacity=30);opacity: 0.3;" <% } %>>
+                Sign in with <b>github</b>
+            </a>
+        </div>
+    </div>
+    <br><br>
+    <h3>Hacker Info</h3>
+    <form>
+        <div class="formgroup horizontal">
+            <label for="name" class="pull-left span3">Your Full Name</label>
+            <div class="block span6 profile-input">
+                <input id="name" type="text" class="span6" value="<%= _.escape(model.name || '' )%>"/>
+                <small class="sub-help">Your full name, please, so your friends can find you</small></br>
+                <small class="error"><%= (model.errors || {}).name || '' %></small>
+            </div>
+        </div>
+        <div class="formgroup horizontal">
+            <label for="username" class="pull-left span3">Your Username</label>
+            <div class="block span6 profile-input">
+                <input id="username" type="text" class="span6" value="<%= _.escape(model.username) %>"/>
+                <small class="error"><%= (model.errors || {}).username || '' %></small>
+                <small class="sub-help">This is how users will see you on Hacker Rank</small></br>
+            </div>
+        </div>
+        <div class="formgroup horizontal">
+            <label class="pull-left span3">Your Email</label>
+            <div class="block span6 profile-input">
+                <p class="no-flow user-email"><%= _.escape(model.email) %></p>
+                <div id="secondary-emails-view"></div>
+            </div>
+        </div>
+        <hr>
+        <div class="formgroup horizontal">
+            <label for="school" class="pull-left span3">School</label>
+            <div class="block span6 profile-input">
+                <input id="school" autocomplete="off" type="text" class="span6" value="<%= _.escape(model.school || "" )%>"/>
+                <small class="sub-help">ex. Stanford</small>
+            </div>
+        </div>
+
+        <div class="formgroup horizontal">
+            <label for="company" class="pull-left span3">Company</label>
+            <div class="block span7 profile-input">
+                <input id="company" autocomplete="off" type="text" class="span6" value="<%= _.escape(model.company || "" )%>"/>
+                <small class="sub-help">ex. Google</small>
+            </div>
+        </div>
+
+        <div class="formgroup horizontal">
+            <label for="country" class="pull-left span3">Country</label>
+            <div class="block span7 profile-input">
+                <input class="pull-left clear-margin" type="text" id="country"  style="width:220px !important;"/>
+            </div>
+        </div>
+
+
+        <span class="pull-left"></span>
+        <div class="formgroup horizontal">
+            <label for="website" class="pull-left span3">Website</label>
+            <div class="block span7 profile-input">
+                <input id="website" type="text" class="span6" value="<%= _.escape(model.website) %>" placeholder="http://www.yourwebsite.com"/>
+                <small class="sub-help">So others can find your homepage or blog</small>
+            </div>
+        </div>
+        <hr>
+        <div class="formgroup horizontal">
+            <label for="full_name" class="pull-left span3">Your Biggest Hack</label>
+            <div class="block span7 profile-input">
+                <p class="sub-help">Share your biggest hack with your network. Wrote your own kernel? Co-founded a web app? Share a link!</p>
+                <textarea id="hack" class="span6"><%= _.escape(model.hack || "") %></textarea>
+            </div>
+        </div>
+        <div class="formgroup horizontal">
+            <label for="full_name" class="pull-left span3">T-Shirt Size</label>
+            <div class="block span7 profile-input">
+              <select id="tsize" name="tsize">
+                <option>--</option>
+                <option <% if (model.tsize=="S"){ %>selected="selected"<% } %> value="S">S</option>
+                <option <% if (model.tsize=="M"){ %>selected="selected"<% } %> value="M">M</option>
+                <option <% if (model.tsize=="L"){ %>selected="selected"<% } %> value="L">L</option>
+                <option <% if (model.tsize=="XL"){ %>selected="selected"<% } %> value="XL">XL</option>
+                <option <% if (model.tsize=="XXL"){ %>selected="selected"<% } %> value="XXL">XXL</option>
+              </select>
+            </div>
+        </div>
+        <hr>
+        <div class="formgroup horizontal">
+            <label for="chat" class="pull-left span3">Chat</label>
+            <div class="block span7 profile-input">
+                <div class='switch' data-on='success' data-off='info'>
+                  <input id='chat_enabled' name='chat_enabled' type='checkbox' <% if (model.chat_enabled) { %>checked<% } %> />
+                </div><br><br>
+                <div>
+                  <small class="sub-help">Refresh for changes to take effect</small>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </form>
+</div>
+<script type="text/javascript">
+  (function(a){if(window.filepicker){return}var b=a.createElement("script");b.type="text/javascript";b.async=!0;b.src=("https:"===a.location.protocol?"https:":"http:")+"//api.filepicker.io/v1/filepicker.js";var c=a.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c);var d={};d._queue=[];var e="pick,pickMultiple,read,write,writeUrl,export,convert,store,storeUrl,remove,stat,setKey,constructWidget,makeDropPane".split(",");var f=function(a,b){return function(){b.push([a,arguments])}};for(var g=0;g<e.length;g++){d[e[g]]=f(e[g],d._queue)}window.filepicker=d})(document);
+  filepicker.setKey(HR.PREFETCH_DATA.metadata.filepicker_key);
+</script>

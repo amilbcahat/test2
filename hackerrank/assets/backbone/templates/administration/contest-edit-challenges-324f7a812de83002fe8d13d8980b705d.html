@@ -1,0 +1,100 @@
+<div class="row padded10">
+    <div class="span8">
+        <br>
+        <button class="btn add-challenge">+ Add Challenge</button>
+    </div>
+</div>
+<div class="row plT plB">
+    <div class="span6">
+        <p class="zeta">Drag and drop to reorder</p>
+    </div>
+    <div class="pull-right span6">
+        <div class="difficulty-indicator-container pull-right">
+            <%= HR.util.genDifficultyIndicators(3, true) %>
+        </div>
+        <p class="zeta pull-right">Average Difficulty</p>
+    </div>
+</div>
+<div class="table-wrap text-center">
+    <header>
+        <div class="span4 alignL">
+            <p>Name</p>
+        </div>
+
+        <div class="span2">
+            <p>Difficulty <span class="help-prompt"><i class="icon-help-circled icon-single"></i><span class="help-text">The relative difficulty of a challenge on scale of 1 to 5.</span></p>
+        </div>
+        <div class="span2">
+            <p>Weight <span class="help-prompt"><i class="icon-help-circled icon-single"></i><span class="help-text">The maximum score attainable for the challenge, normalized over the leaderboard. Click to edit the weight.</span></span><a class="cursor change-weights"><i class="icon-pencil icon--grey"></i></a></p>
+        </div>
+        <div class="span2">
+            <p>Binary <span class="help-prompt"><i class="icon-help-circled icon-single"></i><span class="help-text">Binary scoring will override the default partial scoring; a user will get a non-zero score when their submission passes all the testcases.</span></p>
+        </div>
+        <div class="span2">
+            <p>Dynamic <span class="help-prompt"><i class="icon-help-circled icon-single"></i><span class="help-text">Once enabled, the maximum score of a challenge will be a function of the number of successful submissions out of the total submissions.</span></p>
+        </div>
+        <div class="span2">
+            <p>Timebound <span class="help-prompt"><i class="icon-help-circled icon-single"></i><span class="help-text">Once enabled, you can set a time bound, between which submissions are allowed.</span></p>
+        </div>
+    </header>
+    <div class="table-body">
+<% _.each(_collection, function (model, index){ %>
+    <div class="row row-drag text-center js-challenge-record" draggable="true"
+         data-index="<%= index %>" data-id="<%= model.id %>">
+        <div class="grip"></div>
+        <div class="span4 alignL">
+            <p class="msT"><span class="challenge-serial"><%= index + 1 %></span>.
+                <a href="contests/<%= model.contest_slug %>/challenges/<%= model.slug %>">
+                    <%= _.escape(model.name || 'N/A') %></a></p>
+        </div>
+        <div class="span2">
+            <div class="difficulty-indicator-container pull-left msT">
+                <%= HR.util.genDifficultyIndicators(3) %>
+            </div>
+        </div>
+        <div class="span2">
+            <div class="msT">
+                <span class="weight"><%= model.weight %></span>
+                <input class="weight hide span2" type="text" value="<%= model.weight %>">
+            </div>
+        </div>
+        <div class="span2">
+            <div class="msT">
+                <input type="checkbox" class="binary" <% if (model.binary_scoring) { %>checked="checked"<% } %>
+                   data-id="<%= model.id %>">
+            </div>
+        </div>
+        <div class="span2">
+            <div class="msT">
+                <input type="checkbox" class="dynamic" <% if (model.dynamic) { %>checked="checked"<% } %>
+                   data-id="<%= model.id %>">
+            </div>
+        </div>
+        <div class="span2">
+            <div class="msT">
+                <input type="checkbox" class="timebound" disabled="disabled">
+            </div>
+        </div>
+        <div class="span1 pull-right">
+            <p>
+                <% if (model.is_mod) { %>
+                <a class="btn btn-text backbone no-padding"
+                   href="/administration/contests/edit/<%= model.contest_id %>/challenges/edit/<%= model.challenge_id %>">
+                    <i class="icon-pencil"></i></a>
+                <% } else { %>
+                <p class="dummy-pencil pull-left"></p>
+                <% } %>
+                <a class="cursor remove-challenge btn btn-text" data-id="<%= model.id %>"><i class="icon-cancel-small"></i></a>
+            </p>
+        </div>
+    </div>
+<% }) %>
+<% if (_collection.length == 0) { %>
+<div class="aside">
+    No challenges have been added yet
+</div>
+<% } else { %>
+<div class="split-table-body dummy" draggable="true" data-index="<%= _collection.length %>">
+</div>
+<% } %>
+<div class="pagination-wrap clearfix pagination-wrapper"></div>

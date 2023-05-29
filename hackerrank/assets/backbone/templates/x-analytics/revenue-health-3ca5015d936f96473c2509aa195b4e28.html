@@ -1,0 +1,61 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL">Overall Health (Sales Revenue)</h3>
+</div>
+
+<div class="overflow-content" id="control-overflow">
+    <div class="content mlA">
+        <div class="actions mlB">
+            <% if(month == 'current') { %>
+            <a href="#" class="btn change-month" data-month="last_month"><i class="icon-left-open"></i> Report for <%=
+                moment().subtract('month', 1).format("MMMM, YYYY") %></a>
+            <% } else { %>
+            <a href="#" class="btn change-month" data-month="current">Report for <%= moment().format("MMMM, YYYY") %> <i
+                    class="icon-right-open"></i></a>
+            <% } %>
+        </div>
+
+        <div class="content-header mlB">
+            Sales Revenue (Opportunities) for
+            <span class="bold">
+                <% if(month == 'current') { %>
+                                <%= moment().format("MMMM, YYYY") %>
+                <% } else { %>
+                                <%= moment().subtract('month', 1).format("MMMM, YYYY") %>
+                <% } %>
+            </span>
+        </div>
+
+        <div class="content-container">
+            <% if(month == 'current') { %>
+            <div class="row mlB">
+                <div class="span2">Goal</div>
+                <div class="span3 goal-text">$ <%= data.goal %><a href="#" class="edit-goal mlL"><i class="icon-pencil"></i></a></div>
+                <form name="goal-form" class="span3 row hidden">
+                    <input type="text" value="<%= data.goal %>" style="width: 100px"/>
+                    <button type="submit" class="btn" style="vertical-align: top">Save</button>
+                </form>
+                <div class="clearfix"></div>
+            </div>
+
+            <% } %>
+            <div class="row">
+                <div class="span2">Closed So Far</div>
+                <div class="span3"><a href="#" class="get-data" data-type="closed_won">$ <%= data.closed_won %></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2">In Contract</div>
+                <div class="span3"><a href="#" class="get-data" data-type="contract">$ <%= data.proposal %></a></div>
+            </div>
+            <div class="row">
+                <div class="span2">In Proposal</div>
+                <div class="span3"><a href="#" class="get-data" data-type="proposal">$ <%= data.contract %></a></div>
+            </div>
+        </div>
+
+        <div id="health-data-section">
+
+        </div>
+    </div>
+
+</div>

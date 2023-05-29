@@ -1,0 +1,99 @@
+<div class="pull-left span11 forum-content capped">
+    <!--<div class="forum-content-header">-->
+        <!--<ul class="unstyled horizontal nav-tabs">-->
+            <!--<li class="active"><a href="#popular-questions" data-toggle="tab">Popular Questions</a></li>-->
+            <!--<li><a href="#recent-questions" data-toggle="tab">Recent Questions</a></li>-->
+        <!--</ul>-->
+    <!--</div>-->
+    <div class="forum-content-body light-wrap tab-content">
+        <div class="tab-pane active" id="popular-questions">
+            <% if(_.isEmpty(collection)) { %>
+              No questions. Be the first to <a href="<%= HR.appController.get_contest_namespace() %>/challenges/<%= challenge.get('slug') %>/forum/questions/ask" class="backbone">ask!</a>
+            <% } %>
+
+            <% _.each(collection, function(question) { %>
+
+            <div class="forum-teaser-wrap">
+                <h2 class="small"><a class="backbone" href="<%= HR.appController.get_contest_namespace() %>/challenges/<%=challenge.get('slug')%>/forum/questions/<%=question.id%>"><%= question.title %></a></h2>
+                <p class="answer"><%= question.description_html.replace(/(<([^>]+)>)/ig,"").substr(0, 160) %>... [<a class="backbone" href="<%= HR.appController.get_contest_namespace() %>/challenges/<%=challenge.get('slug')%>/forum/questions/<%=question.id%>">read more</a>]</p>
+
+                <div class="sub clearfix">
+                  <!--
+                     -<%= question.votes %> votes •
+                     -->
+                     <small class="pull-left">
+                       By <a class="cursor hacker-show backbone" data-action="hacker-modal" data-value="<%= question.hacker_username %>" href="/<%= question.hacker_username %>"><%= question.hacker_username %></a><% if (question.hacker_is_admin) { %> <span class="label label-info">MOD</span><% } %>
+                       <span class="timeago" title="<%=question.created_at%>"></span>
+                       • <%= question.answers_count %> answer<%= (question.answers_count==1)?'':"s" %>&nbsp;
+                       <% if(!_.isEmpty(question.tags)) { %>
+                       • Tags: <em><%= question.tags.join(',&nbsp;') %></em>&nbsp;
+                       <% } %>
+                     </small>
+                    <div class="pull-right">
+                        <!--<a href="/screen/hackerrank/challenge-interface.html" class="btn btn-sub pull-right backbone">Follow</a>-->
+                        <a href="<%= HR.appController.get_contest_namespace() %>/challenges/<%= challenge.get('slug') %>/forum/questions/<%= question.id %>" class="btn btn-primary pull-right backbone" data-analytics="Answer Question" >Answer</a>
+                    </div>
+                </div>
+            </div>
+            <%}) %>
+        </div>
+        <div class="tab-pane" id="recent-questions">
+            <% _.each(collection, function(question) { %>
+
+            <div class="forum-teaser-wrap">
+                <!--<h4>Dots &amp; Boxes</h4>-->
+                <h2 class="small"><a class="backbone" href="<%= HR.appController.get_contest_namespace() %>/challenges/<%=challenge.get('slug')%>/forum/questions/<%=question.id%>"><%= question.title %></a></h2>
+                <div class="sub clearfix">
+                  <!--
+                     -<%= question.votes %> votes •
+                     -->
+                     <small class="pull-left">
+                       By <a class="cursor hacker-show" data-action="hacker-modal" data-value="<%= question.hacker_username %>"><%= question.hacker_username %></a><% if (question.hacker_is_admin) { %> <span class="label label-info">MOD</span><% } %>
+                       <span class="timeago" title="<%=question.created_at%>"></span>
+                       • <%= question.answers_count %> answer<%= (question.answers_count==1)?'':"s" %>&nbsp;
+                       <% if(!_.isEmpty(question.tags)) { %>
+                       • Tags: <em><%= question.tags.join(',&nbsp;') %></em>&nbsp;
+                       <% } %>
+                     </small>
+                    <div class="pull-right">
+                        <!--<a href="/screen/hackerrank/challenge-interface.html" class="btn btn-sub pull-right backbone">Follow</a>-->
+                        <a href="<%= HR.appController.get_contest_namespace() %>/challenges/<%= challenge.get('slug') %>/forum/questions/<%= question.id %>" class="btn btn-primary pull-right backbone" data-analytics="Answer Question" >Answer</a>
+                    </div>
+                </div>
+            </div>
+            <%}) %>
+        </div>
+    </div>
+    <!--
+    <div class="pagination-wrap clearfix pagination-wrapper">
+        <div class="pagination">
+            <ul>
+                <li class="disabled"><a><span class="double-caret left"></span><span class="double-caret left"></span></a></li>
+                <li class="disabled"><a><span class="caret left"></span></a></li>
+                <li class="active"><a class="backbone" href="/leaderboard/1">1</a></li>
+                <li><a class="backbone" href="/leaderboard/2">2</a></li>
+                <li><a class="backbone" href="/leaderboard/3">3</a></li>
+                <li><a class="backbone" href="/leaderboard/4">4</a></li>
+                <li><a class="backbone" href="/leaderboard/5">5</a></li>
+                <li><a class="backbone" href="/leaderboard/6">6</a></li>
+                <li><a class="backbone" href="/leaderboard/7">7</a></li>
+                <li><a class="backbone" href="/leaderboard/8">8</a></li>
+                <li><a class="backbone" href="/leaderboard/9">9</a></li>
+                <li><a class="backbone" href="/leaderboard/10">10</a></li>
+                <li><a class="backbone" href="/leaderboard/2"><span class="caret right"></span></a></li>
+                <li><a class="backbone" href="/leaderboard/71"><span class="double-caret right"></span><span class="double-caret right"></span></a></li>
+            </ul>
+        </div>
+        <div class="pagination-sub block-center clearfix" style="width: 140px;">
+            <div class="select-wrap" id="pagination-length">
+                <a href="" class="dropdown-toggle clearfix select-wrap" data-toggle="dropdown"><span class="select"><span class="page-number">10</span> per page</span><span class="indent"><b class="caret"></b></span></a>
+                <ul class="dropdown-menu unstyled" id="pagination-length-select">
+                    <li><a href="#">10</a></li>
+                    <li><a href="#">20</a></li>
+                    <li><a href="#">50</a></li>
+                    <li><a href="#">100</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>-->
+</div>

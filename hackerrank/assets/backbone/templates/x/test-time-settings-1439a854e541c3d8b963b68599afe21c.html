@@ -1,0 +1,47 @@
+<div class="mjA">
+    <label class="label-title-underline">
+        TIME SETTINGS
+    </label>
+    <% starttime = model.starttime %>
+    <% if (starttime) { %>
+    <% start = starttime.split(" ") %>
+    <% starttimes = start[1].split(":") %>
+    <% starttimeHM = starttimes[0] + ":" + starttimes[1] %>
+    <% } %>
+    <% endtime = model.endtime %>
+    <% if (endtime) { %>
+    <% end = endtime.split(" ") %>
+    <% endtimes = end[1].split(":") %>
+    <% endtimeHM = endtimes[0] + ":" + endtimes[1] %>
+    <% } %>
+
+    <form name="time-settings-form">
+        <div class="datepair">
+            <div class="input-prepend txt-box-rt-space">
+                <span class="add-on"><i class="icon-calendar"></i></span>
+                <input type="text" class="input-small date start"
+                       value="<%= Date.parse(starttime)?moment(starttime).format('YYYY-M-D'):'' %>"
+                       name="interview-start-date" placeholder="Start date">
+            </div>
+            <div class="input-prepend txt-box-rt-space bootstrap-timepicker">
+                <span class="add-on"><i class="icon-time"></i></span>
+                <input type="text" class="input-small time start txt_box"
+                       value="<%= Date.parse(starttime)?moment(starttime).format('HH:mm'):'' %>" id="time_picker_start"
+                       name="interview-start-time" placeholder="Start time">
+            </div>
+            to
+            <div class="input-prepend txt-box-rt-space bootstrap-timepicker">
+                <span class="add-on"><i class="icon-time"></i></span>
+                <input type="text" class="input-small time end txt_box"
+                       value="<%= Date.parse(endtime)?moment(endtime).format('HH:mm'):'' %>" id="time_picker_end"
+                       name="interview-end-time" placeholder="End time">
+            </div>
+            <div class="input-prepend txt-box-rt-space">
+                <span class="add-on"><i class="icon-calendar"></i></span>
+                <input type="text" class="input-small date end" name="interview-end-date"
+                       value="<%= Date.parse(endtime) ?moment(endtime).format('YYYY-M-D'):'' %>" placeholder="End date">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary margin-large right mdL">Save</button>
+    </form>
+</div>

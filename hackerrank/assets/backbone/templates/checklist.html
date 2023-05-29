@@ -1,0 +1,37 @@
+<div class="container">
+    <h2><%- _model.name %> Submissions</h2>
+    <% if(collection.sync_status) { %>
+        <% if(_.size(_collection) > 0) { %>
+            <ul class="alpha unstyled challenge-scoring accordion">
+                <% _.each(_collection, function(submission) { %>
+                    <li class="accordion-group">
+                        <h4 class="accordion-heading">
+                            <b>
+                                <a class="accordion-toggle" style="cursor: pointer" data-parent="#<%= submission.hacker_username %>" data-name="<%= submission.hacker_username %>">
+                                    <%= submission.hacker_username %>
+                                </a>
+                            </b>
+                        </h4>
+                        <div id="<%= submission.hacker_username %>" class="accordion-body hide">
+                            <p><b>Your Output</b></p>
+                            <pre><%= submission.stdout || 'N/A' %></pre>
+                            <br>
+                            <p><b>Score</b></p>
+                            <pre><%= submission.score || 'N/A' %></pre>
+                            <br>
+                            <p><b>Expected Output</b></p>
+                            <pre><%= submission.expected_output || 'N/A' %></pre>
+                            <br>
+                        </div>
+                    </li>
+                <% }); %>
+            </ul>
+        <% } else { %>
+            <div class="m gray">Empty</div>
+        <% } %>
+    <% } else { %>
+        <div class="m gray">Loading...</div>
+    <% } %>
+    <script>
+    </script>
+</div>

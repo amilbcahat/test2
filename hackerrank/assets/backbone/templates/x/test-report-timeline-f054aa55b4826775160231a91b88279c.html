@@ -1,0 +1,26 @@
+<div class="row no-margin pjA">
+ <p class="font12"><span class="font-clr-ltgrey font-w-600">&nbsp;&nbsp;TEST STARTED AT:</span><span class="font-w-500">&nbsp;<%=starttime%></span></p>
+ <p class="font12"><span class="font-clr-ltgrey font-w-600">&nbsp;&nbsp;TIME TAKEN:</span><span class="font-w-500">&nbsp;<%=total_time_taken%></span></span></p>
+ <% if (hasDisconnect) { %>
+ <p class="font12"><span class="font-red font-w-600">&nbsp;&nbsp;OFFLINE FOR:</span><span class="font-red font-w-500">&nbsp;<%=offlineTime%></span></span></p>
+ <% } %>
+ <% if (tllen > 1) { %>
+ <p class="font12"><span class="font-clr-ltgrey font-w-600">&nbsp;&nbsp;TEST ATTEMPT TIMELINE:</span></p>
+ <iframe id="tl-frame" src="report/timeline" frameBorder="0" scrolling="no" style="min-width:720px;"></iframe>
+ <ul class="tnc hide">
+   <li>This chart is an estimate of the timeline, based on our logged events.</li>
+   <li>Only attempted/viewed questions are listed.</li>
+   <li class="old-tl hide">This report was created before our connection tracking facility was enabled.</li>
+   <li class="new-tl hide">The <strong>Offline</strong> bar is only indicative. It marks regions where there was no activity between the candidate's computer and our servers. <em>The "time taken" also includes possible disconnections.</em></li>
+ </ul>
+ <br>
+ <button class="toggleTL button-white big_button_padding common_margin_bottom">+ Show complete event list</button>
+ <div class="full-details hide">
+ <% _.each(timeline, function(e){%>
+  <p><span class="font-clr-ltgrey"><%=new Date(e.inserttime * 1000)%></span> : <%=e.message%></p>
+ <% }); %>
+ </div>
+<% } else { %>
+  <p class="font12"><span class="font-clr-ltgrey font-w-600">&nbsp;&nbsp;NO EVENTS CAPTURED IN THIS ATTEMPT.</span></p>
+<% } %>
+</div>

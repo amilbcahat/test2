@@ -1,0 +1,2 @@
+HR.appController.addTemplate("backbone/templates/dashboard/bread-crumbs",function(obj){{var __t,__p="";Array.prototype.join}with(obj||{})__p+='<ul class="breadcrumb unstyled horizontal">\n  ',collection.each(function(n){__p+='\n  <li>\n    <a href="'+(null==(__t=n.get("path"))?"":__t)+'" class="backbone">\n      '+(null==(__t=n.get("name"))?"":__t)+'\n    </a>\n    <i class="icon-right-open-big divider"></i>\n  </li>\n  '}),__p+="\n</ul>\n";return __p});
+//# sourceMappingURL=bread-crumbs-f068b4068f42d2433772106bf4c8db2e.js.map

@@ -1,0 +1,44 @@
+<style>
+    #graph-grid {
+        margin: 20px auto;
+        border: 1px solid #666;
+        background: #fff;
+    }
+    .graph-row {
+        background-color: none;
+        border: none;
+    }
+    .graph-col {
+        height: 30px;
+        width: 30px;
+        background-color: none;
+        background: url('assets/games/go_tile.png');
+        border: 0px solid #000;
+        padding: 0px;
+    }
+
+    .graph-col[data-gg-y="0"][data-gg-x="0"] { background: url('assets/games/go_tile_topleft_corner.png'); }
+    .graph-col[data-gg-y="14"][data-gg-x="0"] { background: url('assets/games/go_tile_bottomleft_corner.png'); }
+    .graph-col[data-gg-y="14"][data-gg-x="14"] { background: url('assets/games/go_tile_bottomright_corner.png'); }
+    .graph-col[data-gg-y="0"][data-gg-x="14"] { background: url('assets/games/go_tile_topright_corner.png'); }
+    .graph-col[data-gg-y="0"] { background: url('assets/games/go_tile_top_edge.png'); }
+    .graph-col[data-gg-x="0"] { background: url('assets/games/go_tile_left_edge.png'); }
+    .graph-col[data-gg-y="14"] { background: url('assets/games/go_tile_bottom_edge.png'); }
+    .graph-col[data-gg-x="14"] { background: url('assets/games/go_tile_right_edge.png'); }
+
+    .graph-col div {
+        box-shadow: -3px -2px 12px 0px #333 inset;   
+        min-width: 30px;
+        min-height: 30px;
+        border-radius: 15px;
+      }
+
+    .white{ background-color:white; }
+
+    .black{ background-color:#666; }
+
+</style>
+<div>
+    <div class="game-grid" style="display: block; margin: auto;">
+    </div>
+</div>

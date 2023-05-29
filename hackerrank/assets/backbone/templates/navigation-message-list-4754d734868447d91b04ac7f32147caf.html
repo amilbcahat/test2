@@ -1,0 +1,18 @@
+<li class="notify_item <%= model.get('unread_count') > 0 ? 'unread' : 'read' %> nav_message_item" data-id="<%= model.get('id') %>">
+    <img src="<%= model.get('user2').avatar %>" height="50" width="50" class="avatar pull-left" onerror="$('li.nav_message_item[data-id=<%= model.get('id') %>] img').attr('src','https://d3rpyts3de3lx8.cloudfront.net/hackerrank/assets/gravatar.jpg')">
+    <div class="notify_message-wrap pull-right">
+        <div class="notify_author">
+            <strong><%- model.get('user2').username %></strong>
+            <a class="message_status pull-right" rel="tooltip" data-original-title="<%= model.get('unread_count') > 0 ? 'mark as read' : 'mark as unread' %>"><i class="<%= model.get('unread_count') > 0 ? 'icon-circle' : 'icon-circle-empty' %>"></i></a>
+        </div>
+        <div class="notify_msg message_body">
+            <% if (model.get('user1').id === model.get('last_message').sender_id) { %> 
+                <i class="icon-reply"></i>&nbsp;
+            <% } %>
+            <%- model.get('last_message').message %>
+        </div>
+        <div class="meta">
+            <small class="meta"><%= $.timeago(model.get('last_message').created_at) %></small>
+        </div>
+    </div>
+</li>

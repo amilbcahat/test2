@@ -1,0 +1,52 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL">Settings</h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Report Preferences</h3>
+</div>
+<div class="overflow-content" id="control-overflow">
+    <div class="mjA">
+        <div class="msT msB">
+            <label>EXCEL</label>
+            <div class="formgroup horizontal checkbox hr_checkbox psB">
+                <div style="float: left; padding-right: 20px">
+                    <input id="excel-prefs-question-wise" class="js-switch" name="excel_prefs" value="question_wise" type="checkbox" <% if (current_user.excel_prefs && current_user.excel_prefs.question_wise) { %>checked<% } %> />
+                </div>
+                <span>Show scores for every question</span>
+            </div>
+            <div class="formgroup horizontal checkbox hr_checkbox psB">
+                <div style="float: left; padding-right: 20px">
+                    <input id="excel-prefs-coding-details" class="js-switch" name="excel_prefs" type="checkbox" value="coding_details" <% if (current_user.excel_prefs && current_user.excel_prefs.coding_details) { %>checked<% } %> />
+                </div>
+                <span>Detailed coding question analysis (Lines of code, attempts, testcase wise split-up, etc.)</span>
+            </div>
+            <div class="formgroup horizontal checkbox hr_checkbox psB">
+                <div style="float: left; padding-right: 20px">
+                    <input id="excel-prefs-feedback" class="js-switch" name="excel_prefs" type="checkbox" value="feedback"<% if (current_user.excel_prefs && current_user.excel_prefs.feedback) { %>checked<% } %> />
+                </div>
+                <span>Show candidate feedback</span>
+            </div>
+        </div>
+        <div class="msT msB">
+            <label>PDF</label>
+
+            <div class="formgroup horizontal checkbox hr_checkbox psB">
+                <div style="float: left; padding-right: 20px">
+                    <input id="pdf-prefs-feedback" class="js-switch" name="pdf_prefs" type="checkbox" value="feedback"<% if (current_user.pdf_prefs && current_user.pdf_prefs.feedback) { %>checked<% } %> />
+                </div>
+                <span>Show candidate feedback</span>
+            </div>
+
+            <div class="formgroup horizontal checkbox hr_checkbox psB">
+                <div style="float: left; padding-right: 20px">
+                    <input id="pdf-prefs-output" class="js-switch" name="pdf_prefs" type="checkbox" value="output"<% if (current_user.pdf_prefs && current_user.pdf_prefs.output) { %>checked<% } %> />
+                </div>
+                <span>Show output for coding questions</span>
+            </div>
+        </div>
+
+        <div class="row no-margin plT">
+            <div class="span-xs-16 span-md-16">
+                <button type="submit" id="update-basic-info" class="btn btn-primary btn-mid">Save</button>
+            </div>
+        </div>
+    </div>
+ </div>

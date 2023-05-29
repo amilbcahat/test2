@@ -1,0 +1,133 @@
+<div class="top-fixed-bar support-sub-bar">
+    <h3 class="topbar-h3 mjL">Interview</h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Candidate report</h3>
+    <a href="#" class="btn btn-line pull-right msA mjR"><i class="icon-left-open"></i> Back</a>
+    <div class="clear"></div>
+
+    <div class="sub-top-bar">
+        <h4 style="margin:18px 30px;" class="pull-left"><% candidate = model.candidates[0] %><%- candidate.name || candidate.email || 'IUnknown' %></h4>
+        <div class="pull-right">
+            <span class="txt-alt-grey">Interviewed by:</span>
+            <span>Harishankaran</span>
+            <div class="btn-group thumbs-states" style="margin:0px 15px 3px 15px;">
+                <a class="btn"><i class="icon2-thumbsup"></i></a>
+                <a class="btn active"><i class="icon2-thumbsdown"></i></a>
+            </div>
+            <a href="#" class="btn btn-line mjR" style="margin-top:6px;"><i class="icon2-sharetest"></i></a>
+        </div>
+
+    </div><!-- end .sub-top-bar -->
+</div><!-- end .top-fixed-bar -->
+
+
+<div class="overflow-content adjust-two-fixed-bar" id="control-overflow">
+    <div class="mjA">
+
+        <h4>FEEDBACK</h4>
+        <div class="row-fluid mdT">
+            <div class="span11 no-padding"><textarea id="" name="" rows="3" class="txt_box fw" placeholder="Type your feedback."></textarea></div>
+            <div class="span4">
+                <!--button clas="btn">Edit feedback</button-->
+                <button style="width:100px;" class="btn">Cancel</button><br/>
+                <button style="width:100px;" class="btn btn-primary mmT">Save</button>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="code-review-section mlT">
+            <div class="code-review-head">
+                <span class="fnt-sz-big fnt-wt-600">Question 1</span>
+                <div class="pull-right">
+                    <span class="block-highlight fnt-sz-small">development</span>
+                    <span class="block-highlight fnt-sz-small">java</span>
+                </div>
+            </div>
+            <div class="question-wrapper-collapsed">
+                <p class="fnt-sz-small txt-alt-grey fnt-wt-600 mdB">QUESTION DESCRIPTION</p>
+                <span class="span16 text-ellipsis-span no-padding">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, exercitationem, asperiores, ipsam nostrum tenetur fugiat odio sapiente enim dolorum provident autem iusto doloribus quasi ea eos officia delectus distinctio cupiditate.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, exercitationem, asperiores, ipsam nostrum tenetur fugiat odio sapiente enim dolorum provident autem iusto doloribus quasi ea eos officia delectus distinctio cupiditate.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, exercitationem, asperiores, ipsam nostrum tenetur fugiat odio sapiente enim dolorum provident autem iusto doloribus quasi ea eos officia delectus distinctio cupiditate.
+                </span>
+                <div class="clear"></div>
+                <a class=" font12 terquoise block showmore" href="#">show more <i class="icon-down-open"></i></a>
+            </div>
+            <div class="span16 answer-player-wrapper">
+                <div class="pull-left mmT">
+                    <span class="txt-alt-grey">Language: </span><span class="fnt-wt-600">C++</span>
+                </div>
+                <div class="pull-right">
+                    <!-- @akshay add timeline here -->
+                    <a href="#" class="btn btn-small">copy code</a>
+                </div>
+            </div>
+            <div class="clear"></div>
+
+            <div class="code-wrapper">
+                <pre class="outbox cm-s-default no-margin no-padding"><table><tbody><tr><td class="line-no" width="5%"><div style="height: 0px;">1</div><div style="height: 0px;">2</div><div style="height: 0px;">3</div><div style="height: 0px;">4</div><div style="height: 0px;">5</div><div style="height: 0px;">6</div><div style="height: 0px;">7</div><div style="height: 0px;">8</div><div style="height: 0px;">9</div><div style="height: 0px;">10</div><div style="height: 0px;">11</div><div style="height: 0px;">12</div><div style="height: 0px;">13</div><div style="height: 0px;">14</div><div>15</div></td><td class="code"><div style=""><span class="cm-comment">/* Write your code here, Make sure you read from STDIN and write to STDOUT */</span></div><div style=""><span class="cm-meta">#include&lt;stdio.h&gt;</span></div><div style=""></div><div style=""><span class="cm-keyword">int</span> <span class="cm-variable">main</span>()</div><div style="">{</div><div style="">    <span class="cm-keyword">int</span> <span class="cm-variable">n</span>,<span class="cm-variable">i</span>;</div><div style="">    <span class="cm-keyword">int</span> <span class="cm-variable">sum</span><span class="cm-operator">=</span><span class="cm-number">0</span>;</div><div style="">    <span class="cm-variable">scanf</span>(<span class="cm-string">"%d"</span>,<span class="cm-operator">&amp;</span><span class="cm-variable">n</span>);</div><div style="">    <span class="cm-keyword">for</span>(<span class="cm-variable">i</span><span class="cm-operator">=</span><span class="cm-number">1</span>;<span class="cm-variable">i</span><span class="cm-operator">&lt;=</span><span class="cm-variable">n</span>;<span class="cm-variable">i</span><span class="cm-operator">++</span>)</div><div style="">    {</div><div style="">        <span class="cm-variable">sum</span><span class="cm-operator">=</span><span class="cm-variable">sum</span><span class="cm-operator">+</span><span class="cm-variable">i</span>;</div><div style="">    }</div><div style="">    <span class="cm-variable">printf</span>(<span class="cm-string">"%d"</span>,<span class="cm-variable">sum</span>);</div><div style="">    <span class="cm-keyword">return</span> <span class="cm-number">0</span>;</div><div>}</div></td></tr></tbody></table></pre>
+            </div>
+        </div><!-- .code-review-section -->
+        <!--div class="container_head float-head">
+            <div class="pull-right">
+                <a href="#" class="trybtn_css button-white big_button_padding rcorners_mid js-share-report">Share Report</a>
+            </div>
+
+            <div class="title-text-padding inline-block pull-right txt-box-rt-space">
+                <div class='cnt-status'></div>
+            </div>
+
+            <div class="title-text-padding inline-block pull-right txt-box-rt-space">
+                <span class="block font-light pull-left">Interviewed by: &nbsp;</span>
+                <span class="block pull-left">
+                    <% _.each(model.interviewers, function(interviewer, key) { %>
+                    <%- interviewer.name || interviewer.email || 'IUnknown' %>
+                    <% }); %>
+                </span>
+            </div>
+        </div>end container_head -->
+
+        <div class="clear_float"></div>
+        <div class="fixed-height-adjust"></div>
+
+        <div class="common_margin">
+            <!--table class="invisble-table cnt-feedback">
+            </table>
+
+            <div class="divider_smallheight"></div>
+            <div class='cnt-recordings'></div>
+
+            <div class="clear"></div>-->
+
+            <!-- <span class="underline_title margin-top-bott-15">COMMENTS</span>
+            <table class="invisble-table">
+                <tr>
+                    <td width="15%"><span class="font16">Vivek Ravisankar</span></td>
+                    <td width="70%">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    </td>
+                    <td width="15%"><span class="txtbox_text pull-right">Yesterday 2:15pm</span></td>
+                </tr>
+                <tr>
+                    <td width="15%"><span class="font16">Paul barber</span></td>
+                    <td width="70%">
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+                    </td>
+                    <td width="15%"><span class="txtbox_text pull-right">Yesterday 2:15pm</span></td>
+                </tr>
+                <tr>
+                    <td width="15%"><span class="font16">Vivek Ravisankar</span></td>
+                    <td width="70%">
+                        It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                    </td>
+                    <td width="15%"><span class="txtbox_text pull-right">Yesterday 2:15pm</span></td>
+                </tr>
+                <tr>
+                    <td width="15%"><span class="font16">Isaac John</span></td>
+                    <td width="70%">
+                        <textarea style="width:100%;" placeholder="Add your comment here..."></textarea>
+                    </td>
+                    <td width="15%"><a href="#" class="pull-right button-green btn_mid rcorners_mid">Comment</a></td>
+                </tr>
+            </table> -->
+        </div><!-- end .common_margin-->
+    </div><!-- .mjA -->
+</div>

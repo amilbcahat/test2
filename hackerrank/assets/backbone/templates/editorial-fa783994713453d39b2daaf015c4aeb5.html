@@ -1,0 +1,20 @@
+<div class="content_wrap mid">
+    <div class="content--inline padded">
+    <% if(model.draft) { %> <h2 class="text-center">THIS POST IS STILL A DRAFT.</h2> <%}%>
+    <% if(model.statistics) { %> 
+    <hr>
+    <h2 class="text-center">Statistics</h2> 
+    <hr>
+    <% statistics_json = JSON.parse(model.statistics) %>
+    <h4 class="span13 block-center ">Total Participation = <%= statistics_json.contest_participation%> </h4><br>
+    <h4 class="span13 block-center ">Total submissions for this challenge = <%= statistics_json.challenge_submissions%> (<%= ((statistics_json.challenge_submissions*100)/statistics_json.contest_participation).round(2) %>%)</h4><br>
+    <h4 class="span13 block-center ">Total successful submissions for this challenge = <%= statistics_json.successful_submissions%> (<%= ((statistics_json.successful_submissions*100)/statistics_json.challenge_submissions).round(2) %>%)</h4>
+    <hr>
+    <%}%>
+        <div class="post-content content-text span13 block-center ">
+            <!--CONTENT FOR STANDARD POST -->
+            <%= model.html_content %>
+            <!-- END -->
+        </div>
+    </div>
+</div>

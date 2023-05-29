@@ -1,0 +1,44 @@
+<style>
+    .chart {
+        height: 250px;
+        display: block;
+    }
+
+    .track-select {
+        position: relative;
+    }
+
+    .track-meta-category {
+        font-size: 9px;
+        position: absolute;
+        botton: 5px;
+        right: 5px;
+    }
+</style>
+
+<div class="track-chart span6 chart">
+</div>
+<div class="pull-left track-progress">
+    <span class="clearfix">
+        <p class="alpha pull-left"><%= currentName %>: <%= stats.completion %>% Complete</p>
+        <div id="dashboard_trackSelect" class="dropdown pull-left">
+            <a class="dropdown-toggle" href="" data-toggle="dropdown"><i class="icon-down-dir"></i></a>
+            <ul class="unstyled dropdown-menu span6">
+                <li><a class="track-select cursor">All Tracks</a></li>
+                <% _.each(model.tracks, function (track, index) { %>
+                <li>
+                    <a class="track-select cursor" data-track-id="<%= track.id %>">
+                        <%= track.name %>
+                        <span class="track-meta-category pull-right"><%= track.category %></span>
+                    </a>
+                </li>
+                <% }) %>
+            </ul>
+        </div>
+    </span>
+    <p class="no-flow"><%= stats.completed %> Challenge<%= stats.completed == 1 ? '':'s' %> of <%= stats.total %> completed</p>
+    <p class="no-flow">Languages used: <%= stats.languages.join(', ') %></p>
+    <% if (stats.category) { %>
+    <p class="no-flow">Category: <%= stats.category %></p>
+    <% } %>
+</div>

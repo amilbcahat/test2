@@ -1,0 +1,44 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL">All Tests</h3>
+    <a href="javascript:;" id="new-test-popup-link" style="margin: 9px 25px;" class="btn btn-primary pull-right">
+        <i class="icon2-createtest"></i>Create new test</a>
+    <div id="new-test-popup" class="new-test-popup hidden">
+        <form name="new-test-form" class="no-margin">
+            <div class="mlA">
+                <label>TEST NAME</label>
+                <input id="new-test-name" name="test-name" type="text" class="fw" placeholder="Test Name">
+                <label>TEST DURATION</label>
+                <input id="new-test-duration" data-validation="number" name="test-duration" type="text" placeholder="(min)" style="width:80px;"><span class="mdL" style="position:relative; top:-4px;">minutes</span>
+            </div>
+            <div class="test-popup-footer">
+                <a id="new-test-popup-cancel" class="btn btn-line">Cancel</a>
+                <button type="submit" class="btn btn-primary msL">Create Test</button>
+            </div>
+            <div class="response-message hidden"></div>
+        </form>
+    </div><!-- end new-test-popup -->
+    <% if(!collection.length) { %>
+    <!-- you will need to add .hidden class for hiding when the first test is created -->
+    <img id="create-new-test-pointer" class="create-first-test-pointer" src="/assets/test_placeholder.png"/>
+    <% } %>
+</div>
+<div class="overflow-content" id="control-overflow">
+    <!-- any contents add here -->
+    <ul class="alltests-table" id="tests-container">
+    </ul>
+    <% if (pagination) { %>
+        <%= pagination.html() %>
+    <% } %>
+</div><!-- end .overflow-content -->
+
+<div id="responsive-bottom-placeholder" class="responsive-bottom-holder text-center"></div>
+<div class="hre-footer fnt-sz-small">
+  <center class="mmT mmB">
+    <a class="mdR mdL" href="/aboutus" target="_blank">About</a>
+    <a class="mdR" href="privacy" target="_blank">Privacy policy</a>
+    <a class="mdR" href="tos" target="_blank">Terms of service</a>
+    <a class="mdR" href="http://blog.interviewstreet.com/" target="_blank">Blog</a>
+    <a class="mdR" href="contact" target="_blank">Contact us</a>
+    <a class="btn btn-small btn-line " href="http://support.interviewstreet.com" target="_blank">Support</a>
+  <center>
+</div>

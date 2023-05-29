@@ -1,0 +1,108 @@
+<% if (contest.leaderboard_format == 'acm') { %>
+    <div class="row <% if (is_current_hacker) { %>active-user<% } %>" style="padding: 0px">
+<% } else { %>
+    <div class="row padding-small top bottom<% if (index%2 == 0) { %> row-alt<% } %> <% if (is_current_hacker) { %>active-user<% } %>">
+<% } %>
+    <% if (contest.leaderboard_format == 'acm') { %>
+        <div class="span1 acm-leaderboard-cell">
+            <p><%= leader.rank %></p>
+        </div>
+        <div class="span2 acm-leaderboard-cell">
+            <p><%= _.escape(leader.hacker).slice(0, 16) + (function(l) { return ((l.length>16) ? "..." : "");})(leader.hacker) || 'N/A' %></p>
+        </div>
+        <div class="span1 acm-leaderboard-cell" rel="tooltip" <% if (score_detail) { %> title="<%= score_detail %>" <% } %> >
+            <p><%= leader.solved_challenges || "-" %></p>
+        </div>
+        <div class="span1 acm-leaderboard-cell" rel="tooltip" <% if (score_detail) { %> title="<%= score_detail %>" <% } %> >
+            <p><%= Math.ceil(leader.time_taken / 60) || "-" %></p>
+        </div>
+        <div class="span11">
+        <% var challenges_count = leader.challenges.length; %>
+        <% var width = 100/(challenges_count * 1.0); %>
+        <% _.each(leader.challenges, function (challenge) { %>
+            <div class="acm-leaderboard-cell <%= challenge.time_taken > 0 ? 'correct' : '' %> <%= challenge.time_taken == 0 && challenge.submissions > 0 ? 'incorrect' : '' %>" style="width: <%= width %>%; float: left; box-sizing: border-box; margin-left: 0;">
+                <% if (challenge.submissions > 0) { %>
+                    <p rel="tooltip" title="<%= challenge.tooltip %>">
+                        <%= challenge.submissions %> (<%= challenge.time_taken_formatted %> + <%= Math.ceil(challenge.penalty/60) %>)
+                    </p>
+                <% } %>
+                <% if (challenge.public_solutions) { %>
+                    <a target="_blank" data-analytics="Download Solution" href="/rest/contests/<%= contest.slug %>/challenges/<%= challenge.slug %>/hackers/<%= leader.hacker %>/download_solution">
+                        <i class="icon-download"></i>
+                    </a>
+                <% } %>
+            </div>
+        <% }); %>
+        </div>
+    <% } else { %>
+        <% if (contest.leaderboard_type != "country" && show_code) { %>
+            <% widths = [2, 3, 2, 2, 2, 3]; index = 0; %>
+        <% } else if (contest.leaderboard_type != "country") { %>
+            <% widths = [2, 4, 3, 3, 3]; index = 0; %>
+        <% } else if (show_code) { %>
+            <% widths = [2, 4, 3, 3, 3]; index = 0; %>
+        <% } else { %>
+            <% widths = [2, 5, 3, 5]; index = 0; %>
+        <% } %>
+        <div class="span<%= widths[index] %><% index += 1; %>">
+            <p><!-- <span class="rank <% if (leader.up) { %>up<% } else if (leader.down) { %>down<% } else { %><% } %>"></span> --><%= leader.rank %></p>
+        </div>
+        <div class="span<%= widths[index] %><% index += 1; %>">
+            <p>
+                <a class="cursor leaderboard-hackername" data-action="hacker-modal" rel="tooltip" title="<%= timeTooltip %>" data-value="<%= _.escape(leader.hacker) %>" href="/<%= _.escape(leader.hacker)%>" target="_blank">
+                    <%= _.escape(leader.hacker).slice(0, 16) + (function(l) { return ((l.length>16) ? "..." : "");})(leader.hacker) || 'N/A' %>
+                </a>
+                <% if (show_code) { %>
+                    <a target="_blank" data-analytics="Download Solution" href="/rest/contests/<%= contest.slug %>/challenges/<%= challenge %>/hackers/<%= leader.hacker %>/download_solution">
+                        <i class="icon-download"></i>
+                    </a>
+                <% } %>
+            </p>
+        </div>
+        <div class="span<%= widths[index] %><% index += 1; %>">
+            <p>
+                <%= parseFloat(leader.score).toFixed(2) %>
+                <!-- <small> -->
+                <!--   <i data-toggle="popover" data-content="<%= scoreTooltip %>" class="icon-help-circled pull-right"></i> -->
+                <!-- </small> -->
+            </p>
+        </div>
+        <div class="span<%= widths[index] %><% index += 1; %>">
+            <img class="flag" rel="tooltip" src="/assets/flags/<%= window.countries_mapping[leader['country']] %>.png"
+            title="<%= leader['country'] %>"
+            alt="<%= leader['country'] %>"
+            onerror="this.onerror=null; this.src='/assets/flags/_unknown.png';">
+        </div>
+        <% if (show_code) { %>
+            <div class="span<%= widths[index] %><% index += 1; %>">
+                <p>
+                    <% if (leader.language) { %>
+                    <a <% if (codeGolfBoard) { %>href="<%= that.languageLink(leader.language) %>" <% } %> class="backbone" title="<%= that.languageTooltip(leader) %>" rel="tooltip">
+                        <%= lang_display_mapping[leader.language] || leader.language %>
+                    </a>
+                    <% } else { %>N/A<% } %>
+                </p>
+            </div>
+        <% } %>
+        <% if (contest.leaderboard_type != "country") { %>
+            <div class="span<%= widths[index] %><% index += 1; %>">
+                <p><%= leader[contest.leaderboard_type] || 'N/A' %></p>
+            </div>
+        <% } %>
+
+        <!--<div class="span3">
+            <p>
+                <% if (codeGolfBoard) { %>
+                <a href="<%= that.languageLink(leader.language) %>" class="backbone" rel="tooltip">
+                    <%= lang_display_mapping[leader.language] || leader.language %>
+                </a>
+                <% } else { %>
+                <%= lang_display_mapping[leader.language] || leader.language %>
+                <% } %>
+                <!-- <small> - >
+                <!--   <i data-toggle="popover" data-content="<%= that.languageTooltip(leader) %>" class="icon-help-circled pull-right"></i> -->
+                <!-- </small> - >
+            </p>
+            </div>-->
+    <% } %>
+</div>

@@ -1,0 +1,29 @@
+<select name="saved_messages" id="saved-messages">
+    <option data-action="none">Select Action</option>
+    <optgroup label="Insert a Saved Response">
+        <% if (user.saved_messages) { %>
+        <% _.each(user.saved_messages, function (message, key) { %>
+        <option data-action="insert" value = "<%= message %>"><%= key %></option>
+        <% }); %>
+        <% } %>
+    </optgroup>
+    <optgroup label="Create a Saved Response" id="save">
+        <option data-action="create" value="save-message">Save Message</option>
+    </optgroup>
+    <optgroup label="Update a Saved Response">
+        <% if (user.saved_messages) { %>
+        <% _.each(user.saved_messages, function (message, key) { %>
+        <option data-action="update" value = "<%= message %>"><%= key %></option>
+        <% }); %>
+        <% } %>
+    </optgroup>
+    <optgroup label="Delete a Saved Response">
+        <% if (user.saved_messages) { %>
+        <% _.each(user.saved_messages, function (message, key) { %>
+        <option data-action="delete" value = "<%= message %>"><%= key %></option>
+        <% }); %>
+        <% } %>
+    </optgroup>
+</select>
+
+<div id="test-saved-respose-modal-container"></div>

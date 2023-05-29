@@ -1,0 +1,35 @@
+<div class="container">
+	<table class="sleek-table candidate-question-list" width="100%" cell-spacing="0" cell-padding="0">
+		<thead>
+			<tr>
+				<td width="5%"></td>
+				<td width="35%" class="upper-case grey">QUESTION NAME</td>
+				<td width="14%" class="upper-case grey">TYPE</td>
+				<td width="12%" class="upper-case grey">POINTS</td>
+				<td width="17%" class="upper-case grey">STATUS</td>
+				<td width="17%"></td>
+			</tr>
+		</thead>
+		<% i=1;_.each(questions, function(q, index) {%>
+		<tr <%if (i==1) {%> class="border"<%}%>>
+			<td class="grey right">Q<%=i%> &nbsp;&nbsp;</td>
+            <td class="green"><a class="backbone" href="tests/<%= aid %>/page/<%= index+1 %>/<%=q.id%>"><% if (q.name) { %><%=q.name%><%} else {%>Question<%}%></a></td>
+			<td><%=q.type%></td>
+			<td><%=q.points%></td>
+			<% if (_.has(solves, q.id)) { %>
+			<td><span class="green">attempted</span></td>
+			<td class="right"><a href="tests/<%= aid %>/page/<%= index+1 %>/<%=q.id%>" class="margin-right-15 backbone">Modify Submission</a></td>
+			<% } else { %>
+			<td>not answered</td>
+			<td class="right"><a href="tests/<%= aid %>/page/<%= index+1 %>/<%=q.id%>" class="btn btn-line margin-right-15 backbone">View</a></td>
+			<% } %>
+		</tr>
+		<% ;i++;}); %>
+	</table>
+	<center>
+		<button class="btn btn-primary btn-large margin-20 test-done">I am done with the test</button>
+	</center>
+</div>
+
+
+

@@ -1,0 +1,99 @@
+<style>
+.edit-template
+{
+}
+.edit-template #inputStatement
+{
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  min-height: 200px;
+}
+.edit-template .CodeMirror
+{
+  width:900px;
+  display: inline-block;
+  vertical-align: top;
+  border:1px solid #CCC;
+  background-color: #f7f7f7;
+  font-size: 14px;
+  line-height: 15px;
+  height: auto;
+  overflow:auto;
+}
+.CodeMirror-scroll {
+  overflow-y: hidden;
+  overflow-x: auto;
+  max-height: 50000px;
+}
+.CodeMirror-scrollbar{
+  height: auto;
+}
+.edit-template .control-group.edit-input {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.floating-message
+{
+  position:fixed;
+  top:10px;
+  right:0px;
+  z-index: 2000;
+  display: none;
+}
+</style>
+
+<section class="submissions container">
+  <header class="page-title container">
+    <div class="block">
+      <ul class="pull-left breadcrumb unstyled horizontal">
+          <li><a href="<%= HR.appController.get_contest_namespace() %>/" class="backbone">Manage</a><i class="icon-right-open-big divider"></i></li>
+          <li><a href="<%= HR.appController.get_contest_namespace() %>/manage/template/edit/<%= model.id || "new" %>" class="backbone"><%= model.slug == "" ? "New Challenge" : model.slug %></a></li>
+      </ul>
+    </div>
+    <div class="row">
+        <h1 class="span16">
+            <div class="title-img"></div>
+            <%= model.name == "" ? "New" : "Edit" %> Template
+        </h1>
+    </div>
+  </div>
+  <div class="row light-wrap wrap row" style="margin-left:0px; margin-top:20px;">
+
+    <form class="edit-template">
+      <div class="floating-message span6">
+        <div class="message span5" style="margin-left:20px; box-shadow:0 0 5px 0 #333">
+
+        </div>
+      </div>
+      <div class="row block-center">
+        <div class="message span15" style="margin-left:20px;">
+
+        </div>
+      </div>
+      <div class="row block-center">
+        <label class="control-label span2" for="inputslug"><strong>Slug</strong></label>
+        <div class="controls span6" style="margin-left:20px;">
+          <input type="text" id="slug" placeholder="Friendly Name in URL" value="<%= model.slug %>">
+        </div>
+      </div>
+      <div class="row block-center">
+        <label class="control-label span7" for="body"><strong>Body</strong></label>
+        <br/>
+        <div class="controls span16 edit-input">
+          <textarea id="inputstatement" class="span15"><%= model.body %></textarea>
+        </div>
+      </div>
+      <br/>
+      <div class="row block-center">
+        <div class="controls span16 text-center">
+          <button class="btn btn-large btn-primary save" style="width: 150px">Save</button>
+          <a href="/rest/templates/<%= model.slug %>/preview?editor=true" target="_blank" class="btn btn-large btn-primary preview" style="width: 150px">Preview</a>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+  </div>
+
+</section>

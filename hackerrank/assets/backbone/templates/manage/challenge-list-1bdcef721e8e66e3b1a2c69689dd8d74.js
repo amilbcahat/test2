@@ -1,0 +1,11 @@
+HR.appController.addTemplate("backbone/templates/manage/challenge-list", function(obj) {
+{
+var __p = "";
+Array.prototype.join;
+}
+with (obj || {}) __p += '<section class="container">\n  <div class="padded">\n    <header class="page-title">\n        <ul class="breadcrumb unstyled horizontal">\n            <li><a href="/manage/" class="backbone">Manage Home</a><i class="icon-right-open-big divider"></i></li>\n            <li><a href="/manage/challenge/" class="backbone">Challenges</a><i class="icon-right-open-big divider"></i></li>\n        </ul>\n        <div class="clearfix">\n            <h1 class="pull-left">My Challenges</h1>\n            <a class="pull-right btn btn-green margin-small top" href="/manage/challenge/edit/new">Create A New Challenge</a>\n        </div>\n    </header>\n\n\n  <div class="clearfix">\n      <div class="pull-right">\n          <input type="text" class="search" placeholder="Search for..." />\n      </div>\n  </div>\n  ', 
+0 != collection.total ? __p += '\n  <div class="table-wrap">\n      <header class="text-center row-clear">\n          <div class="span1">\n            <p>#</p>\n          </div>\n          <div class="span4">\n            <p>Challenge Name</p>\n          </div>\n          <div class="span2">\n            <p>Type</p>\n          </div>\n          <div class="span3">\n            <p>Contest</p>\n          </div>\n          <div class="span2">\n            <p>Submissions</p>\n          </div>\n          <div class="span3">\n            <p></p>\n          </div>\n      </header>\n\n      <div class="challenge-list-wrapper table-body text-center">\n      </div>\n\n      <div class="pagination-wrap clearfix pagination-wrapper" style="margin-bottom:20px;">\n      </div>\n  </div>\n      ' :(__p += '\n        <div class="light-wrap">\n          <p>\n          ', 
+__p += collection.query && "" != collection.query ? "\n            Cannot find challenges matching the filter.\n          " :"\n            You have not submitted any challenges yet.\n          ", 
+__p += "\n          </p>\n        </div>\n      "), __p += "\n  </div>\n</section>\n";
+return __p;
+});

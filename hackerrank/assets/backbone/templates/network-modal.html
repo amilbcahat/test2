@@ -1,0 +1,45 @@
+<h5 class="text-center">Adding your school/company makes the experience so much fun and infinitely better (eg: Bot v/s Bot games with other networks etc.)</h5>
+<div class="clearfix connect-social">
+<% if (!data.fb_uid && !data.guest) { %>
+<div class="span4 m">
+    <a class="btn-auth btn-facebook" href="/hackers/auth/facebook">
+        Sign in with <b>Facebook</b>
+    </a>
+</div>
+<% } %>
+<% if (!data.gh_uid && !data.guest) { %>
+<div class="span4 m">
+    <a class="btn-auth btn-github" href="/hackers/auth/github">
+        Sign in with <b>GitHub</b>
+    </a>
+</div>
+<% } %>
+</div>
+<hr/>
+<form action="">
+  <div class="formgroup horizontal clearfix">
+    <label for="input_school" class="pull-left span2">School</label>
+    <div class="block">
+      <input id="input_school" rel="tooltip" data-original-title="Which school did/do you attend?" name="school" type="text" class="span6" value="<%= data.school || '' %>" autocomplete="off" />
+    </div>
+  </div>
+  <div class="formgroup horizontal clearfix">
+    <label for="input_company" class="pull-left span2">Company</label>
+    <div class="block">
+      <input id="input_company" rel="tooltip" data-original-title="Which company do you work for?" name="company" type="text" class="span6" value="<%= data.company || '' %>" autocomplete="off" />
+    </div>
+  </div>
+  <div class="formgroup horizontal clearfix">
+    <label for="input_country" class="pull-left span2">Country</label>
+    <div class="block">
+      <input id="input_country" rel="tooltip" data-original-title="What country do you live in?" name="country" type="text" class="span6" value="<%= data.country %>" autocomplete="off" />
+    </div>
+  </div>
+  <div class="formgroup horizontal clearfix">
+    <!--<button id="networks_show_slide" class = "btn" style="display:none">Perfect! See who's here?</button>-->
+    <p id="network-update-error-msg"></p>
+    <div class="block">
+      <button id="networks_update" class="btn btn-primary">Update</button>
+    </div>
+  </div>
+</form>

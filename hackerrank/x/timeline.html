@@ -1,0 +1,43 @@
+<html><body>
+<div id="tl-visual" style="width: 100%; height: 100%"></div>
+</body>
+<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization',
+       'version':'1','packages':['timeline']}]}"></script>
+<script type="text/javascript">
+
+window.s = "notset";
+google.setOnLoadCallback(checkForData);
+errcount = 0
+function drawChart() {
+
+  var container = document.getElementById('tl-visual');
+  var chart = new google.visualization.Timeline(container);
+  google.visualization.events.addListener(chart, 'error', function(e){
+    errcount++;
+    console.log(e);
+    console.log("s",window.s);
+    console.log("opts",window.opts);
+    if (errcount<2){
+      delete window.opts.width;
+      drawChart();
+    } else {
+      container.innerHTML = "-";
+    }
+  });
+  dt = new google.visualization.DataTable(JSON.parse(window.s));
+
+  chart.draw(dt, window.opts);
+}
+
+i=0;
+function checkForData() {
+  if (!window.s || window.s === 'notset') {
+    // not yet ready
+    setTimeout(checkForData, 500);
+    //document.getElementById('tl-visual').innerHTML = i++;
+  } else {
+    drawChart();
+  }
+}
+</script>
+</html>

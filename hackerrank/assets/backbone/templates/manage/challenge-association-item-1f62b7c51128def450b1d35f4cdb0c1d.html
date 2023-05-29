@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="span3"><%= model.challenge_name %></div>
+    <div class="span2"><input class="ca-attr ca-weight span2" type="text" value="<%= model.weight %>" /></div>
+    <div class="span2 margin-large right"><input class="ca-attr ca-priority span2" type="text" value="<%= model.priority %>" /></div>
+    <div class="span1"><input class="ca-attr ca-binary_scoring" type="checkbox" <% if(model.binary_scoring === true) { %> checked <% } %> /></div>
+    <div class="span2"><input class="ca-attr ca-dynamic" type="checkbox" <% if(model.dynamic === true) { %> checked <% } %> /></div>
+    <div class="span2 margin-large right">
+        <input class="ca-attr ca-timebound" type="checkbox" <% if(timebound) { %> checked <% } %> />
+        <% if(timebound) { %>
+        <input class="ca-attr ca-start_time margin-small top" type='text' placeholder='Start time' value="<%= starttime %>" />
+        <input class="ca-attr ca-end_time margin-small top" type='text' placeholder='End time' value="<%= endtime %>"/>
+        <% } %>
+    </div>
+    <div class="span2">
+        <button class="btn btn-small delete cursor">delete</button>
+        <small class="msg"></small>
+    </div>
+</div>

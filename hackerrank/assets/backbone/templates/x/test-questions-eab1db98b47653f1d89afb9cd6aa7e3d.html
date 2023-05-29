@@ -1,0 +1,75 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL"><%- model.name %></h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Questions</h3>
+</div>
+<% if(deleteQuestionId) { %>
+<div class="alert-info" style="position: fixed; top:0px; left: 800px; padding: 10px 30px; z-index: 200">
+    Question Deleted. <a href="#" style="color: #006600" id="undo-delete-question" data-qid="<%= deleteQuestionId.id %>" data-index="<%= deleteQuestionId.index %>">Undo</a>
+</div>
+<%  } %>
+<div class="overflow-content" id="control-overflow">
+
+    <table class="sleektable full-width question-table-fix" width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr class="head">
+            <td width="10%" colspan="1"></td>
+            <td width="37%" >Question Name</td>
+            <td width="18%" >Type</td>
+            <!--<td width="13%" >Difficulty</td>-->
+            <td width="7%" >Score</td>
+            <td width="15%" >Edit/TRY/DELETE</td>
+        </tr>
+        <tbody id="questions-sortable">
+            <% _.each(model.questions_data, function (question, index) { %>
+            <tr id="q-<%- question.id %>" data-qid="<%- question.id %>">
+                <td style="cursor:move" class="txt-alt-grey fnt-wt-600 draggable"><i class="icon-th-large txt-grey fnt-sz-small"></i>Q<%- index + 1 %></td>
+                <td class="txt-green fnt-wt-600 js-toggle-question-desc toggle-description" data-qid="<%- question.id %>" >
+                    <span class="question-name-length"><% if(question.name) { %><%- question.name %><% } else { %><%- question.preview %><% } %></span>
+                    <span class="txt-alt-grey"><i class="icon-down-open"></i></span>
+                </td>
+                <td><%- HR.util.readableQuestionType(question.type) %></td>
+                <!--<td>moderate</td>-->
+                <td><%- question.points %></td>
+                <td>
+                    <% if (model.questions_permissions[question.id] > h['question_permissions']['QUESTION_READ_PERMISSION']) { %>
+                    <a class="pmA js-backbone" href="x/tests/<%- model.id %>/questions/<%- question.id %>/edit"><i class="icon2-edit txt-alt-grey tip" data-original-title="Edit"></i></a>
+                    <% } else { %>
+                    <a class="pmA" href="javascript:void(0)"><i class="icon2-edit txt-alt-grey tip" data-original-title="You don't have the permission to edit this question"></i></a>
+                    <% } %>
+                    <a class="psA js-backbone" href="x/tests/<%- model.id %>/questions/<%- question.id %>/try"><i class="icon2-tryquestion txt-alt-grey tip" data-original-title="Try"></i></a>
+                    <% if (model.permission > h['test_permissions']['TEST_READ_PERMISSION']) { %>
+                    <a class="pmA js-question-delete" href="javascript:;" data-question-id="<%= question.id %>" data-index="<%= index %>">
+                        <i class="icon2-delete txt-alt-grey tip" data-original-title="Delete"></i>
+                    </a>
+                    <% } else { %>
+                    <a class="pmA" href="javascript:void(0)">
+                        <i class="icon2-delete txt-alt-grey tip" data-original-title="You don't have the permission to remove this question"></i>
+                    </a>
+                    <% } %>
+                </td>
+            </tr>
+            <tr id="q-<%- question.id %>-desc" class="hidden q-desc" data-qid="<%=question.id %>">
+                <td class="quest-description js-question-desc" data-qid="<%=question.id%>" data-rendered="0"  colspan="6">
+                </td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <!--IMPORTANT: USE ONLY BUTTONS IN THIS DIV. This div should stay at the bottom of the contents in this .overflow-content div, no matter what -->
+    <div id="responsive-bottom-holder" class="responsive-bottom-holder text-center">
+        <a href="/x/tests/<%=model.id%>/library" class="btn btn-primary btn-mid js-backbone">Add from library</a>
+        <span class="alt-grey mlA">or</span>
+        <a href="#" class="btn btn-mid js-create-question" href="#">Create new question</a>
+    </div>
+    <% if(model.questions_data && !model.questions_data.length) { %>
+    <!-- you will need to add .hidden class for hiding when the first test is created -->
+    <img id="create-first-question-pointer" class="create-first-question-pointer" src="/assets/question_placeholder.png"/>
+    <% } %>
+
+</div><!-- overflow contents end here -->
+
+<div id="modal-container"></div>
+
+<div id="responsive-bottom-placeholder" class="responsive-bottom-holder text-center"></div>
+
+<div class="hre-footer">THIS IS A FOOTER</div>

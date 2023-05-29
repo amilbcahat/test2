@@ -1,0 +1,92 @@
+<! ============================== NOTES FOR DEVELOPMENT
+** In the 'contests-main' area, if the user is not logged in, the content in p class='contest-signup' (see LN 40 for example) should read 'Log in to sign up for {contest name}' and prompt the login modal
+** The class 'in-progress' is applied when the contest is, well, in progress :). See LN 32 and LN 70 for examples
+** If the user is not signed up for any events, note the empty content notice on LN 85
+
+=================================================== -->
+<section class="sampletemplate contests container">
+    <header class="page-title container">
+            <div class="row">
+                <h1 class="span16"><!--<div class="title-img"></div> -->Contests</h1>
+            </div>
+    </header>
+    <div class="contests-featured">
+        <p class="section-heading">Weekly Contest</p>
+        <div class="sm-contest-wrap">
+            <header>
+                <h3 class="pull-left">Tic Tac Toe</h3>
+                <p class="contest-date pull-right no-flow"><span class="countdown">Contest ends in <strong>2hrs 23 min 18sec</strong></span></p>
+            </header>
+            <div class="contest-wrap-body">
+                <img src="/assets/badges/tic-tac-toe-one.png" class="badge-image" height="100" width="100" alt="Tic Tac Toe Badge">
+                <div class="contest-details">
+                    <p class="contest-description no-flow">This is the contest description. This is where we put lots of information about the contest, a very brief description, but enough to inform the user.</p>
+                </div>
+            </div>
+            <p class="contest-signup"><a href="">Start the Weekly Contest <i class="icon-right-open-mini"></i></a></p>
+        </div>
+    </div>
+    <div class="contests-main row">
+        <div class="span10">
+            <p class="section-heading">HackerRank Events</p>
+            <div class="sm-contest-wrap">
+                <header>
+                    <h3 class="pull-left">Sample Contest Title</h3>
+                    <p class="no-flow contest-date pull-right in-progress">In progress</p>
+                </header>
+                <div class="contest-wrap-body">
+                    <div class="contest-details">
+                        <p class="contest-description">This is a breif synopsis about a contest that is in progress for the sake of showing how the content will show and stuff yadda yadda yadda yup this is a long sentence ok and it's just about ready to be....done!</p>
+
+                    </div>
+                </div>
+                <p class="no-flow contest-signup"><a href="">Sign Up for Sample Contest Title <i class="icon-right-open-mini"></i></a></p>
+            </div>
+            <div class="sm-contest-wrap">
+                <header>
+                    <h3 class="pull-left">Back to School Hackathon</h3>
+                    <p class="no-flow contest-date pull-right"><i class="icon-calendar"></i>February 2, 12p</p>
+                </header>
+                <div class="contest-wrap-body">
+                    <div class="contest-details">
+                        <p class="contest-description">HackerRank is kicking off the quarter/semester with a 24-hour Back to School Hackathon. The top ten US students who are currently enrolled in University/College will win a trip to Silicon Valley and meet hackers from the top tech companies.</p>
+                    </div>
+                </div>
+                <p class="no-flow contest-signup">You are signed up for Back to School Hackathon</p>
+            </div>
+            <div class="sm-contest-wrap">
+                <header>
+                    <h4 class="pull-left">Coder Trophy</h4>
+                    <p class="no-flow contest-date pull-right"><i class="icon-calendar"></i>February 1, 12p</p>
+                </header>
+                <div class="contest-wrap-body">
+                    <div class="contest-details">
+                        <p class="contest-description">HackerRank is kicking off the quarter/semester with a 24-hour Back to School Hackathon. The top ten US students who are currently enrolled in University/College will win a trip to Silicon Valley and meet hackers from the top tech companies.</p>
+                    </div>
+                </div>
+                <p class="no-flow contest-signup"><a href="">Sign Up for Coder Trophy <i class="icon-right-open-mini"></i></a></p>
+            </div>
+        </div>
+        <div class="span5 sidebar pull-right">
+            <p class="section-heading">Contests you're signed up for</p>
+            <ul class="unstyled contests-attending">
+                <li class="in-progress">
+                    <h6 class="no-flow">Weekly Contest: Tic Tac Toe</h6>
+                    <p class="no-flow"><a href="">View Contest <i class="icon-right-open-mini"></i></a></p>
+                </li>
+                <li>
+                    <h6 class="no-flow">Back to School Hackathon</h6>
+                    <p class="no-flow">February 2 at 12:00p PST</p>
+                </li>
+                <li>
+                    <h6 class="no-flow">Another Event Title that has a longer title</h6>
+                    <p class="no-flow">February 5 at 1:00p PST</p>
+                </li>
+            </ul>
+            <!--<h5 class="text-center no-events">You have not signed up for any contests yet</h5>-->
+        </div>
+    </div>
+    <div class="contests-archive">
+
+    </div>
+</section>

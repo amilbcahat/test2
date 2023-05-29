@@ -1,0 +1,163 @@
+<style>
+.CodeMirror-scroll
+{
+  overflow-x:hidden !important;
+  width: 100%;
+  padding-right:0px;
+}
+</style>
+
+<form name="coding-question-step2-form">
+    <div class="mjA">
+        <div class="formgroup">
+            <label>Allowed Languages</label>
+            <p class="txt-alt-grey-dark span11 no-padding">Candidate will have an option to solve this question in any of the languages you select below.</p>
+            <div class="clear"></div>
+            <p class="txt-alt-grey-dark span11 no-padding msT">If you want the candidates to complete a function instead of writing full code, select the option to generate stubs.</p>
+            <div class="clear"></div>
+
+            <% var languages = {
+                'c': 'C',
+                'cpp': 'C++',
+                'java': 'Java',
+                'csharp': 'C#',
+                'php': 'PHP',
+                'python': 'Python 2',
+                'ruby': 'Ruby',
+                'javascript': 'Javascript',
+                'perl': 'Perl',
+                'haskell': 'Haskell',
+                'scala': 'Scala',
+                'clojure': 'Clojure',
+                'go': 'Go',
+                'erlang': 'Erlang',
+                'groovy': 'Groovy',
+                'objectivec': 'Objective C'
+            } %>
+
+            <% var additional_languages = {
+                'code': 'Code',
+                'oracle': 'Oracle',
+                'tsql': 'T-SQL',
+                'cobol': 'Cobol',
+                'bash': 'BASH',
+                'visualbasic': 'Visual Basic'
+            } %>
+
+            <% var additional_languages_keys = ['code', 'oracle', 'tsql', 'cobol', 'bash', 'visualbasic'] %>
+            <% additional_languages_used = _.intersection(allowedLanguages, additional_languages_keys) %>
+
+            <% _.each(additional_languages_used, function(lang) {
+                languages[lang] = additional_languages[lang];
+            }); %>
+
+            <div class="mlT">
+                <table class="languages_table" border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                        <% i = 0 %>
+                        <% _.each(languages, function(label, key) { %>
+                            <% if (i == 0) { %>
+                            <tr>
+                            <% } else if (i%8 == 0) { %>
+                            </tr>
+                            <tr>
+                            <% } %>
+                            <td>
+                               <div class="formgroup horizontal checkbox hr_checkbox psB">
+                                  <label for="allowed_lang_<%- key %>" class="hr-checkbox languages <% if (!model.allowedLanguages || allowedLanguages.indexOf(key) != -1) { %>active<% } %>">
+                                    <input id="allowed_lang_<%- key %>" name="allowedLanguages" type="checkbox" <% if (!model.allowedLanguages || allowedLanguages.indexOf(key) != -1) { %> checked <% } %> value="<%- key %>" />
+                                    <span class=""><%- label %></span>
+                                  </label>
+                                </div>
+                            </td>
+                            <% i++ %>
+                        <% }); %>
+                        </tr>
+                    </tbody>
+                </table>
+            <div> <!-- end .mlT -->
+        </div><!-- end .formgroup -->
+
+        <ul class="inline lines large mlB">
+            <li><a href="#" class="normal-underline js-select-all">Select all</a></li>
+            <li><a href="#" class="normal-underline js-clear-all">Clear all</a></li>
+        </ul>
+
+        <div class="formgroup">
+            <label>Add code stubs for the question <span class="fnt-wt-600 txt-alt-grey">(optional)</span></label>
+            <label><input type="radio" name="template_type" value="0" <% if (model.template_type == "0") { %>checked<% } %>> <span class="fnt-wt-400">I would like the candidate to write the full code.</span></label>
+            <label><input type="radio" name="template_type" <% if (model.template_type && model.template_type !== "0") { %>checked<% } %>> <span class="fnt-wt-400">I would like the candidate to write a function and I will provide stubs.</span></label>
+        </div><!-- end .formgroup -->
+
+    </div><!-- end mjA -->
+
+    <div class="row no-margin pjT js-code-stubs-section" <% if (model.template_type == "0") { %>style="display: none"<% } %>>
+        <div class="pull-left mdR">
+            <div class="form-group">
+                <label>Enter your function name</label>
+                <input type="text" placeholder="function name" name="functionName" style="width:305px;" <% if(model.functionName) { %>value="<%- model.functionName %>"<% } %>></input>
+            </div>
+            <div class="form-group">
+                <label>Return type</label>
+                <!-- select2 here -->
+                <input type="hidden" id="brahma-return-type" style="width:305px;" value="<% if (model.functionReturn) { %><%= model.functionReturn %><% } else { %>INTEGER<% } %>" name="functionReturn">
+            </div>
+
+            <div class="form-group" id="brahma-parameters-container">
+                <label class="mdT">Parameters to the function</label>
+                <% if (model.functionParams) { %>
+                <% parameters = model.functionParams.split(","); %>
+                <% _.each (parameters, function (parameter, index) { %>
+                <% paramParts = parameter.split(" ") %>
+                <div class="block js-brahma-parameter">
+                    <input type="hidden" id="brahma-parameter-select2-<%= index %>" class=" js-parameter-type" value="<%- paramParts[0] %>" data-id="<%= index %>" name="functionParameterType">
+                    <input style="width:70px; margin:10px;" type="text" name="functionParameterName" value="<%- paramParts[1] %>"></input>
+                    <% if (index != 0) { %>
+                    <a href="#" class="txt-alt-grey psA js-remove-parameter"><i class='icon2-delete'></i></a>
+                    <% } %>
+                </div>
+                <% }); %>
+                <% } else { %>
+                <div class="block js-brahma-parameter mdB">
+                    <!-- select2 here -->
+                    <input type="hidden" id="brahma-parameter-select2-0" class=" js-parameter-type" value="INTEGER" data-id="0" name="functionParameterType">
+                    <input style="width:70px; margin:10px;" type="text" name="functionParameterName" value=""></input>
+
+                </div>
+                <% } %>
+            </div>
+            <button type="button" class="btn js-add-parameter"><i class="icon-plus"></i>Add another</a>
+            <br/>
+            <button type="button" class="btn js-generate-templates mdL">Generate Code</a>
+        </div>
+        <div class="span-xs-16 span-md-10 no-padding">
+            <div class="js-codestub-info"><% if(model.codestub_info) { %> <%- model.codestub_info %> <% }%></div>
+            <div class="codeblock-wrapper span16 no-padding">
+                <% lang = _.first(allowedLanguages) %>
+                <div class="codeblock-head no-background">
+                    <ul class="nav-tabs nav pull-left no-margin no-border js-code-section-tabs-list">
+                        <li><a class="js-code-section-tab" data-id="template_head" href="#">Head</a></li>
+                        <li class="active"><a class="js-code-section-tab" data-id="template" href="#">Body</a></li>
+                        <li><a class="js-code-section-tab" data-id="template_tail" href="#">Tail</a></li>
+                    </ul>
+                    <div class="pull-right msA">
+                        <input type="hidden" id="code-editor-lang-select2" class="wide" value="<%= lang %>">
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <textarea id="template_head" class="hidden"><%- model[lang + '_template_head'] %></textarea>
+                <textarea id="template"><%- model[lang + '_template'] %></textarea>
+                <textarea id="template_tail" class="hidden"><%- model[lang + '_template_tail'] %></textarea>
+            </div>
+        </div>
+    </div><!-- end .row -->
+
+    <div class="mjA">
+        <div class="row no-margin plT">
+            <div class="span-xs-16 span-md-16">
+                <button type="submit" class="btn btn-primary btn-mid">Save & Proceed</button>
+            </div>
+        </div>
+    </div>
+</form>
+<div id="language-change-modal-container"></div>

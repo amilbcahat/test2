@@ -1,0 +1,36 @@
+<div class="modal modal-mid" id="create-question-modal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <div class="underline_title">
+            Select a question type
+        </div>
+    </div>
+    <form class="attendant-form" name="edit-attendant-form">
+        <div class="modal-body">
+            <center>
+            <ul class="nav nav-pills pill-tabs-hrstyled display-inline-block mdA">
+                <li class="active"><a href="#" data-tab="programming-questions-tab" class="js-create-question-tabs-select">Programming</a></li>
+                <li><a href="#" data-tab="general-questions-tab" class="js-create-question-tabs-select">General</a></li>
+            </ul>
+            </center>
+
+            <table width="100%" class="js-general-questions-tab hidden js-create-question-tabs">
+                <tr>
+                    <td width="50%"><a href="tests/<%= model.id %>/questions/new/textAns" data-category="general" class="question-type-blocks js-question-tab">Subjective Answer</a></td>
+                    <td width="50%"><a href="tests/<%= model.id %>/questions/new/mcq" data-category="general" class="question-type-blocks js-question-tab">Multiple Choice</a></td>
+                </tr>
+                <tr>
+                    <td width="50%"><a href="tests/<%= model.id %>/questions/new/multiple_mcq" data-category="general" data-type="multiple_mcq" class="question-type-blocks new-question-type js-question-tab">Multiple Correct Answer</a></td>
+                    <td width="50%"><a href="tests/<%= model.id %>/questions/new/complete" data-category="general" data-type="multiple_mcq" class="question-type-blocks new-question-type js-question-tab">Complete Sentence</a></td>
+                </tr>
+            </table>
+
+            <table width="100%" class="js-programming-questions-tab js-create-question-tabs">
+                <tr>
+                    <td width="50%"><a href="tests/<%= model.id %>/questions/new/code" data-category="general" class="question-type-blocks js-question-tab">Programming</a></td>
+                    <td width="50%"><a href="tests/<%= model.id %>/questions/new/approx" data-category="general" class="question-type-blocks js-question-tab">Approximate Solution</a></td>
+                </tr>
+            </table>
+        </div><!-- end .modal-body -->
+    </form>
+</div>

@@ -1,0 +1,47 @@
+<span class="nav-logo">
+                <a href="/" class="HackerRankLogo backbone page_header-logo none js-nav-link">
+                    <!--?xml version='1.0' encoding='utf-8'?-->
+                    <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                    <svg width="156" height="45">
+                        <image xlink:href="/assets/brand/HRX_logo_wordmark.svg"
+                               src="/assets/brand/HRX_logo_wordmark.png" width="156" height="45"></image>
+                    </svg>
+                </a>
+            </span><!-- end .nav-logo -->
+<% if (!model.authkey && model.company) { %>
+<span class="nav-login-patch">
+
+                <div class="admin-dropdown page_header_dropdown-toggle pull-right" id="profile-menu">
+                    <a class="backbone dropdown-toggle page_header-userbtn" href="" data-toggle="dropdown">
+                        <div class="hre-username pull-left">
+                            <% if (model.firstname) { %>
+                            <%= _.escape(model.firstname) %>
+                            <% } else { %>
+                            <%= _.escape(model.email) %>
+                            <% } %>
+                        </div>
+                        <i class="icon-down-open-mini"></i>
+
+                        <div class="clear"></div>
+                    </a>
+                    <ul class="unstyled dropdown-menu page_header_dropdown">
+                        <li><a href="/x/tests">Go back to Website</a></li>
+                        <li><a href="/xrest/users/logout" class="logout-button">Logout</a></li>
+                    </ul>
+                </div>
+
+            </span>
+
+<ul class="selector-nav-tabs hre-margin">
+    <li
+    <%if(activeSection == 'admin') { %> class="active" <% } %>>
+    <a href="/" id="navigate-to-admin" class="js-nav-link">Admin</a>
+    </li>
+    <% if (model.company && model.company.codepair && model.company.codepair == 1) { %>
+    <li
+    <%if(activeSection == 'analytics') { %> class="active" <% } %>>
+    <a href="analytics" id="navigate-to-analytics" class="js-nav-link">Analytics</a>
+    </li>
+    <% } %>
+</ul>
+<% } %>

@@ -1,0 +1,55 @@
+<% if (collection.challenge && collection.challenge.get('name')) { %>
+<header class="page-title grey-header">
+<div class="container clearfix">
+  <div class="breadcrumbs"></div>
+  <h1 class="pull-left"><%= collection.challenge.get('name') %></h1>
+</div>
+<ul class="nav-tabs nav container">
+  <li><a class="hr-problem-link backbone" href="<%= baseURL %>"> Problem</a></li>
+  <li class="active"><a class="hr-submissions-link backbone" href="<%= baseURL %>/submissions"><i class="icon-list-bullet-small"></i> Submissions</a></li>
+  <li><a class="hr-leaderboard-link backbone" href="<%= baseURL %>/leaderboard"><i class="icon-trophy"></i> Leaderboard</a></li>
+  <li><a class="hr-forum-link backbone" href="<%= baseURL %>/forum/questions"><i class="icon-comment"></i> Discussions</a></li>
+</ul>
+</header>
+<% } else { %>
+<header class="page-title container">
+  <h1>Submissions</h1>
+</header>
+<% } %>
+<section class="submissions container">
+  <div class="submissions_list text-center">
+    
+  <% if(collection.total != 0){ %>
+      <div class="table-wrap">
+          <header class="list-header submissions_list-header">
+              <div class="span4">
+                <p class="submissions-title">Problem</p>
+              </div>
+              <div class="span2 submissions-language">
+                <p>Language</p>
+              </div>
+              <div class="span2 submissions-time">
+                <p>Time</p>
+              </div>
+              <div class="span3">
+                <p>Result</p>
+              </div>
+              <div class="span1">
+                <p>Score</p>
+              </div>
+              <div class="span2">
+                <p></p>
+              </div>
+          </header> 
+          
+          <div class="table-body submissions-list-wrapper table--striped"></div> 
+          
+          <div class="pagination-wrap clearfix pagination-wrapper"></div> 
+      </div> 
+      <% } else { %>
+      <div class="light-wrap padded"
+          <p>You have not made any submissions for <%= collection.challenge.get("name") %> yet.</p>
+          <p class="text-center block-margin"><a href="<%= HR.appController.get_current_contest_namespace() %>/challenges/<%= collection.challenge.get('slug') %>" class="btn btn-green btn-large">Solve <%= collection.challenge.get("name") %></a></p>
+      </div>
+      <% } %>
+</section>

@@ -1,0 +1,47 @@
+<% if (invite_mode) {%>
+<div class="js-reports-actions mdA" style="display:none;">Action (on<span class="js-acount"></span>): <a href="javascript:void(0)" class="btn btn-small js-invaction" data-action="cancelmany">Cancel invite</a> <a href="javascript:void(0)" class="btn btn-small js-invaction" data-action="reinvitemany">Reinvite</a></div>
+<%} else { %>
+<div class="js-reports-actions mdA" style="display:none;">Mark<span class="js-acount"></span>selected as: <a href="javascript:void(0)" class="btn btn-small js-action" data-action="qualify" data-loading="Marking as qualified">Qualified</a> <a href="javascript:void(0)" class="btn btn-small js-action" data-loading="Marking as failed" data-action="fail">Failed</a></div>
+<%}%>
+<table class="table dt-sleektable" id="reports-datatable" cellpadding="0" cellspacing="0" border="0">
+    <thead>
+        <tr>
+            <th>
+                <input class="hr-sleek-input" name="all_checkbox" type="checkbox" id="all_checkbox">
+                <label for="all_checkbox">
+                    <span></span>
+                </label>
+            </th>
+            <% if (invite_mode) {%>
+                <th></th>
+                <th>E-Mail address</th>
+                <th></th>
+                <th>Invite time</th>
+                <th></th>
+                <th></th>
+                <th>Actions</th>
+                <% i = 0; if (showQuesTypes) {i+= test.questions_types.length}; if(showTags){i+=test.questions_tags.length};
+                _.times(i, function() {%>
+                <th></th>
+                <% }) %>
+            <%} else {%>
+                <th style="min-width:145px;">Name</th> <!-- <- this is intentional, the word full name is breaking the table -->
+                <th style="min-width:145px;">E-Mail address</th>
+                <th style="min-width:60px;">Score</th>
+                <th style="min-width:145px;">End time</th>
+                <th style="min-width:95px;">Category</th>
+                <th style="min-width:145px;">Time remaining</th>
+                <th>Report</th>
+                <% if (showQuesTypes) { _.each(test.questions_types, function(typ) { %>
+                <th><%= window.istreet.cfg.hrqn[typ] ? window.istreet.cfg.hrqn[typ]: typ %> score</th>
+                <% })} %>
+                <% if (showTags) { _.each(test.questions_tags, function(tag) { %>
+                <th><%= HR.util.capitalize(tag) %> score</th>
+                <% })} %>
+            <% } %>
+            <th style="min-width:160px;">Invited by</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>

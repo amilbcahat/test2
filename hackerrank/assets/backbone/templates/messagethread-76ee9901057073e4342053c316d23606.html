@@ -1,0 +1,27 @@
+<section class="container messaging">
+    <div class="content_wrap wide">
+        <div class="sidebar--inline">
+            <ul class="sidebar_list unstyled messaging_threads--active">
+                <li class="messaging_header">Conversations</li>
+                <span class="threads-list-wrap threads_list">
+                </span>
+            </ul>
+        </div>
+        <div class="content--inline padded messaging_content">
+        </div>
+    </div>
+</section>
+
+<script>
+$(document).ready(function(){
+  windowHeight = $(window).height();
+  messageHeight = .75 * windowHeight;
+  $('.messaging_content').css('height', messageHeight);
+});
+
+$(window).resize (function (){
+windowHeight = $(window).height();
+messageHeight = .75 * windowHeight;
+  $('.messaging_content').css('height', messageHeight);
+});
+</script>

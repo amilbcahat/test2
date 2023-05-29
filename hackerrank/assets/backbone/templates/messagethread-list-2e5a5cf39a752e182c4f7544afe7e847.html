@@ -1,0 +1,7 @@
+<li class="sidebar_list-heading thread padded <%- model.unread_count > 0 ? 'unread' : ''%> <%- model.active ? 'active' : '' %>">
+    <img src="<%- model.user2._data.avatar_url %>" height="65" width="65" class="avatar pull-left margin-large right"/>
+    <div class="thread_teaser">
+        <p class="messaging_whois"><a href="/<%=model.user2.username%>" class="backbone"><%- model.user2.username %></a></p>
+        <p class="messaging_teasertext"><span><%- model.last_message.message %></span><a href="/inbox/thread/<%=model.id%>" class="backbone"><%= model.unread_count %> unread</a></p>
+    </div>
+</li>

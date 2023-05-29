@@ -1,0 +1,78 @@
+<style>
+    .game-grid p {
+        margin: 0px;
+    }
+    h3 {
+        margin: 0px;
+    }
+    .m {
+        text-align: center !important;
+    }
+    .translucent {
+    }
+    .playgame-row {
+        position: fixed;
+    }
+    .playgame-row .btn {
+        margin-top: 70px;
+        z-index: 999;
+    }
+    .game-message {
+        font-weight: bold;
+    }
+</style>
+<div class="game-grid" style="display: block; margin: auto; border-radius: 10px;">
+   <div class="row">
+      <div class="span8 block-center text-center" style="width: 480px">
+        <div class="span4">
+          <p>Balance: <span class="player1_balance"></span></p>
+        </div>
+        <div class="span4">
+          <p>Balance: <span class="player2_balance"></span></p>
+        </div>
+      </div>
+    </div>
+    <table style="margin: 20px auto;">
+        <tr style="text-align: center">
+            <td style="text-align: center">
+                <h3 class="bulbs">
+                    <img data-id="1" class="bulb" src="/assets/bidding-blank.png" height="48">
+                    <img data-id="2" class="bulb" src="/assets/bidding-blank.png" height="48">
+                    <img data-id="3" class="bulb" src="/assets/bidding-blank.png" height="48">
+                    <img data-id="4" class="bulb" src="/assets/bidding-blank.png" height="48">
+                    <img data-id="5" class="bulb" src="/assets/bidding-blank.png" height="48">
+                    <img data-id="6" class="bulb win" src="/assets/bidding-bottle.png" height="48">
+                    <img data-id="7" class="bulb" src="/assets/bidding-blank.png" height="48">
+                    <img data-id="8" class="bulb" src="/assets/bidding-blank.png" height="48">
+                    <img data-id="9" class="bulb" src="/assets/bidding-blank.png" height="48">
+                    <img data-id="10" class="bulb" src="/assets/bidding-blank.png" height="48">
+                    <img data-id="11" class="bulb" src="/assets/bidding-blank.png" height="48">
+                </h3>
+            </td>
+        </tr>
+    </table>
+    <div style="text-align: center;">
+        <h3>Current Bid</h3>
+        <p>[ Bid #<span class="bid-number">-</span> ]</p>
+    </div>
+    <table style="margin: 2px auto; width: 80%">
+        <tr style="text-align: center">
+            <td style="text-align: center">
+                <span class="player-1"><%= model.actors[0].hacker_username %></span>'s bid
+            </td>
+            <td style="text-align: center">
+                <span class="player-2"><%= model.actors[1].hacker_username %></span>'s bid
+            </td>
+        </tr>
+        <br/>
+        <br/>
+        <tr style="text-align: center">
+            <td style="text-align: center">
+                <h4 class="player1_current_bid">-</h4>
+            </td>
+            <td style="text-align: center">
+                <h4 class="player2_current_bid">-</h4>
+            </td>
+        </tr>
+    </table>
+</div>

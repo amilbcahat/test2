@@ -1,0 +1,23 @@
+HR.appController.addTemplate("backbone/templates/challenge-header", function(obj) {
+{
+var __t, __p = "";
+Array.prototype.join;
+}
+with (obj || {}) __p += '<!-- <div class="breadcrumbs-challenge">\n    <ul class="unstyled">\n        <li class="breadcrumb"><a href=""><i class="icon-home icon--single"></i></a></li>\n        <li class="breadcrumb"><a href="">Contests</a></li>\n        <li class="breadcrumb"><a href="">Functional Programming</a></li>\n        <li class="breadcrumb active">\n            <a href="" class="color-dark">Summer Intern Coding Cup</a>\n            <span class="breadcrumb_sub large">\n                <a href=""><i class="icon--grey icon-trophy icon--single pmL pmR"></i></a>\n                <a href=""><i class="icon--grey icon-list-bullet-small icon--single pmL pmR"></i></a>\n            </span>\n            <span class="psL color-orange">\n                <i class="status-indicator completed mmR"></i>\n                Leaderboard Locked\n            </span>\n            <span class="help-prompt mmL">\n                    <i class="icon-info-circled"></i><span class="help-text">\n                    The contest has ended. Future submissions will not affect the leaderboard.\n                </span>\n            </span>\n        </li>\n    </ul>\n</div>\n -->\n<header class="view_header boundB">\n    <div class="clearfix">\n        <h2 class="hr_tour-challenge-name pull-left">\n            ' + (null == (__t = model.preferred_challenge_name || model.name) ? "" :_.escape(__t)) + "\n            ", 
+model.color && (__p += '\n                <span class="acm-challenge-balloon-large" style="background-color: ' + (null == (__t = model.color) ? "" :__t) + '"></span>\n            '), 
+__p += "\n        </h2>\n        ", model.locked && (__p += '\n        <div class="pull-right challenge-title-note">\n            <a rel="tooltip" data-original-title="Any furthur submissions will not be considered for leaderboard." id="locked-popover" class="active-link pull-right">\n              <small class="badge alert"><i class="icon-lock"></i>locked</small>\n            </a>\n        </div>\n        '), 
+__p += "\n    </div>\n    ", (model.hackos_total || model.hackos_earned) && (__p += "\n        ", 
+__p += model.hackos_earned ? '\n            <p class="bold color-green">' + (null == (__t = model.hackos_earned) ? "" :__t) + " hackos earned</p>\n        " :'\n            <p class="bold color-green">Earn ' + (null == (__t = model.hackos_total) ? "" :__t) + " hackos</p>\n        ", 
+__p += "\n    "), __p += '\n\n\n<!--         <ul class="nav-tabs nav" style="padding-bottom: 1px;">\n            <li id="challengeTab" class="active"><a class="hr-challenge-link backbone" href="">Code Editor</a></li>\n            <li id="contestTab"><a class="hr-contest-link backbone" href="">Submissions</a></li>\n            <li id="leaderboardTab"><a class="hr-contest-link backbone" href="">Leaderboard</a></li>\n            <li id="discussionsTab"><a class="hr-contest-link backbone" href="">Discussions</a></li>\n            <li id="editorialTab"><a class="hr-contest-link backbone" href="">Editorial</a></li>\n        </ul> -->\n\n    ', 
+model.company && (__p += '<div class="apply-blob"></div>'), __p += '\n    <ul class="nav-tabs nav" style="padding-bottom: 1px;">\n        <li id="problemTab" ', 
+"problem" == activeTab && (__p += ' class="active" '), __p += ' ><a class="hr-problem-link" href="' + (null == (__t = baseURL) ? "" :__t) + '">Problem</a></li>\n        <li id="submissionsTab" ', 
+"submissions" == activeTab && (__p += ' class="active" '), __p += ' ><a class="hr-submissions-link" href="' + (null == (__t = baseURL) ? "" :__t) + '/submissions">Submissions</a></li>\n        ', 
+"acm" != contest.get("kind") && (__p += '<li id="leaderboardTab" ', "leaderboard" == activeTab && (__p += ' class="active" '), 
+__p += ' ><a class="hr-leaderboard-link" href="' + (null == (__t = baseURL) ? "" :__t) + '/leaderboard">Leaderboard</a></li>'), 
+__p += '\n        <li id="forumTab" ', "forum" == activeTab && (__p += ' class="active" '), 
+__p += ' ><a class="hr-forum-link" href="' + (null == (__t = baseURL) ? "" :__t) + '/forum/questions">Discussions</a></li>\n        ', 
+model.is_editorial_available && (__p += '\n        <li id="editorialTab" ', "editorial" == activeTab && (__p += ' class="active" '), 
+__p += ' ><a class="hr-editorial-link" href="' + (null == (__t = baseURL) ? "" :__t) + '/editorial">Editorial</a></li>\n        '), 
+__p += "\n    </ul>\n</header>\n";
+return __p;
+});

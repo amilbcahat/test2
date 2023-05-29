@@ -1,0 +1,175 @@
+<% if (model.test) { %>
+<div class="row no-margin pjA">
+    <%if (pdfmode) {%>
+    <div class="">
+        <table class="fnt-sz-mid mini-padded span-md-16">
+    <%} else {%>
+    <div class="span-xs-8 span-md-12">
+        <table class="fnt-sz-mid mini-padded">
+    <%}%>
+            <tr>
+                <td width="130px" class="txt-alt-grey fnt-wt-600">EMAIL:</td>
+                <td><%- model.email %></td>
+                <td width="130px" class="txt-alt-grey fnt-wt-600">TEST NAME:</td>
+                <td><strong><%- model.test.name %></strong></td>
+            </tr>
+            <%
+                var extra_time = model.actual_extra_time || 0;
+                var extra_time_help = '<i class="icon-question-sign tool" data-toggle="tooltip" title="Candidate took ' + extra_time + ' minutes extra" ></i>';
+            %>
+            <tr>
+                <td width="130px" class="txt-alt-grey fnt-wt-600">TAKEN ON:</td>
+                <td><%- moment(model.starttime).format("D MMM, YYYY - HH:mm Z") %></td>
+                <td width="130px" class="txt-alt-grey fnt-wt-600">TIME TAKEN:</td>
+                <td>
+                    <% if (model.status != 0){%>
+                    <a class="js-backbone" href="tests/<%- model.test.id %>/candidates/<%- model.id %>/report/timeline" <% if (hasDisconnect) { %>rel="tooltip" title="Possible network disconnections. Click to see timeline." data-placement="right"<%}%>><span class="font-w-500">&nbsp;<%=(model.total_time_taken + '/' + model.test.duration + ' minutes ' + (extra_time > 0 ? extra_time_help: ''))%></span><% if (hasDisconnect) { %><img src="/recruit2/public/images/ico_alert.png" /><% } %>
+                    <%} else {%>
+                    Still taking the test
+                    <%}%>
+                </td>
+            </tr>
+
+            <!-- Candidate details -->
+            <% for(var i=0;i<more_details.length; i+=2) { %>
+            <tr>
+                <td width="130px" class="txt-alt-grey fnt-wt-600"><%- more_details[i]["title"] %>:</td>
+                <% if (more_details[i]["title"] != "TAG SCORE") { %>
+                <td><%= HR.util.linkify(more_details[i]["value"]) %></td>
+                <% } else { %>
+                <td><%= HR.util.linkify(more_details[i]["value"]) %></td>
+                <% } %>
+                <td width="130px" class="txt-alt-grey fnt-wt-600"><% if (more_details[i+1]) { %><%- more_details[i+1]["title"] %><% } %></td>
+                <% if (more_details[i+1] && more_details[i+1]["title"] != "TAG SCORE") { %>
+                <td><% if (more_details[i+1]) { %><%= HR.util.linkify(more_details[i+1]["value"]) %><% } %></td>
+                <% } else if (more_details[i+1]) { %>
+                <td><%= HR.util.linkify(more_details[i+1]["value"]) %></td>
+                <% } else { %>
+                <td></td>
+                <% } %>
+            </tr>
+            <% } %>
+        </table>
+    </div>
+
+    <%if (pdfmode) {%>
+    <div class="clear"></div>
+    <div class="span-xs-8 span-md-16">
+    <%} else {%>
+    <div class="span-xs-8 span-md-4">
+    <%}%>
+        <div class="position-relative">
+            <div class="report-donut-info-wrapper">
+                <p class="text-center font-clr-ltgrey">TOTAL SCORE</p>
+                <p class="text-center font16 font-w-600"><%=Math.round(model.score * 100) / 100%>/<%=model.test.max_score%></p>
+            </div>
+
+            <!-- temporary code with the help of google charts -->
+            <div id="donut"></div>
+        </div><!-- end position-relative -->
+    </div><!-- end span-xs-16 -->
+
+
+</div><!-- end .row -->
+
+<div class="mjL mjB">
+    <% if (model.feedback) {%>
+    <span class="txt-alt-grey fnt-wt-600 span4">
+        CANDIDATE FEEDBACK:
+    </span>
+    <span class="span11">
+        <%-model.feedback%>
+    </span>
+    <div class="clear"></div>
+    <% } %>
+    <div class="mdT">
+        <span class="txt-alt-grey fnt-wt-600 span4">
+            RECRUITER/TEAM COMMENTS:
+        </span>
+        <div class="clear"></div>
+    </div>
+
+    <div class="question_cont_foot mdT">
+    <div class="comments_container">
+     <% if (model.comments.length > 0) {%>
+        <% _.each(model.comments, function(comment) { %>
+        <div class="msT msB">
+            <p><%- comment.comment %></p>
+            <p class="txt-alt-grey">- <%- comment.name %> (<%- HR.util.formatDateTime(comment.inserttime) %>)</p>
+        </div>
+        <% }) %>
+    <%} else {%>
+         <div class="msT msB txt-alt-grey"><em>None yet.</em></div>
+    <%}%>
+    </div>
+    <% if(!pdfmode){ %>
+    <input style="width:70%;" type="text" id="add_new_report_comment" class="txt_box input-large no-margin" placeholder="Write a comment ...">
+    <%}%>
+    </div><!-- end .question_cont_foot -->
+
+</div><!-- end mjL mjB -->
+
+<% if (model.plagiarism) { %>
+<div class="alert mjA">
+    <header>Plagarism flagged</header>
+    <p>We have marked questions with suspected plagiarism below. Please review.</p>
+</div>
+<% } %>
+
+<table style="width:96%; margin:30px auto;" class="table table-radius table-out-border fnt-sz-mid ">
+    <thead>
+        <tr class="prominent txt-alt-grey">
+            <th><span style="margin-left:38px;">QUESTION DESCRIPTION</span></th>
+            <th>TIME TAKEN</th>
+            <th>SCORE</th>
+            <th class="text-center">STATUS</th>
+        </tr>
+    </thead>
+
+    <% status_classes = {
+        correct: 'icon2-status_correct txt-green',
+        wrong: 'icon2-status_wrong txt-orange',
+        review: 'icon2-generalsettings txt-yellow',
+        unattempted: 'icon2-status_no_ans txt-alt-grey',
+        neutral: 'icon2-status_no_ans txt-alt-grey'
+    } %>
+
+    <% _.each (model.questions, function (question, index) {
+        var plagiarism = false;
+        if (model.plagiarism && model.plagiarism.plagiarism.questions[question.id]) {
+            plagiarism = true;
+        }
+
+        if(index+1 in tq_split && tq_split[index+1]) {tt = HR.util.prettyPrintSeconds(tq_split[index+1])} else { tt = "-"}
+        %>
+    <tr <% if(plagiarism){%>style="background: #fee7e4;"<%}%>>
+        <td width="60%" class="fnt-wt-600">
+            <span class="txt-alt-grey mdR">Q<%- index + 1 %></span>
+            <% if (question.name) { %>
+            <span class="green"><%- question.name %></span>
+            <% } else { %>
+            <span class="green"><%- question.preview %></span>
+            <% } %>
+            <i class="icon-right-open-mini"></i>
+            <span class="display-inline-block"><%- HR.util.readableQuestionType(question.type) %></span>
+            <span class="display-block" style="margin-left:37px;"><a href="#" class="js-report-tab" data-qid=<%- question.id %> data-tab="detailed">(view detailed report)</a></span>
+        </td>
+        <td width="15%"><%=tt%></td>
+        <% if ($.inArray(question.type, ["subjective", "uml", "electrical", "file_upload"]) >-1 || _.isUndefined(question.points) ) { %>
+        <td width="10%"><%- question.score %></td>
+        <% } else { %>
+        <td width="10%"><%- question.score %>/<%- question.points %></td>
+        <% } %>
+        <td width="10%" class="text-center">
+            <% if (plagiarism) {%>
+            <h3 class="mmT"><i class="<%- status_classes['review'] %>"></i></h3>
+            <% } else if (question.status && status_classes[question.status]) { %>
+            <h3 class="mmT"><i class="<%- status_classes[question.status] %>"></i></h3>
+            <% } else { %>
+            <h3 class="mmT"><i class="<%- status_classes['neutral'] %>"></i></h3>
+            <% } %>
+        </td>
+    </tr>
+    <% }) %>
+</table>
+<% } %>

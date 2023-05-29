@@ -1,0 +1,379 @@
+<div id="fb-root"></div>
+        <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=347499128655783";
+            fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="hero hero--grey careers_hero container">
+    <div class="container text-center">
+        <h1>Built for Hackers, by Hackers</h1>
+        <p>We are a diverse group of programmers, designers, content developers, and more working hard to create the best community for Hackers, anywhere. Because we have such a small team, you get to be a huge part of the creation of HackerRank. Of course, we have some awesome perks for you as well.</p>
+    </div>
+</div>
+
+<div class="container careers_positions padding-large bottom">
+    <div class="row padded content_wrap">
+        <h2 class="span16 careers_header">Positions</h2>
+        <div class="span4 sidebar--inline">
+            <ul class="tab-list light-wrap tab-buttons sidebar_list unstyled careers_positions-list">
+                <li><span class="sidebar_list-heading active">Available Positions</span></li>
+                <% _.each(positions, function(item) { %>
+                    <li class="sidebar_list-item"><a href="#<%=item.slug%>" data-toggle="tab"><%= item.title %></a></li>
+                <% }); %>
+            </ul>
+        </div>
+        <section class="tab-content job-details span11 pull-right content-text">
+            <div class="tab-pane active"><h3 class="aside">Select a position that interests you</h3></div>
+            <div class="tab-pane" id="sales-engineer">
+                <h2 class="careers_position-title">Sales Engineer
+                    <div class="careers_share pull-right">
+                        <i class="icon-twitter" data-title="product-hacker"></i>
+                        <!-- <a class="tweet"  style='cursor:pointer;'><img src='/assets/tweet-filler.png'></a> -->
+                        <div class="fb-like" data-href="<%=base_url%>/careers/product-hacker" data-send="true" data-width="450" data-show-faces="true" data-layout="button_count"></div>
+                    </div>
+                </h2>
+                <p>Companies around the world rely on Interviewstreet (HackerRank's sister site) to help them identify the best engineering talent and they need your expertise.</p>
+                <p>Our company has seen amazing growth this year and we are looking for some talented engineers to help us grow even faster. This is a customer facing role in which you will work with the sales team to ensure our customers success. Perhaps you an engineer who is looking for a change. Or maybe you're just getting started in your career and you've realized that coding full time isn't for you. Either way, in this role you will still be able to flex your technical muscles but in a totally new way:<br/>
+                    <ul class="unstyled">
+                        <li>Facebook needs help writing a new coding challenge: You're there with a great idea for their career's page.</li>
+                        <li>Amazon wants know how a new tool will help them make better decisions: You're there with the experience and data to back it up.</li>
+                        <li>Yahoo is going to hold another contest and we need to make sure our hosting environment will scale: You're there to make sure that our AWS servers are ready.</li>
+                    </ul>
+                </p>
+                <h3>Job Responsibilities</h3>
+                <p>
+                    <ul>
+                        <li>Partner with the sales team to provide presales support for sales activities including needs analysis, product demonstrations and challenge creation</li>
+                        <li>Reduce/eliminate technical obstacles to winning the technical recommendation</li>
+                        <li>Assist with the creation of technical documentation and support material</li>
+                        <li>Visit customer locations, marketing events, and hackathons as required</li>
+                        <li>Develop an expertise in the features, benefits and application of Interviewstreet’s platform</li>
+                        <li>Work with customers during the evaluation period to successfully implement the solution</li>
+                        <li>Communicate daily with sales staff regarding sales activities and strategies</li>
+                        <li>Educate and train the sales team on the features and use of Interviewstreet’s platform</li>
+                        <li>Act as the customer’s advocate for product management and development</li>
+                        <li>Provide technical support as needed</li>
+                        <li>Other related duties as assigned</li>
+                    </ul>
+                </p>
+                <h3>What are we looking for?</h3>
+                <p>
+                    <ul>
+                        <li>This position is located in our US office</li>
+                        <li>Excellent communication skills</li>
+                        <li>Software development experience</li>
+                        <li>Solid understanding of AWS and SaaS delivery</li>
+                    </ul>
+                </p>
+                <p class="text-center">
+                    <a target="_blank" id="btn-sales-engineer" href="mailto:paul@interviewstreet.com" class="btn btn-green">Apply for position</a>
+                </p>
+            </div>            
+            <div class="tab-pane" id="product-hacker">
+                <h2 class="careers_position-title">Product Hacker
+                    <div class="careers_share pull-right">
+                        <i class="icon-twitter" data-title="product-hacker"></i>
+                        <!-- <a class="tweet"  style='cursor:pointer;'><img src='/assets/tweet-filler.png'></a> -->
+                        <div class="fb-like" data-href="<%=base_url%>/careers/product-hacker" data-send="true" data-width="450" data-show-faces="true" data-layout="button_count"></div>
+                    </div>
+                </h2>
+                <p>Our goal is to build an engaging platform for hackers to solve interesting real world challenges in all domains of Computer Science.</p>
+                <p>We have had a dedicated, core group of users since we launched in beta. We're hiring a Product Hacker to focus on two important metrics - Engagement (time spent and interaction) and Retention (churn factor). We listen to our users a lot and been doing a bunch of experiments on our site - bot-vs-bot games, real-world challenges from companies, etc. which has made thousands of users happy. Imagine if you grew this number by 100x or 1000x? <a href = "http://online.wsj.com/article/SB10001424053111903480904576512250915629460.html">Software is eating the world</a> and if all the world's problem solvers come together at a single place, it will be the most valuable place EVER built. We are looking for a Product Hacker to help us push features (or kill features) to reach the goal. The Product Hacker is the bridge between the user and the product and works with everyone in the team (designers, founders, engineers).</p>
+                <h3>Job Responsibilities</h3>
+                <p>
+                    <ul>
+                        <li>Analyzing engagement and retention metrics as well as feedback from users and suggest product features based on this feedback</li>
+                        <li>Detail product specifications to help designers and hackers to execute them and make it live</li>
+                        <li>Code some components of the product</li>
+                    </ul>
+                </p>
+                <h3>What are we looking for?</h3>
+                <p>
+                    <ul>
+                        <li>You have coded extensively in the past and continue to build stuff for fun</li>
+                        <li>You understand the way hackers think and what they enjoy, and you are able to translate ideas into how it should reflect on the website</li>
+                        <li>Explicit mention of some of the earlier products you've worked on - what changes you made and how they affected the business value</li>
+                        <li>Experience working in user growth teams in the past</li>
+                        <li>You are very numbers obsessed and the first thing you wake up to is an analytics dashboard</li>
+                        <li>This is not a managerial task but will involve coding some components of the product</li>
+                    </ul>
+                </p>
+                <p class="text-center">
+                    <a target="_blank" id="btn-product-hacker" href="mailto:hackers@hackerrank.com" class="btn btn-green btn-apply">Apply for position</a>
+                </p>
+            </div>
+            <div class="tab-pane" id="challenge-curator">
+                <h2 class="careers_position-title">Challenge Curator
+                    <div class="careers_share pull-right">
+                        <i class="icon-twitter" data-title="challenge-curator"></i>
+                        <!-- <a class="tweet" data-title="challenge-curator" style='cursor:pointer;'><img src='/assets/tweet-filler.png'></a> -->
+                        <div class="fb-like" data-href="<%=base_url%>/careers/challenge-curator" data-send="true" data-width="450" data-show-faces="true" data-layout="button_count"></div>
+                    </div>
+                </h2>
+                <p>Every product has an atomic unit. In twitter, it's a tweet, In tumblr, it's a post, In HackerRank, it's a challenge.</p>
+                <p>Every hacker has one type of challenge in a certain level of difficulty that he/she is really intrigued by. We're building a large collection of interesting real-world challenges from various fields of science like AI, Machine Learning, Mathematics, Distributed systems, Image processing, etc. in different levels of difficulty.</p>
+                <p>This is one of the most unique and fascinating roles in the programming space. The top of your mind will always be filled with interesting problems.</p>
+                <h3>Job Responsibilities</h3>
+                <p>
+                        <ul>
+                            <li>Creativity in understanding and working on real world Computer Science problems</li>
+                            <li>Working with Phd's, renowned professors and companies in these areas to design these challenges</li>
+                            <li>Coding components of the challenge to make it production ready</li>
+                            <li>Implementing an intuitive and engaging interface for hackers to solve the challenge</li>
+                        </ul>
+                    </p>
+                <h3>Skills and Experience you Possess</h3>
+                    <p>
+                        <ul>
+                            <li>Deep love for Computer Science, the subject</li>
+                            <li>Ability to implement interface for the challenges.</li>
+                            <li>Design and code automated evaluation checker for each type of challenge as much as possible</li>
+                            <li>Good communication skills to work with other problem setters</li>
+                            <li>Proficiency in one programming language</li>
+                        </ul>
+                    </p>
+                <p>PS: If you’d like to contribute challenges for fun (part-time), you’re absolutely welcome.</p>
+                <p class="text-center">
+                    <a target="_blank" id="btn-product-hacker" href="mailto:hackers@hackerrank.com" class="btn btn-green btn-apply">Apply for position</a>
+                </p>
+            </div>
+            <div class="tab-pane" id="product-evangelist">
+                <h2 class="careers_position-title">Project Evangalist
+
+                    <div class="careers_share pull-right">
+                        <i class="icon-twitter" data-title="product-evangelist"></i>
+                        <!-- <a class="tweet" data-title="product-evangelist" style='cursor:pointer;'><img src='/assets/tweet-filler.png'></a> -->
+                        <div class="fb-like" data-href="<%=base_url%>/careers/product-evangelist" data-send="true" data-width="450" data-show-faces="true" data-layout="button_count"></div>
+                    </div>
+                </h2>
+
+                <p>Every hacker has a type of challenge presented in a certain level of difficulty that really intrigues him. We're working to build the largest and the most engaging community of hackers.</p>
+                <p>If we work hard and execute well, you’ll be one of the most powerful people in the software industry. You will be the central node connected to the top hackers of the world in different domains.</p>
+
+                <h3>HackerRank club</h3>
+                <p>Every college should have a HackerRank club where we'll host hackathons, programming contests, lectures by famous hackers, etc.</p>
+                <p>We'll have a budget for you to distribute some swag and prizes to the coding contests but there's a bigger picture in play. This is not really a recruitment tool, but rather and opportunity to make HackerRank a symbol of pride and a tool to learn.</p>
+
+                <h3>Job Responsibilities</h3>
+                    <p>
+                        <ul>
+                          <li>Create a HackerRank clubs across all schools in US</li>
+                          <li>Conduct frequent editions of HackerGames (games.hackerrank.com), stanvscal and any other fun event you can think of</li>
+                          <li>Be on top of a well-connected network of hackers and have the ability to manage them.</li>
+                          <li>Interact with academia/PhD’s in different areas of Computer science to source intelligent problems</li>
+                          <li>Conduct hackathons and organize intra/inter-company contests (Eg: harman.hackerrank.com)</li>
+                        </ul>
+                    </p>
+
+                <h3>Skills and Experience you Possess</h3>
+                    <p>
+                        <ul>
+                          <li>Hustling ability</li>
+                          <li>Great communication (and convincing) skills</li>
+                          <li>Basic knowledge of Computer Science</li>
+                          <li>Ability to interact with engineers and have a rough idea of how things work. For eg: fixing a bug in IE might take twice the time to build a feature.</li>
+                        </ul>
+                    </p>
+                <p class="text-center">
+                    <a target="_blank" id="btn-product-evangelist" href="mailto:hackers@hackerrank.com" class="btn btn-green btn-apply">Apply for position</a>
+                </p>
+            </div>
+            <div class="tab-pane" id="product-designer">
+                <h2 class="careers_position-title">Product Designer
+                    <div class="careers_share pull-right">
+                        <i class="icon-twitter" data-title="product-designer"></i>
+                        <!-- <a class="tweet" data-title="product-designer" style='cursor:pointer;'><img src='/assets/tweet-filler.png'></a> -->
+                        <div class="fb-like" data-href="<%=base_url%>/careers/product-designer" data-send="true" data-width="450" data-show-faces="true" data-layout="button_count"></div>
+                    </div>
+                </h2>
+                <p>HackerRank is designed to be a platform for hackers to solve real-world programming challenges in different domains (AI, Machine Learning, Big Data, etc.). The value of this platform becomes 10x if the interface for each of these challenges is built in an engaging way</p>
+                <p>For example, most of our AI challenges are interesting bot-vs-bot games (Anti Chess, Othello). You code a bot which plays with the rest of our system and determines the best AI. There’s scope to design this way for every type of challenge</p>
+                <p>The other part of HackerRank is designing the platform itself - categorization of challenges, rewards and badges for accomplishments, a hacker profile that pulls information from HackerRank and other relevant sites, etc</p>
+                <p>You’ll be interacting with a team of experienced hackers who understand what needs to be built and how</p>
+
+                <h3>Job Responsibilities</h3>
+                    <p>
+                        <ul>
+                          <li>Create beautiful, aesthetically pleasing visual interfaces for hackers to solve challenges</li>
+                          <li>A major impact in product decisions, usability and design flow of the interface</li>
+                          <li>Obsession over the tiniest of things (the padding is 1px off)</li>
+                          <li>Ability to sync up with engineers in integrating design work and ensuring WYSIWYG designed</li>
+                        </ul>
+                    </p>
+
+                <h3>Skills and Experience you Possess</h3>
+                    <p>
+                        <ul>
+                          <li>Experience in designing consumer-focused web products</li>
+                          <li>Basic understanding of different computer science domains</li>
+                          <li>Ability to code CSS/HTML</li>
+                          <li>Javascript is a plus</li>
+                        </ul>
+                    </p>
+                <p class="text-center">
+                    <a target="_blank" id="btn-product-designer" href="mailto:hackers@hackerrank.com" class="btn btn-green btn-apply">Apply for position</a>
+                </p>
+            </div>
+            <div class="tab-pane" id="content-creator">
+                <h2 class="careers_position-title">Content Curator
+                    <div class="careers_share pull-right">
+                        <i class="icon-twitter" data-title="content-creator"></i>
+                        <!-- <a class="tweet" data-title="content-creator" style='cursor:pointer;'><img src='/assets/tweet-filler.png'></a> -->
+                        <div class="fb-like" data-href="<%=base_url%>/careers/content-creator" data-send="true" data-width="450" data-show-faces="true" data-layout="button_count"></div>
+                    </div>
+                </h2>
+<!--                 <p>HackerRank is building the most engaged community of hackers. </p>
+                <p>Every hacker has a category of challenges that they love, whether they are coding at their level or pushing their limits and learning something new.</p>
+                <p>We're building a large collection of real world challenges in various domains of Computer Science. The challenges themselves are sourced from top hackers, professors, and companies who work in that domain.</p>
+
+                <h3>Job Responsibilities</h3>
+                    <p>
+                        <ul>
+                            <li>Create challenges that may be hard to solve but have intents or purposes that are easy to understand within seconds. The problem statement should be clean and simple such that even a non-programmer should be able to comprehend it immediately.</li>
+                            <li>After every hackathon or a contest, write a detailed blog post on different solutions, approaches, algorithms used to solve the challenge.</li>
+                            <li>Interview top hackers on their approach to coding.</li>
+                            <li>Manage content of any marketing material (eg: <a href = "hackerrank.com/olympics">HackerRank Olympics</a>)</li>
+                        </ul>
+                    </p>
+                <h3>Skills and Experience you Possess</h3>
+                    <p>
+                        <ul>
+                          <li>Love Computer Science</li>
+                          <li>Great english language skills and an ability to articulate a complicated concept or phrase in a simple way</li>
+                          <li>Have examples of your writing online, such as guest articles in famous tech blogs</li>
+                          <li>An active blog on any domain that you like (preferably technology related)</li>
+                        </ul>
+                    </p> -->
+                <p>HackerRank is building the most engaged community of hackers. </p>
+                <p>Every hacker has a category of challenges that they love, whether they are coding at their level or pushing their limits and learning something new.</p>
+                <p>We're building a large collection of real world challenges in various domains of Computer Science. The challenges themselves are sourced from top hackers, professors, and companies who work in that domain.</p>
+
+                <h3>Job Responsibilities</h3>
+                    <p>
+                        <ul>
+                            <li>There are a lot of challenges created from various sources. We'll need to ensure that the problem statements are crisp, easy to understand by anyone even without a CS background - at the very least they should know what is being asked.</li>
+                            <li>After every hackathon or a contest, write a detailed blog post on different solutions, approaches, algorithms used to solve the challenge in collaboration with hackers who set the problem or solved it during a contest.</li>
+                            <li>Interview top hackers on their approach to coding and feature inspiring stories (https://www.hackerrank.com/blog/jinfu) - there are tons hidden.</li>
+                            <li>Manage content of any marketing material (eg: hackerrank.com/backtoschool)<br/>
+                            and many more..</li>
+                        </ul>
+                    </p>
+                <h3>Skills and Experience you Possess</h3>
+                    <p>
+                        <ul>
+                          <li>Love for Computer Science - a CS degree is not essential but it's a good to have.</li>
+                          <li>Great english language skills and an ability to articulate a complicated concept or phrase in a simple way.</li>
+                        </ul>
+                    </p>
+                <p>You'll collaborate with the best problem solvers across the world and your work will impact ~200k of the smartest hackers in the world!
+                </p>
+
+                <p class="text-center">
+                    <a target="_blank" id="btn-content-creator" href="mailto:hackers@hackerrank.com" class="btn btn-green btn-apply">Apply for position</a>
+                </p>
+            </div>
+            <div class="tab-pane" id="acm-world-finals-hacker">
+                <h2 class="careers_position-title">ACM-ICPC World Finals Hacker
+                    <div class="careers_share pull-right">
+                        <i class="icon-twitter" data-title="acm-world-finals-hacker"></i>
+                        <!-- <a class="tweet" data-title="acm-world-finals-hacker" style='cursor:pointer;'><img src='/assets/tweet-filler.png'></a> -->
+                        <div class="fb-like" data-href="<%=base_url%>/careers/acm-world-finals-hacker" data-send="true" data-width="450" data-show-faces="true" data-layout="button_count"></div>
+                    </div>
+                </h2>
+                <p>HackerRank is building the most engaged community of hackers. </p>
+                <p>The hypothesis: Every hacker has a category of challenges that they love, whether they are coding at their level or pushing their limits and learning something new.</p>
+                <p>We're building a large collection of real world challenges in various domains of Computer Science. The challenges themselves are sourced from top hackers, professors, and companies who work in that domain. Competitive programming sites like ACM and Topcoder focus on a set of problems from a limited set of algorithms. We're building a superset - having real world Computer Science challenges. Join us to create a much larger programming community!</p>
+
+                <h3>Job Responsibilities</h3>
+                    <p>
+                        <ul>
+                          <li>Build the infrastructure that can support evaluating real world challenges (Machine Learning, Distributed system challenges, etc.)</li>
+                          <li>Build components that you feel are missing from other competitive programming sites</li>
+                          <li>Interact with CTO's and lead engineers and professors to create real-world challenges</li>
+                          <li>[Optional but preferred] Organize contests and create programming challenges with varying difficulty</li>
+                        </ul>
+                    </p>
+                <h3>Skills and Experience you possess</h3>
+                    <p>
+                        <ul>
+                          <li>An ACM-ICPC world finalist once or twice</li>
+                        </ul>
+                    </p>
+                    <p class="text-center">
+                        <a target="_blank" id="btn-acm-world-finals-hacker" href="mailto:hackers@hackerrank.com" class="btn btn-green btn-apply">Apply for position</a>
+                    </p>
+            </div>
+            <div class="tab-pane" id="backend-cpp-hacker">
+                <h2 class="careers_position-title">Backend C++ Hacker
+                    <div class="careers_share pull-right">
+                        <i class="icon-twitter" data-title="backend-cpp-hacker"></i>
+                        <!-- <a class="tweet" data-title="backend-cpp-hacker" style='cursor:pointer;'><img src='/assets/tweet-filler.png'></a> -->
+                        <div class="fb-like" data-href="<%=base_url%>/careers/backend-cpp-hacker" data-send="true" data-width="450" data-show-faces="true" data-layout="button_count"></div>
+                    </div>
+                </h2>
+                <p>HackerRank is building the most engaged community of hackers.</p>
+                <p>The hypothesis: Every hacker has a category of challenges that they love, whether they are coding at their level or pushing their limits and learning something new.</p>
+                <p>We're building a large collection of real world challenges in various domains of Computer Science like Artificial Intelligence, Machine Learning, Distributed Systems, etc. The challenges themselves are sourced from top hackers, professors, and companies who work in that domain.</p>
+
+                <h3>Job Responsibilities</h3>
+                    <p>
+                        <ul>
+                          <li>Build the infrastructure that can support evaluating real world challenges (Machine Learning, Distributed systems, Databases, etc.)</li>
+                          <li>Auto scale codechecker instances and other parts of the infrastructure</li>
+                          <li>Code components that can "try" to detect complexity of the code (we know it's NP), ensuring there's no bias towards a particular language</li>
+                        </ul>
+                    </p>
+                <h3>Skills and Experience you possess</h3>
+                    <p>
+                        <ul>
+                          <li>Coded and maintained huge projects in C++ with extensive knowledge in Unix/Linux</li>
+                          <li>Experience in competitive programming contests</li>
+                          <li>Background in Systems and Network programming</li>
+                        </ul>
+                    </p>
+                <p class="text-center">
+                    <a target="_blank" id="btn-backend-cpp-hacker" href="mailto:hackers@hackerrank.com" class="btn btn-green btn-apply">Apply for position</a>
+                </p>
+            </div>
+        </section>
+    </div>
+</div>
+<section class="careers_perks container content-text">
+    <div class="row margin-large top padded">
+        <h2 class="span16 careers_header">Why HackerRank?</h2>
+        <div class="span4 careers-perk">
+            <h4 class="careers_perks-title">All the Right Tools</h4>
+            <p>We know that everyone's perfect workspace is unique to them. We will get you set up with whatever equipment you need to start hacking - a new 15&rdquo; Macbook Pro or iMac, or a computer of your choice plus a display if you need it. Additionally, if you require any software or other tools, we've got it covered.</p>
+        </div>
+        <div class="span4 careers-perk">
+            <h4 class="careers_perks-title">Flexible Hours</h4>
+            <p>Because we work so hard, we encourage our employees to keep flexible hours and don't require them to track their time. A morning scrum and open communication ensures that the job gets done on time, and we rely on the honor system so that you can work on your own pace.</p>
+        </div>
+        <div class="span4 careers-perk">
+            <h4 class="careers_perks-title">Location, Location, Location</h4>
+            <p>We are the first Indian company to be backed by Y-Combinator, and as a result we have a thriving office in Bangalore and a growing office in Mountain View, CA. Depending on your residency or visa status, we will get you situated in one of our two offices, both of which are located in the heart of their country's tech industry.</p>
+        </div>
+    </div>
+    <div class="row padded">
+        <div class="span4 careers-perk">
+            <h4 class="careers_perks-title">Wellness Support</h4>
+            <p>To work hard, you have to be healthy. We will cover your health, dental, and visual insurance with no wait period. That means instant benefits from the day you're hired.</p>
+        </div>
+        <div class="span4 careers-perk">
+            <h4 class="careers_perks-title">Creative Support</h4>
+            <p>If you have a cool side project that you want to launch, we will pay for EC2/heroku servers to get it off the ground. Side projects fuel creativity and learning, which are crucial to the HackerRank culture.</p>
+        </div>
+    </div>
+</section>
+
+<section class="container content-text careers_culture">
+    <div class="padded">
+        <h3 class="careers_header">Company Culture</h3>
+        <p>The culture of a startup is reflective of the founders’ DNA. Larry Page & Sergey Brin were PhD’s from Stanford and that’s why Google is filled with high scoring graders from top schools and is very hard to get in if you’re not a CS major. Similarly, the hacker culture at Facebook is inspired by Zuckerberg, a hacker, the design culture by Steve Jobs and so on.</p>
+        <p>The adjective to describe the environment/founders here is relentless hardworkers. It might be a general trait of a startup but I’m pretty sure it’s a notch higher here and defines the culture. This is what has taken us this far. It’s not working in weekends or allnighters that count, but the effort that goes into building something intellectually engaging for hackers and making it fun is high.</p>
+        <p>You’ll have to embrace randomness and chaos. There’s some level of discipline (eg: daily scrums) but only so much. We push boundaries everyday, stretch our limits but no one complains because there’s a feeling of doing something great at the end of the day, every single day.</p>
+    </div>
+</section>

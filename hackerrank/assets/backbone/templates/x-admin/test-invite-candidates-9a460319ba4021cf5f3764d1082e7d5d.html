@@ -1,0 +1,22 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL">Bulk Invite Candidates</h3>
+</div>
+
+<div class="overflow-content" id="control-overflow">
+    <form name="invite-candidates-form" class="mjA">
+        <div class="msT msB">
+            <label>Upload the CSV</label>
+            <input type="file" name="invites_csv" />
+        </div>
+        <div class="msT msB">
+            <label>
+                <input type="checkbox" name="force-invite"/>
+                Invite good rows even with errors
+            </label>
+            <button type="submit" class="btn btn-green">Invite</button>
+        </div>
+    </form>
+
+    <div class="message-box success mjA"></div>
+    <div class="message-box error mjA"></div>
+</div>

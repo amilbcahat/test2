@@ -1,0 +1,20 @@
+<div class="clearfix row-btn row-clear submissions_item">
+    <div class="span4 submissions-title">
+        <p><a class="challenge-slug backbone" href="<%= ns %>challenges/<%= challenge.slug %>"><%= challenge.name %></a></p>
+    </div>
+    <div class="span2 submissions-language">
+        <p class="small"><%= lang_display_mapping[model.get('language')] || model.get('language') %></p>
+    </div>
+    <div class="span2 submissions-time">
+        <p class="small"><%= model.get('time_ago') %> ago</p>
+    </div>
+    <div class="span3">
+        <p class="small"><%= model.get('status') %> <% if (model.get('status_code') == 0) { %><img src="/assets/queued.gif" /><% } %></p>
+    </div>
+    <div class="span1">
+      <p class="small"><%= model.get('score') %></p>
+    </div>
+    <div class="span3 pull-right">
+        <p class="btn-wrap"><a href="<%= model.pageURL() %>" class="btn btn-inverse view-results backbone">View Results</a></p>
+    </div>
+</div>

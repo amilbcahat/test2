@@ -1,0 +1,22 @@
+{
+  "name": "hackerrank-bootstrap",
+  "version": "0.0.0",
+  "homepage": "https://github.com/interviewstreet/hackerrank-bootstrap",
+  "authors": [
+    "Ashutosh Agrawal <ashutosh@hackerrank.com>"
+  ],
+  "description": "HackerRank Core Bootstrap",
+  "keywords": [
+    "hackerrank",
+    "bootstrap"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

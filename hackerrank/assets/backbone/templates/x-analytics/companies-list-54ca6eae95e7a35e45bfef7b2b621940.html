@@ -1,0 +1,131 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL">Companies Dashboard</h3>
+</div>
+<div class="overflow-content" id="control-overflow">
+    <div class="actions-row mlA">
+        <div class="msT">
+            <div class="span2 msT">Type</div>
+            <div class="btn-group">
+                <a href="#" class="btn payment-type-change <% if(paymentType == 'paid') { %> active <% } %>" data-payment-type="paid">Paid</a>
+                <a href="#" class="btn payment-type-change <% if(paymentType == 'active_trials') { %> active <% } %>"
+                   data-payment-type="active_trials">Active Trials</a>
+                <a href="#" class="btn payment-type-change <% if(paymentType == 'expired_trials') { %> active <% } %>"
+                   data-payment-type="expired_trials">Expired Trials</a>
+                <a href="#" class="btn payment-type-change <% if(paymentType == 'locked') { %> active <% } %>"
+                   data-payment-type="locked">Locked</a>
+            </div>
+        </div>
+
+        <div class="msT">
+            <div class="span2 msT">Duration</div>
+            <div class="btn-group">
+                <a class="btn duration-change <% if(duration == 'daily') { %> active <% } %>" data-duration="daily">Yesterday</a>
+                <a class="btn duration-change <% if(duration == 'weekly') { %> active <% } %>" data-duration="weekly">Last
+                    7 days</a>
+                <a class="btn duration-change <% if(duration == 'monthly') { %> active <% } %>" data-duration="monthly">Last
+                    30 days</a>
+                <a class="btn duration-change <% if(duration == 'quarterly') { %> active <% } %>"
+                   data-duration="quarterly">Last 90 days</a>
+            </div>
+        </div>
+
+        <div class="msT">
+        <div class="span2 msT">Data Type</div>
+            <div class="btn-group">
+                <a class="btn data-type-change <% if(dataType == 'figures') { %> active <% } %>" data-data-type="figures">Figures</a>
+                <a class="btn data-type-change <% if(dataType == 'difference') { %> active <% } %>" data-data-type="difference">Difference</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="main-content">
+        <table cellpadding="0" cellspacing="0" border="0" class="dash-table table dt-sleektable">
+            <thead>
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Email</td>
+                <td>Tests</td>
+                <td>Invites</td>
+                <td>Attempts</td>
+                <td>Interviews</td>
+                <td>Teams</td>
+                <td>Admin</td>
+                <td>Recruiters</td>
+                <td>Developers</td>
+                <td>Users</td>
+                <td>Created At</td>
+            </tr>
+
+            </thead>
+            <tbody>
+            <% _.each(companies, function(company) { %>
+            <tr>
+                <td><%= company.id %></td>
+                <td><%= HR.util.htmlEncode(company.name) %></td>
+                <td><%= HR.util.htmlEncode(company.email) %></td>
+
+                <% if(dataType == 'figures') { %>
+                    <td><%= company.tests_count %></td>
+                <% } %>
+                <% if(dataType == 'figures') { %>
+                    <td><%= company.invites_count %></td>
+                <% } %>
+                <% if(dataType == 'figures') { %>
+                    <td><%= company.attempts_count %></td>
+                <% } %>
+                <% if(dataType == 'figures') { %>
+                    <td><%= company.interviews_count %></td>
+                <% } %>
+                <% if(dataType == 'figures') { %>
+                    <td><%= company.teams_count %></td>
+                <% } %>
+                <% if(dataType == 'figures') { %>
+                    <td><%= company.admins_count %></td>
+                <% } %>
+                <% if(dataType == 'figures') { %>
+                    <td><%= company.recruiters_count %></td>
+                <% } %>
+                <% if(dataType == 'figures') { %>
+                    <td><%= company.developers_count %></td>
+                <% } %>
+                <% if(dataType == 'figures') { %>
+                    <td><%= company.users_count %></td>
+                <% } %>
+
+                <% if(dataType == 'difference') { %>
+                    <td><%= company.tests_diff %></td>
+                <% } %>
+                <% if(dataType == 'difference') { %>
+                    <td><%= company.invites_diff %></td>
+                <% } %>
+                <% if(dataType == 'difference') { %>
+                    <td><%= company.attempts_diff %></td>
+                <% } %>
+                <% if(dataType == 'difference') { %>
+                    <td><%= company.interviews_diff %></td>
+                <% } %>
+                <% if(dataType == 'difference') { %>
+                    <td><%= company.teams_diff %></td>
+                <% } %>
+                <% if(dataType == 'difference') { %>
+                    <td><%= company.admins_diff %></td>
+                <% } %>
+                <% if(dataType == 'difference') { %>
+                    <td><%= company.recruiters_diff %></td>
+                <% } %>
+                <% if(dataType == 'difference') { %>
+                    <td><%= company.developers_diff %></td>
+                <% } %>
+                <% if(dataType == 'difference') { %>
+                    <td><%= company.users_diff %></td>
+                <% } %>
+
+                <td><%= company.created_at %></td>
+            </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>

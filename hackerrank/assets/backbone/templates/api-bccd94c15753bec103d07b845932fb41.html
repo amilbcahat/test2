@@ -1,0 +1,224 @@
+<section class="api">
+    <header class="page-title">
+    <div class="container">
+	    <h1>HackerRank API</h1>
+	    <p>Power your programming contest using the HackerRank platform.</p>
+    </div>
+    </header>
+    <div class="light-wrap wrap container content-wrap">
+        <div class="tab-sidebar span3 inline-sidebar">
+            <ul class="tab-list tab-buttons unstyled">
+		<li class="active"><a href="#apiKeys" data-toggle="tab">API Keys</a></li>
+                <li><a href="#apiMethods" data-toggle="tab">Documentation</a></li>
+                <li><a href="#apiSample" data-toggle="tab">Sample code</a></li>
+            </ul>
+        </div>
+        <div class="inline-content tab-content span12 pull-right">
+            <div class="tab-pane active" id="apiKeys">
+		<% if(isLoggedIn) { %>
+		    <% if(consumers.length > 0) { %>
+                <h3>API Keys</h3>
+		<div class="api-list row">
+			<div class="row">
+			<span class="span2"><strong>Name</strong></span>
+			<span class="span10"><strong>Key</strong></span>
+			</div>
+			<% _.each(consumers, function(consumer) { %>
+			<div class="row">
+			<span class="span2"><%= consumer.name %></span>
+			<span class="span10"><%= consumer.api_key %></span>
+			</div>
+			<% }); %>
+		</div>
+		<% } %>
+                <h3>Generate a new API key</h3>
+                <form>
+                    <div class="formgroup">
+                    <label><strong>Name</strong></label>
+                        <input type="text" placeholder="required" id="genkey-app-name">
+                        <p class="small">Your application's name</p>
+                    </div>
+                    <div class="formgroup">
+                    <label><strong>Description</strong></label>
+		    <textarea rows="10" type="text" id="genkey-app-description"></textarea>
+                        <p class="small">Your application's description</p>
+                    </div>
+                    <div class="formgroup">
+                    <label><strong>Website</strong></label>
+                        <input type="text" id="genkey-app-website">
+                        <p class="small">Your application's website</p>
+                    </div>
+                    <!--<label><strong>HackerRank API terms</strong></label>
+                    <div class="api-terms">
+                    </div>
+                    <formgroup>
+                        <label><input type="checkbox"> Yes, I agree</label>
+                    </formgroup>
+		    <p class="small no-flow">By clicking "I agree", you are agreeing to do all sorts of cool stuff</p> -->
+
+		    <a class="btn btn-primary api-button" id="genkey-api-btn">Generate your API code</a><br>
+  		    <small class="error"><%= _.map(errors, function (e) { return _.escape(e); }).join("<br>") %></small>
+                </form>
+		<% } else { %>
+		<p>You need to be logged in to generate an API key</p>
+		<% } %>
+            </div>
+            <div class="tab-pane" id="apiMethods">
+                <h3>API Methods</h3>
+		<script>
+			$('#api-tabs a').click(function (e) {
+				e.preventDefault();
+				$(this).tab('show');
+			})
+		</script>
+		<ul class="nav nav-tabs" id="api-tabs">
+			<li class="active"><a href="#api-submissions" data-toggle="tab">Submissions</a></li>
+			<li><a href="#api-languages" data-toggle="tab">Languages</a></li>
+		</ul>
+
+		<div class="tab-content">
+			<div class="tab-pane active api-subtabs" id="api-submissions">
+			    <h4>Post a submission</h4>
+			    <small class="api-meta">Updated on Tuesday March 12, 2013</small>
+			    <p>Allows users to use the HackerRank code checker for their own purposes. Submit source code, which is compiled and run against a list of provided test cases.</p>
+			    <code class="api-code">POST http://api.hackerrank.com/checker/submission.json</code>
+			    <div class="table-lined no-border table-wrap">
+				<div class="row heading">
+				    <span class="span2">Parameter</span>
+				    <span class="span3">Value</span>
+				    <span class="span2">Type</span>
+				    <span class="span4">Description</span>
+				</div>
+				<div class="row">
+				    <span class="span2 api-text">source</span>
+				    <span class="span3"><textarea id="api-submission-source" rows="10" type="text" class="span3" placeholder="required"></textarea></span>
+				    <span class="span2 api-text">text</span>
+				    <span class="span4">The source code for a submission</span>
+				</div>
+				<div class="row row-alt">
+				    <span class="span2 api-text">lang</span>
+				    <span class="span3"><input id="api-submission-language" class="api-input" type="text" placeholder="required"></span>
+				    <span class="span2 api-text">text</span>
+				    <span class="span4">The language code for the submission<br>Ex: 5 (Python)</span>
+				</div>
+				<div class="row row-alt">
+				    <span class="span2 api-text">testcases</span>
+				    <span class="span3"><input id="api-submission-testcases" class="api-input" type="text" placeholder="required"></span>
+				    <span class="span2 api-text">string</span>
+				    <span class="span4">A JSON list of strings, each being a test case.</span>
+				</div>
+				<div class="row">
+				    <span class="span2 api-text">api_key</span>
+				    <span class="span3" style="color: #666;">A dummy api key will be used</span>
+				    <span class="span2 api-text">string</span>
+				    <span class="span4">Your HackerRank API key</span>
+				</div>
+				<div class="row">
+				    <span class="span2 api-text">wait</span>
+				    <span class="span3"><select id="api-submission-wait"><option>true</option><option>false</option></select></span>
+				    <span class="span2 api-text">enumerated</span>
+				    <span class="span4">
+					    <strong>true</strong> The response is sent only after the submission is compiled and run<br><br>
+					    <strong>false</strong> The request returns immediately and submission response will posted through the callback URL.
+				    </span>
+				</div>
+				<div class="row">
+				    <span class="span2 api-text">callback_url</span>
+				    <span class="span3"><input id="api-submission-callbackurl" class="api-input" type="text" placeholder="optional"></span>
+				    <span class="span2 api-text">string</span>
+				    <span class="span4">A callback url, on which the submission response will be posted as a JSON string under `data` parameter.</span>
+				</div>
+				<div class="row row-alt">
+				    <span class="span2 api-text">format</span>
+				    <span class="span3"><select id="api-submission-format"><option>json</option><option>xml</option></select></span>
+				    <span class="span2 api-text">enumerated</span>
+				    <span class="span4">Output format as JSON or XML</span>
+				</div>
+			    </div>
+			    <a class="btn btn-primary api-button try-submission-btn">Try it!</a>
+			    <div id="api-submission-output"></div>
+					    </div> <div class="tab-pane api-subtabs" id="api-languages"> <h4>Get supported languages and their codes</h4> <small class="api-meta">Updated on Tuesday March 12, 2013</small> <p>This method provides you with information regarding the language codes which our code checker supports</p>
+					    <code class="api-code">GET http://api.hackerrank.com/checker/languages.json</code>
+					    <div class="table-lined no-border table-wrap"> <div class="row heading">
+				    <span class="span2">Parameter</span>
+				    <span class="span3">Value</span>
+				    <span class="span2">Type</span>
+				    <span class="span4">Description</span>
+				</div>
+				<div class="row">
+				    <span class="span2">format</span>
+				    <span class="span3"><select id="api-languages-format"><option>json</option><option>xml</option></select></span>
+				    <span class="span2">enumerated</span>
+				    <span class="span4">Output format as JSON or XML</span>
+				</div>
+			    </div>
+			    <a class="btn btn-primary api-button try-languages-btn">Try it!</a>
+			    <div id="api-languages-output"></div>
+			</div>
+		</div>
+            </div>
+	    <div class="tab-pane" id="apiSample">
+		    <h3>Sample submission</h3>
+		    <p>A basic submission requires three parameters:</p>
+		    <dl class="api-parameters">
+			    <dt>source</dt>
+			    <dd>The source code, which needs to be compiled and run against the provided test cases.</dd>
+			    <dt>lang</dt>
+			    <dd>The language key for the language, the submission is made in. The data about language keys is avaialable through the <a href="http://api.hackerrank.com/checker/languages.json">languages endpoint</a>.</dd>
+			    <dt>testcases</dt>
+			    <dd>A valid JSON, which on parse should result in a list of strings.</dd>
+			    <dt>api_key</dt>
+			    <dd>Your HackerRank API Key</dd>
+
+		    </dl>
+		    <p>Here is a very simple submission using the <code>curl</code> command line tool to post a submission. The source code just prints the number `1` on any input and there is a single testcase, the string "1". Language key `5` means the language "python".
+		    </p><pre><hr/><code>curl -sX POST api.hackerrank.com/checker/submission.json -d 'source=print 1&lang=5&testcases=["1"]&api_key=yourapikeyfoobarbaz'
+		    </code><hr/></pre>
+		    <p>The JSON response:</p><pre><hr/><code>{
+    "result": {
+       "callback_url": "", 
+	"compilemessage": "Compiling /run-Wau8DkGiVQakETUogLnm/solution.py ...\n",
+	"hash": "run-JWv0DRvGh6fEuu4rurgL", 
+	"memory": [
+	    "552928"
+	],
+	"message": [
+	    "Success"
+	],
+	"result": 0,
+	"server": "ip-10-244-235-113.ec2.internal",
+	"signal": [
+	    0
+	],
+	"stderr": [
+	    false
+	],
+	"stdout": [
+	    "1\n"
+	],
+	"time": [
+	    "0.24375"
+	]
+
+    }
+}
+</code><hr/></pre>
+		    <h3>Optional parameters</h3>
+		    <p>Apart from the above required params, we accept following extra options:
+		    <dl class="api-parameters">
+			    <dt>callback_url</dt>
+			    <dd>A url, on which the checker response data is posted. The data will be a POST request with the JSON string under the parameter `data`.</dd>
+			    <dt>wait </dt>
+			    <dd>(default: "true")</dd>
+			    <dd>This will only be effective when the callback url is provided. When wait is set to the string "false", the request to the API does not wait for a response back, and just responds with a positive status that the submission has been made. The result can be obtained from the callback url.</dd>
+		    </dl></p><br/>
+		    <p>Here is the same submission with a callback url and the wait disabled.</p>
+		    <pre><hr/><code>curl -sX POST api.hackerrank.com/checker/submission.json -d 'source=print 1&lang=5&testcases=["1"]&callback_url=http://your-site.com/checker_callback&wait=false&api_key=yourapikeyfoobarbaz'
+</code><hr/></pre><p>The JSON response:</p><pre><hr/><code>{
+    "result": true
+}
+</code><hr/></pre>
+		    </div>
+	    </div>
+    </div>
+</section>

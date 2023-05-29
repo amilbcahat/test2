@@ -1,0 +1,87 @@
+<div class="mjA" id="report-q-<%- question.id %>">
+    <div class="report_container_timeline">
+        <div class="status_time_wrap fixed-hand" >
+            <div class="fnt-wt-600 mdT">QUESTION <%- index %></div>
+            <!-- this logic of icons is also maintained in summary table -->
+            <h3 class="mmT"><i class="<%- status.class %>"></i></h3>
+            <div class="fnt-sz-small txt-alt-grey fnt-wt-600 mdB">
+            <% if (!plagiarism) {%>
+            <%- status.text %>
+            <% } else { %>
+            Plagiarism flagged
+            <% } %>
+            </div>
+            <div class="time_divider"></div>
+            <div class="mdA">
+                <!-- there are 3 color states. green red and grey -->
+                <div id="scoreedit" rel="tooltip" class="<%- status.color %> <% if((question.submissions && question.submissions.length > 0) || (question.my_answer)) { %><%= 'editable score-changer' %><% } %>"  data-original-title="Change score">Score <%- question.score ? (Math.round(question.score * 100) / 100) : 0 %></div>
+                <!-- use the textbox below for collecting change score -->
+                <input class="score-input text-center fw no-margin hidden" type="text" placeholder="Score">
+                <div class="txt-alt-grey">
+                    <% if (time != 0) { %>
+                    Time taken: <strong><%=time%></strong>
+                    <% } %>
+                </div>
+            </div>
+        </div><!-- end .status_time_wrap -->
+
+        <div class="question_container_wrap movable-hand">
+
+            <div class="question_cont_head">
+                <% if (question.name) { %>
+                <h4 class="inline"><%- question.name %></h4>
+                &nbsp;<i class="icon-right-open-mini"></i>
+                <% } %>
+                <span><%- HR.util.readableQuestionType(question.type) %></span>
+                <ul class="pull-right question-report-tags">
+                    <% _.each(question.tags, function(tag) { %>
+                    <li><%-tag.tag %></li>
+                    <% }); %>
+                </ul>
+            </div><!-- end .question_cont_head -->
+
+            <div class="question-wrapper-collapsed">
+                <p class="fnt-sz-small txt-alt-grey fnt-wt-600 mdB">QUESTION DESCRIPTION</p>
+                <span class="span16 text-ellipsis-span no-padding">
+                    <% if (question.type === "complete") {%>
+                    <%= question.complete_string %>
+                    <% } else { %>
+                    <%= question.question %>
+                    <% } %>
+                </span>
+                <div class="clear"></div>
+                <!-- <a class=" font12 terquoise block showmore" href="#">show more <i class="icon-down-open"></i></a> -->
+            </div>
+            <div class="margin-left-0 span16 answer-player-wrapper">
+                <span style="position: relative; top: 5px;" class="fnt-wt-600">CANDIDATE ANSWER</span>
+                <% if (_.contains(["code","approx",], question.type) && question.answered) { %>
+                <div class="pull-right">
+                    <a href="#" class="btn btn-small js-btn-copy js-btn-copy-<%- question.id %>" data-qid=<%- question.id %>>copy code</a>
+                </div>
+                <% } else if ( question.type == 'design' && question.submissions.length > 0){ %>
+                <div class="pull-right">
+                    <a href="#" class="btn btn-small js-btn-copy js-btn-render-<%- question.id %>" data-qid=<%- question.id %>>Render Code</a>
+                </div>
+                <% } %>
+            </div>
+            <div class="clear"></div>
+
+            <div id="question_answer"></div>
+
+            <div class="question_cont_foot">
+                <div class="comments_container">
+                    <% _.each(question.comments, function(comment) { %>
+                    <div class="msT msB">
+                        <p><%- comment.comment %></p>
+                        <p class="txt-alt-grey">- <%- comment.name %> (<%- HR.util.formatDateTime(comment.inserttime) %>)</p>
+                    </div>
+                    <% }) %>
+                </div>
+                <% if(showcomment){%>
+                <input style="width:70%;" type="text" id="add_new_comment" class="txt_box input-large no-margin" placeholder="Write a comment ...">
+                <%}%>
+            </div><!-- end .question_cont_foot -->
+
+        </div><!-- end .question_container_wrap -->
+    </div><!-- end .report_container_timeline -->
+</div>

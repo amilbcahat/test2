@@ -1,0 +1,32 @@
+<%
+function show_hacker(leader) {
+    if (leader && leader.hacker) {
+        return _.escape(leader.hacker).slice(0, 16) + (function(l) { return ((l.length>16) ? "..." : "");})(leader.hacker);
+    } else {
+        return 'N/A';
+    }
+};
+%>
+
+<div class="row padding-small top bottom <% if (is_current_hacker) { %>active-user<% } %>">
+    <div class="span-flex-2 text-center">
+        <p><%= leader.real_rank %></p>
+    </div>
+    <div class="span-flex-8">
+        <p>
+            <a class="backbone cursor leaderboard-hackername rg_<%= leader.level %>" data-action="hacker-modal" rel="tooltip" data-value="<%= _.escape(leader.hacker) %>" href="/<%= _.escape(leader.hacker)%>" target="_blank">
+                <img class='avatar' width='30' height='30' src="<%= leader['avatar'] %>" />
+                <%= show_hacker(leader) %>
+            </a>
+        </p>
+    </div>
+    <div class="span-flex-3">
+        <p><%= parseFloat(leader.rating).toFixed(2) %></p>
+    </div>
+    <div class="span-flex-3 text-center">
+        <img class="flag" rel="tooltip" src="/assets/flags/<%= window.countries_mapping[leader['country']] %>.png"
+        title="<%= leader['country'] %>"
+        alt="<%= leader['country'] %>"
+        onerror="this.onerror=null; this.src='/assets/flags/_unknown.png';">
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="stats-head">
+     <strong>Test questions</strong>
+    <a class="pull-right js-closesidebar"><i class="icon2-close txt-navy"></i></a>
+</div>
+
+<ul class="added-quest-list">
+<% var h = window.istreet.cfg.hrqn; _.each(questions, function(question) { %>
+  <li id="q<%=question.id%>">
+    <strong class="lib-sidebar-questitle"><% if (question.name) {%><%=question.name%><% } else { %><%=h[question.type]%><% } %></strong>
+    <a class="pull-right btn btn-alert quest-remove-btn js-remove-question" data-qid="<%=question.id%>" data-quid="<%=question.unique_id%>" ><i class="icon2-delete"></i></a>
+    <div class="clear"></div>
+    <span class="txt-navy"><%=question.points%> points</span>
+    <p class="txt-alt-grey">
+        <%=question.preview%>
+    </p>
+  </li>
+<% }); %>
+</ul>

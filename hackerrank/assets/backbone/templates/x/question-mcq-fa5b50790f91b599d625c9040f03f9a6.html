@@ -1,0 +1,63 @@
+<div class="top-fixed-bar">
+    <% if(test) { %> <h3 class="topbar-h3 mjL"><%- test.name %></h3> <% } %>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Questions</h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i><% if (edit) { %>Edit<% } else { %>Create<% } %> question</h3>
+</div><!-- end .top-fixed-bar -->
+<div class="overflow-content" id="control-overflow">
+    <form name="mcq-question-form">
+        <div class="mjA">
+            <div class="row no-margin">
+                <div class="span-xs-16 span-md-10">
+                    <label>PROBLEM STATEMENT</label>
+                    <textarea class="editor_width texteditor" name="problem-description" id="problem-description" style="width: 100%"><% if (model.question) { %><%- model.question %><% } %></textarea>
+                </div>
+                <div class="span-xs-16 span-md-6">
+                    <label>TAGS</label>
+                    <div class="input-btn-group">
+                        <input id="q-tag-inp" type="text" placeholder="tags">
+                        <a href="#" class="btn" id="add-tag-link">Add</a>
+                    </div>
+                    <div class="tag-names-container">
+                        <% _.each(tags, function(tag, index) {%>
+                            <span class="label removable q-tags"><span class="tag-val"><%= tag %></span><a href="javascript:;" class="remove-tag">x</a></span>&nbsp;
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row no-margin plT">
+                <label class="psL">CHOICES &nbsp;
+                    <div class="inline pjL mjL" >
+                        <input class="hr-sleek-input" id="js-toggle-multiple-mcq" type="checkbox" <% if(model.type == 'multiple_mcq') { %> checked <% } %>>
+                        <label for="js-toggle-multiple-mcq" class="inline">
+                            <span></span>
+                            Allow candidate to select more than one answer
+                        </label>
+                    </div>
+                    <a href="#" class="fnt-sz-mid js-toggle-richtext block-center"><% if (richtext == "True") { %>(edit as normal text)<% } else { %>(edit as rich text)<% } %></a>
+                </label>
+                <div class="span-md-8 mjB">
+                    <ul class="mcq-choice" id="choices-container">
+                    </ul>
+                    <div class="span-xs-16 span-md-16 mjT row">
+                        <button type="button" class="btn btn-mid js-add-choice">Add one more choice</button>
+                    </div>
+                    <div class="clear_float"></div>
+                </div><!-- end .span -->
+            </div>
+
+            <div class="row plT">
+                <div class="span-xs-16 span-md-16 content--list_footer sticky-bottom">
+                    <div class="error-container" id="error-container" style="display: none">
+                        <div class="clear_float"></div>
+                        <div class="text-error"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-mid">Save Question</button>
+                    <em>or</em>
+                    <button type="button" class="btn btn-mid js-save-and-add">Save & Add another</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div id="dirty-view-alert-modal-container"></div>

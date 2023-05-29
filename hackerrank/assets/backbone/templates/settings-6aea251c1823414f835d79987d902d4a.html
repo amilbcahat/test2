@@ -1,0 +1,40 @@
+<% if (model && model.id) { %>
+<section class="user-profile-edit container">
+    <div class="wrap content_wrap narrow">
+        <div id="profile-settings-sidebar" class="padding-large bottom sidebar--inline settings_sidebar">
+            <section class="padded clearfix settings_avatar">
+                <img src="<%= model.avatar %>" class="avatar block-center" alt="<%= model.username %>" title="<%= model.username %>" height="75" width="75">
+		        <button class="btn btn-line btn-small block-center margin-large top" id="upload-avatar">Change Avatar</button>
+            </section>
+            <ul class="sidebar_list unstyled" id="profileTabs">
+                <li class="sidebar_list-heading active" id="profile">
+                    <a class="block-center backbone" href="/settings/profile">Profile</a>
+                </li>
+                <li class="sidebar_list-heading" id="account">
+                    <a class="block-center backbone" href="/settings/account">Account</a>
+                </li>
+                <li class="sidebar_list-heading" id="teams">
+                    <a class="block-center backbone" href="/settings/teams">Teams</a>
+                </li>
+                <li class="sidebar_list-heading" id="change-password">
+                    <a class="block-center backbone" href="/settings/change-password">Change Password</a>
+                </li>
+                <li class="sidebar_list-heading" id="email-preferences">
+                    <a class="block-center backbone" href="/settings/email-preferences">Email Preferences</a>
+                </li>
+            </ul>
+            <p class="text-center sidebar-bottom"><button class="margin-small top btn btn-large btn-green settings_save" id="save-btn">Save Changes</button></p>
+            <p id="save-success" class="padding-small top hide text-center"><small>Changes saved</small></p>
+        </div>
+        <div class="content--inline light-wrap pull-right settings_group">
+            <article id="settings-subview" class="profile"></article>
+        </div>
+    </div>
+</section>
+<% } else { %>
+<section class='user-profile-edit container'>
+    <div class="light-wrap padded span8 block-center">
+        <h4 class="text-center">Please login to manage your settings.</h4>
+    </div>
+</section>
+<% } %>

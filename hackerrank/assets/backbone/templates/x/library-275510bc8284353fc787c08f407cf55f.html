@@ -1,0 +1,47 @@
+<div class="top-fixed-bar">
+    <ul class="sub-topbar-tabs pull-left mjL mmT">
+    <% if(access=='mine') access_type= "my"; else access_type=access; %>
+        <li class="active" style="text-transform:capitalize;">
+            <a class="js-backbone" href="library/<%=library%>" data-lib="<%=library%>" > <% if(access) { %><%= access_type %><%} else { %>All<% } %> Questions</a>
+        </li>
+    </ul>
+    <div class="btn-group pull-left display-inline-block pdL" style="margin:8px;">
+        <% _.each(["coding", "multiple", "others"], function (fil) { %>
+            <a href="library/<%=library%><% if(access){%>/<%=access%><%}%>/<%=fil%>" data-filter="<%=fil%>" class="btn js-backbone <%if (fil == filter){%>active<%}%>"><%=fil[0].toUpperCase() + fil.slice(1)%></a>
+        <% }); %>
+    </div>
+
+    <a class="js-searchclear hide pull-right msR plT plB" style="cursor:pointer;">clear</a>
+    <div class="input-icon pull-right" style="margin-top: 3px; margin-right: 25px;">
+        <input type="text" placeholder="search questions" class="js-search">
+        <i class="icon-search"></i>
+    </div>
+</div><!-- end .top-fixed-bar -->
+<div class="overflow-content" id="control-overflow">
+    <!-- filters section -->
+    <div class="question-filter-wrapper">
+        <input type='hidden' class="hide js-tags pull-left">
+        <span class="pull-right txt-alt-grey js-count"></span>
+        <div class="clear"></div>
+        <!-- this is for question sets
+        <div class="formgroup radio inline">
+            <legend>Show question sets</legend>
+            <label><input type="radio">Yes</label>
+            <label><input type="radio">No</label>
+        </div>-->
+    </div>
+    <div class="row no-margin libcontent">
+        <!-- sets and questions go here-->
+        <p style="margin:8px;"><em>Loading..</em></p>
+    </div>
+    <div class="alert alert-info js-nothingfound hide" style="margin: 10px 30px;">
+        <header>No questions matched these filters.</header>
+        <p>Would you like to create a new question?</p>
+        <p><a class="btn btn-green js-backbone" href="library/<%=library%><% if(access){%>/<%=access%><%}%>/questions/new">Create new question</a></p>
+    </div>
+    <div class="alert alert-info buy-custom-questions" style="margin: 10px 30px 40px">
+        <header>Looking to Buy Custom Questions?</header>
+        <p>Our world champion problem setters will help create the perfect questions for your library.</p>
+        <p><a href="mailto:support@hackerrank.com?subject=Custom questions&amp;body=We are looking for custom questions with the following needs:" target="_blank" class="common_margin inline_block button-green big_button_padding rcorners_mid">Submit question inquiry</a></p>
+    </div>
+</div>

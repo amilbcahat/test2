@@ -1,0 +1,115 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL">Companies Dashboard</h3>
+</div>
+<div class="overflow-content" id="control-overflow">
+    <div class="actions-row mlA">
+
+        <div class="msT">
+                <div class="span2 msT">View</div>
+                <div class="btn-group">
+                    <a class="btn view-type-change <% if(viewType == 'dataUsage') { %> active <% } %>" data-view-type="dataUsage">Data Usage</a>
+                    <a class="btn view-type-change <% if(viewType == 'licenseUsage') { %> active <% } %>" data-view-type="licenseUsage">License Usage</a>
+                </div>
+            </div>
+
+        <div class="msT">
+            <div class="span2 msT">Company Type</div>
+            <div class="btn-group">
+                <a href="#" class="btn payment-type-change <% if(paymentType == 'paid') { %> active <% } %>"
+                   data-payment-type="paid">Paid</a>
+                <a href="#" class="btn payment-type-change <% if(paymentType == 'active_trials') { %> active <% } %>"
+                   data-payment-type="active_trials">Active Trials</a>
+                <a href="#" class="btn payment-type-change <% if(paymentType == 'expired_trials') { %> active <% } %>"
+                   data-payment-type="expired_trials">Expired Trials</a>
+                <a href="#" class="btn payment-type-change <% if(paymentType == 'locked') { %> active <% } %>"
+                   data-payment-type="locked">Locked</a>
+            </div>
+        </div>
+
+
+        <div class="msT">
+            <div class="span2 msT">Duration</div>
+            <div class="btn-group">
+                <a class="btn duration-change <% if(duration == 'daily') { %> active <% } %>" data-duration="daily">Yesterday</a>
+                <a class="btn duration-change <% if(duration == 'weekly') { %> active <% } %>" data-duration="weekly">Last
+                    7 days</a>
+                <a class="btn duration-change <% if(duration == 'monthly') { %> active <% } %>" data-duration="monthly">Last
+                    30 days</a>
+                <a class="btn duration-change <% if(duration == 'quarterly') { %> active <% } %>"
+                   data-duration="quarterly">Last 90 days</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="main-content">
+        <table cellpadding="0" cellspacing="0" border="0" class="dash-table table dt-sleektable">
+            <thead>
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Email</td>
+                <% if(viewType == 'dataUsage') { %>
+                    <td>Tests</td>
+                    <td>Growth</td>
+                    <td>Invites</td>
+                    <td>Growth</td>
+                    <td>Attempts</td>
+                    <td>Growth</td>
+                    <td>Interviews</td>
+                    <td>Growth</td>
+                <% } %>
+                <% if(viewType == 'licenseUsage') { %>
+                    <td>Teams</td>
+                    <td>Growth</td>
+                    <td>Admin</td>
+                    <td>Growth</td>
+                    <td>Recruiters</td>
+                    <td>Growth</td>
+                    <td>Developers</td>
+                    <td>Growth</td>
+                    <td>Users</td>
+                    <td>Growth</td>
+                <% } %>
+                <td>Created At</td>
+            </tr>
+
+            </thead>
+            <tbody>
+            <% _.each(companies, function(company) { %>
+            <tr>
+                <td><%= company.id %></td>
+                <td><%= HR.util.htmlEncode(company.name) %></td>
+                <td><%= HR.util.htmlEncode(company.email) %></td>
+
+                <% if(viewType == 'dataUsage') { %>
+                    <td><%= company.tests_count %></td>
+                    <td><%= company.tests_diff %></td>
+                    <td><%= company.invites_count %></td>
+                    <td><%= company.invites_diff %></td>
+                    <td><%= company.attempts_count %></td>
+                    <td><%= company.attempts_diff %></td>
+                    <td><%= company.interviews_count %></td>
+                    <td><%= company.interviews_diff %></td>
+                <% } %>
+
+                <% if(viewType == 'licenseUsage') { %>
+                    <td><%= company.teams_count %></td>
+                    <td><%= company.teams_diff %></td>
+                    <td><%= company.admins_count %></td>
+                    <td><%= company.admins_diff %></td>
+                    <td><%= company.recruiters_count %></td>
+                    <td><%= company.recruiters_diff %></td>
+                    <td><%= company.developers_count %></td>
+                    <td><%= company.developers_diff %></td>
+                    <td><%= company.users_count %></td>
+                    <td><%= company.users_diff %></td>
+                <% } %>
+
+                <td><%= company.created_at %></td>
+            </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>

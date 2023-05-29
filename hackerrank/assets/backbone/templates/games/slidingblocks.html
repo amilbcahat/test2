@@ -1,0 +1,32 @@
+<style>
+  .game-grid {
+    position: relative;
+    padding-left: 0px !important;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 3px solid black;
+  }
+  .game-block {
+    position: absolute;
+    display: inline-block;
+    background-color: #ccc;
+    margin: 1px;
+    text-align: center;
+    vertical-align: center;
+    line-height: 50px; /* block_width */
+    width: 50px; /* block_width */
+    height: 50px; /* block_width */
+  }
+
+  [data-blockid="0"] {
+    visibility: hidden;
+  }
+</style>
+
+<div>
+    <% var rows = 3; %>
+    <% var columns = 3; %>
+    <% var block_width = 50; /* and height */ %>
+    <div class="game-grid block-center" style="width: <%= columns*(2+block_width) %>px; height: <%= rows*(2+block_width) %>px;">
+    </div>
+</div>

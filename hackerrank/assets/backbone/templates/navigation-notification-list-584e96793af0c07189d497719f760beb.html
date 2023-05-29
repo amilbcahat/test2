@@ -1,0 +1,12 @@
+<li class="notify_item unread">
+    <div class="notify_author">
+        <strong><%- model.subject %></strong>
+        <a class="close pull-right" rel="tooltip" data-original-title="Archive">&times;</a>
+    </div>
+    <div class="notify_msg">
+        <%- model.body %>
+    </div>
+    <div class="meta">
+        <small class="meta"><%= $.timeago(new Date(model.created_at_epoch * 1000)) %></small>
+    </div>
+</li>

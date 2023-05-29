@@ -1,0 +1,62 @@
+<style>
+
+.pac-grid {
+	background: #aaa;
+	width: 560px;
+	height: 544px;
+	display: block;
+	margin: auto;
+       	border-radius: 10px;
+}
+
+.pac-row {
+	width: 560px;
+	height: 20px;
+}
+
+.pac-solid-cell {
+	display: inline-block;
+	background: #333;
+	width: 20px;
+	height: 20px;
+}
+
+.pac-empty-cell {
+	display: inline-block;
+	background: none;
+	width: 20px;
+	height: 20px;
+}
+
+.pac-dude {
+	height: 16px;
+	width: 16px;
+	margin: 2px;
+}
+#pac-man { background: url('assets/games/pacman.png'); }
+#pac-ghost-1 { background: url('assets/games/pacghost1.png'); }
+#pac-ghost-2 { background: url('assets/games/pacghost2.png'); }
+#pac-ghost-3 { background: url('assets/games/pacghost3.png'); }
+#pac-ghost-4 { background: url('assets/games/pacghost4.png'); }
+
+.pacfood { background: url('assets/games/pacfood.png') no-repeat center; }
+.pacfoodbig { background: url('assets/games/pacfoodbig.png') no-repeat center; }
+</style>
+
+<div>
+	<div class="pac-grid">
+		<% var pac_grid = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%. . . . . . %%. . . . . . %%.%%%%.%%%%%.%%.%%%%%.%%%%.%%o%%%%.%%%%%.%%.%%%%%.%%%%o%%.%%%%.%%%%%.%%.%%%%%.%%%%.%%. . . . . . . . . . . . . %%.%%%%.%%.%%%%%%%%.%%.%%%%.%%.%%%%.%%.%%%%%%%%.%%.%%%%.%%. . . %%. . %%. . %%. . . %%%%%%%.%%%%% %% %%%%%.%%%%%%%%%%%%.%%%%% %% %%%%%.%%%%%%%%%%%%.%            %.%%%%%%%%%%%%.% %%%%  %%%% %.%%%%%%%     .  %        %  .     %%%%%%%.% %%%%%%%%%% %.%%%%%%%%%%%%.%            %.%%%%%%%%%%%%.% %%%%%%%%%% %.%%%%%%%. . . . . . %%. . . . . . %%.%%%%.%%%%%.%%.%%%%%.%%%%.%%.%%%%.%%%%%.%%.%%%%%.%%%%.%%o. %%. . . .  . . . .%%. o%%%%.%%.%%.%%%%%%%%.%%.%%.%%%%%%.%%.%%.%%%%%%%%.%%.%%.%%%%. . . %%. . %%. . %%. . . %%.%%%%%%%%%%.%%.%%%%%%%%%%.%%. . . . . . . . . . . . . %%%%%%%%%%%%%%%%%%%%%%%%%%%%%"; %>
+	
+		<% var rowse = 27; %>
+		<% var columns = 28; %>
+		<% for (i = 0; i < rowse; i++) { %>
+		<div class="pac-row"><% for (j = 0; j < columns; j++) { %><% if (pac_grid[(i * 28) + j] === "%") { %><div class="pac-cell pac-solid-cell" data-x="<%= i %>" data-y="<%= j %>"></div><% } else { %><div class="pac-cell pac-empty-cell" data-x="<%= i %>" data-y="<%= j %>"></div><% } %><% } %></div>
+		<% } %>
+
+		<div id="pac-man" class="pac-dude"></div>
+		<div id="pac-ghost-1" class="pac-dude"></div>
+		<div id="pac-ghost-2" class="pac-dude"></div>
+		<div id="pac-ghost-3" class="pac-dude"></div>
+		<div id="pac-ghost-4" class="pac-dude"></div>
+	</div>
+</div>

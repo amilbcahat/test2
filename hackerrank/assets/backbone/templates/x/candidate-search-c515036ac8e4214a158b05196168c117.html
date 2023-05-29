@@ -1,0 +1,39 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL">Candidates Search</h3>
+</div>
+<div class="overflow-content" id="control-overflow">
+
+    <!-- any contents add here -->
+
+
+    <table class="sleektable full-width question-table-fix" width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr class="head">
+            <td width="30%">TEST NAME</td>
+            <td width="15%">CANDIDATE NAME</td>
+            <td width="20%">EMAIL ID</td>
+            <td width="8%">SCORE</td>
+            <td width="12%">STATUS</td>
+            <td width="15%" colspan="1"></td>
+        </tr>
+        <% _.each(collection.models, function (model) { %>
+        <% model = model.toJSON() %>
+        <tr>
+            <td><%= model.test_name %></td>
+            <td class="fnt-wt-600"><% if(model.name) { %> <%= model.name %> <% } else { %> N/A <% }%></td>
+            <td>
+                <a href="tests/<%= model.tid %>/candidates/<%= model.id %>/report" target="_blank">
+                    <%= model.email %>
+                </a>
+            </td>
+            <td><%= model.score %></td>
+            <td><%= model.ats_state %></td>
+            <td>
+                <a href="tests/<%= model.tid %>/candidates/<%= model.id %>/report" target="_blank" class="btn">Open Report</a>
+            </td>
+        </tr>
+        <% }) %>
+
+    </table>
+
+
+</div><!-- end .overflow-content -->

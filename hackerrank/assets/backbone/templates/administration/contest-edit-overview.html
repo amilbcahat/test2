@@ -1,0 +1,133 @@
+<p class="aside block-margin margin-large">This is basic information
+    that describes your contest. At any time, you can select "preview contest"
+    to see how this content is formatted. If you are
+    concerned about what to place in each input, review the created
+    contests in the contest list.
+</p>
+
+<div class="formgroup horizontal row">
+    <label for="name" class="pull-left span3">Contest Name</label>
+    <div class="block span8 profile-input pull-left">
+        <input id="name" type="text" class="fw auto-save"/>
+        <small class="error name span12"></small>
+    </div>
+</div>
+
+<% if (action != "create") { %>
+<div class="formgroup horizontal">
+    <label for="slug" class="span3">Contest Slug</label>
+    <div class="block span12 profile-input">
+        <p class="host-name pull-left"><%= document.location.protocol + '//' + document.location.host + '/' %></p>
+        <p class="slug pull-left"><%= model.get('slug') %></p>
+        <p class="pull-left"><input type="text" class="edit-slug" style="display: none;" value="<%= model.get('slug') %>" /></p>
+        <p class="pull-left"><a class="btn btn-text update-slug" style="display: none;">update</a></p>
+        <p class="pull-left"><a class="btn btn-text cancel-update-slug" style="display: none;">cancel</a></p>
+        <p class="pull-left"><a class="btn btn-text edit-slug">edit</a></p>
+        <small class="slug error span12"></small>
+    </div>
+</div>
+<% } %>
+
+<div class="formgroup horizontal row">
+    <label for="slug" class="pull-left span3">Duration</label>
+    <div class="block span12 profile-input">
+        <div class="row">
+            <div class="span5 mlR">
+                <label class="msB">Starts</label>
+                <input id="startdate" type="text" class="span5">
+                <div class="input-assist clearfix">
+                    <p class="pull-left static-input">at</p>
+                    <input id="starttime" type="text" class="span2 float-left margin-small left right">
+                    <p class="pull-left static-input"><%= HR.util.timezone_abbr(new Date()) %>
+                        <span class="help-prompt">
+                            <i class="icon-help-circled icon--single"></i>
+                            <span class="help-text">Times shown reflect your local timezone.</span>
+                        </span>
+                    </p>
+                </div>
+                <p><small class="starttime error"></small></p>
+            </div>
+            <div class="span5 mlL">
+                <div class="clearfix">
+                    <label class="msB pull-left">Ends</label>
+                    <div class="pull-left plL">
+                        <input class="inline pull-left mlL plL" type="checkbox" id="noendtime"/>
+                        <span class="psL">no end time</span>
+                    </div>
+                </div>
+                <input id="enddate" type="text" class="span5">
+                <p class="input-assist clearfix">
+                    <p class="pull-left static-input">at</p>
+                    <input id="endtime" type="text" class="span2 float-left margin-small left right">
+                    <p class="pull-left static-input"><%= HR.util.timezone_abbr(new Date()) %>
+                        <span class="help-prompt">
+                            <i class="icon-help-circled icon--single"></i>
+                            <span class="help-text">Times shown reflect your local timezone.</span>
+                        </span>
+                    </p>
+                </p>
+                <p><small class="endtime error span12"></small></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="formgroup horizontal row">
+    <label for="tagline" class="pull-left span3">Tagline</label>
+    <div class="block span8 profile-input pull-left">
+        <textarea rows="3" class="tagline fw auto-save with-help"></textarea>
+        <p class="tagline sub-help in">Characters left: <%= model.max_limit.tagline %></p>
+    </div>
+</div>
+
+<div class="formgroup horizontal row">
+    <label for="description" class="pull-left span3">Description</label>
+    <div class="block span8 profile-input pull-left">
+        <div class="markdown-editor-header">
+            <p class="pull-left">Markdown Editor</p>
+            <div class="pull-right">
+                <button class="btn btn-small mkd-cheat-sheet msR">Cheatsheet</button>
+            </div>
+        </div>
+        <textarea rows="7" class="description fw light-wrap"></textarea>
+        <div class="preview-wrap clearfix hide">
+            <h4>Preview</h4>
+            <div class="controls">
+                <div id="description-preview" class="preview"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% if (action != "create") { %>
+<div class="formgroup horizontal row">
+    <label for="moderator" class="pull-left span3">Moderators</label>
+    <div class="block span12 profile-input pull-left">
+        <div class="input-btn-group">
+            <input id="moderator" type="text" class="wide" value=""/>
+            <button class="btn moderator-save">Add</button>
+        </div>
+
+        <small class="moderator sub-help in">Enter moderator's HackerRank username. Moderators can edit this contest.</small>
+    </div>
+</div>
+<div class="formgroup horizontal row">
+    <div class="span10 offset3 mlL moderators-list">
+        <% if (model.get("hacker_username") != false && model.get("hacker_username") != null) { %>
+        <%= HR.util.genModContainer({
+                name: model.get("hacker_username"),
+                avatar: model.get("hacker_avatar"),
+                role: "owner",
+            }) %>
+        <% } %>
+        <% _.each (model.get('moderators'), function(moderator) { %>
+        <%= HR.util.genModContainer({
+                name: moderator.username,
+                avatar: moderator.avatar,
+                role: "moderator",
+                close: true,
+            }) %>
+        <% }); %>
+    </div>
+</div>
+<% } %>

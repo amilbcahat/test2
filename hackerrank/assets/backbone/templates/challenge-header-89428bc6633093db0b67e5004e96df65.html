@@ -1,0 +1,34 @@
+<header class="page-title container">
+    <div>
+        <div class="breadcrumbs pull-left"></div>
+        <ul class="pull-right challenge-links horizontal unstyled btn-group">
+          <li class="btn btn-white"><a href="<%= baseURL %>/submissions" class="backbone"><i class="icon-list-bullet-small"></i> <span class="icon-text">Submissions</span></a></li>
+          <li class="btn btn-white"><a href="<%= baseURL %>/leaderboard" class="backbone submit" data-analytics="Challenge Leaderboard"><i class="icon-trophy"></i> <span class="icon-text">Leaderboard</span></a></li>
+          <li class="btn btn-white"><a href="<%= baseURL %>/forum/questions" class="backbone submit" data-analytics="View Forum"><i class="icon-comment"></i> <span class="icon-text">Discuss</span></a></li>
+        </ul>
+    </div>
+    <% h1_span = 13 %>
+    <% model.dynamic && h1_span-- %>
+    <% model.locked && h1_span-- %>
+    <h1 class="span<%=h1_span  %>"><%= model.name %></h1>
+
+    <% if(model.locked) { %>
+    <div class="span1 pull-right" style="margin-top:36px;">
+      <a style="margin-left: 5px" rel="tooltip" data-original-title="Any furthur submissions will not be considered for leaderboard." id="locked-popover" class="cursor pull-right">
+        <small class="label label-important">locked</small>
+      </a>
+    </div>
+    <% } %>
+    <% if(model.kind == "code") { %>
+    <div class="<%= model.dynamic && 'span4' || 'span3' %> pull-right" style="margin-top:36px;">
+      <% if(model.dynamic) { %>
+      <a style="margin-left: 5px" href="/scoring/dynamic-scoring" target="_blank" rel="tooltip" data-original-title="The score is dynamic based on number of solves." id="dynamic-popover" class="pull-right">
+        <small class="label label-info">dynamic</small>
+      </a>
+      <% } %>
+      <h5 class="pull-right">
+        Max Score: <strong><%= model.max_score %></strong>
+      </h5>
+    </div>
+    <% } %>
+</header>

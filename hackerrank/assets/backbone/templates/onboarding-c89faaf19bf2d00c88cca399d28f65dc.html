@@ -1,0 +1,55 @@
+<section>
+    <% if (typeof mixpanel !== "undefined" && typeof mixpanel.track !== "undefined") {
+         mixpanel.track("ShowOnboarding", {"variant": ("onboardingv" + version)});
+       } %>
+        <header>Welcome in, <%= profile.username %>!</header>
+        <article>
+            <div class="padding-large right left onboarding_modal">
+                <p class="text-center margin-large top bottom">Let's quickly walk through a sample challenge to help you get acquainted<br>
+                with the code editor. First, select the category that interests you the most.</p>
+                <div>
+                    <label for="ml-radio" class="onboarding_trackSelect">
+                        <input type="radio" class="radio" name="favorite" value="ml" id="ml-radio" checked="yes" />
+                        <div class="onboarding_modal_label">
+                            <span class="alpha beta">Machine Learning</span>
+                            <span><small>Learning from Data.</small></span>
+                        </div>
+                    </label>
+
+                    <label for="games-radio" class="onboarding_trackSelect">
+                        <input type="radio" class="radio" name="favorite" value="games" id="games-radio" />
+                        <div class="onboarding_modal_label">
+                            <span class="alpha beta">Games</span>
+                            <span><small>Build Bots and Intelligent Systems</small></span>
+                        </div>
+                    </label>
+
+                    <label for="algorithms-radio" class="onboarding_trackSelect active">
+                        <input type="radio" class="radio" name="favorite" value="algorithms" id="algorithms-radio" checked="yes" />
+                        <div class="onboarding_modal_label">
+                            <span class="alpha beta">Algorithms</span>
+                            <span><small>Traditional algorithmic competitive programming challenges</small></span>
+                        </div>
+                    </label>
+
+                    <label for="fp-radio" class="onboarding_trackSelect">
+                        <input type="radio" class="radio" name="favorite" value="fp" id="fp-radio" />
+                        <div class="onboarding_modal_label">
+                            <span class="alpha beta">Functional Programming</span>
+                            <span><small>All functions, no state.</small></span>
+                        </div>
+                    </label>
+
+                    <label for="codegolf-radio" class="onboarding_trackSelect">
+                        <input type="radio" class="radio" name="favorite" value="codegolf" id="codegolf-radio" />
+                        <div class="onboarding_modal_label">
+                            <span class="alpha beta">Code Golf</span>
+                            <span><small>Solve challenges using minimum characters.</small></span>
+                        </div>
+                    </label>
+
+                </div>
+            </div>
+        </article>
+        <footer><a class="margin-large bottom span4 block-center btn btn-green btn-large js_next-frame">View Challenges <i class="icon-right-open"></i></a></footer>
+</section>

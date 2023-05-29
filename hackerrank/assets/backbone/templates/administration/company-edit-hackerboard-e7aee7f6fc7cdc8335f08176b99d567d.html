@@ -1,0 +1,70 @@
+<div id="Administration_hackerboard">
+  <div class="row">
+    <div class="span5 hacker-list">
+      <% _.each(_hackerboard, function(leader) { %>
+      <div class="hacker-list-item<% if (hacker_id == leader.hacker_id ) { %> active<% } %>"
+           data-id="<%= leader.hacker_id %>">
+        <% if (leader.hacker) { %>
+        <img src="<%= leader.hacker.avatar %>" height="40" class="pull-left">
+        <div class="pull-left hacker-info">
+          <p><strong>
+              <%= leader.hacker.username %></strong></p>
+          <small class="gray-text">
+            Rank: <%= leader.rank %>
+            | Score: <%= leader.score %>
+          </small>
+        </div>
+        <div class="clearfix"></div>
+        <% } else { %>
+        <% } %>
+      </div>
+      <% }); %>
+      <div class="pagination-wrapper"></div>
+    </div>
+    <div class="span11 hacker-details padded">
+      <% if (leader && leader.hacker) { %>
+      <div class="row">
+        <div class="span2">
+          <img src="<%= leader.hacker.avatar %>" height="75">
+        </div>
+        <div class="span8">
+          <h4><strong>
+              <% if (leader.hacker.name) { %>
+              <%= leader.hacker.name %> (<%= leader.hacker.username %>)
+              <% } else { %>
+              <%= leader.hacker.username %>
+              <% } %>
+          </strong></h4>
+          <% if (leader.hacker.school) { %>
+          <p><strong>School:</strong> <%= leader.hacker.school %></p>
+          <% } %>
+          <% if (leader.hacker.country) { %>
+          <p><strong>Country:</strong> <%= leader.hacker.country %></p>
+          <% } %>
+        </div>
+      </div>
+        <% if (leader.hacker.hack) { %>
+        <div class="row">
+          <div class="span10">
+            <p><strong>Hack:</strong> <%= leader.hacker.hack %></p>
+          </div>
+        </div>
+        <% } %>
+
+        <% if (leader.hacker.resume_url) { %>
+        <div class="row">
+          <div class="span10">
+            <div class="resume-iframe">
+              <% if (leader.hacker.resume_url) { %>
+              <iframe src="https://docs.google.com/viewer?url=<%= leader.hacker.resume_url %>&embedded=true"
+                      width="600" height="780" style="border: none; margin-left: 1em; margin-top: 20px;"></iframe>
+              <% } %>
+            </div>
+          </div>
+        </div>
+        <% } %>
+
+      <% } %>
+    </div>
+  </div>
+</div>

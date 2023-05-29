@@ -1,0 +1,395 @@
+<header class="page-title container">
+<div class="block">
+  <ul class="pull-left breadcrumb unstyled horizontal">
+    <li><a href="/manage" class="backbone">Manage Home</a><i class="icon-right-open-big divider"></i></li>
+    <li><a href="/manage/contest/" class="backbone">My Contests</a><i class="icon-right-open-big divider"></i></li>
+    <li><a href="/manage/contest/edit/<%= model.slug || "new" %>" class="backbone"><%= model.name == "" ? "New Contest" : model.name %></a></li>
+  </ul>
+</div>
+<div class="row">
+  <h1 class="span16">
+    <div class="title-img"></div>
+    <%= _model.isNew() ? "New" : "Edit" %> Contest
+  </h1>
+</div>
+</header>
+
+<section class="manage container">
+<div class="light-wrap wrap container content-wrap wide">
+  <div class="tab-sidebar pull-left inline-sidebar">
+    <ul class="tab-list tab-buttons unstyled" id="challengeTabs">
+      <li class="active"><a href="/manage/contest/edit/<%= model.slug %>/basic" data-target="#basic" data-toggle="tab">Basic</a></li>
+      <% if( !_model.isNew() ) { %>
+      <li><a href="/manage/contest/edit/<%= model.slug %>/challenge_associations" data-target="#challenge_associations" data-toggle="tab">Challenges</a></li>
+      <% } %>
+      <li><a href="/manage/contest/edit/<%= model.slug %>/customization" data-target="#customization" data-toggle="tab">Customization</a></li>
+      <li><a href="/manage/contest/edit/<%= model.slug %>/advanced" data-target="#advanced" data-toggle="tab">Advanced</a></li>
+      <li><a href="/manage/contest/edit/<%= model.slug %>/prizes" data-target="#prizes" data-toggle="tab">Prizes</a></li>
+      <% if( !_model.isNew() ) { %>
+      <li><a href="/manage/contest/edit/<%= model.slug %>/moderators" data-target="#moderators" data-toggle="tab">Moderators</a></li>
+      <li><a href="/manage/contest/edit/<%= model.slug %>/notifications" data-target="#notifications" data-toggle="tab">Broadcast</a></li>
+      <% } %>
+    </ul>
+    <div class="span3" style="margin: 0px;">
+      <button class="btn btn-large btn-primary save" id="challenge-edit-save" style="width: 150px; margin: 30px;" data-analytics="SaveChallenge">Save</button>
+    </div>
+    <div class="message span4 tabsidebar-message"></div>
+  </div>
+
+  <div class="inline-content tab-content pull-right" style="min-height: 400px;">
+    <div class="tab-pane active" id="basic">
+      <div class="block-center row">
+        <div class="span12">
+          <h3>Basic</h3>
+          <hr>
+          <p>Basic information about the challenge.</p>
+        </div>
+
+        <div class="block-center row">
+          <div class="control-group span12">
+            <label class="control-label span3" for="name">Name</label>
+            <div class="controls span7">
+              <input type="text" id="name" placeholder="Contest Name" value="<%= model.name %>">
+            </div>
+          </div>
+
+          <div class="control-group span12">
+            <label class="control-label span3" for="slug">Slug</label>
+            <div class="controls span7">
+              <input id="slug" type="text" placeholder="Friendly URL" value="<%= model.slug %>"  />
+            </div>
+          </div>
+
+          <div class="control-group span12">
+            <label class="control-label span3" for="slug">URL</label>
+            <div class="controls span7"><a id="contest-url" href="https://hackerrank.com/<%= model.slug %>">https://hackerrank.com/<%= model.slug %></a></div>
+          </div>
+
+          <div class="span12">
+            <p>Duration of the contest. All times in UTC.</p>
+          </div>
+          <div class="control-group span12">
+            <div class="span8 clear-margin">
+              <label class="control-label span3" for="startDate">Start</label>
+              <div class="controls span4 input-append" id="stdate" style="margin-left:20px;" data-date=" <%= $.format.date( (new Date), "yyyy-MM-dd hh:mm" ) %> ">
+                <input class="span3" id="startDate" value="" type="text" data-format="yyyy-MM-dd hh:mm" />
+                <span class="add-on btn" style="vertical-align:top; width:18px;"><i class="icon-th"></i></span>
+              </div>
+            </div>
+            <div class="span8 clear-margin">
+              <label class="control-label span3" for="endDate">End</label>
+              <div class="controls span4 input-append" id="endate" style="margin-left:20px;" data-date=" <%= $.format.date( (new Date), "yyyy-MM-dd hh:mm" ) %> ">
+                <input class="span3" id="endDate" type="text" value="" data-format="yyyy-MM-dd hh:mm" />
+                <span class="add-on btn" style="vertical-align:top; width:18px;"><i class="icon-th"></i></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="span12">
+            <p>Copy</p>
+          </div>
+          <div class="control-group span12">
+            <label class="control-label span3" for="description">Tagline</label>
+            <div class="controls span8">
+              <input type="text" id="tagline" class="full-width" placeholder="A one line tagline for the contest." value="<%= model.tagline %>" />
+            </div>
+          </div>
+
+          <div class="control-group span12">
+            <label class="control-label span9" for="description">Description</label>
+            <div class="controls span12">
+              <ul id="description-tabs" class="nav nav-tabs">
+                <li class="active"><a href="#descriptionEditTab" data-toggle="tab">Edit</a></li>
+                <li><a href="#descriptionPreviewTab" data-toggle="tab">Preview</a></li>
+              </ul>
+
+              <div class="tab-content" style="margin-left: 0px;">
+                <div class="tab-pane active" id="descriptionEditTab">
+                  <textarea id="description"><%= model.description %></textarea>
+                </div>
+                <div class="tab-pane" id="descriptionPreviewTab">
+                  <div class="tab-pane span10 preview" id="descriptionPreview"></div>
+                </div>
+              </div>
+
+              <script type="text/javascript">
+                $('#description-tabs a').click(function (e) {
+                    e.preventDefault();
+                    $(this).tab('show');
+                    });
+</script>
+            </div>
+          </div>
+
+          <% if(current_hacker.is_admin){ %>
+          <div class="span12">
+            <p>Admin</p>
+          </div>
+          <div class="control-group span12">
+            <div class="span8 clear-margin">
+              <label class="control-label span3" for="show_upcoming">Show in Upcoming</label>
+              <div class="controls span4" style="margin-left:20px;">
+                <div class='manage-switch' data-on='success' data-off='info'>
+                  <input id="show_upcoming" name="show_upcoming" type="checkbox" value="true" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="control-group span12">
+            <label class="control-label span3" for="is_private">Private
+              <p class="help-block">Visible to admin users only.</p>
+            </label>
+            <div class="controls span7" style="margin-left:20px;">
+                <div class='manage-switch' data-on='success' data-off='info'>
+                  <input name="is_private" id="is_private" type="checkbox" value="true"/>
+                </div>
+            </div>
+          </div>
+          <% } %>
+
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane" id="challenge_associations">
+      <div class="span12">
+        <h3>Challenges</h3>
+        <hr>
+        <p>
+        <% if( !_model.isNew() ) { %>
+        <a class="backbone" href="/manage/contests/<%= model.slug %>/all_submissions/">View submissions</a><br>
+        <% } %>
+        </p>
+        <p>Add challenges to the contest.<br>
+      </div>
+      <div class="challenges-view span12 clear-margin">
+        Please save contest to add challenges.
+      </div>
+    </div>
+    <div class="tab-pane" id="customization">
+      <div class="span12">
+        <h3>Customization</h3>
+        <hr>
+        <p>Change the look and feel of the contest.</p>
+      </div>
+      <% if(current_hacker.is_admin) { %>
+      <div class="control-group span12">
+          <% if(_model.isNew()) { %>
+          <label class="control-label span3">Please Save to add templates</label>
+          <% } else if(model.master) { %>
+          <label class="control-label span3">This contest does not have templates</label>
+          <% } else { %>
+          <label class="control-label span3">Template</label>
+          <div class="span4 select-wrap large" style="display:inline-block">
+            <a href="" class="dropdown-toggle clearfix select-wrap" id="" data-toggle="dropdown"><span class="select"><span id="templateSlug" class="text">No Templates</span></span><span class="indent"><b class="caret"></b></span></a>
+            <ul class="dropdown-menu unstyled" id="template_id">
+              <% _.each( model.templates, function(template) { %>
+              <li class='<%= model.template_id == template.id ? "active" : "" %>' ><a data-id="<%= template.id %>" data-sample="<%= template.sample %>"><%= template.slug %></a></li>
+              <% }); %>
+            </ul>
+          </div>
+          <%
+          temp = new Object;
+          _.each( model.templates, function(template){
+          temp[template.id] = template.sample;
+          });
+          %>
+          <button class="btn btn-medium <%= model.template_id && !temp[model.template_id] ? "" : "hide" %>" id="editTemplate" style="vertical-align:top" type="button">Edit</button>
+          <button class="btn btn-medium" id="newTemplate" style="vertical-align:top" type="button">New</button>
+          <button class="btn btn-medium" id="previewTemplate" style="vertical-align:top" type="button">Preview</button>
+          <% } %>
+      </div>
+      <% } %>
+
+      <div class="control-group span12">
+        <label class="control-label span3" for="homepage_background_color">Background Color</label>
+        <div class="controls span8">
+          <input id="homepage_background_color" type="text" value="<%= model.homepage_background_color %>" />
+        </div>
+      </div>
+      <div class="control-group span12">
+        <label class="control-label span3" for="homepage_background_image">Background Image</label>
+        <div class="controls span8">
+          <input id="homepage_background_image" type="text" value="<%= model.homepage_background_image %>" />
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane" id="advanced">
+      <div class="span12">
+        <h3>Advanced Settings</h3>
+        <hr/>
+        <p>Advanced contest settings</p>
+      </div>
+      <% if(current_hacker.is_admin){ %>
+      <div class="control-group span12">
+        <label class="control-label span4" for="scoring_template">Scoring Template
+          <p class="help-block">Overwrite the default scoring template</p>
+        </label>
+        <div class="controls span7">
+          <input id="scoring_template" type="text" value="<%= model.scoring_template %>" />
+        </div>
+      </div>
+      <div class="control-group span12">
+        <label class="control-label span4" for="faq_template">FAQ Template
+          <p class="help-block">Overwrite the default FAQ template</p>
+        </label>
+        <div class="controls span7">
+          <input id="faq_template" type="text" value="<%= model.faq_template %>" />
+        </div>
+      </div>
+
+      <div class="control-group span12">
+        <label class="control-label span4" for="hacker_applications">Hacker Applications
+          <p class="help-block">Allow hackers to apply for companies associated with the contest.</p>
+        </label>
+        <div class="controls span7">
+                <div class='manage-switch' data-on='success' data-off='info'>
+                  <input name="hacker_application" id="hacker_application" type="checkbox" <% if(model.hacker_application) { %> checked <% } %> />
+                </div>
+        </div>
+      </div>
+      <div class="control-group span12">
+        <label class="control-label span4" for="cutoff_score">Cutoff Score
+          <p class="help-block">This sets the cut-off score for the hacker applications, i.e. only people having score more than this can apply for companies</p>
+        </label>
+        <div class="controls span7">
+          <input id="cutoff_score" type="text" value="<%= model.cutoff_score %>" />
+        </div>
+      </div>
+      <% } %>
+      <div class="control-group span12">
+        <label class="control-label span4" for="submit_disabled">Disabled Submission
+          <p class="help-block">Checking this would disable submissions on all the challenges which belong to this contest.</p>
+        </label>
+        <div class="controls span7">
+          <div class='manage-switch' data-on='success' data-off='info'>
+            <input name="submit_disabled" id="submit_disabled" type="checkbox" <% if(model.submit_disabled) { %> checked <% } %> />
+          </div>
+        </div>
+      </div>
+      <div class="control-group span12">
+        <label class="control-label span4" for="participant_restriction">Participant Restriction
+          <p class="help-block">Use this to restrict the participants in the contest.</p>
+        </label>
+        <div class="controls span4">
+          <div class='manage-switch' data-on='success' data-off='info'>
+            <input name="participant_restriction" id="participant_restriction" type="checkbox" <% if(model.participant_restriction) { %> checked <% } %> />
+          </div>
+        </div>
+      </div>
+
+      <% if(model.participant_restriction) { %>
+      <div class="contestaccess control-group span12" style="margin-top:10px; margin-bottom:10px;">
+        <div class="contest_access_wrap table-wrap text-center span11 light-wrap" style="margin-left:23px;">
+          <div class="table-head row" style="padding:10px 0; background:none;">
+          </div>
+        </div>
+      </div>
+      <% } %>
+
+      <div class="control-group span12">
+        <label class="control-label span4" for="homepage">Binary Scoring
+          <p class="help-block">Score is assigned only in case all test cases pass. This can be overriden on a per challenge basis.</p>
+        </label>
+        <div class="controls span7">
+          <div class='manage-switch' data-on='success' data-off='info'>
+            <input name="binary_scoring" id="binary_scoring" type="checkbox" <% if(model.binary_scoring) { %> checked <% } %> />
+          </div>
+        </div>
+      </div>
+      <div class="control-group span12">
+        <label class="control-label span4" for="penalty">Penalty
+          <p class="help-block">Time penalty in seconds for a wrong submission.</p>
+        </label>
+        <div class="controls span7">
+          <input id="penalty" type="text" value="<%= model.penalty %>" />
+        </div>
+      </div>
+
+      <% if(current_hacker.is_admin){ %>
+      <div class="control-group span12">
+        <label class="control-label span4" for="enable_olark">Enable Olark
+          <p class="help-block">Use this to enable olark service for the contest.</p>
+        </label>
+        <div class="controls span7">
+          <div class='manage-switch' data-on='success' data-off='info'>
+            <input name="enable_olark" id="enable_olark" type="checkbox" <% if(model.binary_scoring) { %> checked <% } %> />
+          </div>
+        </div>
+      </div>
+      <% } %>
+
+      <% if(current_hacker.is_admin){ %>
+      <div class="control-group span12">
+        <label class="control-label span3" for="notification">Notifications
+          <i data-toggle="popover" data-content="This shows up a sticky not on the contest page with specified content(Only Text). This field requires you to pass a Array of strings like [\'This is one notification\'] " class="icon-help-circled"></i>
+        </label>
+        <br/>
+        <div class="controls span12">
+          <textarea id="notification" class="span11" style="height:75px;" placeholder="Notification you want to show to people. This would come as a sticky note."><%= model.notification[0] || "" %></textarea>
+        </div>
+      </div>
+      <% } %>
+    </div>
+    <div class="tab-pane" id="prizes">
+      <div class="span12">
+        <h3>Prizes</h3>
+        <hr/>
+        <p>Images must be 150x150 px.</p>
+      </div>
+
+      <div class="controls span12">
+        <label class="control-label span3" for="prizes_tagline">Tagline</label>
+        <div class="span7">
+          <textarea id="prizes_tagline" class="span7" placeholder="A tagline for the prizes."><%= model.prizes.tagline || "" %></textarea>
+        </div>
+      </div>
+
+      <div class="controls span12">
+        <label class="span7" for="prizes_circles">Prizes</label>
+      </div>
+      <table class="table table-striped row block-center" style="width:90%">
+        <tr> <th>Image</th> <th>Alt Text</th> <th>Description</th> <th>Action</th> </tr>
+        <% if(model.prizes.circles) {
+        _.each( model.prizes.circles, function(circle, index){ %>
+        <tr> <td><%= circle.src %></td> <td><%= circle.alt %></td> <td><%= circle.text %></td> <td>
+            <button class="btn btn-small circle_remove" type="button" data-index="<%= index %>">Remove</button>
+          </td>
+        </tr>
+        <%  });
+        } %>
+        <tr>
+          <td>
+            <input type="text" id="circle_src" style="width:100%" placeholder="Source of Image"/>
+          </td>
+          <td>
+            <input type="text" id="circle_alt" style="width:100%" placeholder="Alternative Text"/>
+          </td>
+          <td>
+            <input type="text" id="circle_text" style="width:100%" placeholder="Display Text"/>
+          </td>
+          <td>
+            <button class="btn btn-small circle_add" type="button">Add</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="tab-pane" id="moderators">
+      <div class="span12">
+        <h3>Moderators</h3>
+        <hr/>
+        <p>Add/Remove moderators. Moderators have full control over the contest.</p>
+      </div>
+      <div class="span12 moderators-view"></div>
+    </div>
+
+    <div class="tab-pane" id="notifications">
+      <div class="span12">
+        <h3>Notifications</h3>
+        <hr/>
+      </div>
+
+      <div class="notifications-view">
+      </div>
+  </div>
+</div>
+

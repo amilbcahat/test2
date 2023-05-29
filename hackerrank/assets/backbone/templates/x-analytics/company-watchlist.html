@@ -1,0 +1,63 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL">Watchlist (Companies)</h3>
+</div>
+
+<div class="overflow-content" id="control-overflow">
+    <form id="watchlist-form" class="mjA">
+        <div class="msT msB">
+            <div class="span2">Search By :</div>
+            <div class="span13 search-radio-grp">
+                <label>
+                    <input id="search-fields-id" name="search-field" type="radio" value="id" <% if(searchBy == 'id') {
+                    %> checked='checked' <% } %>/>ID
+                </label>
+                <label>
+                    <input id="search-fields-name" name="search-field" type="radio"
+                           value="name" <% if(searchBy == 'name') { %> checked='checked' <% } %> />Name
+                </label>
+            </div>
+
+            <div class="msT msB">
+                <div class="span2">Company:</div>
+                <input type="hidden" class="wide" id="company-select2">
+            </div>
+        </div>
+    </form>
+
+    <table cellpadding="0" cellspacing="0" border="0" class="watchlist-table table dt-sleektable">
+        <thead>
+        <tr>
+            <td>Name</td>
+            <td>Owner Name</td>
+            <td>Email</td>
+            <td>Plan</td>
+            <td>Tests Count</td>
+            <td>Invites Count</td>
+            <td>Attempts Count</td>
+            <td>Interviews Count</td>
+            <td>Created On</td>
+            <td>Last Login</td>
+            <td>Watchers</td>
+            <td>Actions</td>
+        </tr>
+        </thead>
+        <tbody>
+        <% _.each(list, function(item) { %>
+        <tr>
+            <td><%= item.name %></td>
+            <td><%= item.owner_name %></td>
+            <td><%= item.email %></td>
+            <td><%= item.plan %></td>
+            <td><%= item.tests_count %></td>
+            <td><%= item.invites_count %></td>
+            <td><%= item.attempts_count %></td>
+            <td><%= item.interviews_count %></td>
+            <td><%= item.created_at %></td>
+            <td><%= item.last_login %></td>
+            <td><%= item.watchers %></td>
+            <td><a href="#" class="delete-item btn btn-alert" data-item-id="<%= item.id %>">Delete</a></td>
+        </tr>
+        <% }) %>
+        </tbody>
+    </table>
+</div>

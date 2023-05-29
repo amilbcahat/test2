@@ -1,0 +1,205 @@
+/* ========== All mobile phones CSS ========== */
+
+@media all and (max-width: 767px) and (min-width: 0px) {
+	#Header {
+		padding-bottom: 20px;
+	}
+	#Header .container a.logo {
+		background-size: 100% auto;
+		height: 61px;
+	    text-indent: -999px;
+	    width: 190px;
+	}
+	#Header a.learn-more {
+		font: 400 16px/29px 'Roboto', sans-serif;
+		height: 34px;
+		margin-top: 5px;
+		width: 118px;
+		float: right;
+	}
+	#Header a.free-trial, #Header a.free-trial:focus {
+	    font-size: 14px;
+	    height: 34px;
+	    line-height: 31px;
+	    width: 118px;
+	    margin-top: 5px;
+	    float: right;
+		margin-right: 15px;
+	}
+	#HackerRankFreeTrialLpContent .margin-top {
+		margin-top: 0px;
+	}
+	#HackerRankFreeTrialLpContent img {
+		float: left;
+	}
+	#Slider {
+	    background-position: 0 0;
+	    background-size: 500% auto;
+	    height: 260px;
+	}
+	#Slider .container {
+		background-position: right bottom;
+	    background-size: 46% auto;
+	    height: 260px;
+	}
+	#Slider h1 {
+		font-size: 26px;
+		line-height: 130%;
+		padding: 0;
+	}
+	#Slider h2 {
+		font-size: 14px;
+		line-height: 130%;
+		padding: 0;
+	}
+	#HackerRankFreeTrialLpContent h2 {
+		font-size: 20px;
+		line-height: 130%;
+		padding: 0;
+	}
+	#HackerRankFreeTrialLpSignUp h3 {
+		font-size: 14px;
+	}
+	#HackerRankFreeTrialLpContent {
+		padding: 20px 0;
+	}
+	#HackerRankFreeTrialLpSlider {
+		padding-top: 0px;
+	}
+	#HackerRankFreeTrialLpSignUp h2 {
+		font-size: 30px;
+		line-height: 130%;
+	    margin: 18px 0 0;
+	    padding: 0;
+	}
+	#HackerRankFreeTrialLpContent .source-bigger-better-content {
+		padding: 0px 0 0;
+	}
+	#HackerRankFreeTrialLpContent p {
+		font-size: 14px;
+		line-height: 130%;
+	}
+	#HackerRankFreeTrialLpSlider .descriptions p {
+		font-size: 14px;
+		line-height: 130%;
+	}
+	#HackerRankFreeTrialLpSectionTitle h2 {
+		font-size: 20px;
+		line-height: 130%;
+	}
+	#HackerRankFreeTrialLpContent .reduce-time-content {
+		padding: 10px 0;
+	}
+	#HackerRankFreeTrialLpSectionTitle .bx-wrapper .bx-controls-direction a {
+		display: none;
+	}
+	#HackerRankFreeTrialLpSectionTitle .bx-wrapper .bx-pager {
+		bottom: 0;
+	}
+	#HackerRankFreeTrialLpSlider img.logo-slider {
+		margin-left: 20px;
+	}
+	#HackerRankFreeTrialLpSlider .descriptions {
+		width: 95%;
+	}
+	#HackerRankFreeTrialLpContent .margin-top-a {
+		margin: 0;
+	}
+	#HackerRankForm .form-row {
+		padding-left: 0;
+	}
+
+}
+/* ========== All mobile phones CSS ========== */
+
+@media all and (max-width: 767px) and (min-width: 480px) {
+	#Slider {
+	    background-position: 0 0;
+	    background-size: 140% auto;
+	    height: 260px;
+	}
+
+}
+/* ========== Only tablet CSS Start ========== */
+
+@media all and (max-width: 979px) and (min-width: 768px) {
+	#HackerRankFreeTrialLpContent img {
+		width: 100%;
+	}
+	#HackerRankFreeTrialLpSlider img.logo-slider {
+		width: 140px;
+	}
+	#Slider h1 {
+		font-size: 30px;
+		line-height: 130%;
+	}
+	#Slider h2 {
+		font-size: 18px;
+		line-height: 130%;
+	}
+	#HackerRankFreeTrialLpContent p {
+		font-size: 16px;
+		line-height: 130%;
+	}
+	#HackerRankFreeTrialLpSectionTitle h2 {
+		font-size: 26px;
+		line-height: 130%;
+	}
+	#HackerRankFreeTrialLpSignUp h2 {
+		font-size: 20px;
+		line-height: 130%;
+	}
+	#HackerRankFreeTrialLpContent h2 {
+		font-size: 22px;
+		line-height: 130%;
+	}
+	#HackerRankFreeTrialLpContent .margin-top {
+		margin-top: 0px;
+	}
+	#HackerRankFreeTrialLpSignUp h2 {
+		font-size: 26px;
+		line-height: 130%;
+	}
+	#Slider .container {
+		height: 532px;
+		background-size: 100%;
+		background-position: right bottom;
+	}
+	#Slider {
+		height: 532px;
+	}
+	#HackerRankFreeTrialLpContent .source-bigger-better-content {
+    	padding: 0 0 0 10px;
+	}
+	#HackerRankFreeTrialLpContent .reduce-time-content {
+  		 padding: 0;
+	}
+}
+/* ========== 1024 small monitor =============== */
+
+@media all and (max-width: 1200px) and (min-width: 980px) {
+	#HackerRankFreeTrialLpSlider img.logo-slider {
+		width: 190px !important;
+	}
+	#Slider h1 {
+		font-size: 40px;
+		line-height: 130%;
+	}
+	#Slider h2 {
+		font-size: 20px;
+		line-height: 130%;
+	}
+	#HackerRankFreeTrialLpSignUp h2 {
+		font-size: 30px;
+		line-height: 130%;
+	}
+	#HackerRankFreeTrialLpContent img {
+		width: 100%;
+	}
+	#HackerRankFreeTrialLpContent h2 {
+		font: 300 26px/38px 'Roboto', sans-serif;
+	}
+}
+/* ========== Large monitor =============== */
+
+@media all and (max-width: 6000px) and (min-width: 1200px) {}

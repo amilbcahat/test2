@@ -1,0 +1,12 @@
+<p>Rank: <%= data.rank %></p>
+<% if (hacker.country) { %>
+<p>From <%= data.country %></p>
+<% } %>
+<% if (data.languages) { %>
+<p>Codes in <%= data.languages %></p>
+<% } %>
+<% if (data.hack) { %>
+<div class="hack-wrap">
+    <p><%= data.hack %></p>
+</div>
+<% } %>

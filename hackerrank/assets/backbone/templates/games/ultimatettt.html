@@ -1,0 +1,64 @@
+<style>
+  .uttt-outer {
+    margin: 0 auto;
+  }
+    .uttt-inner {
+      height: 80px;
+      width: 240px;
+      background-color: #ddd;
+    }
+    .uttt-inner td {
+      height: 40px;
+      width: 40px;
+      background-color: white;
+      border: 2px solid #666;
+      padding: 20px;
+      font-size: 40px;
+      text-align: center;
+    }
+
+    .uttt-inner td[data-grid-row="0"][data-grid-column="0"] { border-left: none; border-top: none; }
+    .uttt-inner td[data-grid-row="1"][data-grid-column="0"] { border-left: none; }
+    .uttt-inner td[data-grid-row="2"][data-grid-column="0"] { border-left: none; border-bottom: none; }
+    .uttt-inner td[data-grid-row="0"][data-grid-column="1"] { border-top: none; }
+    .uttt-inner td[data-grid-row="1"][data-grid-column="1"] { border-left: none; }
+    .uttt-inner td[data-grid-row="2"][data-grid-column="1"] { border-bottom: none; }
+    .uttt-inner td[data-grid-row="0"][data-grid-column="2"] { border-right: none; border-top: none; }
+    .uttt-inner td[data-grid-row="1"][data-grid-column="2"] { border-right: none; }
+    .uttt-inner td[data-grid-row="2"][data-grid-column="2"] { border-right: none; border-bottom: none; }
+
+    .uttt-inner td.highlighted {
+      background: rgb(210, 252, 212);
+    }
+    td.uttt-won-0 { color: rgb(150,0,0); }
+    td.uttt-won-1 { color: rgb(0, 0, 150); }
+    table[data-won="0"] td { border-color: rgb(150,0,0); }
+    table[data-won="1"] td { border-color: rgb(0,0,150); }
+</style>
+<div>
+    <div class="game-grid" style="display: block; margin: auto; border-radius: 10px;">
+        <% var rows = 3; %>
+        <% var columns = 3; %>
+        <% var o_rows = 3; %>
+        <% var o_columns = 3; %>
+        <table class="uttt-outer" cellpadding="10">
+        <% for (o_i = 0; o_i < o_rows; o_i++) { %>
+          <tr class="uttt-outer">
+          <% for (o_j = 0; o_j < o_columns; o_j++) { %>
+          <td class="uttt-outer" data-grid-row="<%= o_i %>" data-grid-column="<%= o_j %>">
+          <table class="uttt-inner" data-grid-row="<%= o_i %>" data-grid-column="<%= o_j %>">
+                <% for (i = 0; i < rows; i++) { %>
+                <tr class="uttt-inner">
+                    <% for (j = 0; j < columns; j++) { %>
+                       <td data-grid-row="<%= i %>" data-grid-column="<%= j %>">&nbsp;</td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>
+            </td>
+          <% } %>
+          </tr>
+        <% } %>
+        </table>
+    </div>
+</div>

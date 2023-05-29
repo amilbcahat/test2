@@ -1,0 +1,198 @@
+<div class="container">
+    <header class="page-title container">
+        <h1>Scoring Documentation</h1>
+    </header>
+    <div class="light-wrap faq clearfix content-text">
+        <% if (model.custom_documentation) { %>
+        <%= model.custom_documentation %>
+        <% } else { %>
+        <div class="questions span5 pull-left">
+            <ul class="unstyled general">
+                <li class="title"><a class="backbone" href="/scoring/score-evaluation">Score Evaluation</a></li>
+                <li><a class="backbone" href="/scoring/competitive-games">1.1 Competitive Games</a>
+                    <ul class="unstyled general">
+                        <li><a class="backbone" href="/scoring/matchup">1.1.1 Matchup</a></li> 
+                        <li><a class="backbone" href="/scoring/board-convention">1.1.2 Board Convention</a></li> 
+                        <li><a class="backbone" href="/scoring/scoring">1.1.3 Scoring</a></li>
+                        <li><a class="backbone" href="/scoring/midnight-re-run">1.1.4 Midnight re-run</a></li>
+                        <li><a class="backbone" href="/scoring/playoffs">1.1.5 Playoffs</a></li>
+                        <li><a class="backbone" href="/scoring/choose-your-opponent">1.1.6 Choose your opponent</a></li>
+                    </ul>
+                </li>
+                <li><a class="backbone" href="/scoring/code-golf">1.2 Code Golf</a></li>
+                <li><a class="backbone" href="/scoring/algorithmic-challenges">1.3 Algorithmic Challenges</a>
+                    <ul class="unstyled general">
+                        <li><a class="backbone" href="/scoring/dynamic-scoring">1.3.1 Dynamic Scoring</a></li> 
+                    </ul>
+                </li>
+                <li><a class="backbone" href="/scoring/single-player-games">1.4 Single Player Games</a></li>
+            </ul>
+            <ul class="unstyled challenges">
+                <li class="title"><a class="backbone" href="/scoring/leaderboards">Leaderboards</a></li>
+                <li><a class="backbone" href="/scoring/leaderboard-challenge-score">2.1 Challenge Score</a></li>
+                <li><a class="backbone" href="/scoring/leaderboard-hackerrank">2.2 HackerRank</a></li>
+                <li><a class="backbone" href="/scoring/leaderboard-network-leaderboard">2.3 Network Leaderboard</a></li>
+            </ul>
+            <ul class="unstyled">
+                <li class="title"><a class="backbone" href="/scoring/ratings">Rating</a></li>
+                <li><a class="backbone" href="/scoring/rating-track">3.1 Contest rating for a specific category</a></li>
+                <li><a class="backbone" href="/scoring/rating-overall">3.2 Overall rating</a></li>
+                <li><a class="backbone" href="/scoring/rating-title">3.3 Titles on rating</a></li>
+            </ul>
+        </div>
+        <div class="content span10 pull-left">
+            <h2 id="score-evaluation">Score Evaluation</h2>
+            <section id="competitive-games">
+                <h3>1.1 Competitive Games</h3>
+                <p>Your Bot will play against a large sample of randomly chosen bots to see how it performs. It will play against many higher-ranked bots and some of the lower-ranked bots. The rating for each bot will then be calculated with a Bayesian Approximation formula, to reach a statistically accurate ranking.</p>
+            </section>
+            <section id="matchup">
+                <h4>1.1.1 Matchup</h4>
+                <p>Your bot is played against every bot ranked 1-10, and then against randomly chosen bots from the rest. It will play against 1 of 2 bots  ranked 11-30, 1 of 4 bots ranked 31-70,  1 of 8 bots ranked 71-150, and so on.</p>
+            </section>
+            <section id="board-convention">
+                <h4>1.1.2 Board Convention</h4>
+                <p>Unless specified explicitly in the problem statement, any game played on a board follows the convention as displayed in the format below</p>
+                <p><img src="https://hr-filepicker.s3.amazonaws.com/matrix-convention.png"/></p>
+                <p>The board follows the matrix convention of Mathematics. A board of size m x n has top left indexed (0,0) and bottom right indexed (m-1,n-1). Row index increases from top to bottom and column index increases from left to right.</p>
+            </section>
+            <section id="scoring">
+                <h4>1.1.3 Scoring</h4>
+                <p>Bot v/s Bot games are evaluated based on <a href="http://jmlr.csail.mit.edu/papers/volume12/weng11a/weng11a.pdf" target="_blank">Bayesian Approximation</a>. Each game has 3 possible outcomes - win, loss or a draw. A win will have 1 associated with it, 0.5 for a draw and 0 for a loss.</p>
+                <p> Given &#956;<sub>i</sub>, &#963;<sup>2</sup><sub>i</sub> of Player i, we use the Bradley-Terry full pair update rules.</p>
+                <p>We obtain &#937;<sub>i</sub> and &#916;<sub>i</sub> for every player i using the following steps.</p>
+                <p>For q = 1,......,k, q!=i,</p>
+                <p>where <strong>q</strong> are the number of bots competing in a game</p>
+                <p class="math"><img src="https://s3.amazonaws.com/hr-logos/bayesian2.gif"/></p>
+                <p>where &#946; is the uncertainty in the score and is kept constant at 25/6.</p>
+                <p class="math"><img src="https://s3.amazonaws.com/hr-logos/bayesian3-1.png"/><img src="https://s3.amazonaws.com/hr-logos/bayesian3-2.png"/></p>
+                <p>where &gamma;<sub>q</sub> = &sigma;<sub>i</sub>/c<sub>iq</sub> and r(i) is the rank of a player i at the end of a game.</p>
+                <p>We get<p>
+                <p class="math"><img src="https://s3.amazonaws.com/hr-logos/bayesian4.gif"/></p>
+                <p>Now, the individual skills are updated using </p>
+                <p>j = 1,......,n<sub>i</sub></p>
+                <p class="math"><img src="https://s3.amazonaws.com/hr-logos/bayesian6.gif"/></p>
+                <p>where &kappa; = 0.0001. Its used to always have a positive standard deviation &#963;.</p>
+                <p>Score for every player is given as </p>
+                <p class="math"><img src="https://s3.amazonaws.com/hr-logos/bayesian7.png"/></p>
+                <p>&mu; for a new bot is kept at 25 and &sigma; at 25/3.</p>
+            </section>
+            <section id="midnight-re-run">
+                <h4>1.1.4 Midnight re-run</h4>
+                <p>Every midnight (pacific time) we will rerun all the active/valid bots that have been submitted in last 24 hours. They will play against each other according to the above formulas. These extra games will improve the accuracy of the rankings. </p>
+            </section>
+            <section id="choose-your-opponent">
+                 <h4>1.1.5 Choose your opponent</h4>
+                 <p>You can also choose specific bots to match-up against yours. These games will affect your rankings only if the lower ranked bot ends up tying or winning against the higher ranked bot. </p>
+            </section>
+            <section id="playoffs">
+                 <h4>1.1.6 Playoffs</h4>
+                 <p>In addition, every midnight there will be another set of games - playoffs. All the bots will be matched based on their rankings and will play a series of games until the top two bots face each other. </p>
+            </section>
+            <section id="code-golf">
+                <h3>1.2 Code Golf</h3>
+                <p>In the code golf challenges, the score is based on the length of the code in characters. The shorter the code, the higher the score. The specific scoring details will be given in the challenge statement.</p>
+            </section>
+            <section id="algorithmic-challenges">
+                <h3>1.3 Algorithmic Challenges</h3>
+                <p>The algorithmic challenges come with test cases which can be increasingly difficult to pass. </p>
+                <p>The score will be based on the percentage of tests cases which your code passes. For example, if you pass 5 out of 10 tests cases, you will receive the points allotted for those 5 passed test cases of that challenge. A correct and optimal solution will pass all test cases. </p>
+                <section id="dynamic-scoring">
+                  <h4>1.3.1 Dynamic Scoring</h4>
+                  <p>For some challenges, we are introducing a new beta dynamic scoring pattern.
+                    Their maximum score will vary based on how submissions for that particular
+                    challenge perform. If a challenge is dynamically scored, we will explicitly
+                    mention it against the <em>Max score</em> on challenge page.
+                  </p>
+                  <p>
+                    Here is how a submission score is calculated:
+                  </p>
+                  <p>
+                    <strong>Lets say</strong>,<br/>
+                    <em>Total submissions</em> (one per hacker) for the challenge: <strong>total</strong><br/>
+                    <em>Solved submissions</em> (one per hacker) for the challenge: <strong>correct</strong><br/>
+                    Your submission <em>score factor</em> (lies between 0 and 1) based
+                    on correctness of the submission: <strong>sf</strong><br/>
+                    <em>Minimum score</em> a challenge can have: <strong>20</strong><br/>
+                    <em>Maximum score</em> a challenge can have: <strong>100</strong><br/>
+                  </p>
+                  <p>
+                    We calculate,<br/>
+                    <em>Success ratio</em>, <strong>sr</strong> = correct/total<br/>
+                    <em>Challenge factor</em> (rounded), <strong>cf</strong> = 20 +  (100 - 20)*(1 - sr)<br/>
+                  </p>
+                  <p>
+                    So, the <em>final score</em> for a submission becomes, <strong>score</strong> = sf * cf
+                  </p>
+                </section>
+            </section>
+            <section id="single-player-games">
+                <h3>1.4 Single Player Games</h3>
+                <p>Single player games involve a bot interacting with an environment. The game ends when a terminating condition is reached. Scoring and terminating conditions are game dependant and the same will be explained in the problem description.</p>
+            </section>
+            <h2 id="leaderboards">Leaderboards</h2>
+            <section id="leaderboard-challenge-score">
+                <h3>2.1 Challenge Score</h3>
+                <p>The score for each type of challenge was given above. The challenge leaderboard will display all the users based on the score of their most recent submission.</p>
+            </section>
+            <section id="leaderboard-hackerrank">
+                <h3>2.2 HackerRank</h3>
+                <p>Each user will have an overall HackerRank based on the sum of scores of challenges he/she has completed/competed in.</p>
+                <p class="math"><img src="http://hr-filepicker.s3.amazonaws.com/challenge_score.png"/></p>
+            </section>
+            <section id="leaderboard-network-leaderboard">
+                <h3>2.3 Network Leaderboard</h3>
+                <p>For each network, the network rating is calculated as follows,</p>
+                <p>The difference (diff) between the highest score and the lowest is calculated.</p>
+                <p class="math"> <img src="https://static.interviewstreet.com/hackerrank/scoringimages/6.png"/></p>
+                <p>now the multiplicative factor f is calculated using</p>
+                <p class="math"> <img src="https://static.interviewstreet.com/hackerrank/scoringimages/7.png"/></p>
+                <p>Score for every network is calculated as</p>
+                <p class="math"> <img width="550" src="https://static.interviewstreet.com/hackerrank/scoringimages/8.png"/></p>
+                <p>This is done for networks whose count is greater than 10</p>
+            </section>
+            <h2 id="ratings">Rating</h2>
+            <section id="rating-track">
+                <h3>3.1 Contest rating for a specific category</h3>
+                <p>In this section, we will explain how ratings are calculated for different categories like 101 Hack and 20 20 Hack.</p>
+                <p>Rating calculation is also based on <a href="http://jmlr.csail.mit.edu/papers/volume12/weng11a/weng11a.pdf" target="_blank">Bayesian Approximation</a>. We will compete all hackers to each other and it has three possible outcomes - win, loss or a draw. A win will have 1 associated with it, 0.5 for a draw and 0 for a loss.</p>
+                <p> Given &#956;<sub>i</sub>, &#963;<sup>2</sup><sub>i</sub> of Player i, we use the Bradley-Terry full pair update rules.</p>
+                <p>We obtain &#937;<sub>i</sub> and &#916;<sub>i</sub> for every hacker i using the following steps.</p>
+                <p>For each hacker q other than i</o>
+                <p class="math"><img src="https://s3.amazonaws.com/hr-logos/bayesian2.gif"/></p>
+                <p>where &#946; is the uncertainty in the score and is kept constant at 300.</p>
+                <p class="math"><img src="https://s3.amazonaws.com/hr-logos/bayesian3-1.png"/><img src="https://s3.amazonaws.com/hr-logos/bayesian3-2.png"/></p>
+                <p>where &gamma;<sub>q</sub> = &sigma;<sub>i</sub>/c<sub>iq</sub> and r(i) is the rank of a player i in the contest.</p>
+                <p>We get<p>
+                <p class="math"><img src="https://s3.amazonaws.com/hr-logos/bayesian4.gif"/></p>
+                <p>Now, the individual skills are updated using </p>
+                <p>j = 1,......,n<sub>i</sub></p>
+                <p class="math"><img src="https://s3.amazonaws.com/hr-logos/bayesian6.gif"/></p>
+                <p>where &kappa; = 0.0001. Its used to always have a positive standard deviation &#963;.</p>
+                <p>Rating for every player is given as </p>
+                <p class="math">new_rating = &mu; - (1.8)&sigma;</p>
+                <p>Also &mu; is adjusted so that the absolute difference between new rating and old rating is no more than 200 + 400*0.9<sup>num_events</sup>, where num_events is the number of contests hacker participated. </p>
+                <p>&mu; for a new hacker is 90 and &sigma; is 30.</p>
+            </section>
+            <section id="rating-overall">
+                <h3>3.2 Overall rating</h3>
+                <p>Each user will also have an overall contest rating based on the his/her ratings on different tracks.</p>
+                <p class="math"><img src="https://s3.amazonaws.com/hr-logos/rating-1.png"/></p>
+                <p>is user's ratings on different tracks sorted in descending order. User's overall rating is calculated as follows</p>
+                <p class="math"><img src="https://s3.amazonaws.com/hr-logos/rating-2.png"/></p>
+            </section>
+            <section id="rating-title">
+                <h3>3.3 Titles on rating</h3>
+                <p>In addition to rating score, each user has a title associated with his/her rating. We order all users by their rating and titles are given as follows.</p>
+                <ul>
+                    <li>Top 1% - O(1)</li>
+                    <li>Next 10% - O(logN)</li>
+                    <li>Next 20% - O(N)</li>
+                    <li>Next 30% - O(N<sup>2</sup>)</li>
+                    <li>Next 39%(remaining users) - O(2<sup>N</sup>)</li>
+                </ul>
+            </section>            
+        </div>
+        <% } %>
+    </div>
+</div>

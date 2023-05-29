@@ -1,0 +1,71 @@
+<style>
+
+.contest_access .item
+{
+  display: block;
+  background-color: #CCC;
+  border-radius: 5px;
+  margin-right: 15px;
+  margin-bottom: 5px;
+}
+.contest_access .item .text
+{
+  display: inline-block;
+  margin: 5px;
+}
+.contest_access .item .close
+{
+  display: inline-block;
+  margin: 5px;
+  cursor: pointer;
+  color:#333;
+}
+</style>
+<div class="span11 row contest_access">
+
+    <div class="span11 block-center row">
+        <label>Allowed Hackers
+            <i data-toggle="popover" data-content="Use this to add hackers already registered on HackerRank to participate in the contest." class="icon-help-circled"></i>
+        </label>
+        <hr style="margin: 5px 0px" />
+        <% _.each(collection, function(model){ %>
+
+        <% if(model.hacker_id != null ) { %>
+        <div class="pull-left item">
+            <span class="text"><%= model.username %></span><span class="close delete" data-id="<%= model.id %>" >x</span>
+        </div>
+        <% } %>
+        <% }); %>
+    </div>
+    <div class="span11 block-center row">
+        <br/>
+        <div class="span11 clear-margin">
+            <input type="text" class="span3 hacker clear-margin" />
+            <button type="button" class="btn btn-small add_hacker">Add Hacker</button>
+            <label class="hacker_error error inline"></label>
+        </div>
+    </div>
+    <div class="span11 block-center row" style="margin-top:10px;">
+        <label>Allowed Emails
+          <i data-toggle="popover" data-content="Add the emails which you want to be allowed to participate in the contest. for multiple emails use commmaseprated values." class="icon-help-circled"></i>
+        </label>
+        <hr style="margin: 5px 0px"/>
+        <% _.each(collection, function(model){ %>
+
+        <% if(model.email != null ) { %>
+        <div class="pull-left item">
+            <span class="text"><%= model.email %></span><span class="close delete" data-id="<%= model.id %>" >x</span>
+        </div>
+        <% } %>
+        <% }); %>
+    </div>
+    <div class="span11 block-center row">
+        <br/>
+        <div class="span8 clear-margin">
+            <textarea class="span8 emails" style="min-height:50px;" placeholder="abc@hr.com, abc2@hr.edu"></textarea>
+        </div>
+        <div class="span2">
+            <button type="button" class="btn btn-medium pull-right add_emails">Add Emails</button>
+        </div>
+    </div>
+</div>

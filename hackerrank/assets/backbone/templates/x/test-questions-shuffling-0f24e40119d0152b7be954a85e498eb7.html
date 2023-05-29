@@ -1,0 +1,21 @@
+<div class="mjA">
+    <label class="label-title-underline">
+        RANDOM QUESTION SHUFFLING
+    </label>
+    <div class="clear"></div>
+    <p class="txt-alt-grey span10 no-padding">Use this to randomly shuffle the test questions for any candidate.</p>
+    <div class="clear"></div>
+    <form name="questions-shuffling-form">
+        <div class="inline-block mdT">
+            <div class="span5">
+                <label class="display-inline">Do you want to shuffle the questions?</label>
+                <div class="switch">
+                    <input type="checkbox" name="questions-shuffling" id="shuffle_questions" <% if (model.shuffle_questions && model.shuffle_questions == 'True') { %>checked<% } %> />
+                </div>
+            </div>
+            <div class="span4 mlT">
+                <button type="submit" class="btn btn-primary margin-large right mdL">Save</a>
+            </div>
+        </div>
+    </form>
+</div>

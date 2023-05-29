@@ -1,0 +1,7 @@
+<li class="sidebar_list-heading thread padded <%- model.unread_count > 0 ? 'unread' : ''%> <%- model.active ? 'active' : '' %>">
+    <a class="backbone" href="/<%=model.user2.username%>"><img src="<%- model.user2.avatar %>" height="65" width="65" class="avatar pull-left margin-large right" onerror="$('div[data-thread-id=<%=model.id%>] img').attr('src','https://d3rpyts3de3lx8.cloudfront.net/hackerrank/assets/gravatar.jpg')"/></a>
+    <div class="thread_teaser">
+        <p class="messaging_whois"><%- model.user2.username %></p>
+        <p class="messaging_teasertext"><% if (model.last_message.sender_id == profile.id) { %><i class="icon-reply"></i>&nbsp;<% } %><span><%- model.last_message.message %></span><a href="/inbox/thread/<%=model.id%>" class="backbone"><%= model.unread_count %> unread</a></p>
+    </div>
+</li>

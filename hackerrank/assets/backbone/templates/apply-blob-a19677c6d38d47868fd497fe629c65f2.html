@@ -1,0 +1,20 @@
+<% if (model.company) { %>
+<div class="alert info clearfix">
+  <div class="span12 msT">
+    <header>This challenge is being sponsored by <%= model.company.name %>.</header>
+    <p>You can apply for <%= model.company.name %> if you solve this challenge successfully.</p>
+  </div>
+  <div class="span3 pull-right text-center">
+    <% if (model.solved) { %>
+      <% if (model.contest_slug == 'master') { %>
+        <a href="challenges/<%= model.slug %>/apply/<%= model.company.slug %>" class="backbone btn btn-primary mdT">Apply</a>
+      <% } else { %>
+        <a href="contests/<%= model.contest_slug %>/challenges/<%= model.slug %>/apply/<%= model.company.slug %>" class="backbone btn btn-primary mdT">Apply</a>
+      <% } %>
+    <% } else { %>
+    <a class="btn btn-primary" disabled="disabled">Apply</a>
+    <p class="aside">will be enabled once you solve this challenge</p>
+    <% } %>
+  </div>
+</div>
+<% } %>

@@ -1,0 +1,10 @@
+<ul class="breadcrumb unstyled horizontal">
+  <% collection.each(function(crumb){ %>
+  <li>
+    <a href="<%= crumb.get('path') %>" class="backbone">
+      <%= crumb.get('name') %>
+    </a>
+    <i class="icon-right-open-big divider"></i>
+  </li>
+  <% }) %>
+</ul>

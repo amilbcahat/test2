@@ -1,0 +1,49 @@
+<div><div><div><div>
+
+</div></div></div></div>
+
+<style>
+    .moves {
+        width: 200px;
+        margin: auto;
+        border: 1px solid #333;
+        margin-bottom: 20px;
+    }
+    .moves td {
+        width: 100px;
+        border: 1px solid #333;
+    }
+    .moves tr {
+        border: 1px solid #333;
+    }
+    .cell{
+        background-color:none;
+    }
+    .bot{
+
+        background-image: url("assets/games/bot.png");
+        background-size: 50px 50px;
+        background-position: 0px 0px;
+    }
+    .queen{
+
+        background-image: url("assets/games/queen.png");
+        background-size: 50px 50px;
+        background-position: 0px 0px;
+    }
+</style>
+<div>
+    <div class="game-grid text-center" style="display: block; margin: 20px auto; border-radius: 10px;">
+        <% var rows = size; %>
+        <% var columns = size; %>
+        <table style="border: 2px solid #666; display:inline-block;">
+            <% for (i = 0; i < rows; i++) { %>
+            <tr style="height: 50px; width: 250px; border: 2px solid #666;">
+                <% for (j = 0; j < rows; j++) { %>
+                   <td class="cell <%= i %>-<%= j %>" style="height: 50px; width: 50px; border: 2px solid #666;">&nbsp;</td>
+                <% } %>
+            </tr>
+            <% } %>
+        </table>
+    </div>
+</div>

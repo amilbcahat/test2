@@ -1,0 +1,135 @@
+<div class="mdT mdR">
+  <% if (question.answered === false && !anysubmissions) { %>
+  <div class="common_margin alert alert-block">
+      <center>This candidate has not answered this question.</center>
+  </div>
+  <% } else { %>
+    <% if (question.answered === false) { %>
+    <div class="common_margin alert alert-block alert-info">
+      <center>No answer was submitted for this question. Showing compiled/saved versions.</center>
+    </div>
+    <% } %>
+    <!-- Plagiarism -->
+<% if (plagiarism && (_.keys(plagiarism).length > 0)) { %>
+    <div class="alert">
+        <p>PLAGARISM SUSPECTS:</p>
+        <table>
+
+        <% _.each (plagiarism, function (pl, key) {
+            var className;
+
+            if (pl.probability > 90) {
+                className = "fnt-sz-big";
+            } else if (pl.probability > 80) {
+                className = "";
+            } else {
+                className = "fnt-sz-mid";
+            }
+
+            %>
+            <tr class="<%= className %>">
+                <td><strong><%= pl.email %></strong> </td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td><a href="javascript:void(0)" class="js-review" data-review='<%= key %>' data-current='<%= sid %>' data-similarity='<%=pl.probability%>' data-email='<%=pl.email%>'>view diff</a> </td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td> <a href="tests/<%= test.id %>/candidates/<%= pl.aid %>/report/detailed/<%=question.id%>" class="view-submission-btn" target="_blank">view submission</a></td>
+            </tr>
+        <%});%>
+        </table>
+    </div>
+    <br/>
+</div> <!-- end mda -->
+
+    <div class="modal js-plagiarism-modal modal-huge" style="max-height: 75%">
+    <div class="modal-header" style="height: 13px;">
+        <div class="underline_title set_title pull-left">Matching response</div>
+        <button type="button" class="close js-plagclose pull-right" data-dismiss="modal" aria-hidden="true"><small>Close</small> &times;</button>
+    </div>
+    <div >
+    <div class="mdA">
+        Plagiarism possibility: <strong class="js-possibility"></strong>
+        <span class="pull-right">Text similarity : <strong class="js-similarity"></strong>%</span>
+    </div>
+    <div class='js-code-diff'>
+    </div>
+    </div>
+    </div>
+
+
+<% } %> <!-- end plagiarism -->
+
+
+    <div class="position-relative">
+        <div class="mdA">
+            Language used: <strong class="langused"></strong>
+        </div>
+        <% if (question.submissions.length > 1) { %>
+            <div class="code-player" id="code-player">
+                <span class="txt-alt-grey fnt-wt-600">
+                    <i class="icon-menu-large"></i>&nbsp;PLAY CODE
+                </span>
+                <div class="code_play_slide_wrap" style="display: none">
+                    <div class="timeline-slider-wrapper msT">
+                        <div class="slider" style="width:220px;"></div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+    <pre class="outbox cm-s-default no-padding" style="border-top:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;">
+        Fetching Code...
+    </pre>
+    <pre class="outbox-temp" style="display:none;">
+        Fetching Code...
+    </pre>
+    <% if ((test.hide_compile_test == undefined || test.hide_compile_test != 'True') && (question.hide_compile_test == undefined || question.hide_compile_test != 'True')) { %>
+    <% if (question.compile_status && question.compile_status == "Compilation Failed") { %>
+        <div class="mdA">
+            <strong>Result:</strong> Compilation Failed
+            <br/><br/>Compile Message<br/>
+            <pre>
+                <%- question.compile_message %>
+            </pre>
+            <% } else { %>
+                <% if (question.submission_testcases) { %>
+                    <table style="width:94%; margin:30px auto;" class="table table-radius table-out-border fnt-sz-mid ">
+                        <thead>
+                            <tr class="prominent txt-alt-grey">
+                                <th>TESTCASE</th>
+                                <th>TYPE</th>
+                                <th>STATUS</th>
+                                <th>TIME TAKEN</th>
+                                <th>MEMORY USED</th>
+                            </tr>
+                        </thead>
+                        <% _.each (question.submission_testcases, function(testcase, index) { %>
+                        <tr>
+                            <td><% if (testcase.name) { %><%- testcase.name %><% } else { %>Testcase <%- index %><% } %></td>
+                            <td><%- testcase.type %></td>
+                            <td>
+                                <% if (testcase.compile_status == "Compiled Successfully") { %>
+                                <i class="icon2-status_correct txt-green"> </i>Success
+                                <% } else { %>
+                                <i class="icon2-status_wrong txt-orange"> </i><%- testcase.compile_status %>
+                                <% } %>
+                            </td>
+                            <td><%- Math.round(testcase.time * 100)/100 %> sec</td>
+                            <td><%- testcase.memory %></td>
+                        </tr>
+                        <% }) %>
+                    </table>
+                <% } %>
+                <% if (question.outputs){%>
+                    <a class="btn btn-small js-showoutputs mdB" style="margin-left:41px">[+] Show output diff</a>
+                    <div class="js-output"></div>
+                <%}%>
+            <% } %>
+            <% } %>
+        </div>
+    <% } %>
+
+<div class="clear"></div>

@@ -1,0 +1,48 @@
+<div class="clearfix row-btn submissions_item">
+    <div class="span2 submissions-title">
+        <p><a class="challenge-slug backbone" href="<%= ns %>judge/submissions/challenge/<%= challenge.slug %>"><%= challenge.name %></a></p>
+    </div>
+    <div class="span2 submissions-title">
+        <p><a class="challenge-slug backbone" href="<%= ns %>judge/submissions/team/<%= model.get('hacker_username') %>"><%= model.get('hacker_username') %></a></p>
+    </div>
+    <div class="span1 submissions-title">
+        <p><%= model.get('id') %></p>
+    </div>
+    <div class="span2 submissions-title">
+        <p class="small"><%= lang_display_mapping[model.get('readable_language')] || model.get('language') %></p>
+    </div>
+    <div class="span2 submissions-title">
+        <p class="small"><%= formattedTime %></p>
+    </div>
+    <div class="span3 submissions-title" rel="tooltip" data-original-title="<%= tooltip %>">
+        <% if (model.get('status') == 'Accepted') { %>
+            <p class="small accepted">
+                <%= model.get('status') %>
+                <i class="icon-ok"></i>
+            </p>
+        <% } else if (model.get('status') == 'Compilation error') { %>
+            <p class="small error"> <%= model.get('status') %> </p>
+        <% } else if (model.get('status') == 'Queued') { %>
+            <p class="small queued">
+                <%= model.get('status') %>
+                <img src="/assets/queued.gif" />
+            </p>
+        <% } else if (model.get('status') == 'Processed' || model.get('status') == 'Processing') { %>
+            <p class="small"> <%= model.get('status') %> </p>
+        <% } else { %>
+            <p class="small declined">
+                <%= model.get('status') %>
+                <i class="icon-cancel-large"></i>
+            </p>
+        <% } %>
+    </div>
+    <div class="span1 submissions-title" rel="tooltip" data-original-title="<%= tooltip %>">
+        <p class="small"><%= model.get('score') > 0 ? 1 : 0 %></p>
+    </div>
+    <div class="span2 submissions-title">
+      <input type="checkbox" <% if ((model.get('score') > 0) && (model.get('status_code') == 2)) { %>checked <% } %>class="hr_set-status">
+    </div>
+    <div class="span1">
+        <p class="btn-wrap"><a href="rest/submissions/<%= model.get('id') %>/code" class="view-results">View</a></p>
+    </div>
+</div>

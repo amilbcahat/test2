@@ -1,0 +1,49 @@
+<div class="blog-index container">
+    <header class="page-title">
+        <h1>HackerBlog</h1>
+    </header>
+
+    <div class="row">
+        <div class="span11 content-wrap">
+            <% if(_.isEmpty(collection)) { %>
+              No blogs posted at the moment.
+            <% } %>
+
+            <% _.each(collection, function(blog) { %>
+                <div class="light-wrap blog-post <%= blog.template_class%> post-content">
+                    <% if (blog.template_class === "blog-standard") { %>
+                        <h2 class="post-title"><a class="backbone" href="/blog/<%=blog.slug%>"><%=blog.title%></a></h2>
+                        <div class="post-meta">
+                            <p class="no-flow"><span class="posted-by"><a href=""> <%= blog.owner_name %></a></span> on <span class="posted-on"><%=blog.date%></span></p>
+                        </div>
+                    <% } else { %>
+                        <div class="post-meta">
+                            <p class="no-flow posted-on"><%=blog.date%></p>
+                        </div>
+                    <% } %>
+                    <%= blog.preview %>
+                    <% if(blog.template_class === "blog-standard") { %> <p class="read-more"><a class="backbone" href="/blog/<%=blog.slug%>">[Read More]</a></p> <%}%>
+                </div>
+            <% })%>
+        </div>
+        <div class="span4 post-sidebar pull-right">
+            <ul class="unstyled contests-attending light-wrap">
+                        <li>
+                            <h6 class="no-flow">RSS <a href="/rest/blogs.rss" class="pull-right"><img src="/assets/feed-icon-14x14.png"></a></h6>
+                        </li>
+			<li>
+            <% if(current_hacker.is_admin) {%> <a href="/blog/new/edit" class="backbone"> Create new Blog</a> <%}%>
+	    </li>
+            </ul>
+            <!--<a href="" class="btn btn-orange"><i class="icon-rss"></i> Subscribe to feed</a>
+            <ul class="post-tags unstyled">
+                <li class="group-heading"><h2>Popular Tags</h2></li>
+                <li class="tag">Javascript</li>
+                <li class="tag">Education</li>
+                <li class="tag">Tic Tac Toe</li>
+            </ul>-->
+        </div>
+    </div>
+
+
+</div>

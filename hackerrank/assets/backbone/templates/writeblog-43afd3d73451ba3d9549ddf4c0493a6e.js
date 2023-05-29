@@ -1,0 +1,8 @@
+HR.appController.addTemplate("backbone/templates/writeblog", function(obj) {
+{
+var __t, __p = "";
+Array.prototype.join;
+}
+with (obj || {}) __p += '<div class=\'mjL plT hide\' id=\'message\'>\n    We have received your article. We will publish it soon.<a id=\'new-article\' href="#">Click here</a> to write another article.\n</div>\n<div class="wp-editor">\n    <div class="alert error hide msA" id="error-message"></div>\n    <section >\n        <iframe src="' + (null == (__t = wordpressbaseurl) ? "" :__t) + '/editor/editor.php" id="editor-iframe" width=100% height=700 allowfullscreen scrolling="no" border="0" >\n        </iframe>\n        <div>\n            <label class=\'invisible pull-left span1 psT\'>Content</label>\n            <button id="postblog" class=\'btn btn-green pull-left psT mjL \'>Submit</button>\n            <button id="saveblog" class=\'btn btn-green pull-left psT mjL\' data-blog-id= \'0\' >Save</button>\n        </div>\n    </section>\n</div>\n<style type="text/css">\n    #postblog, #saveblog{\n        margin-top: -30px;\n        margin-bottom: 30px;\n    }\n</style>\n';
+return __p;
+});

@@ -1,0 +1,23 @@
+<div class="mdA">
+    <% if (question.answered === false) { %>
+    <div class="common_margin alert alert-block">
+        <center>This candidate has not answered this question.</center>
+    </div>
+    <% } else { %>
+    <p><strong>Options:</strong><span class="txt-alt-grey"> (Expected answer indicated with a tick)</span></p>
+    <ul class="pull-left mcq-reports-answer">
+    </ul>
+    <% if (question.explanation_box && question.explanation_box.toLowerCase() == "true") { %>
+        <div class="clear"></div>
+        <div class="margin-bott-5 ">
+            <strong>Explanation:</strong>
+        </div>
+        <% if (question.metadata && question.metadata.explanation) { %>
+        <blockquote><%=question.metadata.explanation%></blockquote>
+        <% } else { %>
+        No explanation given.
+        <% } %>
+        <% } %>
+    <% } %>
+</div>
+<div class="clear"></div>

@@ -1,0 +1,115 @@
+<header class="page-title">
+    <h1>Settings &#47; Invitations</h1>
+</header>
+<div>
+    <h5 style="text-align: justify;">Thank you for being an early user. We would like you to invite five of your Hacker friends to Hacker Rank. We'd like to build a great community of hackers and this is a first step.</h5>
+    <h4>You have <strong id="invites-remaining"><%= model.invites_remaining %></strong> <span id="invites_text">invite<% if (model.invites_remaining != 1) { %>s<% } %></span> left.</h4>
+</div>
+<div class="invite-expand">
+    <div class="form">
+        <form class="block-center clearfix span10">
+            <div class="horizontal error-div hide" style="margin-top: 5px">
+                <div class="error-block"></div>
+            </div>
+            <div class="formgroup horizontal">
+                <label for="invite-email" class="span3">Friend&rsquo;s Email</label>
+                <input placeholder="name@email.com" type="text" id="invite-email" class="span6">
+            </div>
+            <div class="formgroup horizontal">
+                <label for="invite-message" class="span3">Personal Message</label>
+                <textarea id="invite-message" class="span6">@<%= _.escape(model.username) %> has invited you to join Hacker Rank, where hackers code, compete, and have fun.</textarea>
+            </div>
+            <div class="span10 clearfix">
+                <div class="offset1 span3" style="margin-left: 150px;">
+                    <button href="" type="submit" class="btn btn-white send-invite">Send Invite</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="m result" style="display: none;">
+        <h2 style="font-size: 20px;">Sweet! We have invited <span class="email"></span> to Hacker Rank!</h2>
+        <div class="span10 clearfix">
+            <div class="offset4 span3" style="margin-left: 200px;">
+                <button href="" type="submit" class="btn btn-white block-center okay">Okay!</button>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!-- <hr> -->
+    <!-- <div class="invite-network"> -->
+    <!--     <h3 class="text-center">You have invited 4 players</h3> -->
+    <!--     <div class="table-wrap light-wrap wrap text-center"> -->
+    <!--         <div class="row table-head"> -->
+    <!--             <div class="span3"> -->
+    <!--                 <p>User</p> -->
+    <!--             </div> -->
+    <!--             <div class="span2"> -->
+    <!--                 <p>Level</p> -->
+    <!--             </div> -->
+    <!--             <div class="span2"> -->
+    <!--                 <p>Score</p> -->
+    <!--             </div> -->
+    <!--             <div class="span3"> -->
+    <!--                 <p>Invited</p> -->
+    <!--             </div> -->
+    <!--         </div> -->
+    <!--         <div class="row"> -->
+    <!--             <div class="span3"> -->
+    <!--                 <p><a href="#userModal" data-toggle="modal">Hari</a></p> -->
+    <!--             </div> -->
+    <!--             <div class="span2"> -->
+    <!--                 <p>1</p> -->
+    <!--             </div> -->
+    <!--             <div class="span2"> -->
+    <!--                 <p>317</p> -->
+    <!--             </div> -->
+    <!--             <div class="span3"> -->
+    <!--                 <p>3 March 2012</p> -->
+    <!--             </div> -->
+    <!--         </div> -->
+    <!--         <div class="row row-alt"> -->
+    <!--             <div class="span3"> -->
+    <!--                 <p><a href="#userModal" data-toggle="modal">Vivek</a></p> -->
+    <!--             </div> -->
+    <!--             <div class="span2"> -->
+    <!--                 <p>1</p> -->
+    <!--             </div> -->
+    <!--             <div class="span2"> -->
+    <!--                 <p>317</p> -->
+    <!--             </div> -->
+    <!--             <div class="span3"> -->
+    <!--                 <p>3 March 2012</p> -->
+    <!--             </div> -->
+    <!--         </div> -->
+    <!--         <div class="row"> -->
+    <!--             <div class="span3"> -->
+    <!--                 <p><a href="#userModal" data-toggle="modal">Shiv</a></p> -->
+    <!--             </div> -->
+    <!--             <div class="span2"> -->
+    <!--                 <p>1</p> -->
+    <!--             </div> -->
+    <!--             <div class="span2"> -->
+    <!--                 <p>317</p> -->
+    <!--             </div> -->
+    <!--             <div class="span3"> -->
+    <!--                 <p>3 March 2012</p> -->
+    <!--             </div> -->
+    <!--         </div> -->
+    <!--         <div class="row row-alt"> -->
+    <!--             <div class="span3"> -->
+    <!--                 <p><a href="#userModal" data-toggle="modal">Sushil</a></p> -->
+    <!--             </div> -->
+    <!--             <div class="span2"> -->
+    <!--                 <p>1</p> -->
+    <!--             </div> -->
+    <!--             <div class="span2"> -->
+    <!--                 <p>317</p> -->
+    <!--             </div> -->
+    <!--             <div class="span3"> -->
+    <!--                 <p>3 March 2012</p> -->
+    <!--             </div> -->
+    <!--         </div> -->
+    <!--     </div> -->
+    <!-- </div> -->
+</div>

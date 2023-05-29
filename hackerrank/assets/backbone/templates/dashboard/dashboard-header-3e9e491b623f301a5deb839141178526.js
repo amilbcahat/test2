@@ -1,0 +1,12 @@
+HR.appController.addTemplate("backbone/templates/dashboard/dashboard-header", function(obj) {
+{
+var __t, __p = "";
+Array.prototype.join;
+}
+with (obj || {}) __p += '<div class="row">\n    <div class="span10">\n        <h2>' + (null == (__t = current_track.name) ? "" :__t) + '</h2>\n        <ul class="inline lines meta js-categories-challenges">\n        </ul>\n    </div>\n    ', 
+HR.profile() && HR.profile().isLoggedIn() && (__p += '\n        <div class="span6 pull-right">\n            <ul class="track_data row unstyled text-center">\n                <li class="span-flex-third">\n                    <p class="small meta mmB">Rating</p>\n                    <strong class="large js-hacker-rating">N/A</strong>\n                </li>\n                <li class="span-flex-third">\n                    <p class="small meta mmB">Rank</p>\n                    <strong class="large js-hacker-rank">N/A</strong>\n                </li>\n                <li class="span-flex-third">\n                    <p class="small meta mmB">Score</p>\n                    <strong class="large js-hacker-score">N/A</strong>\n                </li>\n            </ul>\n        </div>\n    '), 
+__p += '\n</div><!-- END .row -->\n<ul class="nav-tabs nav" style="padding-bottom: 1px;">\n    <li id="challengeTab" ', 
+"challenge" == activeTab && (__p += ' class="active" '), __p += '><a class="hr-challenge-link backbone" href="/categories/' + (null == (__t = current_track.slug) ? "" :__t) + '">All Challenges</a></li>\n    <li id="contestTab" ', 
+"contest" == activeTab && (__p += ' class="active" '), __p += '><a class="hr-contest-link backbone" href="categories/' + (null == (__t = current_track.slug) ? "" :__t) + '/contests">Contests</a></li>\n    <div class="pull-right msT" style="position: relative">\n        <a href="#" class="dropdown-toggle btn btn-small btn-line" data-toggle="dropdown">Change Track</a>\n        <ul class="dropdown-menu" style="width:220px;">\n            <li class="cursor psB psT psL js-change-track" href="" data-value="algorithms">Algorithms</li>\n            <li class="cursor psB psT psL js-change-track" href="" data-value="ai">Artificial Intelligence</li>\n            <li class="cursor psB psT psL js-change-track" href="" data-value="fp">Functional Programming</li>\n            <li class="cursor psB psT psL js-change-track" href="" data-value="miscellaneous">Miscellaneous</li>\n        </ul>\n    </a>\n</ul>\n';
+return __p;
+});

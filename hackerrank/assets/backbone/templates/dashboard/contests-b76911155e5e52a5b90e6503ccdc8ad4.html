@@ -1,0 +1,39 @@
+<section class="contests">
+  <div class="container wide content_wrap">
+    <% if(contests.length === 0 && contests.sync_status) { %>
+    <div class="tab-content" style="padding: 10px">
+        No contests available
+    </div>
+    <% } else { %>
+    <div class="sidebar--inline">
+      <div class="sidebar_header clearfix">
+          <span class="sidebar_header-buttons pull-left">
+              <a class="backbone btn-small btn" href="/calendar"><i class="icon-calendar"></i> View Calendar</a>
+          </span>
+      </div>
+      <ul class="tab-list tab-buttons  sidebar_list unstyled">
+        <span class="sidebar_list-heading">Active Contests</span>
+        <div class="contests_list-active"></div>
+        <span class="sidebar_list-heading">Archived Contests</span>
+        <div class="contests_list-archived"></div>
+      </ul>
+    </div>
+
+    <div class="content--inline tab-content pull-right">
+      <div class="clearfix content_header">
+        <% if (contest) { %>
+        <div class="pull-right">
+            <a href="/contests/<%= contest.get('slug') %>/leaderboard" class="btn btn-small"><i class="icon-trophy"></i></a>
+            <a href="/contests/<%= contest.get('slug') %>/submissions" class="btn btn-small"><i class="icon-list-bullet-small"></i></a>
+        </div>
+        <% } %>
+      </div>
+      <div class="tab-pane active">
+        <div class="challenges-list">
+        </div>
+        <div class="pagination-wrapper"></div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</section>

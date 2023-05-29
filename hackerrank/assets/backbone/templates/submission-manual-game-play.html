@@ -1,0 +1,9 @@
+<% if (_model.kind == 'game' && _model.status_code != 0 && _model.code != null && _model.player_count > 1) { %>
+<div style="padding-bottom: 0px" class="clearfix">
+    <div class="pull-left"
+        <input type="hidden" id="moreplayers" style="width: 280px;"/>
+        <span class="help-prompt pull-left margin-small left"><i class="icon-info-circled"></i><span class="help-text">Search for another player and challenge their bot. The results of your battle will count for your score.</span></span>
+    </div>
+    <img class="spinner hide pull-left" src="/assets/spinner.gif" style="margin-top: 5px; margin-left: 10px;"/>
+</div>
+<% } %>

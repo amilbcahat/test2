@@ -1,0 +1,10 @@
+<div class="m padded">
+  <h3>Contests</h3>
+  <ul style="list-style: none;">
+    <% _.each(_collection, function (contest) { %>
+    <li>
+      <a href="/administration/companies/edit/<%= _model.id %>/applicants/<%= contest.id %>" class="backbone"><%= contest.name %></a>
+    </li>
+    <% }); %>
+  </ul>
+</div>

@@ -1,0 +1,43 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL"><%- test.name %></h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Candidates</h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Reports <span class="js-subtype"></span></h3>
+
+</div>
+<div class="overflow-content" id="control-overflow">
+    <div class="mjA">
+        <input class="js-search mjR" type="text" placeholder="Email filter"/>
+        <input class="js-daterange" type="text" placeholder="Date range"/><a class="js-dateclear hide" style="cursor:pointer;">clear</a>
+        <% if(!hideElements) { %>
+          <div class="pull-right">
+            <input class="hr-sleek-input" name="qtype_check" type="checkbox" id="qtype_check" <%if (showQuesTypes){%>checked<%}%> >
+            <label for="qtype_check">
+                <span>Question type scores</span>
+            </label>
+            <input class="hr-sleek-input" name="qtags_check" type="checkbox" id="qtags_check" <%if (showTags){%>checked<%}%> >
+            <label for="qtags_check">
+                <span>Tags scores</span>
+            </label>
+            <a class="btn btn-small js-pdfdl">PDF</a>
+          </div>
+          <div class="dropdown pull-left mjR">
+            &nbsp;
+            <a class="btn" data-toggle="dropdown" href="#">
+                <span class="js-dropdowntxt">Filter Candidate Status</span>
+                <i class="icon-down-open-mini msL"></i>
+            </a>
+            <ul class="dropdown-menu" id="menu1">
+                <% h=window.istreet.cfg.ats; _.each (_.keys(h), function(ats){%>
+                    <li><a href="javascript:void(0)" class="js-ats" data-attribute-ats="<%=ats%>"><%=h[ats]%></a></li>
+                 <%if (["3","6","10","17"].indexOf(ats) != -1) { %>
+                    <li class="divider"></li>
+                 <%}%>
+                <% }); %>
+            </ul>
+          </div>
+        <% } %>
+    </div><!-- mjA ends here -->
+    <div id="datatable_container">
+        <%= HR.appController.viewLoader()%>
+    </div>
+</div><!-- end overflow-content -->

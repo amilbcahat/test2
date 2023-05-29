@@ -1,0 +1,68 @@
+<div id="contest-challenges-problem" class="content--list">
+  <% if(model.name != undefined) { %>
+      <% if(model.solved) {%>
+          <div class="completed-indicator"><i class="icon-ok"></i></div>
+      <%}%>
+      <header class="content--list_header row">
+          <h4 class="content--list_title span9">
+              <% if (model.can_be_viewed) { %>
+                  <a href="<%= baseURL %>" class="backbone"><%= model.name %></a>
+              <% } else { %>
+                  <a onclick="javascript:void(0);" class="cursor"><%= model.name %></a>
+              <% } %>
+          </h4>
+          <ul data-intro="Challenge links" class="span2 pull-right inline challenge_links">
+              <% if(model.can_be_viewed) { %>
+              <li class=""><a href="<%= baseURL %>/forum/questions" class="backbone submit icon--grey" data-analytics="ViewForum"><i class="icon-comment icon--single"></i></a></li>
+              <% } %>
+              <li class=""><a href="<%= baseURL %>/leaderboard" class="backbone submit icon--grey" data-analytics="ChallengeLeaderboard"><i class="icon-trophy icon--single"></i></a></li>
+              <% if(model.can_be_viewed) { %>
+              <li class=""><a href="<%= baseURL %>/submissions" class="backbone icon--grey"><i class="icon-list-bullet-small icon--single"></i></a></li>
+              <% } %>
+          </ul>
+      </header>
+      <% if (model.can_be_viewed) { %>
+      <p class="content--list_body"><%= model.preview || "" %></p>
+      <% } else {%>
+      <p class="content--list_body"><%= model.requirements_description || "" %></p>
+      <% } %>
+      <footer class="content--list_footer">
+            <span class="meta difficulty-line pull-left">
+                <% if ((model.kind == "code") && (model.solved_count > 0)) {  %>
+                  <p class="stat pull-left"><!--<%= model.solved_count %> successful / <%= model.total_count %> total submission<% if (model.total_count != 1) { %>s<% } %>-->
+                  <%= model.total_count %> Submission<% if (model.total_count != 1) { %>s<% } %></p>
+                  <p class="pull-left stat challenge-score">&ensp;&bull;&ensp;Max score: <strong><%= model.max_score %></strong></p>
+                <% } else { %>
+                    <p class="stat pull-left"><%= model.total_count %> Submission<% if (model.total_count != 1) { %>s<% } %></p>
+                <% } %>
+                <!--Difficulty: <%= model.difficulty %>-->
+                <ul class="pull-left challenge_difficulty">
+                    <% model.difficulty_name = "Easy"; %>
+                    <li class="easy"></li>
+                    <% if (model.difficulty > 0.2) { model.difficulty_name = "Moderate"; %>
+                        <li class="moderate"></li>
+                    <% } %>
+                    <% if (model.difficulty > 0.4) { model.difficulty_name = "Difficult"; %>
+                        <li class="difficult"></li>
+                    <% } %>
+                    <% if (model.difficulty > 0.6) { model.difficulty_name = "Advanced"; %>
+                        <li class="advanced"></li>
+                    <% } %>
+                    <% if (model.difficulty > 0.8) { model.difficulty_name = "Expert"; %>
+                        <li class="expert"></li>
+                    <% } %>
+                </ul>
+                <span class="stat difficulty_group"><%= model.difficulty_name %></span>
+            </span>
+            <% if(model.can_be_viewed) { %>
+            <a href="<%= baseURL %>" data-slug="<%= model.slug %>"
+               class="btn <%= model.attempted ? 'btn btn-line' : 'btn btn-inverse' %> backbone start pull-right span3"
+               data-analytics="<%= model.attempted? 'TryAgain' : 'SolveChallenge' %>">
+                <%= model.attempted? 'Try Again' : 'Solve Challenge' %>
+            </a>
+            <% } %>
+        </footer>
+    <% } else { %>
+        <%= throbber %>
+    <% } %>
+</div>

@@ -1,0 +1,26 @@
+<div class="modal js-pdfdlview modal-mid">
+    <div class="modal-header" style="min-height:20px;">
+        <div class="underline_title set_title pull-left">PDFs Download</div>
+        <button type="button" class="close setmodalclose pull-right" data-dismiss="modal" aria-hidden="true"><small>Close</small> &times;</button>
+    </div>
+    <div class="js-batchview mjA">
+      <% _.each(_.keys(batch), function(title) { %>
+        <div class="mdT">
+        <strong class="pull-left"><%-title%></strong><a class="btn btn-small pull-right js-downloadbtn" data-key="<%=title%>">Download <%=batch[title].length%> reports..</a>
+        </div>
+        <div class="clear"></div>
+      <%  })%>
+      <% if (_.keys(batch).length > 1) { %>
+        <hr><div class="mdT">
+        <strong class="pull-left">All reports</strong><a class="btn btn-small pull-right js-downloadbtn" data-key="_all">Download all reports..</a>
+        </div>
+        <div class="clear"></div>
+      <% } %>
+    </div>
+    <div class="clear"></div>
+    <div class="js-singlebatch mjA hide">
+       <div class="mdT"><strong class="js-dltitle"></strong></div>
+       <div class="clear"></div>
+       <div class="mdT js-pdfprogress"></div>
+    </div>
+</div>

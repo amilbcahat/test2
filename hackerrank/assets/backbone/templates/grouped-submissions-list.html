@@ -1,0 +1,92 @@
+<div class="submissions_item">
+    <div class="table-primary">
+        <div class="clearfix row row-btn row-clear">
+            <div class="span4 submissions-title">
+              <p style="text-align: left;">
+                <a href="<%= ns %>challenges/<%= model.challenge.slug %>" class="backbone cursor root"><%= model.challenge.name %></a>
+                <% if (submissions.length > 0) { %>
+                    <a class="cursor submissions_table-expand expand">[+<%= (model.total-1) %> more]</a>
+                <% } %>
+              </p>
+            </div>
+            <div class="span2 submissions-language">
+                <p class="small"><%= lang_display_mapping[firstSubmission.language] %></p>
+            </div>
+            <div class="span2 submissions-time">
+                <p class="small"><%= firstSubmission.time_ago %></p>
+            </div>
+            <div class="span3">
+                <p class="small">
+                    <% if (firstSubmission.status.startsWith('Accepted')) { %>
+                        <p class="small accepted">
+                            <%= firstSubmission.status %>
+                            <i class="icon-ok"></i>
+                        </p>
+                    <% } else if (firstSubmission.status == 'Compilation error') { %>
+                        <p class="small error"> <%= firstSubmission.status %> </p>
+                    <% } else if (firstSubmission.status == 'Queued') { %>
+                        <p class="small queued">
+                            <%= firstSubmission.status %>
+                            <img src="/assets/queued.gif" />
+                        </p>
+                    <% } else if (firstSubmission.status == 'Processed' || firstSubmission.status == 'Processing') { %>
+                        <p class="small"> <%= firstSubmission.status %> </p>
+                    <% } else { %>
+                        <p class="small declined">
+                            <%= firstSubmission.status %>
+                            <i class="icon-cancel-large"></i>
+                        </p>
+                    <% } %>
+                </p>
+            </div>
+            <div class="span1">
+                <p class="small"><%= firstSubmission.score %></p>
+            </div>
+            <div class="span3 pull-right btn-wrap">
+                <a href="<%= ns %>submissions/<%= firstSubmission.kind %>/<%= firstSubmission.id %>" class="btn btn-inverse backbone">View Results</a>
+            </div>
+        </div>
+        <div class="submissions_table-sub table-sub hide">
+            <% _.each(submissions, function(submission){ %>
+                <div class="row row-clear row-btn">
+                    <div class="span4 submissions-title">&emsp;</div>
+                    <div class="span2 submissions-language">
+                        <p class="small"><%= lang_display_mapping[submission.language] %></p>
+                    </div>
+                    <div class="span2 submissions-time">
+                        <p class="small"><%= submission.time_ago %></p>
+                    </div>
+                    <div class="span3">
+                        <p class="small">
+                        <% if (submission.kind == 'game') { %>
+                            <% if (submission.status_code == 0) { %>
+                                Queued
+                            <% } else if (submission.game_played == submission.game_total) { %>
+                                Processed
+                            <% } else { %>
+                                <%= submission.game_played %>/<%= submission.game_total %> games played
+                            <% } %>
+                        <% } else { %>
+                            <%= submission.status %>
+                        <% } %>
+                        </p>
+                    </div>
+                    <div class="span1">
+                        <p class="small"><%= submission.score %></p>
+                    </div>
+                    <div class="span3 pull-right btn-wrap">
+                        <a href="<%= ns %>submissions/<%= submission.kind %>/<%= submission.id %>" class="btn btn-inverse backbone">View Results</a>
+                    </div>
+                </div>
+            <% }) %>
+            <% if (model.total > model.submissions.length) { %>
+                <div class="row row-sub">
+                    <div class="span9"><p></p></div>
+                    <div class="span3">
+                        <a href="<%= ns %>challenges/<%= model.challenge.slug %>/submissions" class="btn backbone">All Submissions</a>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</div>

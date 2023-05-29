@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Guides" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="35.7px" height="36.5px" viewBox="0 0 35.7 36.5" enable-background="new 0 0 35.7 36.5" xml:space="preserve">
+<g>
+	<path id="Hex" fill="#2BC56D" d="M17.849,35.586c-1.954,0-13.97-6.95-14.948-8.655c-0.979-1.704-0.973-15.604,0-17.309
+		c0.974-1.704,12.992-8.654,14.948-8.654s13.971,6.968,14.949,8.654s0.979,15.613,0,17.309
+		C31.819,28.627,19.804,35.586,17.849,35.586z"/>
+	<g id="Ratio_goodies" display="none">
+		<ellipse display="inline" opacity="0.6" fill="#27AAE1" cx="17.85" cy="18.276" rx="17.261" ry="17.31"/>
+		<ellipse display="inline" fill="#27AAE1" cx="17.85" cy="18.276" rx="10.668" ry="10.697"/>
+	</g>
+	<g id="Mark">
+		<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M15.113,17.396c1.836,0,3.607,0,5.421,0
+			c0-0.683,0.009-1.339-0.002-1.995c-0.019-1.157-0.042-2.468-0.079-3.625c-0.008-0.229,0.063-0.343,0.284-0.345
+			c0.748-0.006,1.496-0.006,2.244-0.001c0.233,0.001,0.31,0.118,0.304,0.365c-0.05,2.595-0.107,5.343-0.115,7.938
+			c-0.005,1.614,0.069,4.757,0.108,6.372c0.002,0.087,0,0.175,0,0.33c-0.384,0.029-0.756,0.074-1.13,0.079
+			c-0.443,0.007-0.888-0.023-1.332-0.034c-0.255-0.006-0.373-0.086-0.363-0.388c0.048-1.475,0.069-4.479,0.099-5.954
+			c0.002-0.137,0-0.272,0-0.439c-1.814,0-3.586,0-5.399,0c0,0.708-0.012,1.402,0.002,2.096c0.019,0.915,0.045,1.983,0.091,2.898
+			c0.016,0.307-0.107,0.414-0.389,0.413c-0.684-0.002-1.369-0.002-2.054,0c-0.276,0-0.396-0.101-0.388-0.41
+			c0.052-1.882,0.115-3.917,0.113-5.8c-0.002-2.251-0.062-6.03-0.107-8.281c-0.01-0.528-0.016-0.558,0.529-0.569
+			c0.596-0.012,1.191-0.012,1.787,0.002c0.51,0.011,0.508,0.03,0.496,0.521C15.189,12.311,15.153,15.58,15.113,17.396z"/>
+		<path fill="#FFFFFF" d="M13.843,7.579c-0.267,0-2.793,2.419-2.596,2.616c0.196,0.196,4.954,0.196,5.149,0
+			C16.593,9.998,14.11,7.579,13.843,7.579z"/>
+		<path fill="#FFFFFF" d="M21.899,28.974c-0.268,0-2.793-2.419-2.597-2.615c0.196-0.198,4.953-0.197,5.149,0
+			C24.649,26.555,22.166,28.974,21.899,28.974z"/>
+	</g>
+	<g id="Guides_1_" display="none">
+		
+			<line display="inline" fill="none" stroke="#27AAE1" stroke-width="0.1307" stroke-miterlimit="10" x1="34.804" y1="13.128" x2="30.722" y2="6.037"/>
+		
+			<line display="inline" fill="none" stroke="#27AAE1" stroke-width="0.1307" stroke-miterlimit="10" x1="0.824" y1="13.128" x2="4.906" y2="6.037"/>
+		
+			<line display="inline" fill="none" stroke="#27AAE1" stroke-width="0.1307" stroke-miterlimit="10" x1="0.824" y1="23.354" x2="4.906" y2="30.447"/>
+		
+			<line display="inline" fill="none" stroke="#27AAE1" stroke-width="0.1307" stroke-miterlimit="10" x1="34.804" y1="23.354" x2="30.722" y2="30.447"/>
+		<ellipse display="inline" fill="#00AEEF" cx="17.814" cy="0.941" rx="1.958" ry="1.963"/>
+		<circle display="inline" fill="#00AEEF" cx="2.865" cy="9.595" r="1.957"/>
+		<circle display="inline" fill="#00AEEF" cx="2.865" cy="26.901" r="1.957"/>
+		<ellipse display="inline" fill="#00AEEF" cx="17.814" cy="35.559" rx="1.958" ry="1.963"/>
+		<ellipse display="inline" fill="#00AEEF" cx="32.763" cy="26.899" rx="1.957" ry="1.963"/>
+		<circle display="inline" fill="#00AEEF" cx="32.763" cy="9.583" r="1.957"/>
+	</g>
+</g>
+</svg>

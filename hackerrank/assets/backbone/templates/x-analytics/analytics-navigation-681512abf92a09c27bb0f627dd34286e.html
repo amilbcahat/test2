@@ -1,0 +1,31 @@
+<div class="hre-sidebar admin-sidebar open" id="hre-sidebar">
+    <div class="sidebar-scroller bottom hidden">
+        <i class="icon-down-open-bold"></i>
+        <i class="icon-up-open-bold"></i>
+    </div>
+
+    <!-- This is the expand and collapse icon that will appear when in smaller screens -->
+    <div class="sidebar-toggle-admin" id="sidebar-menu-icon">
+        <i class="icon-menu-large sidebar-menu-icon"></i>
+    </div>
+
+    <div class="hre-sidebar-inner full-height">
+        <div class="mlA hre-sidebar-innerblock">
+            <p class="sidebar-nav-title"><span class="hre-sidebar-label">Company</span></p>
+            <ul class="hre-sidebar-list">
+                <li <% if (active_nav_link == 'companies_dash') { %> class="active"<% } %>>
+                <a href="analytics/companies" class="js-backbone hre-sidebar-link">
+                    <i data-original-title="Usage Dashboard" class="icon-doc-text js-tooltip" data-placement="right"></i>
+                    <span class="hre-sidebar-label">Usage Dashboard</span>
+                </a>
+                </li>
+                <li <% if (active_nav_link == 'trial_signups') { %> class="active"<% } %>>
+                <a href="analytics/companies/trial_signups" class="js-backbone hre-sidebar-link">
+                    <i data-original-title="Trial Signups" class="icon-chart-bar js-tooltip" data-placement="right"></i>
+                    <span class="hre-sidebar-label">Trial Signups</span>
+                </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div style="width: 600px; margin: auto; margin-top: 10%; border: #5E781B solid 2px; padding: 0px;">
+  <p style="background-color: #5E781B; color: #f0f0f0; margin: 0px; padding: 5px 10px; font-weight: bold;"><img style="float:left" src="/assets/alert.png">&nbsp; The page you're seeking requires an authenticated hacker.</p>
+  <div style="padding: 5px 10px; background-color: #fbfbfb;">
+    <p style="padding: 0px; margin: 0px;"> You have landed on a page which is accessible only by authorised user. Please Login to view this page.</p>
+    <ul>
+      <li style="color: #5E781B; list-style-type: square;"><a class="loginBtn" href="/auth/login">Login to HackerRank</a></li>
+      <% if (HR.appController.is_using_contest_namespace()) { %>
+      <li style="color: #5E781B; list-style-type: square;"><a href="<%= HR.appController.get_contest_namespace() %>">Return Home</a></li>
+      <% } else { %>
+      <li style="color: #5E781B; list-style-type: square;"><a href="/">Return Home</a></li>
+      <% } %>
+      <li style="color: #5E781B; list-style-type: square;"><a style="cursor: pointer;" onclick="javascript: (function() { history.back(); return false;})();">Go back to the previous page</a></li>
+    </ul>
+  </div>
+</div>

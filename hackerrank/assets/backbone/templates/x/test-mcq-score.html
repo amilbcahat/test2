@@ -1,0 +1,22 @@
+<div class="mjA">
+    <label class="label-title-underline">
+        SET SCORE FOR MULTIPLE CHOICE QUESTIONS
+    </label>
+    <div class="clear"></div>
+    <p class="txt-alt-grey span10 no-padding">For wrong answer, enter a negative number to reduce marking. Ex: -1</p>
+    <div class="clear"></div>
+    <form name="test-mcq-score-form">
+        <div class="inline-block mdT">
+            <div class="span4">
+                <label class="fnt-sz-small">CORRECT ANSWER SCORE</label>
+                <input type="text" class="no-margin span1" name="correct-answer-score" value="<% if (model.mcq_score) { %><%- model.mcq_score %><% } else { %>5<% } %>">
+            </div>
+            <div class="span4">
+                <label class="fnt-sz-small">WRONG ANSWER SCORE</label>
+                <input type="text" class="no-margin span1" name="wrong-answer-score" value="<% if (model.mcq_negative_score) { %><%- model.mcq_negative_score %><% } else { %>0<% } %>">
+            </div>
+            <div class="span4"><button type="submit" data-throbber="show" class="btn btn-primary margin-large right mdL" style="margin-top:35px;">Change Score</button></div>
+            <div class="clear"></div>
+        </div>
+    </form>
+</div>

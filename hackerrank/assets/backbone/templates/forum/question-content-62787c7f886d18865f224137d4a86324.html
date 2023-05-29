@@ -1,0 +1,60 @@
+<div class="forum-single-wrap">
+    <div class="forum-single-body clearfix">
+        <% if (!_question.sync_status) { %>
+            <%= HR.appController.viewLoader(64) %>
+        <% } else { %>
+            <div class="break-word">
+                <% if (question.deleted) { %>
+                    <div class="text-center">
+                        <small><em>This question has been deleted by the author</em></small>
+                    </div>
+                <% } %>
+                <h3 class="margin-small bottom forum-single-title"><strong><%= question.title %></strong></h3>
+                <%= question.description_html %>
+            </div>
+            <div class="clearfix forum-single-meta">
+                <small class="pull-left">
+                    <em><strong><a class="cursor hacker-show backbone" data-action="hacker-modal" data-value="<%= question.hacker_username %>" href="/<%=question.hacker_username%>" ><%= question.hacker_username %></a></strong><% if (question.hacker_is_admin) { %> <span class="label label-info">STAFF</span><% } %></em>
+                    asked
+                    <span class="timeago" title="<%=question.created_at%>"></span>
+                    <% if(question.hacker_id == _profile.id) { %>
+                        • <strong><a class="edit-question cursor backbone" data-analytics="Edit Question">Edit</a></strong>
+                        <% if (!question.deleted) { %>
+                            • <strong><a class="delete-question cursor backbone" data-analytics="Delete Question">Delete</a></strong>
+                        <% } %>
+                    <% } %>
+                </small>
+                <small class="pull-right">
+                    <% if(!_.isEmpty(question.tags)) { %>
+                        Tags: <em><%= question.tags.join(',&nbsp;') %></em>
+                    <% } %>
+                </small>
+            </div>
+            <div class="forum-single-sub answer-editor-section">
+                <% if (profile.isLoggedIn()) { %>
+                    <div class="clearfix">
+                        <div class="pic-wrap50 pic-wrap pull-left">
+                            <img src="<%= _profile.avatar %>"  class="avatar" width="50" height="50" onerror="this.onerror=null; this.src='https://d3rpyts3de3lx8.cloudfront.net/hackerrank/assets/gravatar.jpg';">
+                            <div class="shadow"></div>
+                        </div>
+                        <textarea style="margin-left:10px;word-wrap: break-word;" id='answer-description'></textarea>
+                        <small id="answer-error" class="error pull-right hide">Sorry, you do not have a permission to answer to this question.</small>
+                    </div>
+                    <div class="btn-wrap clearfix">
+                        <p class="small pull-left" style="font-size: 0.9em; color: #999;"><a target="_blank" href="http://daringfireball.net/projects/markdown/syntax" style="color: #999; text-decoration: underline;">Markdown</a> is supported</p>
+                        <a href="javascript:void();" class="answer-question btn btn-white pull-right">Submit Answer</a>
+                    </div>
+                    <div class="preview-wrap clearfix hide">
+                        <h4>Preview</h4>
+                        <div class="controls">
+                            <div id="answer-preview" class="preview"></div>
+                        </div>
+                    </div>
+                <% } else { %>
+                    <p class="gray">In order to answer a question you should be logged in.</p>
+                <% } %>
+            </div>
+            <div id="answer-list-view" class="forum-single-answers"></div>
+        <% } %>
+    </div>
+</div>

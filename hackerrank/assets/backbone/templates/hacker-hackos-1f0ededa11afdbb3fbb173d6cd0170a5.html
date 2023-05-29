@@ -1,0 +1,170 @@
+<div class="container--inner">
+  <header class="clearfix page-title">
+     <h1>Your Hacko Transactions</h1>
+  </header>
+ <div class="row">
+   <div class="plR span-xs-16 span-sm-16 span-md-12 span-lg-10 span-xl-8">
+    <% if(collection.total != 0){ %>
+      <% if(collection.gross){ %>
+        <h3> Total Hackos: <%= collection.gross %> </h3>
+      <% } %>
+      <hr/>
+      <div class="text-center hacko-transaction-list">
+      <div class="table-wrap">
+            <header class="row-clear list-header">
+                <div class="span-xs-2">
+                 <p>Sl No. </p>
+                </div>
+                <div class="span-xs-8">
+                  <p>Action</p>
+                </div>
+                <div class="span-xs-6">
+                  <p>Hackos Earned</p>
+                </div>
+            </header>
+
+            <div class="text-center table-body transaction-list-wrapper table--striped">
+            </div>
+
+            <div class="pagination-wrap clearfix pagination-wrapper">
+            </div>
+        </div>
+      </div>
+
+    <% } else { %>
+      <div class="light-wrap padded">
+        <p>Earn Hackos by completing challenges and logging in daily.</p>
+      </div>
+    <% } %>
+  </div>
+
+  <div class="span-xs-16 span-md-12 span-lg-6 span-xl-6">
+    <p class="plB"><strong> What are Hackos?</strong><br/>
+     Hackos are HackerRank currency you can earn and spend on the site.</p>
+    <p class="plB"><strong> How do I get Hackos?</strong><br/>
+    When you register on HackerRank, you are immediately awarded with 100 Hackos. As you continue to solve more challenges, you earn more Hackos. The amount of Hackos that you earn on solving a problem depends on the Level of the challenge, and is shown below:<br/>
+    </p>
+    <div class="hacko-level plB text-center">
+      <div class="table-wrap">
+        <header class="row-clear list-header row">
+            <div class="span-xs-8">
+              <p>Level of Challenge</p>
+            </div>
+            <div class="span-xs-8">
+              <p>Hackos Earned</p>
+            </div>
+        </header>
+        <div class="table-body submissions-list-wrapper table--striped">
+          <div class="row-clear row">
+            <div class="span-xs-8">
+              <p>1</p>
+            </div>
+            <div class="span-xs-8">
+              <p>0</p>
+            </div>
+          </div>
+        </div>
+        <div class="table-body submissions-list-wrapper table--striped">
+          <div class="row-clear row">
+            <div class="span-xs-8">
+              <p>2</p>
+            </div>
+            <div class="span-xs-8">
+              <p>5</p>
+            </div>
+          </div>
+        </div>
+        <div class="table-body submissions-list-wrapper table--striped">
+          <div class="row-clear row">
+            <div class="span-xs-8">
+              <p>3</p>
+            </div>
+            <div class="span-xs-8">
+              <p>10</p>
+            </div>
+          </div>
+        </div>
+        <div class="table-body submissions-list-wrapper table--striped">
+          <div class="row-clear row">
+            <div class="span-xs-8">
+              <p>4</p>
+            </div>
+            <div class="span-xs-8">
+              <p>25</p>
+            </div>
+          </div>
+        </div>
+        <div class="table-body submissions-list-wrapper table--striped">
+          <div class="row-clear row">
+            <div class="span-xs-8">
+              <p>5</p>
+            </div>
+            <div class="span-xs-8">
+              <p>50</p>
+            </div>
+          </div>
+        </div>
+        <div class="table-body submissions-list-wrapper table--striped">
+          <div class="row-clear row">
+            <div class="span-xs-8">
+              <p>6</p>
+            </div>
+            <div class="span-xs-8">
+              <p>100</p>
+            </div>
+          </div>
+        </div>
+        <div class="table-body submissions-list-wrapper table--striped">
+          <div class="row-clear row">
+            <div class="span-xs-8">
+              <p>7</p>
+            </div>
+            <div class="span-xs-8">
+              <p>200</p>
+            </div>
+          </div>
+        </div>
+        <div class="table-body submissions-list-wrapper table--striped">
+          <div class="row-clear row">
+            <div class="span-xs-8">
+              <p>8</p>
+            </div>
+            <div class="span-xs-8">
+              <p>350</p>
+            </div>
+          </div>
+        </div>
+        <div class="table-body submissions-list-wrapper table--striped">
+          <div class="row-clear row">
+            <div class="span-xs-8">
+              <p>9</p>
+            </div>
+            <div class="span-xs-8">
+              <p>700</p>
+            </div>
+          </div>
+        </div>
+        <div class="table-body submissions-list-wrapper table--striped">
+          <div class="row-clear row">
+            <div class="span-xs-8">
+              <p>10</p>
+            </div>
+            <div class="span-xs-8">
+              <p>1000</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="plB"> You also earn Hackos for maintaining a login streak, where a streak of 1 day grants you 1 Hackos, 2 days grant you 2 Hackos, and so on, with an upper limit of 10 Hackos.</p>
+
+    <p class="plB"><strong> Where can I use Hackos?</strong><br/>
+    You can currently use Hackos to buy test cases. Each test case costs 5 Hackos. So if your total Hackos count is 40, and you buy 2 test cases, your total Hackos count
+ will become 30.</p>
+    <p class="plB"><strong> Is that all?</strong><br/>
+    Currently yes, but we will soon be adding more ways to earn and spend Hackos.</p>
+  </div>
+</div>
+</div>
+

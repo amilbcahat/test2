@@ -1,0 +1,89 @@
+<div class="span15 block-center" style="margin-top:20px;">
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <a class="change-tab" href="#profile-<%= index %>" data-toggle='tab'>Profile</a>
+    </li>
+    <% length = model.challenges.length %>
+    <% _.each(model.challenges, function(challenge, i){ %>
+      <% if(i < 5){ %>
+        <li>
+          <a class="change-tab" data-id="<%= challenge.id %>" href="#<%= challenge.slug %>-<%= index %>" data-toggle='tab'><%= challenge.name %></a>
+        </li>
+      <% } %>
+    <% }); %>
+    <% if(length >= 5){ %>
+      <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">More <b class="caret"></b></a>
+          <ul class="dropdown-menu" style="margin:0px; max-height:200px; overflow:auto;">
+          <% _.each(model.challenges, function(challenge, i){ %>
+            <% if(i >= 5){ %>
+            <li>
+              <a class="change-tab" data-id="<%= challenge.id %>" href="#<%= challenge.slug %>-<%= index %>" data-toggle='tab'><%= challenge.name %></a>
+            </li>
+            <% } %>
+          <% }); %>
+          </ul>
+      </li>
+    <% } %>
+  </ul>
+  <div class="span15 block-center tab-content" style="border-left: 1px solid #DDD; border-right: 1px solid #DDD; border-bottom: 1px solid #DDD; overflow:visible;">
+    <div class="tab-pane active" id="profile-<%= index %>" style="padding:15px; overflow:auto;">
+      <div class="span11">
+          <p>
+            <div class="row">
+              <div class="span2" style="width:auto">
+                <div class="pic-wrap75 pic-wrap white">
+                    <img src="<%= model.avatar %>" height="75" width="75" onerror="this.onerror=null; this.src='https://d3rpyts3de3lx8.cloudfront.net/hackerrank/assets/gravatar.jpg';">
+                </div>
+              </div>
+              <div class="span7">
+                <h3><%= model.name || "N/A" %>
+                  <br/>
+                  <small>(<%= model.username %>)</small>
+                </h3>
+              </div>
+            </div>
+            <hr/>
+            <div>
+              <h5 class=""><strong>School:</strong> <%= model.school || "N/A" %></h5>
+            </div>
+            <div>
+              <h5 class=""><strong>Company:</strong> <%= model.company || "N/A" %></h5>
+            </div>
+            <div>
+              <h5 class=""><strong>Country:</strong> <%= model.country || "N/A" %></h5>
+            </div>
+          </p>
+      </div>
+      <div class="span3 pull-right light-wrap text-center">
+          <h6>Contest Rank</h6>
+          <h1><%= model.rank %></h1>
+          <h5><strong>Score: </strong><%= Math.round(model.score*100)/100  %></h5>
+      </div>
+      <div class="span14">
+        <div class="row">
+          <h6 class="span13"><strong>Languages Used:</strong>
+            <%
+            display_lang = []
+            _.each( model.languages.split(","), function(lang){
+               display_lang.push(lang_display_mapping[lang])
+            }) %>
+            <%= display_lang.join(",") %>
+          </h6>
+        </div>
+        <div class="row">
+          <h6 class="span13"><strong>Biggest Hack:</strong>
+            <%= model.hack || "N/A" %>
+          </h6>
+        </div>
+      </div>
+    </div>
+    <% _.each(model.challenges, function(challenge){ %>
+      <div class="tab-pane" id="<%= challenge.slug %>-<%= index %>" style="padding:15px;">
+        <div class='throbber text-center' style='padding: 95px 0; height: 64px;'>
+          <img src='https://d3rpyts3de3lx8.cloudfront.net/hackerrank/hackerrank_spinner_64x64.gif'>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+HR.appController.addTemplate("backbone/templates/submission-game-list", function(obj) {
+{
+var __t, __p = "";
+Array.prototype.join;
+}
+with (obj || {}) __p += '<div class="row">\n    <h4 class="span6">\n        <div class="packer">\n            <a href="#userModal" data-toggle="modal" class="span1">\n                <img src="' + (null == (__t = _model.player1_gravatar) ? "" :__t) + '" height="30" width="30" class="circle">\n            </a>\n            <span class="username">' + (null == (__t = _model.player1_username) ? "" :__t) + "</span>\n            ", 
+1 == _model.result && (__p += '\n            <span class="win">\n                <img src="/assets/trophy.png" alt="winner">\n            </span>\n            '), 
+__p += '\n        </div>\n    </h4>\n    <h5 class="span1">vs.</h5>\n    <h4 class="span6">\n        <div class="packer">\n            <a href="#userModal" data-toggle="modal" class="span1">\n                <img src="' + (null == (__t = _model.player2_gravatar) ? "" :__t) + '" height="30" width="30" class="circle">\n            </a>\n            <span class="username">' + (null == (__t = _model.player2_username) ? "" :__t) + "</span>\n            ", 
+2 == _model.result && (__p += '\n            <span class="win">\n                <img src="/assets/trophy.png" alt="winner">\n            </span>\n            '), 
+__p += '\n        </div>\n    </h4>\n    <!-- <p class="span3">', __p += 0 == _model.result ? "Tie" :"Player " + (null == (__t = _model.result) ? "" :__t) + " Won", 
+__p += '</p> -->\n    <div class="span2">\n        <a class="play_game btn" href="submission/game/' + (null == (__t = submission_id) ? "" :__t) + "/play/" + (null == (__t = _model.id) ? "" :__t) + '">Play Game</a>\n    </div>\n</div>\n<div class="row">\n    <div class="submission-game-container-wrapper" style="margin-left: 40px;"></div>\n</div>\n<div class="row">\n    <h4 class="span6">\n        <div class="packer">\n            <a href="#userModal" data-toggle="modal" class="span1">\n                <img src="' + (null == (__t = model.player1_gravatar) ? "" :__t) + '" height="30" width="30" class="circle">\n            </a>\n            <span class="username">' + (null == (__t = model.player1_username) ? "" :__t) + "</span>\n            ", 
+1 == model.result && (__p += '\n            <span class="win">\n                <img src="/assets/trophy.png" alt="winner">\n            </span>\n            '), 
+__p += '\n        </div>\n    </h4>\n    <h5 class="span1">vs.</h5>\n    <h4 class="span6">\n        <div class="packer">\n            <a href="#userModal" data-toggle="modal" class="span1">\n                <img src="' + (null == (__t = model.player2_gravatar) ? "" :__t) + '" height="30" width="30" class="circle">\n            </a>\n            <span class="username">' + (null == (__t = model.player2_username) ? "" :__t) + "</span>\n            ", 
+2 == model.result && (__p += '\n            <span class="win">\n                <img src="/assets/trophy.png" alt="winner">\n            </span>\n            '), 
+__p += '\n        </div>\n    </h4>\n    <!-- <p class="span3">', __p += 0 == model.result ? "Tie" :"Player " + (null == (__t = model.result) ? "" :__t) + " Won", 
+__p += '</p> -->\n    <div class="span2">\n        <a class="play_game btn btn-white" href="submission/game/' + (null == (__t = submission_id) ? "" :__t) + "/play/" + (null == (__t = model.id) ? "" :__t) + '">Play Game</a>\n    </div>\n</div>\n<div class="row">\n    <div class="submission-game-container-wrapper" style="margin-left: 40px;"></div>\n</div>\n';
+return __p;
+});

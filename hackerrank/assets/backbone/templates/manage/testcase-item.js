@@ -1,0 +1,8 @@
+HR.appController.addTemplate("backbone/templates/manage/testcase-item", function(obj) {
+{
+var __t, __p = "";
+Array.prototype.join;
+}
+with (obj || {}) __p += '<div class="row">\n  <div class="span1">\n    <p>' + (null == (__t = index) ? "" :__t) + '</p>\n  </div>\n  <div class="span2">\n    <p><a href="/manage/challenges/' + (null == (__t = challenge.id) ? "" :__t) + "/download_testcase?case_type=input&testcase_id=" + (null == (__t = model.id) ? "" :__t) + '">' + (null == (__t = model.input) ? "" :__t) + '</a></p>\n  </div>\n  <div class="span2">\n    <p><a href="/manage/challenges/' + (null == (__t = challenge.id) ? "" :__t) + "/download_testcase?case_type=output&testcase_id=" + (null == (__t = model.id) ? "" :__t) + '">' + (null == (__t = model.output) ? "" :__t) + '</a></p>\n  </div>\n  <div class="span2">\n    <p class="score-edit" style="cursor:text">' + (null == (__t = model.score) ? "" :__t) + '</p>\n    <p class="score-wrapper hide" style="padding-top:0px;"><input type="text" class="score" style="width:20px;" value="' + (null == (__t = model.score) ? "" :__t) + '" /></p>\n  </div>\n  <div class="span1">\n    <p><input type="checkbox" class="sample" ' + (null == (__t = 0 == model.sample ? "" :"checked='checked'") ? "" :__t) + ' /></p>\n  </div>\n  <div class="span4">\n    <div class="margin-large left btn-group">\n        <a class="edit btn btn-orange" href="#">Edit</a>\n        <a class="delete btn" href="#">Delete</a>\n    </div>\n  </div>\n</div>\n';
+return __p;
+});

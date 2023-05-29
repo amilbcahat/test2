@@ -1,0 +1,94 @@
+<section class="leaderboard container">
+    <header class="page-title container">
+        <div class="breadcrumbs">
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <h1 class="span6">Leaderboard</h1>
+            <div class="span10 pull-right">
+                <div class="group-filters pull-right">
+                    <% _.each(filterButtons, function(data, key) { %>
+                    <a class="cursor <%= data['class'] || key %> leaderboard-sort backbone <%= filters[key] ? 'active' : '' %>" data-filter="<%= key %>" rel="tooltip" title="<%= data.tooltip %>" data-placement="bottom"></a>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="row">
+        <div class="span16 filter-tags">
+            <!-- Network Filter -->
+            <div class="tag-group clearfix <% if(!filters.network) { %>hide<% } %>" id="network-filter">
+                <div class="pull-left select-wrap large">
+                    <p class="span6 light-wrap block-center text-center" style="padding: 10px;"><strong>Showing your Hacker Rank network</strong></p>
+                </div>
+            </div><!--tag-group -->
+
+            <!-- General Filters -->
+            <% _.each(filterKinds, function(filter) { %>
+            <div class="tag-group row <% if(!filters[filter]) { %>hide<% } %>" id="<%= filter %>-filter">
+                <div class="span14">
+                    <label class="pull-left" ><strong><%= filter.toTitleCase() %>:&emsp;</strong></label>
+                    <div class="tag-list">
+                        <% if (_.isArray(filters[filter])) { %>
+                        <% _.each(filters[filter], function(val) { %>
+                        <%= getTagElement(filter, val) %>
+                        <% })} %>
+                    </div>
+                    <div class="pull-left select-wrap large">
+                        <input class="filter-input" type="text" value="" data-filter='<%= filter %>' id="filter-input-<%= filter %>" placeholder="Add <%= filter %>" autocomplete="off" <%= _.isEmpty(filters[filter]) ? '':'style="display:none"' %>/>
+                    </div>
+                    <a class="btn btn-sub pull-left add-tag" id="filter-show-input-<%= filter %>" data-filter='<%= filter %>' <%= _.isEmpty(filters[filter]) ? 'style="display:none"':'' %>>+</a>
+                </div>
+            </div>
+            <% }) %>
+        </div><!--filter-tags-->
+    </div><!--row-->
+ </header>
+<div class="clearfix">
+    <div class="light-wrap table-wrap text-center">
+        <div class="table-head row">
+            <div class="span2">
+                <p>Rank <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span> </p>
+            </div>
+            <div class="span4">
+                <p>User <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span> </p>
+            </div>
+            <div class="span2">
+                <p>Score <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span> </p>
+            </div>
+            <% if (show_code) { %>
+            <div class="span4">
+                <p><%= (contest.leaderboard_type || "country").toProperCase() %><span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span> </p>
+            </div>
+            <div class="span2">
+                <p>Language <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span> </p>
+            </div>
+            <div class="span2">
+                <p>Solution</p>
+            </div>
+            <% } else { %>
+            <div class="span5">
+                <p><%= (contest.leaderboard_type || "Country").toProperCase() %><span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span> </p>
+            </div>
+            <div class="span3">
+                <p>Language <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span> </p>
+            </div>
+            <% } %>
+        </div>
+        <div class="row">
+            <div class="span16">
+                <p style="padding:20px" class="blank-reason">
+                </p>
+            </div>
+        </div>
+
+        <div id="leaders">
+        </div>
+    </div>
+</div>
+<div class="light-wrap clearfix table-wrap text-center self-rank hide" id="leader-self">
+</div>
+<div class="pagination-wrap clearfix pagination-wrapper">
+</div><!--pagination-wrap-->
+</section><!--.leaderboard-->

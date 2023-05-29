@@ -1,0 +1,16 @@
+<div class="modal js-setdetails" data-width="1000px">
+    <div class="modal-header">
+        <div class="underline_title set_title"><%=set.title%></div>
+        <button type="button" class="close setmodalclose" data-dismiss="modal" aria-hidden="true"><small>Close</small> &times;</button>
+        <div class="pagination pagination-small pagination-centered" style:"margin:13px auto 0 auto">
+          <ul>
+              <li><a class="js-qprev" href="#">&laquo;</a></li>
+              <% _.each(set.questions, function(q, i) {  %>
+              <li <%if (i==0) {%>class="active"<%}%> ><a href="#" class="js-qview" sid="<%=set.id%>" qid="<%=q.id%>" quid="<%=q.unique_id%>" qindex="<%=i%>"><%=(i+1)%></a></li>
+              <% }); %>
+              <li><a class="js-qnext" href="#">&raquo;</a></li>
+          </ul>
+        </div>
+    </div>
+    <div class="setqcontents"></div>
+</div>

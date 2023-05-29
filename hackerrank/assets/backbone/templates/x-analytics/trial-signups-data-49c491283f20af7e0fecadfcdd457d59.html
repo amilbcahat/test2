@@ -1,0 +1,29 @@
+<div id="detailed-results">
+    <% if(fromTime && toTime) { %>
+    <h2>Detailed Results <%= fromTime %> - <%= toTime %></h2>
+
+    <div class="table-wrap text-center">
+        <header class='row'>
+            <div class="span1">ID</div>
+            <div class="span3">Name</div>
+            <div class="span5">Email</div>
+            <div class="span3">Created At</div>
+        </header>
+        <div class="table-body">
+            <% if(data.length) { %>
+            <% _.each(data, function(company) { %>
+                <div class="row">
+                    <div class="span1"><%= company.id %></div>
+                    <div class="span3"><%= company.name %></div>
+                    <div class="span5"><%= company.email %></div>
+                    <div class="span3"><%= company.created_at %></div>
+                    <div class="clearfix"></div>
+                </div>
+            <% }) %>
+            <% } else { %>
+                <div class="span12 text-center">No Companies Signed up during this period</div>
+            <% } %>
+        </div>
+    </div>
+    <% } %>
+</div>

@@ -1,0 +1,80 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL">Overall Health (Sales Revenue)</h3>
+</div>
+
+<div class="overflow-content" id="control-overflow">
+    <div class="content mlA">
+        <div class="actions mlB">
+            <% if(report_type == 'current') { %>
+                <% if(month == 'current') { %>
+                <a href="#" class="btn change-month" data-month="last_month"><i class="icon-left-open"></i> Report for <%=
+                    moment().subtract('month', 1).format("MMMM, YYYY") %></a>
+                <% } else { %>
+                <a href="#" class="btn change-month" data-month="current">Report for <%= moment().format("MMMM, YYYY") %> <i
+                        class="icon-right-open"></i></a>
+                <% } %>
+            <a href="#" class="btn change-report-type" data-report-type="past">View Past Report Snapshots<i
+                    class="icon-up-open msL"></i></a>
+            <% } else { %>
+            <a href="#" class="btn change-report-type" data-report-type="current">View Current Reports<i
+                    class="icon-down-open msL"></i></a>
+            <% } %>
+        </div>
+
+        <% if(report_type == 'past') { %>
+            <div class="date-picker-container">
+                Select Date:  <input type="text" class="date-pick" value="<%= report_date %>"/>
+            </div>
+        <% } %>
+
+        <hr>
+
+        <div class="content-header mlB">
+            Sales Revenue (Opportunities) for
+            <span class="bold">
+                <% if(report_type == 'current') {%>
+                    <% if(month == 'current') { %>
+                                    <%= moment().format("MMMM, YYYY") %>
+                    <% } else { %>
+                                    <%= moment().subtract('month', 1).format("MMMM, YYYY") %>
+                    <% } %>
+                <% } else { %>
+                    <%= report_date %>
+                <% } %>
+            </span>
+        </div>
+
+        <div class="content-container">
+            <% if(month == 'current' && report_type == 'current') { %>
+            <div class="row mlB">
+                <div class="span2">Goal</div>
+                <div class="span3 goal-text">$ <%= data.goal %><a href="#" class="edit-goal mlL"><i class="icon-pencil"></i></a></div>
+                <form name="goal-form" class="span3 row hidden">
+                    <input type="text" value="<%= data.goal %>" style="width: 100px"/>
+                    <button type="submit" class="btn" style="vertical-align: top">Save</button>
+                </form>
+                <div class="clearfix"></div>
+            </div>
+
+            <% } %>
+            <div class="row">
+                <div class="span2">Closed</div>
+                <div class="span3"><a href="#" class="get-data" data-type="closed_won">$ <%= data.closed_won %></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2">In Contract</div>
+                <div class="span3"><a href="#" class="get-data" data-type="contract">$ <%= data.proposal %></a></div>
+            </div>
+            <div class="row">
+                <div class="span2">In Proposal</div>
+                <div class="span3"><a href="#" class="get-data" data-type="proposal">$ <%= data.contract %></a></div>
+            </div>
+        </div>
+
+        <div id="health-data-section">
+
+        </div>
+    </div>
+
+</div>

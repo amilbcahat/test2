@@ -1,0 +1,66 @@
+<section>
+    <header>Welcome in, <%= profile.username %>!</header>
+    <article>
+        <div class="padding-large right left onboarding_modal" style="width: 600px">
+            <p class="text-center margin-large top bottom">Welcome to HackerRank <%= profile.username %>! We would like to quickly walk you through out interface. But first, why not connect to a few networks? Connecting with friends on HackerRank lets you find challenges they are working for, ask them for help, or challenge them directly.</p>
+            <div class="left">
+                <div class="formgroup horizontal">
+                    <label for="onboarding_facebook" class="span3">Social</label>
+                    <a class="btn btn-facebook btn-social"><i class="icon-facebook"></i>Connect</a>
+                </div>
+                <div class="formgroup horizontal">
+                    <label for="onboarding_school" class="span3">School</label>
+                    <input id="onboarding_school" type="text" class="span5" value="<%= profile.school %>">
+                </div>
+                <div class="formgroup horizontal">
+                    <label for="onboarding_company" class="span3">Company</label>
+                    <input id="onboarding_company" type="text" class="span5" value="<%= profile.company %>">
+                </div>
+            </div>
+        </div>
+    </article>
+    <footer>
+        <a class="margin-large bottom span4 block-center btn btn-green btn-large js_1 js-fake-next">Next <i class="icon-right-open"></i></a>
+        <a class="margin-large bottom span4 btn btn-green btn-large js_next-frame js_1 hide">Next <i class="icon-right-open"></i></a>
+    </footer>
+</section>
+
+<section>
+    <header>Welcome in, <%= profile.username %>!</header>
+    <article>
+        <div class="padding-large right left onboarding_modal" style="width: 600px">
+            <p class="text-center margin-large top bottom">Awesome! <strong><%= recommended_track.name %></strong> challenges are popular amongst your friends. Select this track, or the track of your choice, and let's continue.</p>
+            <div class="left">
+                <label for="algorithms-radio" class="onboarding_trackSelect <% if (recommended_track.slug == 'algorithms') { %>active<% } %>" >
+                    <input type="radio" class="radio" name="favorite" value="algorithms" id="algorithms-radio" <% if (recommended_track.slug == 'algorithms') { %>checked="checked"<% } %> />
+                    <div class="onboarding_modal_label" rel="tooltip" title="Solve traditional algorithmic challenges.">
+                        <span class="alpha beta">Algorithms</span>
+                        <!-- <span><small>Traditional algorithmic competitive programming challenges</small></span> -->
+                    </div>
+                </label>                
+                <label for="ai-radio" class="onboarding_trackSelect <% if (recommended_track.slug == 'ai') { %>active<% } %>">
+                    <input type="radio" class="radio" name="favorite" value="ai" id="ai-radio" <% if (recommended_track.slug == 'ai') { %>checked="checked"<% } %> />
+                    <div class="onboarding_modal_label" rel="tooltip" title="Develop your own bots and <br/> challenge them against others.">
+                        <span class="alpha beta">Artificial intelligence</span>
+                        <!-- <span><small>Build Bots and Intelligent Systems</small></span> -->
+                    </div>
+                </label>
+                <label for="misc-radio" class="onboarding_trackSelect <% if (recommended_track.slug == 'miscellaneous') { %>active<% } %>">
+                    <input type="radio" class="radio" name="favorite" value="misc" id="misc-radio" <% if (recommended_track.slug == 'miscellaneous') { %>checked="checked"<% } %> />
+                    <div class="onboarding_modal_label" rel="tooltip" title="CodeGolf, Regex and more fun.">
+                        <span class="alpha beta">Miscellaneous</span>
+                        <!-- <span><small>CodeGolf, Regex and more</small></span> -->
+                    </div>
+                </label>
+                <label for="fp-radio" class="onboarding_trackSelect <% if (recommended_track.slug == 'fp') { %>active<% } %>">
+                    <input type="radio" class="radio" name="favorite" value="fp" id="fp-radio" <% if (recommended_track.slug == 'fp') { %>checked="checked"<% } %> />
+                    <div class="onboarding_modal_label" rel="tooltip" title="Solve problems using functional programming abstractions.">
+                        <span class="alpha beta">Functional Programming</span>
+                        <!-- <span><small>All functions, no state</small></span> -->
+                    </div>
+                </label>
+            </div>
+        </div>
+    </article>
+    <footer><a class="margin-large bottom span4 block-center btn btn-green btn-large js_next-frame">View Challenges <i class="icon-right-open"></i></a></footer>
+</section>

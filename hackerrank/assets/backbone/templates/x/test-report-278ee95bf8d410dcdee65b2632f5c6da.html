@@ -1,0 +1,49 @@
+<div class="top-fixed-bar <%if (tab != "pdf"){%>support-sub-bar<%}%>">
+    <% if (tab=="pdf") {%>
+    <h3 class="topbar-h3 mjL"><%- test.name %></h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Candidate Report (<%=model.email%>)</h3>
+    <%} else { %>
+    <h3 class="topbar-h3 mjL"><%- test.name %></h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Reports</h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Candidate Report</h3>
+
+    <a class="btn btn-line pull-right msA js-pdf" style="padding: 8px 10px 10px 14px;"><i class="icon2-download"></i></a>
+    <a class="btn btn-line pull-right msA js-share" style="padding: 8px 10px 10px 14px;"><i class="icon2-sharetest"></i></a>
+
+    <div class="clear"></div>
+    <div class="sub-top-bar">
+        <ul class="sub-topbar-tabs pull-left mjL">
+            <li <% if (tab == "summary") { %>class="js-backbone active"<% } %>><a href="/x/tests/<%=test.id%>/candidates/<%=model.id%>/summary" class="js-report-tab" data-tab="summary">Summary</a></li>
+            <li <% if (tab == "detailed") { %>class="js-backbone active"<% } %>><a href="/x/tests/<%=test.id%>/candidates/<%=model.id%>/detailed" class="js-report-tab" data-tab="detailed">Detailed</a></li>
+            <li <% if (tab == "timeline") { %>class="js-backbone active"<% } %>><a href="/x/tests/<%=test.id%>/candidates/<%=model.id%>/timeline" class="js-report-tab" data-tab="timeline">Timeline</a></li>
+        </ul>
+
+        <% if (model.candidate_details && model.candidate_details['full_name']) { %>
+        <h4 class="pull-right txt-alt-dark-grey mdA mjR">Report of <%- model.candidate_details['full_name'] %></h4>
+        <% } else if (model.email) { %>
+        <h4 class="pull-right txt-alt-dark-grey mdA mjR">Report of <%- model.email %></h4>
+        <% } %>
+    </div><!-- end .sub-top-bar -->
+    <% } %>
+</div><!-- end .top-fixed-bar -->
+
+<div class="overflow-content adjust-two-fixed-bar" id="report-tab">
+    <div id="report-tab-content-container">
+     <div class="loading-view">
+         <div class='gray'>
+         <div style='background: url(https://d3rpyts3de3lx8.cloudfront.net/hackerrank/hackerrank_spinner_32x32.gif); height: 32px; width: 32px; display: inline-block;'></div>
+      </div>
+     </div>
+    </div>
+</div><!-- end .overflow-content -->
+<div class="modal fade sharereport-modal" style="display: block;width: 600px;height: 125px;">
+    <div class="modal-header" style="height: 13px;">
+        <div class="underline_title set_title pull-left">Share link</div>
+        <button type="button" class="close js-sharelinkclose pull-right" data-dismiss="modal" aria-hidden="true"><small>Close</small> &times;</button>
+    </div>
+    <p>
+      <input class="fw js-reportlink" type="text">
+      <a class="btn btn-small">Copy</a>
+    </p>
+</div>
+<div class="js-pdfwrapper"></div>

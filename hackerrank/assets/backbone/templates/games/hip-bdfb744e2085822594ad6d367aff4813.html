@@ -1,0 +1,34 @@
+<style>
+    .game-grid p {
+        margin: 0px;
+    }
+    h3 {
+        margin: 0px;
+    }
+    .m {
+        text-align: center !important;
+    }
+    .translucent {
+    }
+    .playgame-row {
+        position: fixed;
+    }
+    .playgame-row .btn {
+        margin-top: 70px;
+        z-index: 999;
+    }
+    .game-message {
+        font-weight: bold;
+    }
+</style>
+<div class="game-grid" style="display: block; margin: auto; border-radius: 10px;">
+    <p style="text-align: center;"><span class="player-1">Red</span> vs <span class="player-2">Blue</span> </p>
+    <table style="margin: 20px auto;">
+        <tr style="text-align: center">
+            <td style="text-align: center" class="canvasPlaceholder">
+                <canvas id="hipCanvas" width="260" height="252">
+                </canvas>
+            </td>
+        </tr>
+    </table>
+</div>

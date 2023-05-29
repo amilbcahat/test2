@@ -1,0 +1,187 @@
+<style>
+.floating-message
+{
+  position:fixed;
+  top:10px;
+  right:0px;
+  z-index: 2000;
+  display: none;
+}
+.filter_wrapper
+{
+  display: inline-block;
+  background-color: #EEE;
+  padding: 5px;
+  border-radius: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+.filter_wrapper div
+{
+  display: inline-block;
+}
+.filter_wrapper .filter_remove
+{
+  padding:0px 5px;
+  cursor: pointer;
+}
+ul.typeahead.dropdown-menu.margin-0
+{
+  margin:0px !important;
+}
+.icon-help-circled
+{
+  font-size: 12px;
+  height:15px;
+  width:10px;
+  padding: 0 5px 5px 5px;
+  display: inline-block;
+  cursor: pointer;
+}
+</style>
+
+<section class="submissions container">
+  <header class="page-title container">
+    <div class="block">
+     <ul class="pull-left breadcrumb unstyled horizontal">
+          <li><a href="/manage" class="backbone">Manage Home</a><i class="icon-right-open-big divider"></i></li>
+          <li><a href="/manage/contest/" class="backbone">My Contests</a><i class="icon-right-open-big divider"></i></li>
+          <li><a href="/manage/contest/edit/<%= contest.slug %>" class="backbone"><%= contest.name %></a><i class="icon-right-open-big divider"></i></li>
+          <li><a href="/manage/contests/<%= contestSlug %>/all_submissions/" class="backbone">All Submissions</a><i class="icon-right-open-big divider"></i></li>
+      </ul>
+    </div>
+    <div class="row">
+        <h1 class="span16">
+            <div class="title-img"></div>
+            Hacker Submissions
+        </h1>
+    </div>
+  </header>
+  <div class="row light-wrap wrap row" style="margin-left:0px; margin-top:20px;">
+    <div class="floating-message span6">
+      <div class="message span5" style="margin-left:20px; box-shadow:0 0 5px 0 #333">
+
+      </div>
+    </div>
+    <div class="edit-contest block-center" >
+      <div class="row block-center span15">
+        <div class="row">
+            <div class="span3">
+              <h5><strong>Filter Results</strong></h5>
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+          <div class="span2" style="padding:5px 0px">
+            <h5>Challenges</h5>
+          </div>
+          <div class="span9">
+            <% _.each(filters.challenges, function(filter){ if(filter != "") { %>
+              <div class="filter_wrapper pull-left">
+                <div class="filter_content">
+                  <%= filter %>
+                </div>
+                <div class="filter_remove" data-value="<%= filter %>" data-kind="challenges">
+                    x
+                </div>
+              </div>
+            <% }}) %>
+          </div>
+          <div class="span4 pull-right">
+            <form class="pull-right">
+                <div style="display:inline-block;">
+                  <input type="text" id="input_challenges" class="input_challenges span3" placeholder="Challenge slug" style="margin:0px" />
+                </div>
+                <div style="display:inline-block;">
+                  <button type="submit" data-kind="challenges" class="filter_add btn btn-small">Add</button>
+                </div>
+            </form>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span2" style="padding:5px 0px;">
+            <h5>Hackers</h5>
+          </div>
+          <div class="span9">
+            <% _.each(filters.hackers, function(filter){ if(filter != "") { %>
+              <div class="filter_wrapper pull-left">
+                <div class="filter_content">
+                  <%= filter %>
+                </div>
+                <div class="filter_remove" data-value="<%= filter %>" data-kind="hackers">
+                    x
+                </div>
+              </div>
+            <% }}) %>
+          </div>
+          <div class="span4 pull-right">
+            <form class="pull-right">
+              <div style="display:inline-block;">
+                <input type="text" id="input_hackers" class="input_hackers span3" placeholder="Hacker Username"  style="margin:0px"/>
+              </div>
+              <div style="display:inline-block;">
+                <button type="submit" data-kind="hackers" class="filter_add btn btn-small">Add</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span2" style="padding:5px 0px;">
+            <h5>Date</h5>
+          </div>
+          <div class="span13">
+             <div>
+                <label class="pull-left" for="startDate">From</label>
+                <div class="controls span4 input-append" id="stdate" style="margin-left:20px;" data-date=" <%= $.format.date((filters.start_date == "" ? new Date : new Date(filters.start_date)), "yyyy-MM-dd hh:mm" ) %> ">
+                    <input class="span3" id="startDate" value="" type="text" data-format="yyyy-MM-dd hh:mm" />
+                    <span class="add-on btn" style="vertical-align:top; width:18px;"><i class="icon-th"></i></span>
+                </div>
+              </div>
+              <div style="margin-left:20px;" class="span6">
+                <label class="pull-left" for="endDate">To</label>
+                <div class="controls span4 input-append" id="endate" style="margin-left:20px;" data-date=" <%= $.format.date( (filters.end_date == "" ? new Date : new Date(filters.end_date)), "yyyy-MM-dd hh:mm" ) %> ">
+                    <input class="span3" id="endDate" type="text" value="" data-format="yyyy-MM-dd hh:mm" />
+                    <span class="add-on btn" style="vertical-align:top; width:18px;"><i class="icon-th"></i></span>
+                </div>
+              </div>
+              <div style="" class="pull-right">
+                <button type="submit" class="filter_apply btn btn-small">Apply</button>
+              </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span2" style="padding:5px 0px;">
+            <h5>Status
+            <i data-toggle="popover" data-content="This is only applicable on algorthmic type challenges." class="icon-help-circled"></i></h5>
+          </div>
+          <div class="span13">
+            <div style="margin-left:0px;" class="span2">
+              <input class="inline" type="radio" name="status" value="all" <%= filters.status == "all" ? "checked=true" : "" %> />
+              <label class="inline" for="endDate">All</label>
+            </div>
+            <div style="margin-left:20px;" class="span2">
+              <input class="inline" type="radio" name="status" value="true" <%= filters.status == "true" ? "checked=true" : "" %> />
+              <label class="inline" for="endDate">Solved</label>
+            </div>
+            <div style="margin-left:20px;" class="span2">
+              <input class="inline" type="radio" name="status" value="false" <%= filters.status == "false" ? "checked=true" : "" %> />
+              <label class="inline" for="endDate">Not Solved</label>
+            </div>
+            <div style="" class="pull-right">
+              <button type="submit" class="filter_apply btn btn-small">Apply</button>
+            </div>
+          </div>
+        </div>
+        <hr/>
+      </div>
+    </div>
+    <div class="submissions-list-wrapper">
+        <div class="block-center text-center">
+          <img src="https://d3rpyts3de3lx8.cloudfront.net/hackerrank/hackerrank_spinner_64x64.gif"><br/><br/>
+          Please Wait while we fetch the submissions
+        </div>
+    </div>
+    <div class="pagination-wrap clearfix pagination-wrapper" style="margin-bottom:20px;">
+    </div>
+  </div>
+</section>

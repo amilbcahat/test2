@@ -1,0 +1,133 @@
+<div class="container">
+    <section class="profile">
+
+        <!-- Profile Info Block -->
+
+        <header class="clearfix mlT">
+            <div class="pull-left content_group--block content_side">
+                <img src="<%= model.avatar %>" height="200" width="200" class="avatar profile-avatar">
+            </div>
+            <div class="pull-left content_group--block content_primary">
+                <div class="row">
+                    <div class="span-flex-10">
+                        <h2 class="profile-username"><%- model.username %></h2>
+                        <% if (model.current_rating["Overall"]) { %>
+                        <span class="profile_rating"><%= model.current_rating["Overall"].title %></span>
+                        <% } else { %>
+                        <span class="zeta msT">Not rated</span>
+                        <span class="help-prompt"><i class="icon-help-circled icon--single"></i>
+                            <span class="help-text small"><% if (model.id === HR.profile().get('id')) { %>Participate in a contest to become rated.<% } else { %>The user has not participated in any contest yet.<% } %></span>
+                        </span>
+                        <% } %>
+                        <p class="msB">Lead developer for HackerRank and creator of awesome things.</p>
+                        <h6 class="msB zeta">
+                            <% if (model.country){ %>
+                            <i class="icon-location"></i> <%- model.country %>
+                            <% } %>
+
+                        </h6>
+                        <ul class="profile-skills">
+                            <li>Python 2</li>
+                            <li>Ruby</li>
+                            <li>C</li>
+                            <li>PHP</li>
+                        </ul>
+                    </div>
+                    <div class="span-flex-6">
+                        <% if ( model.id === HR.profile().get('id') ) { %>
+                             <a class="btn btn-primary backbone pull-right mdT" href="/settings/profile">Edit Profile</a>
+                         <% } else { %>
+                             <a class="btn btn-primary send-message pull-right mdT">Message <%- model.username %></a>
+                         <% } %>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="pull-left content_group--block content_side">
+            <div class="profile-aside boundB psB msB">
+                <h5 class="small mlT mmB">About <%- model.username %></h5>
+                <p class="profile-bio">Designer and front-end developer for HackerRank</p>
+            </div>
+
+            <ul class="profile-aside profile-histogram">
+                <h6 class="small mlT msB">Submission history</h6>
+                <li data-success="20%" data-attempts="101px" class="histogram-month" data-month="jan">
+                    <span class="submissions" style="width: 25%"></span>
+                    <span class="success" style="width: 13%;"></span>
+                </li>
+                <li data-success="42%" data-attempts="14px" class="histogram-month" data-month=" feb">
+                    <span class="submissions" style="width: 42%"></span>
+                    <span class="success" style="width: 17%;"></span>
+                </li>
+                <li data-success="28%" data-attempts="27px" class="histogram-month" data-month=" mar">
+                    <span class="submissions" style="width: 31%"></span>
+                    <span class="success" style="width: 21%;"></span>
+                </li>
+                <li data-success="34%" data-attempts="68px" class="histogram-month" data-month=" apr">
+                    <span class="submissions" style="width: 38%"></span>
+                    <span class="success" style="width: 17%;"></span>
+                </li>
+                <li data-success="85%" data-attempts="23px" class="histogram-month" data-month=" may">
+                    <span class="submissions" style="width: 45%"></span>
+                    <span class="success" style="width: 27%;"></span>
+                </li>
+                <li data-success="95%" data-attempts="83px" class="histogram-month" data-month=" jun">
+                    <span class="submissions" style="width: 63%"></span>
+                    <span class="success" style="width: 38%;"></span>
+                </li>
+                <li data-success="92%" data-attempts="45px" class="histogram-month" data-month=" july">
+                    <span class="submissions" style="width: 68%"></span>
+                    <span class="success" style="width: 45%;"></span>
+                </li>
+                <li data-success="83%" data-attempts="29px" class="histogram-month" data-month=" aug">
+                    <span class="submissions" style="width: 72%"></span>
+                    <span class="success" style="width: 62%;"></span>
+                </li>
+                <li data-success="75%" data-attempts="102px" class="histogram-month" data-month="sep">
+                    <span class="submissions" style="width: 92%"></span>
+                    <span class="success" style="width: 78%;"></span>
+                </li>
+                <li data-success="91%" data-attempts="23px" class="histogram-month" data-month=" oct">
+                    <span class="submissions" style="width: 87%"></span>
+                    <span class="success" style="width: 79%;"></span>
+                </li>
+                <li data-success="87%" data-attempts="95px" class="histogram-month" data-month=" nov">
+                    <span class="submissions" style="width: 93%"></span>
+                    <span class="success" style="width: 88%;"></span>
+                </li>
+                <li data-success="52%" data-attempts="25px" class="histogram-month" data-month=" dec">
+                    <span class="submissions" style="width: 95%"></span>
+                    <span class="success" style="width: 81%;"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="pull-left content_group--block content_primary">
+            <div class="row">
+                <div class="profile-progress span-flex-10">
+                    <h5 class="small mlT mmB">Overall Contest Performance</h5>
+                    <h6 class="msB small">
+                        <span class="zeta">Rank: </span>245
+                        <span class="msL zeta">Title:</span> O(N)
+                        <span class="msL zeta">Score:</span> 7821
+                    </h6>
+                    <div id="profile-graph-view">
+                        <% if (_.isNumber(model.rank)) { %>
+                            <%= HR.appController.viewLoader(64) %>
+                        <% } else { %>
+                            <% if ( model.id === HR.profile().get('id') ) { %>
+                                <p class="mlT mlB text-center aside">Solve your first challenge to see your progress graph.</p>
+                                <p class="text-center"><a href="/categories" class="btn span3 block-center backbone">View Challenges</a></p>
+                            <% } else { %>
+                                <p class="block-margin text-center"><%- model.username %> has not solved any challenges yet.</p>
+                            <% } %>
+                        <% } %>
+                    </div>
+                </div>
+                <div class="profile-event-view span-flex-6 plL">
+                    <%= HR.appController.viewLoader(64) %>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

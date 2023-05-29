@@ -1,0 +1,28 @@
+<div class="container" style="margin-top:63px;">
+	<table class="sleek-table candidate-question-list" width="100%" cell-spacing="0" cell-padding="0">
+		<thead>
+			<tr>
+				<td width="5%"></td>
+				<td width="35%" class="upper-case grey">QUESTION NAME</td>
+				<td width="14%" class="upper-case grey">TYPE</td>
+				<td width="12%" class="upper-case grey">POINTS</td>
+				<td width="17%" class="upper-case grey">STATUS</td>
+				<td width="17%"></td>
+			</tr>
+		</thead>
+	</table>
+	<% i=0;while (i<section_count) { i++;%>
+	<table class="sleek-table candidate-question-list section<%=i%> <%if(i!=current_section){%>disabled<%}%>" width="100%" cell-spacing="0" cell-padding="0" >
+	</table>
+	<center>
+		<button class="btn btn-large margin-20 section-finish-<%=i%> next-section hidden" data-section="<%=i%>">Close and goto next section</button>
+		<br/>
+	</center>
+	<% } %>
+	<center>
+		<button class="btn btn-large margin-20 test-done">I am done with the test</button>
+	</center>
+</div>
+
+
+

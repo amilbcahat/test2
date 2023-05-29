@@ -1,0 +1,10 @@
+HR.appController.addTemplate("backbone/templates/x-admin/user-change-email", function(obj) {
+{
+var __p = "";
+Array.prototype.join;
+}
+with (obj || {}) __p += '<div class="top-fixed-bar">\n    <h3 class="topbar-h3 mjL">Change Email Address</h3>\n</div>\n\n<div class="overflow-content" id="control-overflow">\n    <form id="change-user-email" class="mjA">\n        <div class="msT msB">\n            <div class="span2">Search By :</div>\n            <div class="span13 search-radio-grp">\n                <label class="inline mlR">\n                    <input id="search-fields-id" name="search-field" type="radio" value="id" ', 
+"id" == searchBy && (__p += " checked='checked' "), __p += '/>ID\n                </label>\n                <label class="inline mlR">\n                    <input id="search-fields-name" name="search-field" type="radio"\n                           value="name" ', 
+"name" == searchBy && (__p += " checked='checked' "), __p += ' />Name/Email\n                </label>\n            </div>\n        </div>\n\n        <div class="msT msB">\n            <div class="span2">User:</div>\n            <input type="hidden" class="wide user-select2">\n        </div>\n\n        <div class="msT msB">\n            <div class="span2">New Email Address</div>\n            <input type="text" class="wide new-email">\n        </div>\n\n        <div class="msT msB">\n            <label><input type="checkbox" class="wide send-confirmation-mail"/>Send Confirmation Mail</label>\n        </div>\n\n\n        <div class="row no-margin plT">\n            <div class="span-xs-16 span-md-16">\n                <button type="submit" id="change-email-address" class="btn btn-primary btn-mid">Change\n                </button>\n            </div>\n        </div>\n    </form>\n\n    <div class="message-box mjA">\n    </div>\n</div>\n';
+return __p;
+});

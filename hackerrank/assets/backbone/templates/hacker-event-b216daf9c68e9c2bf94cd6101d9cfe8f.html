@@ -1,0 +1,19 @@
+<% if(model.length == 0) {%>
+    <p><%= hacker %> has not participated in any contests yet.</p>
+<% } %>
+<% _.each( model , function(event,index) { %>
+    <div class="row events">
+        <p class="span7"><strong><%= event.name %></strong>
+            <% if (event.ended && event.rank != "" ) { %>
+                &bull; <em>placed <%= event.rank %></em>
+            <% } else if (event.started && event.rank != "") { %>
+                &bull; <em>currently <%= event.rank %></em>
+            <% } %>
+         </p>
+         <% if (event.ended) { %>
+            <a href="/contests/<%= event.slug %>/leaderboard" class="btn btn-white btn-small pull-right backbone">View Leaderboard</a>
+         <% } else { %>
+            <a href="/contests/<%= event.slug %>/ =" class="btn btn-blue btn-small pull-right backbone">Join Competition</a>
+         <% } %>
+    </div>
+<% }); %>

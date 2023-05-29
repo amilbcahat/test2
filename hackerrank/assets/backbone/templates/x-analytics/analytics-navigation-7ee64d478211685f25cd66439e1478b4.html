@@ -1,0 +1,25 @@
+<div class="hre-sidebar closed" id="hre-sidebar">
+    <div class="sidebar-scroller bottom hidden">
+        <i class="icon-down-open-bold"></i>
+        <i class="icon-up-open-bold"></i>
+    </div>
+
+    <!-- This is the expand and collapse icon that will appear when in smaller screens -->
+    <div class="sidebar-toggle" id="sidebar-menu-icon">
+        <i class="icon-menu-large sidebar-menu-icon"></i>
+    </div>
+
+    <div class="hre-sidebar-inner full-height">
+        <div class="mlA hre-sidebar-innerblock">
+            <p class="sidebar-nav-title"><span class="hre-sidebar-label">User</span></p>
+            <ul class="hre-sidebar-list">
+                <li <% if (active_nav_link == 'companies_dash') { %>class="active"<% } %>>
+                <a href="#" class="js-backbone hre-sidebar-link">
+                    <i data-original-title="Companies Dashboard" class="icon-user js-tooltip" data-placement="right"></i>
+                    <span class="hre-sidebar-label">Companies Dashboard</span>
+                </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

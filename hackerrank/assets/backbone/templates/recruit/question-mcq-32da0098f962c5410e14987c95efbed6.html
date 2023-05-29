@@ -1,0 +1,17 @@
+<% if (question.type == "mcq") { %>
+<p class="font20 f-weight-600">PICK ONE OF THE CHOICES</p>
+<% } else { %>
+<p class="font20 f-weight-600">PICK THE CORRECT CHOICES</p>
+<% } %>
+<ul class="mcq-question-choices">
+  <% if (question.type == "mcq") { %>
+    <% i=0;_.each(question.options, function(o){ i++; %>
+     <li><input type="radio" name="mcqopts" id="mcqopts<%=i%>" value="<%=i%>"/><label for="mcqopts<%=i%>"><%=o%></label></li>
+    <% }); %>
+  <% } else { %>
+    <% i=0;_.each(question.options, function(o){ i++; %>
+     <li><input type="checkbox" name="mcqopts" id="mcqopts<%=i%>" value="<%=i%>"/><label for="mcqopts<%=i%>"><%=o%></label></li>
+    <% }); %>
+  <% } %>
+  <a href="#" class="clearall">Clear selection</a>
+</ul>

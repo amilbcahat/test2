@@ -1,0 +1,49 @@
+<% if (!challenge) { %>
+<div class="container--inner">
+<% } %>
+    <% if (!collection.challenge || !collection.challenge.get('name')) { %>
+    <header class="page-title">
+        <h1>Submissions</h1>
+    </header>
+    <% } %>
+    <section class="submissions">
+        <div class="submissions_list text-center">
+        <% if(collection.total != 0){ %>
+            <div class="table-wrap">
+                <header class="row-clear list-header submissions_list-header">
+                    <div class="span4">
+                      <p class="submissions-title">Problem</p>
+                    </div>
+                    <div class="span2 submissions-language">
+                      <p>Language</p>
+                    </div>
+                    <div class="span2 submissions-time">
+                      <p>Time</p>
+                    </div>
+                    <div class="span3">
+                      <p>Result</p>
+                    </div>
+                    <div class="span1">
+                      <p>Score</p>
+                    </div>
+                    <div class="span2">
+                      <p></p>
+                    </div>
+                </header>
+
+                <div class="table-body submissions-list-wrapper table--striped"></div>
+
+                <div class="pagination-wrap clearfix pagination-wrapper"></div>
+            </div>
+            <% } else { %>
+            <div class="light-wrap padded">
+                <p>You have not made any submissions for <%- collection.challenge.get("name") %> yet.</p>
+                <p class="text-center block-margin"><a href="<%= HR.appController.get_current_contest_namespace() %>/challenges/<%= collection.challenge.get('slug') %>" class="btn btn-green btn-large backbone">Solve <%- collection.challenge.get("name") %></a></p>
+            </div>
+            <% } %>
+          </div>
+        </div>
+    </section>
+<% if (!challenge) { %>
+</div>
+<% } %>

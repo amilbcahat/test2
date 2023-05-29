@@ -1,0 +1,107 @@
+<div class="container">
+  <div class="content_wrap onboarding_window">
+  <header class="window_header">
+      <p>Welcome In, <%= model.get('username') %></p>
+  </header>
+  <div class="light-wrap padded">
+      <nav class="pagination--bullets">
+      <ul>
+          <li class="active"><a class="pagination--bullets_bullet" data-toggle="tab" href="#onboarding_window-intro"></a></li>
+          <li><a class="pagination--bullets_bullet" data-toggle="tab" href="#onboarding_window-connect"></a></li>
+          <li><a class="pagination--bullets_bullet" data-toggle="tab" href="#onboarding_window-profile"></a></li>
+          <li><a class="pagination--bullets_bullet" data-toggle="tab" href="#onboarding_window-type"></a></li>
+          <li><a class="pagination--bullets_bullet" data-toggle="tab" href="#onboarding_window-final"></a></li>
+      </ul>
+      </nav>
+      <div class="tab-content content-text text-center">
+      <div class="tab-pane active" id="onboarding_window-intro">
+          <h3 class="beta">Help us find challenges that interest you in 3 quick steps...</h3>
+          <p>We're excited to invite you to the community. HackerRank offers an expanding repository of programming challenges across a variety of categories. By taking a few steps to set up your account, you will be able to quickly find challenges that interest you.</p>
+          <p>All it takes is these three steps to get you on the road to connecting with the community and solving challenges. Ready?</p>
+          <footer>
+          <p><a data-toggle="tab" href="#onboarding_window-connect" class="btn btn-text btn-large">Let's Go!  <i class="icon-right-open"></i></a></p>
+          </footer>
+      </div>
+      <div class="tab-pane" id="onboarding_window-connect">
+          <h3 class="beta">Connect your account</h3>
+          <p>Connecting your account lets you find hackers you know and see what challenges and contests they are completing. You can disconnect these accounts anytime in your <a class="backbone" href="/settings/account">settings</a>.</p>
+          <ul class="socialbuttons clearfix full block-center">
+          <li class="social_button facebook">
+              <a class="btn btn-facebook btn-social" data-analytics="SignupFacebook"><i class="icon-facebook"></i> Connect to Facebook</a>
+              <!--<label class="share-option block-radio-sub"><input type="checkbox">Post to wall?</label>-->
+          </li>
+          <!--<li class="social_button google">
+              <a class="btn btn-google btn-social" data-analytics="SignupGoogle"><i class="icon-gplus"></i> Connect to Google</a>
+              <label class="share-option block-radio-sub"><input type="checkbox">Post to home stream?</label>
+              </li>-->
+          <li class="social_button github">
+              <a class="btn btn-github btn-social" data-analytics="SignupGithub"><i class="icon-github"></i> Connect to GitHub</a>
+          </li>
+          </ul>
+          <footer>
+          <p><a class="btn btn-text btn-large" data-toggle="tab" href="#onboarding_window-profile">Next: Finish Your Profile <i class="icon-right-open"></i></a></p>
+          </footer>
+      </div>
+      <div class="tab-pane" id="onboarding_window-profile">
+          <h3 class="beta">Complete your profile</h3>
+          <p>Find teams and contests specific to you by filling out some basic profile information.</p>
+          <div class="span12 block-center">
+          <div class="row">
+              <div class="span6">
+              <div>
+                  <label>School</label>
+                  <input class="hr-profileData" data-profile-attr="school" value="<%= model.get('school') || '' %>" type="text" class="span6">
+              </div>
+              </div>
+              <div class="span6">
+              <div>
+                  <label>Company</label>
+                  <input class="hr-profileData" data-profile-attr="company" value="<%= model.get('company') || '' %>" type="text" class="span6">
+              </div>
+              </div>
+          </div>
+          </div>
+          <p class="span10 block-center">(You can always change these in your <a class="backbone" href="/settings/profile">profile settings</a>).</p>
+          <footer>
+          <p><a class="btn btn-text btn-large" data-toggle="tab" href="#onboarding_window-type">Next: Customize Challenges <i class="icon-right-open"></i></a></p>
+          </footer>
+      </div>
+      <div class="tab-pane" id="onboarding_window-type">
+          <h3 class="beta">What is your favorite type of programming challenge?</h3>
+          <p>Select your favorite category of programming challenges so we can tailor the list of challenges to you.</p>
+          <div class="row type_hints">
+          <div class="span8 block-center">
+              <!--<div class="row">
+              <small class="span4 aside">Your classmates prefer:</small>
+              <small class="span4 aside">Your friends chose:</small>
+              </div>-->
+              <div class="row">
+              <label class="span4 block-radio-sub"><input value="ml" type="radio">Machine Learning</label>
+              <label class="span4 block-radio-sub"><input value="fp" type="radio">Functional Programming</label>
+              </div>
+              <div class="row">
+              <label class="span4 block-radio-sub"><input value="games" type="radio">Games</label>
+              <label class="span4 block-radio-sub"><input value="codegolf" type="radio">Code Golf</label>
+              </div>
+              <div class="row">
+              <label class="span4 block-radio-sub"><input value="algorithms" type="radio">Algorithms</label>
+              </div>
+          </div>
+          </div>
+          <form>
+          </form>
+          <footer>
+          <p><a class="btn btn-text btn-large" data-toggle="tab" href="#onboarding_window-final">Next: Wrap it up <i class="icon-right-open"></i></a></p>
+          </footer>
+      </div>
+      <div class="tab-pane" id="onboarding_window-final">
+          <p>Great! You’re all set up. Select a challenge below to try out the code editor. Challenges are listed by category from easiest to hardest.</p>
+          <p>If you ever get lost, you can always email us at <a href="mailto:hackers@hackerrank.com">hackers@hackerrank.com</a></p>
+          <footer>
+          <p><a class="btn btn-green btn-xlarge hr-end-onboarding">Start Coding!</a></p>
+          </footer>
+      </div>
+      </div>
+  </div>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+<div class="hre-sidebar admin-sidebar <%= sideBarClass %>" id="hre-sidebar">
+    <div class="sidebar-scroller bottom hidden">
+        <i class="icon-down-open-bold"></i>
+        <i class="icon-up-open-bold"></i>
+    </div>
+
+    <!-- This is the expand and collapse icon that will appear when in smaller screens -->
+    <div class="sidebar-toggle-admin" id="sidebar-menu-icon">
+        <i class="icon-menu-large sidebar-menu-icon"></i>
+    </div>
+
+    <div class="hre-sidebar-inner full-height">
+        <div class="mlA hre-sidebar-innerblock">
+            <p class="sidebar-nav-title"><span class="hre-sidebar-label">Company</span></p>
+            <ul class="hre-sidebar-list">
+                <li <% if (active_nav_link == 'companies_dash') { %> class="active"<% } %>>
+                <a href="analytics/companies/dashboard" class="js-backbone hre-sidebar-link">
+                    <i data-original-title="Usage Dashboard" class="icon-doc-text js-tooltip" data-placement="right"></i>
+                    <span class="hre-sidebar-label">Usage Dashboard</span>
+                </a>
+                </li>
+                <li <% if (active_nav_link == 'company_dash') { %> class="active"<% } %>>
+                <a href="analytics/companies" class="js-backbone hre-sidebar-link">
+                    <i data-original-title="Customer Dashboard" class="icon-doc js-tooltip" data-placement="right"></i>
+                    <span class="hre-sidebar-label">Customer Dashboard</span>
+                </a>
+                </li>
+                <li <% if (active_nav_link == 'trial_signups') { %> class="active"<% } %>>
+                <a href="analytics/companies/trial_signups" class="js-backbone hre-sidebar-link">
+                    <i data-original-title="Trial Signups" class="icon-chart-bar js-tooltip" data-placement="right"></i>
+                    <span class="hre-sidebar-label">Trial Signups</span>
+                </a>
+                </li>
+                <li <% if (active_nav_link == 'company_watchlist') { %> class="active"<% } %>>
+                <a href="analytics/companies/watchlist" class="js-backbone hre-sidebar-link">
+                    <i data-original-title="Watchlist" class="icon-list-add js-tooltip" data-placement="right"></i>
+                    <span class="hre-sidebar-label">Watchlist</span>
+                </a>
+                </li>
+            </ul>
+        </div>
+
+        <span class="dark-divider"></span>
+
+        <div class="mlA hre-sidebar-innerblock">
+            <p class="sidebar-nav-title"><span class="hre-sidebar-label">User</span></p>
+            <ul class="hre-sidebar-list">
+                <li <% if (active_nav_link == 'user_watchlist') { %> class="active"<% } %>>
+                <a href="analytics/users/watchlist" class="js-backbone hre-sidebar-link">
+                    <i data-original-title="Watchlist" class="icon-list-add js-tooltip" data-placement="right"></i>
+                    <span class="hre-sidebar-label">Watchlist</span>
+                </a>
+                </li>
+                <li <% if (active_nav_link == 'user_signups') { %> class="active"<% } %>>
+                <a href="analytics/users/signups" class="js-backbone hre-sidebar-link">
+                    <i data-original-title="Signups" class="icon-chart-bar js-tooltip" data-placement="right"></i>
+                    <span class="hre-sidebar-label">Signups</span>
+                </a>
+                </li>
+            </ul>
+        </div>
+
+        <span class="dark-divider"></span>
+
+        <div class="mlA hre-sidebar-innerblock">
+            <p class="sidebar-nav-title"><span class="hre-sidebar-label">Sales Force</span></p>
+            <ul class="hre-sidebar-list">
+                <li <% if (active_nav_link == 'revenue_health') { %> class="active"<% } %>>
+                <a href="analytics/revenue/health" class="js-backbone hre-sidebar-link">
+                    <i data-original-title="Revenue Health" class="icon-chart-area js-tooltip" data-placement="right"></i>
+                    <span class="hre-sidebar-label">Revenue Health</span>
+                </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>

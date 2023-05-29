@@ -1,0 +1,137 @@
+<div class="container">
+    <div class="page_narrow">
+        <div class="pull-left content_group--block content_side">
+            <!-- Contest Name -->
+            <% if (contest.slug && contest.slug != 'master') { %>
+            <div>
+                <header class="sidebar_cap msT">Current Contest</header>
+                <div class="sidebar--block psA plL plR mlB">
+                    <h4 class="msB"><%= contest.name %></h4>
+                    <div class="msB">
+                        <small class="bold">
+                            <span class="zeta">Current Rank: </span><%= contest.rank || "N/A" %>
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+
+            <!-- Tracks -->
+            <% if (contest.has_tracks) { %>
+            <% if (categories.models.length > 0) { %>
+            <div>
+                <header class="sidebar_cap msT"id="ob-track-card">Current Track</header>
+                <div class="sidebar--block psA plL plR mlB">
+                    <% if (current_track.name) { %>
+                    <h4 class="msB"><%= current_track.name %></h4>
+                        <% if (HR.profile().isLoggedIn()) { %>
+                        <div class="msB">
+                            <small class="bold">
+                                <span class="zeta">Score: </span><span class="mmR"><%= (current_track.hacker_progress || {}).score || 0 %>pts</span>
+                                <span class="zeta">Level: </span><span class="mmR"><%= (current_track.hacker_progress || {}).title || "N/A" %></span>
+                            </small>
+                        </div>
+                        <div class=""><small class="zeta bold">Next Challenge: </small></div>
+                            <% if (recommended_challenge && recommended_challenge.get('name')) { %>
+                            <div class="bold">
+                                <small><a href="/challenges/<%= recommended_challenge.get('slug') %>"
+                                          class="backbone" class="title-link"><%- recommended_challenge.get('name') %></a></small>
+                            </div>
+                            <% } %>
+                        <% } %>
+                    <% } %>
+                </div>
+            </div>
+            <div>
+                <div class="sidebar--block sidebar_list" id="challengeAccordion">
+                    <% _.each(categories.models, function(category) {
+                       if (!is_track_view || category.get('slug') == activeCategory) { %>
+                    <a class="sidebar_list-heading challenges_tracks-toggle <%= activeCategory == category.get('slug') ? 'active current':'' %>"
+                       data-slug="<%= category.get('slug') %>" data-toggle="collapse" data-parent="#challengeAccordion"
+                       href="#<%= category.get('slug') %>-wrapper">
+                        <i class=" <%= (activeCategory == category.get('slug')) ? 'icon-down-open': 'icon-right-open' %> pull-right"></i> <%= category.get("name") %>
+                    </a>
+                    <ul class="<%= category.get('slug') %>-wrapper <%= (activeCategory == category.get('slug')) ? 'in': '' %> accordion-body collapse sidebar_subset"
+                        id="<%= category.get('slug') %>-wrapper">
+                        <% _.each(category.children().models, function(track) { %>
+                        <li class="<%= track.active ? 'active':'' %> sidebar_list-item">
+                            <a class="backbone change-track challenges_trackname" data-track="<%= track.get('slug') %>" href="<%= track.pageURL() %>">
+                                <%- track.get('name') %>
+                            </a>
+                        </li>
+                        <% }) %>
+                    </ul>
+                    <% }}) %>
+                </div>
+            </div>
+            <% } %>
+            <% } else { %>
+            <!-- Statistics -->
+            <div>
+                <header class="msB zeta bold small text-center">
+                    <a href="<%= HR.appController.current_contest_namespace %>/leaderboard"
+                       class="btn btn-text backbone"><%= contest.submitted_hackers_count %> hackers </a> have submitted code
+                </header>
+                <div class="sidebar--block psA">
+                    <% _.each(recent_hackers, function(hacker) { %>
+                        <a href="/<%= hacker.username %>" data-username="<%= hacker.username %>" class="hacker-wrap <%= hacker.is_online ? 'online' : 'offline' %>">
+                          <img src="<%= hacker.avatar %>" height="40" width="40" class="avatar mmA"
+                               onerror="this.onerror=null; this.src='https://d3rpyts3de3lx8.cloudfront.net/hackerrank/assets/gravatar.jpg';">
+                        </a>
+                    <% }) %>
+                </div>
+                <div class="text-center"><a href="/contests/<%= contest.slug %>/leaderboard" class="btn btn-link msT backbone">View Leaderboard</a></div>
+            </div>
+            <% } %>
+        </div>
+
+        <!-- Challenges -->
+        <div class="pull-right content_group--block content_primary tab-content">
+            <div class="content_header">
+                <% if (contest.slug != "master") { %>
+                <span class="bold challenge-breadcrumbs zeta small pull-left"><a href="/contests" class="zeta backbone"><i class="icon--left icon-left-open"></i>All contests</a></span>
+                <div class="pull-right btn-group psT">
+                    <% if (contest.kind == 'weekly') { %>
+                        <a href="/blog/daily-challenge" class="btn btn-link green" target="_blank">About weekly contest</a>
+                    <% } %>
+                    <a href="/contests/<%= contest.slug %>/submissions" class="btn btn-link green backbone">Review Submissions</a>
+                    <a href="/contests/<%= contest.slug %>/leaderboard" class="btn btn-link green backbone">Leaderboard</a>
+                </div>
+                <% } else { %>
+                <div>
+                    <span class="bold challenge-breadcrumbs zeta small">
+                        <% if (currentCategories.models[0]) { %><%= currentCategories.models[0].get("name") %><% } %>
+                        <i class="icon-right-open icon--single msL msR"></i>
+                        <% if (currentCategories.models[1]) { %><%= currentCategories.models[1].get("name") %><% } %>
+                    </span>
+                </div>
+                <% } %>
+            </div>
+            <div class="tab-pane active">
+                <div class="challenges-list"></div>
+                <div class="challengeslist_pagination-wrapper pagination-wrapper">
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
+<!-- This is for onboarding, please do not remove it -->
+<% if (HR.tour_going) { %>
+    <ol class='tourbus-legs' id='onboarding-tour'>
+        <li data-el='#ob-track-card' data-orientation='right' data-arrow='15px' data-width='400px'  data-highlight='true'>
+            <p class="small">Hone and test your skills with our hundreds of <strong>archived challenges</strong>. These do not affect your global score, but you can still advance in the challenge leaderboard and progress through tracks.</p>
+            <p class="psT"><a class="pull-right tourbus-next btn btn-primary" href='javascript:void(0);'>Next: a note about contests</a></p>
+        </li>
+        <li data-el='#ob-contests-link' data-orientation='right' data-arrow='15px' data-width='400px' data-highlight='true'>
+            <p class="small">New challenges are introduced through <strong>weekly and daily contests</strong>. Check the "Contests" page for a list of upcoming and active contests, or signup for email alert through your settings.</p>
+            <p class="psT"><a class="pull-right tourbus-next btn btn-primary" href='javascript:void(0);'>Next: Try a challenge</a></p>
+        </li>
+        <li data-el='#ob-challenge' data-orientation='left' data-arrow='15px' data-width='400px' data-highlight='true'>
+            <p class="small">Challenges in each track are listed in increasing levels of difficulty. Let's select the easiest one in this track so we can guide you through the submission process.</p>
+            <p class="psT"><a class="pull-right btn btn-primary tourbus-stop" href='javascript:void(0);'>Select this challenge</a></p>
+        </li>
+    </ol>
+    <div class='ob-overlay' style='position: fixed; top: 0; right: 0; left: 0; bottom: 0; width: 100%; height: 100%; min-height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 9999; display: none;'>
+    </div>
+<% } %>

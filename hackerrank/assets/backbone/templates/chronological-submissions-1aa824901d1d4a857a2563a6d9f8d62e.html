@@ -1,0 +1,56 @@
+<section class="submissions container">
+    <header class="page-title container">
+      <div class="breadcrumbs">
+      </div>
+      
+      <!-- ##Breadcrumbs should only show on challenge-specific submission lists-->
+      <!-- sort mode toggle -->
+      <div class="row">
+          <h1 class="span12 pull-left">Submissions
+              <% if (collection.challenge && collection.challenge.get('name')) { %>
+              for <%= collection.challenge.get('name') %>
+              <% } %>
+          </h1>
+          <ul class="pull-right challenge-links btn-group span4">
+            <!-- strip trailing slash -->
+            <li class="btn btn-white"><a href=<%= collection.pageURL().slice(0, -1) %> class="backbone"><span class="icon-text">Sort by Challenge</span></a></li>
+            <li class="btn btn-white active"><a href=<%= collection.pageURL() + "all" %>  class="backbone"><span class="icon-text">Sort by Date</span></a></li>
+          </ul>
+      </div>
+  </header>
+  <div class="light-wrap table-wrap text-center span16">
+    <div class="table-head row">
+      <% if(collection.total != 0){ %>
+      <div class="span4">
+        <p>Problem</p>
+      </div>
+      <div class="span2">
+        <p>Language</p>
+      </div>
+      <div class="span2">
+        <p>Time</p>
+      </div>
+      <div class="span3">
+        <p>Result</p>
+      </div>
+      <div class="span1">
+        <p>Score</p>
+      </div>
+      <div class="span2">
+        <p></p>
+      </div>
+      <% } else { %>
+      <div class="light-wrap">
+        <p> You have not made any submissions yet.</p>
+        <p class="text-center"><a href="/categories" class="btn btn-primary btn-large">View Challenges</a></p>
+      </div>
+      <% } %>
+    </div>
+    <div class="submissions-list-wrapper">
+    </div>
+  </div>
+
+  <div class="pagination-wrap clearfix pagination-wrapper">
+  </div>
+  <div class="clearfix">&nbsp;</div>
+</section>

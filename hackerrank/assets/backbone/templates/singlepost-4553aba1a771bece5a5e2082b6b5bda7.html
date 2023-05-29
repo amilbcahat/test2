@@ -1,0 +1,63 @@
+<div class="content_wrap narrow">
+    <div class="blog-sidebar sidebar--inline padded">
+
+        <div class="sidebar_group text-center">
+            <p class="profile_hackerhandle"><a href="/<%= model.owner_username%>"><strong><%= model.owner_name || model.owner_username %></strong></a></p>
+            <img src="<%=model.owner_avatar%>" height="100" width="100" class="block-center avatar profile_image margin-large top bottom">
+
+            <p class="blog_share">
+                <strong>Share post:</strong>
+                    <a class="js-blog-tweet twitter" style="cursor:pointer;"><i class="icon-twitter"></i></a>
+                    <a class="js-blog-fb-share facebook" style="cursor:pointer;"><i class="icon-facebook"></i></a>
+            </p>
+            <% if(current_hacker.is_admin || current_hacker.id == model.owner) { %>
+                <p class="button-wrap margin-large top"><a class="js-edit-blog backbone btn" href="/blog/<%=model.id%>/edit">Edit Post</a></p>
+            <%}%>
+        </div>
+
+        <div class="sidebar_group">
+            <p class="secondary margin-large bottom">This blog is maintained by the HackerRank team, and is intended to be a source of programming guidance and inspiration. If you have an idea for a post, please <a href="mailto:hackers@hackerrank.com">contact us</a>. Happy hacking!</p>
+            <p class="margin-small bottom"><a href="/blog" class="backbone"><i class="icon-left-open"></i> Blog Index</a></p>
+            <p class="margin-small bottom"><strong>Latest Posts</strong></p>
+            <ul class="unstyled">
+                <% _.each(model.recent_posts, function(post) { %>
+                    <li><a href="/blog/<%= post.slug %>" class="backbone"><%= post.title %></a></li>
+                <% })%>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content--inline padded">
+    <% if(model.draft) { %> <h2 class="text-center">THIS POST IS STILL A DRAFT.</h2> <%}%>
+
+        <h1 class="span11 block-center text-center margin-large bottom"><strong><%= model.title %></strong></h1>
+        <p class="text-center meta margin-large bottom"><%= model.date %></p>
+        <div class="post-content content-text span11 block-center ">
+            <!--CONTENT FOR STANDARD POST -->
+
+            <%= model.html_content %>
+
+            <!-- END -->
+
+            <!-- CONTENT FOR QUOTE POST
+
+            <blockquote>
+                <p class="quote-body"><q>Someone who can make a computer do what he wants—whether the computer wants to or not.</q></p>
+                <footer><p class="quote-attribution">Paul Graham</p></footer>
+            </blockquote>
+            <p>"I think I remember some such story as you were telling," said Flask, when at last the two boats were slowly advancing with their burden towards the ship, "but I can't remember where."</p>
+
+            END -->
+
+        </div>
+    </div>
+
+    <p class="blog_share blog_share-bottom text-center">
+        <span class="light-wrap meta padded">
+            <strong>Share post:</strong>
+            <a class="js-blog-tweet twitter" style="cursor:pointer;"><i class="icon-twitter"></i></a>
+            <a class="js-blog-fb-share facebook" style="cursor:pointer;"><i class="icon-facebook"></i></a>
+        </span>
+    </p>
+
+</div>

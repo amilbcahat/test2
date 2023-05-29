@@ -1,0 +1,28 @@
+    <div>
+        <center>
+            <h2 class="headline">Login alert!</h2>
+        </center>
+        <div class="white-grid-block main-content">
+            <h3 class="mlB">Logged into another test</h3>
+            <p>It looks like you're still not finished taking the test <code><%=test.name%></code> and you're now trying to login to: <code><%=test.other.name%></code></p>
+            <h4 class="mlT">What would you like to do?</h4>
+            <center>
+                <a class="btn margin-20 backbone" href="<%=test.unique_id%>/questions">Continue with '<%=test.name%>'</a><br>
+                <a class="btn margin-10 js-gotoother" href="<%=test.other.unique_id%>/<%=test.other.auth_key%>">Logout and go to '<%=test.other.name%>'</a>
+            </center>
+        </div>
+
+        <center>
+            <div class="block">
+            <img class="mlT" src="/assets/brand/powered_by_transparent.png" />
+            <% if (test.logged_in && test.attempt_done) { %>
+                <p class="text-center txt-alt-grey">
+                    Love Programming challenges? </br>
+                    Find more problems and contests at <strong><a href="https://www.hackerrank.com/" class="txt-alt-grey">www.hackerrank.com</a></strong>
+                </p>
+
+            <% } %>
+            </div>
+        </center>
+
+    </div><!-- end .row -->

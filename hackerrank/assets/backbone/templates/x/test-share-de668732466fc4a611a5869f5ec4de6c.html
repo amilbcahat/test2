@@ -1,0 +1,130 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL"><%- testmodel.name %></h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Share with team</h3>
+</div>
+<div class="overflow-content" id="control-overflow">
+    <% if (show_teams) { %>
+    <div class="mjA">
+        <div class="btn-group">
+            <a href="#" class="btn js-change-view <% if (active_tab == "share-teams") { %>active btn-primary<% } %>" data-view="share-teams">Share with teams</a>
+            <a href="#" class="btn js-change-view <% if (active_tab == "share-users") { %>active btn-primary<% } %>" data-view="share-users">Share with users</a>
+        </div>
+    </div>
+
+    <div class="mjA js-share-views <% if (active_tab !== "share-teams") { %>hidden<% } else { %>active<% } %>" id="share-teams">
+        <% if (model.unshared_teams.length > 0) { %>
+        <p class="pdB">
+            You can share this test with your teams.
+        </p>
+        <div class="row no-margin plB">
+            <form name="share-with-team-form">
+                <div class="span-xs-16 span-md-8 no-padding">
+                    <label>SELECT TEAMS</label>
+                    <select id="share-team" name="team" class="wide no-margin">
+                        <% _.each (model.unshared_teams, function(team) { %>
+                        <option value="<%- team.team_id %>"><%- team.name %></option>
+                        <% }); %>
+                    </select>
+                    <button type="submit" class="btn btn-primary margin-large right mdL">Share</button>
+                </div>
+            </form>
+        </div>
+        <% } else { %>
+        <p class="pdB">
+            You have already shared the test with all your teams. You can create more teams from the <a href="settings/team">teams page</a>
+        </p>
+        <% } %>
+    </div><!-- end .mjA -->
+    <% } %>
+
+    <div class="mjA js-share-views <% if (active_tab !== "share-users") { %>hidden<% } else { %>active<% } %>" id="share-users">
+        <p class="pdB">
+            You can share this test with individuals.
+        </p>
+        <form name="share-with-user-form">
+            <div class="formgroup radio">
+                <legend>Access Control</legend>
+                <label><input type="radio" name="share-permissions" value="ALLOW_ALL" checked> Allow full access</label>
+                <label><input type="radio" name="share-permissions" value="ALLOW_INVITE_CANDIDATES"> Can send invites only</label>
+                <label><input type="radio" name="share-permissions" value="ALLOW_ADD_QUESTIONS"> Can edit tests only</label>
+            </div>
+            <div class="span-xs-16 span-md-12 no-padding formgroup">
+                <input name="user-email" class="wide" type="text" />
+                <button type="submit" class="btn btn-primary margin-large right mdL">Share</button>
+                <div class="sub-help js-share-error error hidden"></div>
+            </div>
+        </form>
+    </div><!-- end .mjA -->
+
+    <div class="soft-divider"></div>
+
+    <div class="mjA">
+        <% if (HR.currentUser && HR.currentUser.get('company') && HR.currentUser.get('company')['pricing_model'] == "user") { %>
+        <div class="row no-margin plT">
+            <label>SHARED TEAMS</label>
+            <table class="simple-table small-padded" width="100%" cell-spacing="0" cell-padding="0">
+                <thead>
+                    <tr class="no-border">
+                        <th>Test Shared with</th>
+                        <th>Actions</th>
+                    </tr>
+                    <% _.each (model.shared_teams, function(team, index) { %>
+                    <tr>
+                        <td>
+                            <!-- if name for owners team has changed - show a label to distinguish it -->
+                            <% if (index == 0 && team.name != 'Owners') { %>
+                            <%- team.name %>&nbsp;<span class="label label-primary">Owners Team</span>
+                            <% } else { %>
+                            <%- team.name %>
+                            <% } %>
+                        </td>
+                        <td>
+                            <!-- First team is always owners team -->
+                            <% if (index != 0) { %>
+                            <a href="#" class="btn btn-small js-remove-team" data-id="<%- team.team_id %>"><i class="icon2-close"></i>Remove</a>
+                            <% } %>
+                        </td>
+                    </tr>
+                    <% }); %>
+                </thead>
+            </table>
+        </div>
+        <% } %>
+
+        <div class="row no-margin plT">
+            <label>SHARED USERS</label>
+            <table class="simple-table small-padded" width="100%" cell-spacing="0" cell-padding="0">
+                <thead>
+                    <tr class="no-border">
+                        <th>Test Shared with</th>
+                        <th>Access Control</th>
+                        <th>Actions</th>
+                    </tr>
+                    <% _.each (model.shared_users, function(user) { %>
+                    <tr>
+                        <td><%- user.email %></td>
+                        <td><%- permissionMappings[user.permissions] %></td>
+                        <td>
+                            <% if (user.permissions !== "owner") { %>
+                            <a href="#" class="btn btn-small js-remove-user" data-id="<%- user.uid %>"><i class="icon2-close"></i>Remove</a>
+                            <% } %>
+                        </td>
+                    </tr>
+                    <% }); %>
+                </thead>
+            </table>
+        </div>
+
+    </div><!-- end .mjA -->
+
+    <!--IMPORTANT: USE ONLY BUTTONS IN THIS DIV. This div should stay at the bottom of the contents in this .overflow-content div, no matter what -->
+    <!--
+    <div id="responsive-bottom-holder" class="responsive-bottom-holder text-center">
+        <a href="#" class="btn btn-primary btn-mid">Add from library</a>
+        <span class="alt-grey mlA">or</span>
+        <a href="#" class="btn btn-mid">Create new question</a>
+    </div>
+    -->
+</div>
+
+<!-- <div id="responsive-bottom-placeholder" class="responsive-bottom-holder text-center"></div> -->

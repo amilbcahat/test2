@@ -1,0 +1,27 @@
+<% if (model.completed > 0) { %>
+    <div class="text-center dashboard_tracks-progress">
+        <span id="dashboard_trackSelect" class="dropdown dashboard_tracks-select">
+            <a class="alpha btn btn-line green dropdown-toggle dashboard_tracks-toggle" data-toggle="dropdown"><%= currentName %>: <%= stats.completion %>% Complete<i class="icon-down-dir"></i></a>
+            <ul class="unstyled dropdown-menu dashboard_tracks-menu">
+                <li><a class="track-select cursor">All Tracks</a></li>
+                <% _.each(model.tracks, function (track, index) { %>
+                <li>
+                    <a class="track-select cursor" data-track-id="<%= track.id %>">
+                        <%= track.name %>
+                    </a>
+                </li>
+                <% }) %>
+            </ul>
+        </span>
+        <p><%= stats.completed %> Challenge<%= stats.completed == 1 ? '':'s' %> of <%= stats.total %> completed</p>
+        <p>Languages used: <%= stats.languages.join(', ') %></p>
+        <% if (stats.category) { %>
+        <p>Category: <%= stats.category %></p>
+        <% } %>
+    </div>
+    <div class="dashboard_tracks-chart track-chart">
+    </div>
+<% } else { %>
+    <p class="block-margin text-center">Solve your first challenge to see your progress graph.</p>
+    <p class="text-center"><a href="/categories" class="btn btn-primary backbone">View Challenges</a></p>
+<% } %>

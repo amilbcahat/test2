@@ -1,0 +1,37 @@
+<div id="edit-client-modal" class="modal modal-mid">
+    <form class="form-horizontal" name="edit-client-form">
+        <div class="modal-header text-center">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4>Edit Client</h4>
+        </div>
+
+        <div class="modal-body">
+            <div class="alert alert-error hidden"></div>
+
+            <input type="hidden" name="edit-client-id" value="<%- model.id %>" />
+            
+            <div class="control-group">
+                <label class="control-label" for="inputName">Name:</label>
+                <div class="controls">
+                    <input class="fw" type="text" id="inputName" name="edit-client-name" value="<%- model.name %>" autocomplete="off"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="inputRedirectUri">Redirect URI(s):</label>
+                <div class="controls">
+                    <input class="fw" id="inputRedirectUri" type="text" name="edit-client-uri" placeholder="Enter a comma separated list of absolute URIs here." value="<%- model.redirect_uri %>"/>
+                </div>
+            </div>
+
+        </div><!-- end modal-body -->
+        <div class="modal-footer">
+            <center>
+                <button type="submit" class="btn btn-primary">Save</button>
+                <!-- <button id="btn-auth" class="btn btn-mid">Authorize</button>
+                <button id="btn-revoke" class="btn btn-alert">Revoke</button> -->
+            </center>
+        </div><!-- end modal-footer -->
+    </form>
+
+</div><!-- end modal -->

@@ -1,0 +1,11 @@
+<div id="secondary-email-list" class="span9"></div>
+  <small class="error"><%= _.map(errors, function (e) { return _.escape(e); }).join("<br>") %></small>
+  <% if (input) { %>
+    <input id="secondary-email-input" value="<%= input %>" type="text" class="span6" \>
+  <% } else { %>
+    <input style="display: none" id="secondary-email-input" type="text" class="span6" \>
+  <% } %>
+  <div class="add-email">
+  <p><a class="cursor btn btn-line btn-small margin-small top settings_content-addemail" id="btn-add-sec-email"><i class="icon-plus"></i>Add another email</a></p>
+  </div>
+

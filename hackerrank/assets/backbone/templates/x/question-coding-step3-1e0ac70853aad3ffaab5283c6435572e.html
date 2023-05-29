@@ -1,0 +1,42 @@
+<div class="mjA">
+    <div class="formgroup">
+        <label>Test Cases</label>
+        <p class="txt-alt-grey-dark span9 no-padding">A testcase consists of input values to the program along with coresponding output the program is expected to produce. Inputs will be fed to the program's STDIN and output will be expected in STDOUT.</p>
+        <div class="clear"></div>
+        <p class="txt-alt-grey-dark span9 no-padding">You can have a look at some <a href="https://github.com/interviewstreet/sampleproblems" target="_blank" class="normal-underline">sample problems with their testcase files</a></p>
+    </div>
+    <div class="clear"></div>
+
+    <div class="formgroup">
+        <label>Upload TestCases</label>
+        <a href="#" class="btn js-add-testcase"><i class="icon-plus"></i> Add testcase</a>
+        &nbsp;or&nbsp;
+        <a href="#" class="btn js-upload-testcases"><i class="icon2-upload fnt-sz-small"></i> Upload as .zip</a>
+    </div>
+
+</div><!-- end .mjA -->
+
+<label class="mjL">Testcase for current question</label>
+
+<table style="width:94%; margin:10px auto;" class="table table-radius table-out-border fnt-sz-mid">
+    <thead>
+        <tr class="prominent txt-alt-grey">
+            <th><span style="margin-left:38px;">NAME</span></th>
+            <th>DIFFICULTY</th>
+            <th>SCORE</th>
+            <th>INPUT SIZE</th>
+            <th>OUTPUT SIZE</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% if (testcases.length == 0) { %>
+        <tr>
+            <td colspan="6" class="fnt-wt-600 m">No testcase has been added</td>
+        </tr>
+        <% } %>
+    </tbody>
+</table>
+
+<div id="testcase-modal-container"></div>

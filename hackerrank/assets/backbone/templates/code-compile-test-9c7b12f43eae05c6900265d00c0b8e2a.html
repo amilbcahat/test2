@@ -1,0 +1,107 @@
+<% if (model.status > 0) { %>
+    <% if (model.result == 0) { %>
+        <% if (model.customtestcase) { %>
+            <% if (model.signal[0] == 0) { %>
+                <p class="status">Status: <span class="green">Compilation Successful</span></p>
+            <% } else if (model.signal[0] > 0) { %>
+                <p class="status">Status: <span class="orange">Runtime error</p>
+            <% } %>
+        <% } else {
+           var passed_testcases = 0;
+           _.each(model.testcase_status, function (status) {
+           passed_testcases += status;
+           });
+           var total_testcases = model.testcase_status.length;
+           %>
+          <% if (!_.isNumber(model.score)) { %>
+            <% if (total_testcases == passed_testcases) { %>
+                <p class="status">Status: <span class="green">All sample testcases passed</span></p>
+            <% } else if (passed_testcases > 0) { %>
+                <p class="status">Status: <span class="orange"><%= passed_testcases %> of <%= total_testcases %> sample testcases passsed</span></p>
+            <% } else { %>
+                <p class="status">Status: <span class="orange">Sorry :( You didn't clear any sample testcases</span></p>
+            <% } %>
+          <% } %>
+        <% } %>
+    <% } else { %>
+        <p class="status">Status: <span class="red">Compile time error</span></p>
+    <% } %>
+    <% if (model.result > 0 || !_.isEmpty(model.compilemessage)) { %>
+        <div class="compile-time">
+            <div class="rotate">Compile Time</div>
+            <p class="field-label">Compile Message</p>
+            <% if (!_.isEmpty(model.compilemessage)) { %>
+                <pre class="error-output"><xmp><%= model.compilemessage %></xmp></pre>
+            <% } else { %>
+                <p class="no-response">~ no response on stderr ~</p>
+            <% } %>
+            <% if (model.result > 0) { %>
+                <p class="field-label">Exit Status</p>
+                <pre class="error-output"><xmp><%= model.result %></xmp></pre>
+            <% } %>
+        </div>
+    <% } %>
+    <% if (model.result == 0) { %>
+        <% if (model.customtestcase) { %>
+            <div class="run-time">
+                <div class="rotate">Run Time</div>
+                <p class="title">Custom Testcase</p>
+                <p class="field-label">Input</p>
+                <pre class="error-output"><xmp><%= model.stdin[0] %></xmp></pre>
+                <p class="field-label">Your Output</p>
+                <% if (!_.isEmpty(model.stdout[0])) { %>
+                    <pre class="error-output"><xmp><%= model.stdout[0] %></xmp></pre>
+                <% } else { %>
+                    <p class="no-response">~ no response on stdout ~</p>
+                <% } %>
+                <% if (!_.isEmpty(model.stderr[0])) { %>
+                   <p class="field-label">Error</p>
+                   <pre class="error-output"><xmp><%= model.stderr[0] %></xmp></pre>
+                <% } %>
+            </div>
+        <% } else if (model.signal && model.signal.length > 0) { %>
+            <div class="run-time">
+                <div class="rotate">Run Time</div>
+                <% if (_.isNumber(model.score)) { %>
+                    <p class="title">Score: <%= model.score %></p>
+                <% } %>
+                <% _.each( _.zip(model.testcase_message, model.stdin, model.expected_output, model.stdout, model.signal, model.stderr), function (args, index) {
+                   message = args[0]
+                   input = args[1]
+                   expected_output = args[2]
+                   stdout = args[3]
+                   signal = args[4]
+                   stderr = args[5]
+                   %>
+                    <p class="title">Testcase# <%= index + 1 %></p>
+                    <p class="field-label">Input</p>
+                    <pre class="error-output"><xmp><%= input %></xmp></pre>
+
+                    <p class="field-label">Your Output</p>
+                    <% if (!_.isEmpty(stdout)) { %>
+                        <pre class="error-output"><xmp><%= stdout %></xmp></pre>
+                    <% } else { %>
+                        <p class="no-response">~ no response on stdout ~</p>
+                    <% } %>
+
+                    <p class="field-label">Expected Output</p>
+                    <% if (!_.isEmpty(expected_output)) { %>
+                        <pre class="error-output"><xmp><%= expected_output %></xmp></pre>
+                    <% } else { %>
+                        <p class="no-response">~ no response on stdout ~</p>
+                    <% } %>
+
+                    <% if (!_.isEmpty(message) && message !== 'Success' && !_.isNumber(model.score)) { %>
+                        <p class="field-label">Compiler Message</p>
+                        <pre class="error-output"><xmp><%= message %></xmp></pre>
+                    <% } %>
+
+                    <% if (!_.isEmpty(stderr)) { %>
+                       <p class="field-label">Error</p>
+                       <pre class="error-output"><xmp><%= stderr %></xmp></pre>
+                    <% } %>
+                <% }); %>
+            </div>
+        <% } %>
+    <% } %>
+<% } %>

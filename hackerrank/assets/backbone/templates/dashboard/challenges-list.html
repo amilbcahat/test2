@@ -1,0 +1,98 @@
+<div id="contest-challenges-problem" class="content--list">
+    <% if(model.name != undefined) { %>
+        <div class="content--list_body">
+            <% if(model.solved) {%>
+                <div class="completed-indicator"><i class="icon-ok"></i></div>
+            <%}%>
+            <header class="content--list_header row">
+                <h4 class="content--list_title span8">
+                    <% if (model.can_be_viewed) { %>
+                        <a href="<%= baseURL %>" class="backbone"><%- model.preferred_challenge_name || model.name %></a>
+                    <% } else { %>
+                        <a onclick="javascript:void(0);" class="cursor"><%- model.preferred_challenge_name || model.name %></a>
+                    <% } %>
+                    <% if (contest && contest.kind == 'acm') { %> <span class="challenge_color acm-challenge-balloon" style="background-color: <%= model.color %>"></span> <% } %>
+                </h4>
+                <ul data-intro="Challenge links" class="span2 pull-right inline challenge_links">
+                    <% if(model.can_be_viewed) { %>
+                        <li class=""><a href="<%= baseURL %>/forum/questions" class="backbone submit icon--grey" data-analytics="ViewForum"><i class="icon-comment icon--single"></i></a></li>
+                    <% } %>
+                    <% if (!contest || contest.kind != 'acm') { %>
+                        <li class=""><a href="<%= baseURL %>/leaderboard" class="backbone submit icon--grey" data-analytics="ChallengeLeaderboard"><i class="icon-trophy icon--single"></i></a></li>
+                    <% } %>
+                    <% if(model.can_be_viewed) { %>
+                        <li class=""><a href="<%= baseURL %>/submissions" class="backbone icon--grey"><i class="icon-list-bullet-small icon--single"></i></a></li>
+                    <% } %>
+                </ul>
+            </header>
+            <% if (model.can_be_viewed) { %>
+              <p><% if (model.preview_format == 'html') { %>
+                <%= model.preferred_challenge_preview || model.preview || "" %></p>
+              <% } else { %>
+                <%- model.preferred_challenge_preview || model.preview || "" %>
+              <% } %></p>
+            <% } else {%>
+                <p><%- model.requirements_description || "" %></p>
+            <% } %>
+            <% if (contest && contest.kind == 'weekly') { %>
+                    <% if (model.active) { %>
+                        <span class="plL color-alt-green">
+                            <i class="status-indicator active mmR"></i>
+                            <span class="countdowntimer"></span>
+                        </span>
+                    <% } else { %>
+                        <span class="plL color-orange">
+                            <i class="status-indicator completed mmR"></i>
+                            Locked
+                            <span class="help-prompt"><i class="icon-help-circled icon-single"></i><span class="help-text">Your submissions will not affect the leaderboard.</span></span>
+                        </span>
+                    <% } %>
+                <% } %>
+        </div> <!-- END content--list_body -->
+        <footer class="content--list_footer">
+            <div class="small bold msT pull-left">
+                <% if (model.solved_count && model.total_count) { %>
+                <% if ((model.kind == "code") && ((model.solved_count > 0) || (!model.dynamic))) {  %>
+                    <span class="msR">
+                        <span class="zeta">Submission<% if (model.total_count != 1) { %>s<% } %>: </span>
+                        <%= model.total_count %>
+                    </span>
+                    <span class="msR">
+                        <span class="zeta">Max Score: </span>
+                        <%= model.max_score %>
+                    </span>
+                <% } else { %>
+                    <span class="msR">
+                        <span class="zeta">Submission<% if (model.total_count != 1) { %>s<% } %>: </span>
+                        <%= model.total_count %>
+                    </span>
+                <% } %>
+                <% } %>
+                <% if (!contest || (contest.kind != 'acm' && !contest.hide_difficulty)) {
+                    if (model.difficulty < 0.2) {
+                        model.difficulty_name = "Expert";
+                    } else if (model.difficulty < 0.4) {
+                        model.difficulty_name = "Advanced";
+                    } else if (model.difficulty < 0.6) {
+                        model.difficulty_name = "Difficult";
+                    } else if (model.difficulty < 0.8) {
+                        model.difficulty_name = "Moderate";
+                    } else {
+                        model.difficulty_name = "Easy";
+                    } %>
+                    <span class="mlR"><span class="zeta">Difficulty: </span><%= model.difficulty_name %></span>
+                <% } %>
+
+            </div>
+            <% if(model.can_be_viewed) { %>
+            <a href="<%= baseURL %>" data-slug="<%= model.slug %>"
+               class="btn <%= model.attempted ? 'btn btn-line' : 'btn' %> backbone start pull-right span3"
+               data-analytics="<%= model.attempted? 'TryAgain' : 'SolveChallenge' %>">
+                <%= model.attempted? 'Try Again' : 'Solve Challenge' %>
+            </a>
+            <% } %>
+        </footer>
+    <% } else { %>
+        <%= throbber %>
+    <% } %>
+</div>

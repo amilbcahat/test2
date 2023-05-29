@@ -1,0 +1,145 @@
+<% if (!challenge) { %>
+<div class="container--inner">
+<% } %>
+    <% if(challenge) { %>
+        <% if (contest.slug == "master" && challenge.primary_contest) { %>
+            <div class="pull-right">
+                <span>Show practice</span>
+                <input id="showPractice" type="checkbox" <% if (showPractice) { %> checked="checked" <% } %> >
+            </div>
+            <div class="clearfix"></div>
+        <% } %>
+    <% } else { %>
+        <% if (contest.slug == "master") { %>
+            <p class="alert alert-info">
+                The classic challenges leaderboard is <a href="/classic_leaderboard" target="_blank">here</a>. Read more about the <a href="/blog/introducing-rating-system" target="_blank">change</a>
+            </p>
+        <% } %>
+        <header class="page-title">
+            <h1 class="">Leaderboard</h1>
+        </header>
+    <% } %>
+
+    <section class="leaderboard">
+        <% if (freeze_time_minutes > 0) { %>
+            <div class="row pull-right">
+                <p class="alert alert-info">
+                    The leaderboard will not update in last <%= parseInt(freeze_time_minutes) %> minutes.
+                </p>
+            </div>
+        <% } %>
+        <% if (contest.slug != "master" || challenge || archived) { %> <!-- not rating leaderboard -->
+            <div style="padding-left: 8px; margin-bottom: 10px; margin-top: 10px">
+                <div class="row pull-left filters">
+                    <span>Filter by </span>
+                    <input id="filter-kind" type="text" style="margin-left: 10px">
+                    <% _.each(filters, function(val) { %>
+                        <input id="filter-input-<%= val %>" class="filter-input" type="text" style="display: none; margin-left: 10px; margin-top: 8px; line-height: 27px;" data-filter="<%= val %>">
+                    <% }); %>
+                </div>
+                <div class="clearfix"></div>
+                <div class="tag-group row pull-left" style="display: none;">
+                    <div class="tag-list">
+                        <p class="tag"><a class="close close-btn" data-filter="<%= activeFilter.kind %>" data-value="<%= activeFilter.value %>" style="color: red">x</a><%= decodeURIComponent(_.escape(value)) %></p>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        <% } %>
+
+        <div class="table-wrap">
+            <header>
+            <% if (contest.leaderboard_format == 'acm' && collection.contest_challenges !== undefined) { %>
+                <div class="span-flex-1 text-center">
+                    <p>Rank</p>
+                </div>
+                <div class="span-flex-2">
+                    <p>Team</p>
+                </div>
+                <div class="span-flex-1">
+                    <p>Solved
+                        <span class="help-prompt"><i class="icon-help-circled icon-single"></i><span class="help-text">Total Challenges Solved.</span>
+                    </p>
+                </div>
+                <div class="span-flex-1">
+                    <p>Time
+                        <span class="help-prompt"><i class="icon-help-circled icon-single"></i><span class="help-text">Total time (in minutes) taken to solve the challenges including penalty.</span>
+                    </p>
+                </div>
+                <div class="span-flex-11 text-center">
+                <% if (collection.contest_challenges.length > 0) { %>
+                    <% var challenges_count = collection.contest_challenges.length; %>
+                    <% var width = 100/(challenges_count * 1.0); %>
+                    <% _.each(collection.contest_challenges, function (val, idx) { %>
+                        <div style="width: <%= width %>%; float: left; box-sizing: border-box; margin-left: 0;">
+                            <p><a class="backbone" href="<%= HR.appController.get_current_contest_namespace() %>/challenges/<%= val.slug %>" data-original-title="<%= val.name %>"><%= val.letter %></a></p>
+                            <a href="<%= HR.appController.get_current_contest_namespace() %>/challenges/<%= val.slug %>" class="backbone acm-challenge-balloon" rel="tooltip" data-original-title="<%= val.name %>" style="background-color: <%= val.color %>; margin-left: 0px"></a>
+                        </div>
+                    <% }); %>
+                <% } %>
+                </div>
+            <% } else if (contest.slug == "master" && !challenge && !archived) { %>
+                <div class="span-class-2 text-center">
+                    <p>Rank <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span> </p>
+                </div>
+                <div class="span-flex-8">
+                    <p>User <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span> </p>
+                </div>
+                <div class="span3 text-center">
+                    <p>
+                        Score
+                        <span class="help-prompt">
+                            <i class="icon-help-circled icon--single"></i>
+                            <span class="help-text">Overall rating of the hacker. You can read more about it <a style="color: #0076b9" href='/scoring/ratings' target="blank_">here</a>.</span>
+                        </span>
+                        <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span>
+                    </p>
+                </div>
+                <div class="span-flex-3 text-center">
+                    <p>Title <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span></p>
+                </div>
+                <div class="span-flex-3 text-center">
+                    <p>Country <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span></p>
+                </div>
+            <% } else { %>
+                <% if (show_code) { %>
+                    <% widths = [2, 6, 3, 2, 3]; index = 0; %>
+                <% } else { %>
+                    <% widths = [2, 8, 3, 3]; index = 0; %>
+                <% } %>
+                <div class="span-flex-<%= widths[index] %><% index += 1; %> text-center">
+                    <p>Rank <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span> </p>
+                </div>
+                <div class="span-flex-<%= widths[index] %><% index += 1; %>">
+                    <p>User <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span> </p>
+                </div>
+                <div class="small span-flex-<%= widths[index] %><% index += 1; %>">
+                    <p>Score <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span> </p>
+                </div>
+                <div class="span-flex-<%= widths[index] %><% index += 1; %>">
+                    <p>Country <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span></p>
+                </div>
+                <% if (show_code) { %>
+                    <div class="span-flex-<%= widths[index] %><% index += 1; %>">
+                        <p>Language</p>
+                    </div>
+                <% } %>
+            <% } %>
+            </header>
+
+            <div id="blank-reason-container" class="table-body text-center">
+                <p class="blank-reason plA"></p>
+            </div>
+
+            <div id="leaders" class="table-body">
+            </div>
+        </div>
+
+        <div class="light-wrap clearfix table-wrap text-center self-rank hide" id="leader-self">
+        </div>
+        <div class="pagination-wrap clearfix pagination-wrapper mlT">
+        </div><!--pagination-wrap-->
+    </section><!--.leaderboard-->
+<% if (!challenge) { %>
+</div>
+<% } %>

@@ -1,0 +1,16 @@
+<div class="mdA">
+    <% if (question.answered === false) { %>
+    <div class="common_margin alert alert-block">
+        <center>This candidate has not answered this question.</center>
+    </div>
+    <% } else { %>
+    <pre class="outbox cm-s-default">
+        <% if (question.type == "file_upload") { %>
+        <a href="<%- question.my_answer %>" target="_blank"><%- question.my_answer %></a>
+        <% } else { %>
+        <%- question.my_answer %>
+        <% } %>
+    </pre>
+    <% } %>
+</div>
+<div class="clear"></div>

@@ -1,0 +1,113 @@
+<p class="aside block-margin margin-large">This is basic information
+    that describes your contest. At any time, you can select "preview contest"
+    to see how this content is formatted. If you are
+    concerned about what to place in each input, review the created
+    contests in the contest list.
+</p>
+
+<div class="formgroup horizontal row">
+    <label for="name" class="pull-left span3">Contest Name</label>
+    <div class="block span12 profile-input pull-left">
+        <input id="name" type="text" class="span12 auto-save"/>
+        <small class="error name span12"></small>
+    </div>
+</div>
+
+<% if (action != "create") { %>
+<div class="formgroup horizontal row">
+    <label for="slug" class="pull-left span3">Contest Slug</label>
+    <div class="block span12 profile-input pull-left">
+        <p class="host-name pull-left"><%= document.location.protocol + '//' + document.location.host + '/' %></p>
+        <p class="slug pull-left"><%= model.get('slug') %></p>
+        <p class="pull-left"><input type="text" class="edit-slug" style="display: none;" value="<%= model.get('slug') %>" /></p>
+        <p class="pull-left"><a class="btn btn-text update-slug" style="display: none;">update</a></p>
+        <p class="pull-left"><a class="btn btn-text cancel-update-slug" style="display: none;">cancel</a></p>
+        <p class="pull-left"><a class="btn btn-text edit-slug">edit</a></p>
+        <small class="slug error span12"></small>
+    </div>
+</div>
+<% } %>
+
+<div class="formgroup horizontal row">
+    <label for="slug" class="pull-left span3">Duration</label>
+    <div class="block span12 profile-input pull-left">
+        <div class="row">
+            <div class="span5">
+                <p class="margin-small bottom"><b>Starts</b></p>
+                <input id="startdate" type="text">
+                <p class="input-assist clearfix">
+                    <span class="pull-left">at</span>
+                    <input id="starttime" type="text" class="span6 float-left margin-small left right">
+                    <span class="pull-left"><%= HR.util.timezone_abbr(new Date()) %></span>
+                </p>
+                <p><small class="starttime error"></small></p>
+            </div>
+            <div class="span5">
+                <div class="clearfix">
+                    <p class="margin-small bottom float-left"><b>Ends</b></p>
+                    <div class="float-left padding-large left">
+                        <input class="inline float-left margin-large padding-large left" type="checkbox" id="noendtime"/>
+                        <span class="padding-small left">no end time</span>
+                    </div>
+                </div>
+                <input id="enddate" type="text">
+                <p class="input-assist clearfix">
+                    <span class="pull-left">at</span>
+                    <input id="endtime" type="text" class="span6 float-left margin-small left right">
+                    <span class="pull-left"><%= HR.util.timezone_abbr(new Date()) %></span>
+                </p>
+                <p><small class="endtime error span12"></small></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="formgroup horizontal row">
+    <label for="tagline" class="pull-left span3">Tagline</label>
+    <div class="block span12 profile-input pull-left">
+        <textarea rows="3" class="tagline span12 auto-save"></textarea>
+        <small class="tagline span12 hint">Characters left: <%= model.max_limit.tagline %></small>
+    </div>
+</div>
+
+<div class="formgroup horizontal row">
+    <label for="description" class="pull-left span3">Description</label>
+    <div class="block span12 profile-input pull-left">
+        <div class="markdown-editor-header">
+            <p class="pull-left">Markdown Editor</p>
+            <div class="pull-right">
+                <button class="btn btn-small mkd-cheat-sheet">Cheatsheet</button>
+            </div>
+        </div>
+        <textarea rows="7" class="description span12"></textarea>
+    </div>
+</div>
+
+<% if (action != "create") { %>
+<div class="formgroup horizontal row">
+    <label for="moderator" class="pull-left span3">Moderators</label>
+    <div class="block span12 profile-input pull-left">
+        <input id="moderator" type="text" class="span7 float-left left-half" value=""/><button class="btn moderator-save right-half">Add</button>
+        <small class="moderator span12 hint">Enter moderator's HackerRank username. Moderators can edit this contest.</small>
+    </div>
+</div>
+<div class="formgroup horizontal row">
+    <div class="offset5 span6 moderators-list pull-left">
+        <% if (model.get("hacker_username") != false && model.get("hacker_username") != null) { %>
+        <%= HR.util.genModContainer({
+                name: model.get("hacker_username"),
+                avatar: model.get("hacker_avatar"),
+                role: "owner",
+            }) %>
+        <% } %>
+        <% _.each (model.get('moderators'), function(moderator) { %>
+        <%= HR.util.genModContainer({
+                name: moderator.username,
+                avatar: moderator.avatar,
+                role: "moderator",
+                close: true,
+            }) %>
+        <% }); %>
+    </div>
+</div>
+<% } %>

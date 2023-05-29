@@ -1,0 +1,45 @@
+<div class="challenges-sorted-list">
+    <div class="table-wrap">
+        <header class="row row-flex psL psR">
+            <div class="span-flex-8">
+                Contest
+                <!-- <span class="sort_icons">
+                        <span class="sort-up">&#9650;</span>
+                        <span class="sort-down">&#9660;</span>
+                </span> -->
+            </div>
+            <div class="span-flex-4">
+                Date
+                <!-- <span class="sort_icons">
+                        <span class="sort-up">&#9650;</span>
+                        <span class="sort-down">&#9660;</span>
+                </span> -->
+            </div>
+
+            <div class="span-flex-4">
+                Submissions
+                <!-- <span class="sort_icons">
+                        <span class="sort-up">&#9650;</span>
+                        <span class="sort-down">&#9660;</span>
+                </span> -->
+            </div>
+        </header>
+        <div class="table-body">
+            <% _.each(contests.models, function(contest) { if (contest.get('ended') == true) { %>
+            <div class="row row-flex psL psR">
+                <div class="span-flex-8">
+                    <a href="/<%= contest.get('slug') %>/challenges" class="backbone root"><%- contest.get('name') %></a>
+                </div>
+                <div class="span-flex-4">
+                    <span class="small"><%= $.format.date(new Date(contest.get('epoch_starttime') * 1000), "MMMM yyyy") %></span>
+                </div>
+
+                <div class="span-flex-4">
+                    <span class="small"><%= contest.get('submissions_count') %></span>
+                </div>
+            </div>
+            <% }}) %>
+        </div>
+        <div class="pagination-wrapper"></div> 
+    </div>
+</div>

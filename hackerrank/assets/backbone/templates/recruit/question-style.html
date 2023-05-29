@@ -1,0 +1,109 @@
+<div class="container">
+	<div class="title-name-wrapper">
+		<h1 class="title pull-left">Detecting Valid Latitude and Longitude Pairs</h1>
+		<span class="font20 f-weight-600 pull-right">5 pts</span>
+		<div class="clear"></div>
+	</div>
+	<div class="container--inner">
+
+		<!-- you will use the below div for all the textual contents in the question. example question description, sample input/output -->
+		<div class="span11 challenge-text content-text">
+			<p>Given a line of text which possibly contains the latitude and longitude of a point, can you use regular expressions to identify the latitude and longitude referred to (if any)?</p>
+			<p><strong>Input Format</strong><br>
+				The first line contains an integer N, which is the number of tests to follow.<br>
+				This is followed by N lines of text. Each line contains a pair of co-ordinates which possibly indicate the latitude and longitude of a place.
+			</p>
+			<p><strong>Output Format</strong>  <br>
+				“Valid” where X and Y are the latitude and longitude which you found to be a valid (latitude,longitude) pair.  <br>
+				If the given pair of numbers are not a valid (latitude,longitude) pair, output “Invalid”.
+			</p>
+			<p><strong>Sample Input</strong></p>
+			<pre><code>12 (75, 180)
+				(+90.0, -147.45)
+				(77.11112223331, 149.99999999)
+				(+90, +180)
+				(90, 180)
+				(-90.00000, -180.0000)
+				(75, 280)
+				(+190.0, -147.45)
+				(77.11112223331, 249.99999999)
+				(+90, +180.2)
+				(90., 180.)
+				(-090.00000, -180.0000)
+			</code></pre>
+			<p><strong>Sample Output</strong></p>
+			<pre><code>Valid
+				Valid
+				Valid
+				Valid
+				Valid
+				Valid
+				Invalid
+				Invalid
+				Invalid
+				Invalid
+				Invalid
+				Invalid
+			</code></pre>
+			<br />
+		</div><!-- end challenge-text -->
+		<div class="clear"></div>
+
+		<div class="codeeditor-header-wrapper">
+			<div class="clearfix codeeditor_header">
+				<div class="pull-left btn-group codeeditor_header-buttons">
+					<a href="" class="emacs btn btn-white editor-mode-button" data-editor="emacs">Emacs</a>
+					<a href="" class="default btn btn-white editor-mode-button disabled" data-editor="default">Normal</a>
+					<a href="" class="vim btn btn-white editor-mode-button" data-editor="vim">Vim</a>
+				</div>
+				<a class="fullscreen pull-right active-link codeeditor_header-fullscreen" data-analytics="Switch to fullscreen"><i class="icon-resize-full-alt"></i></a>
+				<a class="restorefullscreen pull-right force-hide active-link codeeditor_header-fullscreenrestore"><i class="icon-resize-small-alt"></i></a>
+				<div class="clearfix pull-right codeeditor_header-language">
+					<p class="pull-left padding-small left">Select Language:</p><span class="hr_tour-select-language pull-left"><div class="select2-container" id="s2id_language-select"><a href="javascript:void(0)" onclick="return false;" class="select2-choice" tabindex="-1">   <span>C</span><abbr class="select2-search-choice-close"></abbr>   <div><b></b></div></a><input class="select2-focusser select2-offscreen" type="text" id="s2id_autogen2"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input">   </div>   <ul class="select2-results">   </ul></div></div><input type="text" id="language-select" tabindex="-1" class="select2-offscreen"></span>
+				</div>
+				<!-- commented out until we find a better solution<a href="" class="revert pull-right btn btn-small btn-white"><i class="icon-back-in-time"></i> Revert Code</a></li>-->
+				<div class="clearfix"></div>
+				<div class="pull-right">
+					<a class="cursor btn btn-text save-code">save code</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="codeeditor-footer-wrapper">
+			<div class="code-checker-sub">
+
+				<div class="pull-right access-buttons">
+
+					<button class="btn btn-white compile" data-analytics="Compile and Test">Compile &amp; Test</button>
+
+					<button class="btn btn-primary submit" data-analytics="Submit Code">Submit Code</button>
+				</div>
+				<div class="pull-left">
+					<button class="btn btn-text upload_file" data-analytics="Upload File"><i class="icon-upload"></i> Upload Code as File</button>
+				</div>
+			</div>
+			<div class="clear"></div>
+			<br>
+		</div>
+
+		<hr></hr>
+
+
+		<!-- below is the style for MCQ questions -->
+		<p class="font20 f-weight-600">PICK ONE OF THE CHOICES</p>
+		<ul class="mcq-question-choices">
+			<li>Isaac</li>
+			<li>John</li>
+			<li>Wesley</li>
+			<li>Big Name</li>
+		</ul>
+
+
+		<hr></hr>
+
+		<!-- below is the text area which you will be using for subjective questions, rewrite sentence, info type -->
+		<textarea rows="10" cols="100">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</textarea>
+	</div><!-- end container-inner -->
+
+
+</div> <!-- end .container -->

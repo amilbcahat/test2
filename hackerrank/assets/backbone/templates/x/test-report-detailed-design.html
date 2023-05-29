@@ -1,0 +1,47 @@
+<div class="mdT mdR">
+  <%  if (question.answered === false && !anysubmissions) { %>
+  <div class="common_margin alert alert-block">
+      <center>This candidate has not answered this question.</center>
+  </div>
+  <% } else { %>
+    <% if (question.answered === false) { %>
+    <div class="common_margin alert alert-block alert-info">
+      <center>No answer was submitted for this question. Showing rendered/autosaved versions.</center>
+    </div>
+    <% } %>
+
+    <% if(tab != 'pdf') { %>
+    <div class="position-relative">
+        <% if (anysubmissions) { %><ul class="nav nav-tabs ungroup js-code-tab"></ul><% } %>
+        <% if (question.submissions.length > 1 ) { %>
+            <div class="code-player" id="code-player">
+                <span class="txt-alt-grey fnt-wt-600">
+                    <i class="icon-menu-large"></i>&nbsp;PLAY CODE
+                </span>
+                <div class="code_play_slide_wrap" style="display: none">
+                    <div class="timeline-slider-wrapper msT">
+                        <div class="slider" style="width:220px;"></div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+    <% } %>
+    <% if (anysubmissions) { %>
+        <% if(tab == 'pdf') { %>
+        <div class="js-code-pdf"></div>
+        <% } else { %>
+        <div class="tab-content js-code-content"></div>
+        <% } %>
+        <div class="clearfix grey-header rendered-output-title hidden cap plL plR psT psB mmL span16">
+            <p class="f-weight-600">Rendered Output:</p>
+        </div>
+        <div class="span16 js-rendered-data-loading hidden pjT light-wrap mmL" style="height:600px;">
+            <div style='background: url(https://d3rpyts3de3lx8.cloudfront.net/hackerrank/hackerrank_spinner_64x64.gif); height: 64px; width: 64px; display:block; margin: auto'></div>
+        </div>
+        <iframe class="mmL span16 no-padding hidden js-rendered-data light-wrap" height="600px"></iframe>
+    <% } %>
+<% } %>
+</div>
+
+<div class="clear"></div>

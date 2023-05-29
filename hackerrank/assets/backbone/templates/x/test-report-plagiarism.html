@@ -1,0 +1,23 @@
+<div>
+    <table width="100%">
+        <tr>
+            <td>
+                <strong>Plagiarism possibility: </strong>
+                    <% if (similarity > 90) { %>
+                        Very high
+                    <% } else if (similarity > 80) { %>
+                        High
+                    <% } else { %>
+                        Low
+                    <% } %>
+            </td>
+            <td>
+                <strong>Text similarity</strong>
+                <%= similarity.toFixed(2) %>%
+
+            </td>
+        </tr>
+    </table>
+    <div class='plagiarism-diff'>
+    </div>
+</div>

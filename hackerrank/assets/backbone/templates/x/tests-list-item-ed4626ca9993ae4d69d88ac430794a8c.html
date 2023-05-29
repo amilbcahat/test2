@@ -1,0 +1,25 @@
+<div class="row no-margin">
+    <div class="span-xs-16 span-md-10 pdA">
+        <a href="#" class="pull-left mmR txt-grey js-toggle-star">
+            <i class="icon-star"></i>
+        </a>
+        <div class="pull-left">
+            <a href="/x/tests/<%- model.id %>/questions" class="js-backbone fnt-wt-600 txt-green"><%- model.name %></a>
+            <div class="fnt-sz-small">
+                <span class="fnt-wt-600"><%- model.duration %></span>&nbsp;minute test with&nbsp;<span class="fnt-wt-600"><%- model.questions_count %></span>&nbsp;questions
+            </div>
+        </div>
+    </div>
+    <div class="span-xs-8 span-md-3 hide-in-xs pdA ">
+        <div class="all-test-options">
+            <a href="/x/tests/<%- model.id %>/invite" class="js-backbone test-option fnt-wt-600"><i class="icon2-invitecandidates"></i>INVITE</a>
+            <a href="#" class="test-option pull-right"><strong class="txt-navy">35</strong>&nbsp;invited</a>
+        </div>
+    </div>
+    <div class="span-xs-8 span-md-3 hide-in-xs pdA">
+        <div class="all-test-options">
+            <a href="/x/tests/<%- model.id %>/candidates" class="js-backbone test-option fnt-wt-600"><i class="icon2-invitecandidates"></i>REPORTS</a>
+            <a href="#" class="test-option pull-right"><strong class="txt-navy">35</strong>&nbsp;completed</a>
+        </div>
+    </div>
+</div>

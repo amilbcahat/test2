@@ -1,0 +1,23 @@
+<div class="content_wrap mid">
+    <div class="content--inline padded">
+    <% if(model.statistics) { %> 
+    <hr>
+    <h2 class="text-center">Statistics</h2> 
+    <hr>
+    <% statistics_json = JSON.parse(model.statistics) %>
+    <h4 class="span13 block-center ">Total Participation = <%= statistics_json.contest_participation%> </h4><br>
+    <h4 class="span13 block-center ">Total submissions for this challenge = <%= statistics_json.challenge_submissions%> (<%= ((statistics_json.challenge_submissions*100)/statistics_json.contest_participation).round(2) %>%)</h4><br>
+    <h4 class="span13 block-center ">Total successful submissions for this challenge = <%= statistics_json.successful_submissions%> (<%= ((statistics_json.successful_submissions*100)/statistics_json.challenge_submissions).round(2) %>%)</h4>
+    <hr>
+    <%}%>
+
+    <% if(model.draft) { %> <h2 class="text-center">THIS POST IS STILL A DRAFT.</h2> <%}%>
+    <% if(model._data.difficulty) { %> <h4 class="text-left"> Difficulty : <%= model._data.difficulty %> </h4> <%}%>
+    <% if(model._data.required_knowledge) { %> <h4 class="text-left"> Required Knowledge : <%= model._data.required_knowledge %> </h4> <%}%>
+    <% if(model._data.time_complexity) { %> <h4 class="text-left"> Time Complexity : <%= model._data.time_complexity %> </h4> <%}%>
+    <% if(model._data.approach) { %> <h4 class="text-left"> Approach : <%= model._data.approach %> </h4> <%}%>
+    <% if(model._data.setter_code) { %> <h4 class="text-left"> Problem Setter's Code : <%= model._data.setter_code %> </h4> <%}%>
+    <% if(model._data.tester_code) { %> <h4 class="text-left"> Problem Tester's Code : <%= model._data.tester_code %> </h4> <%}%>
+
+    </div>
+</div>

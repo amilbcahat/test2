@@ -1,0 +1,527 @@
+body {
+    background-color: #fff;
+}
+#HackerRankFreeTrialLp {}
+#HackerRankFreeTrialLp .ha-header-small {
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(179,179,179,1);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(179,179,179,1);
+    box-shadow: 0px 3px 5px 0px rgba(179,179,179,1);
+}
+#Header {
+    background-color: #FFFFFF;
+    position: fixed;
+    width: 100%;
+    z-index: 2000;
+    top: 0px;
+     z-index: 999999;
+}
+#Header .container a.logo {
+    background: url("../img/hacker-rank-free-trial-lp-logo-img.jpg") center center no-repeat;
+    width: 240px;
+    height: 91px;
+    text-indent: -999px;
+}
+#Header a.learn-more {
+    color: #39424e;
+    float: left;
+    height: 44px;
+    text-align: center;
+    width: 158px;
+    border-radius: 6px 6px 6px 6px;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border: 2px solid #2ab960;
+    font: 400 20px/38px 'Roboto', sans-serif;
+    margin-top: 22px;
+    margin-right: 19px;
+}
+#Header a.learn-more:hover {
+    text-decoration: none;
+    color: #2AB960;
+    border: 2px solid #2AB960;
+}
+#Header a.free-trial {
+    color: #ffffff;
+    float: left;
+    height: 44px;
+    text-align: center;
+    width: 172px;
+    font: 400 20px/40px 'Roboto', sans-serif;
+    margin-top: 22px;
+    background-color: #2AB960;
+    border-radius: 6px 6px 6px 6px;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border-bottom: 4px solid #0d7b36;
+}
+#Header a.free-trial:focus {
+    border-bottom: 0 none;
+    height: 40px;
+    margin-top: 26px;
+    text-decoration: none;
+}
+#Header a.free-trial:hover {
+    text-decoration: none;
+}
+#Slider {
+    margin-top: 91px;
+    background: url("../img/header-bg.jpg") center top;
+    height: 579px;
+}
+#Slider .container {
+    background: url("../img/header-image.png") no-repeat right top;
+    height: 579px;
+}
+#Slider h1 {
+    color: #FFFFFF;
+    font: 400 46px/62px 'Roboto', sans-serif;
+    margin: 67px 0 0 0;
+    padding: 0 0 20px 0;
+}
+#Slider h2 {
+    color: #FFFFFF;
+    font: 400 30px/38px 'Roboto', sans-serif;
+    margin: 12px 0 0 0;
+    padding: 0;
+}
+#HackerRankFreeTrialLpContent {
+    padding: 47px 0 79px 0;
+    background: url("../img/hacker-rank-free-trial-lp-horizontal-line-content-img.jpg") center bottom no-repeat;
+    background-size: 100%;
+}
+#HackerRankFreeTrialLpContent .source-bigger-better-content {
+    padding: 30px 0 0 30px;
+}
+#HackerRankFreeTrialLpContent .reduce-time-content {
+    padding: 0px 0 0 50px;
+}
+#HackerRankFreeTrialLpContent .margin-top {
+    margin-top: 80px;
+}
+#HackerRankFreeTrialLpContent .margin-top-a {
+    margin-top: 49px;
+}
+#HackerRankFreeTrialLpContent h2 {
+    display: block;
+    font: 300 30px/34px 'Roboto', sans-serif;
+    color: #000000;
+    margin: 0px auto 19px;
+}
+#HackerRankFreeTrialLpContent p {
+    display: block;
+    font: 300 18px/22px 'Roboto', sans-serif;
+    color: #000;
+    margin: 18px auto;
+}
+#HackerRankFreeTrialLpSlider {
+    background-color: #ffffff;
+    padding-top: 20px;
+}
+#HackerRankFreeTrialLpSlider .bx-controls-direction, #HackerRankFreeTrialLpSlider .bx-controls-auto {
+    display: none;
+}
+#HackerRankFreeTrialLpSlider .bx-viewport {
+    box-shadow: none;
+}
+#HackerRankFreeTrialLpSlider img.logo-slider {
+    float: left;
+}
+#HackerRankFreeTrialLpSlider .descriptions img {
+    display: inline-block;
+}
+#HackerRankFreeTrialLpSlider .descriptions {
+    float: left;
+    padding-left: 50px;
+    width: 79%;
+}
+#HackerRankFreeTrialLpSlider .vmware .descriptions {
+    float: left;
+    position: relative;
+}
+#HackerRankFreeTrialLpSlider .descriptions p {
+     padding: 30px 21px 37px 42px;
+    font: 300 18px/22px 'Roboto', sans-serif;
+    float: left;
+}
+#HackerRankFreeTrialLpSlider .descriptions span.start-quotes {
+    float: left;
+    left: 20px;
+    position: absolute;
+    top: 16px;
+    z-index: 2;
+}
+#HackerRankFreeTrialLpSlider .descriptions span.end-quotes {
+    width: 57px;
+    height: 45px;
+    padding: 10px 0 0 10px;
+    background: url("../img/double-quotes-end-img.png") no-repeat 0 0;
+    font-size: 0;
+    display: inline-block;
+}
+#HackerRankFreeTrialLpSlider .bx-pager {
+    display: block;
+    float: none;
+    margin: -18px auto 0;
+    padding: 0;
+    position: relative;
+    width: 70px;
+}
+#HackerRankFreeTrialLpSlider .bx-wrapper {
+    margin: 0 auto 43px;
+}
+#HackerRankFreeTrialLpSlider .bx-wrapper .bx-pager.bx-default-pager a {
+    background: url("../img/hacker-rank-free-trial-lp-pagination-bg-img.jpg") 0 -11px no-repeat;
+    margin: 0 2px;
+}
+#HackerRankFreeTrialLpSlider .bx-wrapper .bx-pager.bx-default-pager a.active {
+    background: url("../img/hacker-rank-free-trial-lp-pagination-bg-img.jpg") 0 0 no-repeat;
+}
+/** RESET AND LAYOUT
+===================================*/
+
+.bx-wrapper {
+    position: relative;
+    margin: 0 auto 60px;
+    padding: 0;
+    *zoom: 1;
+}
+.bx-wrapper img {
+    max-width: 100%;
+    display: block;
+}
+/** THEME
+===================================*/
+
+.bx-wrapper .bx-viewport {
+    -moz-box-shadow: 0 0 5px #ccc;
+    -webkit-box-shadow: 0 0 5px #ccc;
+    box-shadow: 0 0 5px #ccc;
+    border: 5px solid #fff;
+    left: -5px;
+    background: #fff;
+    /*fix other elements on the page moving (on Chrome)*/
+    -webkit-transform: translatez(0);
+    -moz-transform: translatez(0);
+    -ms-transform: translatez(0);
+    -o-transform: translatez(0);
+    transform: translatez(0);
+}
+.bx-wrapper .bx-pager, .bx-wrapper .bx-controls-auto {
+    position: absolute;
+    bottom: -30px;
+    width: 100%;
+}
+/* LOADER */
+
+.bx-wrapper .bx-loading {
+    min-height: 50px;
+    background: url("../img/bx_loader.gif") center center no-repeat #fff;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+}
+/* PAGER */
+
+.bx-wrapper .bx-pager {
+    text-align: center;
+    font-size: .85em;
+    font-family: Arial;
+    font-weight: bold;
+    color: #666;
+    padding-top: 20px;
+}
+.bx-wrapper .bx-pager .bx-pager-item, .bx-wrapper .bx-controls-auto .bx-controls-auto-item {
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+}
+.bx-wrapper .bx-pager.bx-default-pager a {
+    background: #666;
+    text-indent: -9999px;
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    outline: 0;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+.bx-wrapper .bx-pager.bx-default-pager a:hover, .bx-wrapper .bx-pager.bx-default-pager a.active {
+    background: #000;
+}
+/* DIRECTION CONTROLS (NEXT / PREV) */
+
+.bx-wrapper .bx-prev {
+    left: 10px;
+    background: url("../img/controls.png") no-repeat 0 -32px;
+}
+.bx-wrapper .bx-next {
+    right: 10px;
+    background: url("../img/controls.png") no-repeat -43px -32px;
+}
+.bx-wrapper .bx-prev:hover {
+    background-position: 0 0;
+}
+.bx-wrapper .bx-next:hover {
+    background-position: -43px 0;
+}
+.bx-wrapper .bx-controls-direction a {
+    position: absolute;
+    top: 50%;
+    margin-top: -16px;
+    outline: 0;
+    width: 32px;
+    height: 32px;
+    text-indent: -9999px;
+    z-index: 9999;
+}
+.bx-wrapper .bx-controls-direction a.disabled {
+    display: none;
+}
+/* AUTO CONTROLS (START / STOP) */
+
+.bx-wrapper .bx-controls-auto {
+    text-align: center;
+}
+.bx-wrapper .bx-controls-auto .bx-start {
+    display: block;
+    text-indent: -9999px;
+    width: 10px;
+    height: 11px;
+    outline: 0;
+    background: url("../img/controls.png") -86px -11px no-repeat;
+    margin: 0 3px;
+}
+.bx-wrapper .bx-controls-auto .bx-start:hover, .bx-wrapper .bx-controls-auto .bx-start.active {
+    background-position: -86px 0;
+}
+.bx-wrapper .bx-controls-auto .bx-stop {
+    display: block;
+    text-indent: -9999px;
+    width: 9px;
+    height: 11px;
+    outline: 0;
+    background: url("../img/controls.png") -86px -44px no-repeat;
+    margin: 0 3px;
+}
+.bx-wrapper .bx-controls-auto .bx-stop:hover, .bx-wrapper .bx-controls-auto .bx-stop.active {
+    background-position: -86px -33px;
+}
+/* PAGER WITH AUTO-CONTROLS HYBRID LAYOUT */
+
+.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-pager {
+    text-align: left;
+    width: 80%;
+}
+.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-controls-auto {
+    right: 0;
+    width: 35px;
+}
+/* IMAGE CAPTIONS */
+
+.bx-wrapper .bx-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #666\9;
+    background: rgba(80, 80, 80, 0.75);
+    width: 100%;
+}
+.bx-wrapper .bx-caption span {
+    color: #fff;
+    font-family: Arial;
+    display: block;
+    font-size: .85em;
+    padding: 10px;
+}
+
+#HackerRankFreeTrialLpSectionTitle img, #HackerRankFreeTrialLpSignUp img {
+     display: inline-block;
+}
+#HackerRankFreeTrialLpSignUp {
+    background-color: #48545f;
+    padding: 0 0 30px 0;
+}
+#HackerRankFreeTrialLpSectionTitle {
+    background: url("../img/hacker-rank-free-trial-lp-section-title-bg-img.jpg") 0 0 repeat-x #fff;
+    padding: 40px 0 0 0;
+}
+#HackerRankFreeTrialLpSectionTitle h2 {
+    font: 300 34px/130% 'Roboto', sans-serif;
+    color: #39424e;
+    padding-bottom: 20px;
+    margin: 0px;
+    text-align: center;
+}
+#HackerRankFreeTrialLpSectionTitle li {
+    font: 300 18px/20px 'Roboto', sans-serif;
+    color: #2ab960;
+    padding-bottom: 0px;
+    margin: 0px;
+    text-align: center;
+}
+#HackerRankFreeTrialLpSectionTitle li span {
+    color: #39424E;
+}
+#HackerRankFreeTrialLpSectionTitle  .bx-wrapper .bx-viewport {
+    background: none;
+    border: none;
+    box-shadow: none;
+    left: 0;
+}
+#HackerRankFreeTrialLpSectionTitle .bx-wrapper {
+    margin: 0;
+    padding: 0;
+}
+#HackerRankFreeTrialLpSectionTitle .bx-wrapper .bx-pager {
+    margin: 0;
+    padding: 0;
+    bottom: 50px;
+}
+#HackerRankFreeTrialLpSectionTitle .bx-wrapper .bx-controls-direction a {
+    width: 32px;
+    height: 50px;
+}
+#HackerRankFreeTrialLpSectionTitle .bx-wrapper .bx-prev {
+    background: url("../img/slider-arrow-left.png") no-repeat 0 0 ;
+}
+#HackerRankFreeTrialLpSectionTitle .bx-wrapper .bx-next {
+    background: url("../img/slider-arrow-right.png") no-repeat 0 0 ;
+}
+#HackerRankFreeTrialLpSectionTitle .bx-wrapper .bx-pager.bx-default-pager a {
+    background: url("../img/hacker-rank-free-trial-lp-pagination-bg-img.jpg") 0 -11px no-repeat;
+}
+#HackerRankFreeTrialLpSectionTitle .bx-wrapper .bx-pager.bx-default-pager a.active {
+    background: url("../img/hacker-rank-free-trial-lp-pagination-bg-img.jpg") 0 0 no-repeat;
+}
+#HackerRankFreeTrialLpSignUp h2 {
+    text-align: center;
+    color: #ffffff;
+    font: 300 48px/50px 'Roboto', sans-serif;
+    margin-top: 40px
+}
+
+#HackerRankFreeTrialLpSignUp h3 {
+    text-align: center;
+    color: #c0cdd9;
+    font: 300 18px/20px 'Roboto', sans-serif;
+    padding: 0;
+    margin: 0 0 30px 0;
+}
+#HackerRankFreeTrialLpFooter {
+    background-color: #ffffff;
+}
+#HackerRankFreeTrialLpFooter img {
+    margin: 0px auto;
+    display: block;
+}
+
+/* Hacker Rank Form STyles Begin */
+#HackerRankForm {
+    margin: 0;
+    padding: 0;
+}
+
+#HackerRankForm label {
+    font: 300 18px/20px 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0 0 10px 0 ;
+    color: #fff;
+    display: block;
+}
+#HackerRankForm input[type="text"], #HackerRankForm input[type="password"] {
+    width: 100%;
+    background: #fff;
+    margin: 0 0 30px 0;
+    padding: 0px 10px;
+    color: #333;
+    display: block;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: none;
+    font: 300 18px/40px 'Roboto', sans-serif;
+}
+
+#HackerRankForm select {
+    width: 100%;
+    background: #fff;
+    margin: 0 0 30px 0;
+    padding: 0px 10px;
+    height: 40px;
+    color: #333;
+    display: block;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: none;
+    font: 300 18px/40px 'Roboto', sans-serif;
+}
+
+#HackerRankForm .form-cta-row {
+    text-align: center;
+}
+#HackerRankForm .submit-cta {
+    width: 250px;
+    height: 57px;
+    font: 400 30px/54px 'Roboto', sans-serif;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 22px;
+    background-color: #2AB960;
+    border-radius: 6px 6px 6px 6px;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border-bottom: 4px solid #0d7b36;
+    border-top: medium none;
+    border-left: medium none;
+    border-right: medium none;
+}
+#HackerRankForm .submit-cta:hover {
+    text-decoration: none;
+    border-bottom: 4px solid #2AB960;
+}
+#HackerRankFreeTrialLpSignUp .form-heading {
+    position: relative;
+    width: 96%;
+    padding-left: 10%;
+}
+#HackerRankForm .form-row {
+    position: relative;
+    width: 98%;
+    padding-left: 10%;
+}
+#HackerRankForm .form-row-cta {
+    position: relative;
+    width: 96%;
+    padding-left: 10%;
+}
+#HackerRankForm span.validation_error {
+    background-image: url("../img/arrow_error.png");
+    background-repeat: no-repeat;
+    border-color: #ed541d #cbaa0e #ed541d #ed541d;
+    border-right: 1px solid #cbaa0e;
+    font-size: 12px;
+    padding: 7px 13px 7px 20px;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+
+#HackerRankFreeTrialLpSignUp .form-policy-text {
+    font: 300 14px/20px 'Roboto', sans-serif;
+    color: #a8b5c0;
+    margin: 0;
+    padding: 10px 0 ;
+    text-align: center;
+
+}
+#HackerRankFreeTrialLpSignUp .form-policy-text a {
+    text-decoration: underline;
+    color: #fff;
+}
+/* Hacker Rank Form STyles End */

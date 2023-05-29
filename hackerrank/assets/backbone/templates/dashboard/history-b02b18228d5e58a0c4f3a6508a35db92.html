@@ -1,0 +1,9 @@
+<div class="history-chart">
+  <!-- Chart will be filled in overtop of this message. -->
+  <% if ( model.id === HR.profile().get('id') ) { %>
+      <p class="block-margin text-center">Solve your first challenge to see your progress graph.</p>
+      <p class="text-center"><a href="/categories" class="btn btn-primary profile_blankstate-btn backbone">View Challenges</a></p>
+  <% } else { %>
+      <p class="block-margin text-center"><%= model.username %> has not solved any challenges yet.</p>
+  <% } %>
+</div>

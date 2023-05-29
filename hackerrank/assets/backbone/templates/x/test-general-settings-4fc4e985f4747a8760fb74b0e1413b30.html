@@ -1,0 +1,48 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL"><%- model.name %></h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>General Settings</h3>
+</div>
+<div class="overflow-content" id="control-overflow">
+    <div class="mjA">
+        <p class="pdB">
+            These are the instructions that will be shown to the candidates before they start the test.
+        </p>
+        <form name="test-general-settings-form">
+            <div class="row no-margin">
+                <div class="span-xs-16 span-md-8">
+                    <label>TEST NAME</label>
+                    <input type="text" class="wide" value="<%- model.name %>" name="test-name">
+                </div>
+                <div class="span-xs-16 span-md-8">
+                    <label>TEST DURATION (min)</label>
+                    <input type="text" value="<%- model.duration %>" name="duration">
+                </div>
+            </div>
+
+            <div class="row no-margin plT">
+                <div class="span-xs-16 span-md-16">
+                    <label>TEST INSTRUCTIONS</label>
+                    <!-- ckeditor here -->
+                    <textarea class="editor_width texteditor" name="test-instructions" id="test-instructions" style="width: 100%"><%= model.instructions %></textarea>
+                </div>
+            </div>
+
+            <div class="row no-margin plT">
+                <div class="span-xs-16 span-md-16">
+                    <button type="submit" class="btn btn-primary btn-mid">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!--IMPORTANT: USE ONLY BUTTONS IN THIS DIV. This div should stay at the bottom of the contents in this .overflow-content div, no matter what -->
+    <!--
+    <div id="responsive-bottom-holder" class="responsive-bottom-holder text-center">
+        <a href="#" class="btn btn-primary btn-mid">Add from library</a>
+        <span class="alt-grey mlA">or</span>
+        <a href="#" class="btn btn-mid">Create new question</a>
+    </div>
+    -->
+</div>
+
+<!-- <div id="responsive-bottom-placeholder" class="responsive-bottom-holder text-center"></div> -->

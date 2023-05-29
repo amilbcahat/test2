@@ -1,0 +1,21 @@
+<% var confirmed = model.get('confirmed');
+   var primary = model.get('primary'); %>
+<span class="plR mlR span5 email-text"><%= model.get('email') %></span>
+
+<% if (confirmed) { %>
+    <span class="label label-info">verified</span>
+<% } else { %>
+    <a class="btn btn-link cursor settings_email_resend_verification">Resend verification email</a>
+<% } %>
+
+<% if (primary) { %>
+    <span class="label label-success">primary</span>
+<% } %>
+
+<% if (!primary) { %>
+    <% if (confirmed) { %>
+        <a class="btn btn-link cursor settings_email_make_primary">Make primary</a>
+    <% } else { %>
+    <% } %>
+    <a class="btn btn-link cursor settings_email_remove">Remove</a>
+<% } %>

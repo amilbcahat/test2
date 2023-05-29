@@ -1,0 +1,2 @@
+HR.appController.addTemplate("backbone/templates/compile-test",function(obj){{var __p="";Array.prototype.join}with(obj||{})__p+='<div class="container">\n  <div class="game-container-wrapper"></div>\n</div>\n';return __p});
+//# sourceMappingURL=compile-test-e1575c26523bb5899a6ea1503b8378c8.js.map

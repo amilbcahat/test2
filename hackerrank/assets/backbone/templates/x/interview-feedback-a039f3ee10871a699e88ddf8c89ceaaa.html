@@ -1,0 +1,29 @@
+<h4>FEEDBACK</h4>
+<% feedback = model.feedback || feedback || '' %>
+<div class="row-fluid mdT">
+    <div class="span11 no-padding">
+        <span class="js-show-feedback-section"><pre class="psA"><% if (feedback) { %><%- feedback %><% } else { %>No feedback has been given so far.<% } %></pre></span>
+        <span class="js-edit-feedback-section hidden">
+            <textarea id="" name="feedback" rows="3" class="txt_box fw" placeholder="Type your feedback."><%- model.feedback || feedback || '' %></textarea>
+        </span>
+    </div>
+    <div class="span5 pull-right">
+        <span class="js-show-feedback-buttons pull-right">
+            <div class="span5 pull-right">
+                <% if (model.interviewers && model.interviewers.length > 0) { %>
+                <% interviewer = model.interviewers[0] %>
+                <% if (interviewer.name || interviewer.email) { %>
+                <h5 class="pull-right txt-alt-dark-grey mdB">Interviewed by: <% interviewer = model.candidates[0] %><%- interviewer.name || interviewer.email %></h5>
+                <% } %>
+                <% } %>
+            </div>
+            <div class="span5 pull-right">
+                <button class="btn js-edit-feedback pull-right">Edit feedback</button>
+            </div>
+        </span>
+        <span class="js-edit-feedback-buttons hidden">
+            <button style="width:100px;" class="btn js-feedback-cancel">Cancel</button><br/>
+            <button style="width:100px;" class="btn btn-primary mmT js-save-feedback">Save</button>
+        </span>
+    </div>
+</div>

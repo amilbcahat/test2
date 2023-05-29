@@ -1,0 +1,15 @@
+<div>
+    <br>
+    <p class="m">Are you sure you want to delete this testcase?</p>
+    <p class="m">
+        <b>input<%= (test_case_index/100).toFixed(2).split(".")[1] %>.txt (<%= _test_case.h_input_size || 'N/A' %>) |
+        output<%= (test_case_index/100).toFixed(2).split(".")[1] %>.txt (<%= _test_case.h_output_size || 'N/A' %>)</b>
+    </p>
+    <p class="m">This operation can't be undone.</p>
+    <br>
+    <p class="text-center">
+        <button class="btn btn-large delete-testcase">Delete</button>
+        <span class="nb-spacing">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button class="btn btn-large dont-delete">Cancel</button>
+    </p>
+</div>

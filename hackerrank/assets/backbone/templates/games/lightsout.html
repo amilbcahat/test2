@@ -1,0 +1,43 @@
+<style>
+    .moves {
+        width: 200px;
+        margin: auto;
+        border: 1px solid #333;
+        margin-bottom: 20px;
+    }
+    .moves td {
+        width: 100px;
+        border: 1px solid #333;
+    }
+    .moves tr {
+        border: 1px solid #333;
+    }
+    .lightsout-off {
+        background-position: 0 0;
+        background-image: url('/assets/lightsout.png');
+        width: 32px;
+        height: 32px;
+    }
+    .lightsout-on {
+        background-position: 0 -42px;
+        background-image: url('/assets/lightsout.png');
+        width: 32px;
+        height: 32px;
+    }
+
+</style>
+<div>
+    <div class="game-grid" style="display: block; margin: auto; border-radius: 10px;">
+        <% var rows = 8; %>
+        <% var columns = 8; %>
+        <table style="margin: 20px auto;">
+            <% for (i = 0; i < rows; i++) { %>
+            <tr style="background-color: #ddd;">
+                <% for (j = 0; j < columns; j++) { %>
+                   <td class="m <%= i %>-<%= j %> lightsout-off"></td>
+                <% } %>
+            </tr>
+            <% } %>
+        </table>
+    </div>
+</div>

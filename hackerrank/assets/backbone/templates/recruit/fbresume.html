@@ -1,0 +1,85 @@
+    <div>
+        <center>
+            <h2 class="headline"><%- test.name %></h2>
+            <h3 class="msT"><%- data.name %></h3>
+            <div class="sub-headline">
+                <span class="icon-mail"></span><span class="grey"><%- data.email %></span>
+                <%if(data.location){%>
+                <span class="mdL icon-location"></span><span class="grey"><%- data.location.name %></span>
+                <%}%>
+            </div> <!-- .sub-headline -->
+
+        </center>
+        <div class="white-grid-block main-content">
+            <h3 class="msB">PROFILE</h3>
+            <textarea class="fw tall resizex userprofile" placeholder="Enter a brief description about you here."></textarea>
+            <h3 class="mlT msB">PROFESSIONAL EXPERIENCE</h3>
+            <%if(data.work){ %>
+            <div class="table-wrap">
+            <header class="row">
+                <div class="span8">Position</div>
+                <div class="span2">Year</div>
+            </header>
+            <div class="table-body">
+              <%_.each(data.work, function(w){%>
+              <div class="row">
+                <div class="span8"><%if(w.position){%><%-w.position.name%><%}%>
+                <span class="grey">
+                <%if(w.employer){%> <%-w.employer.name%><%}%>
+                <%if(w.location){%> (<em><%-w.location.name%></em>)<%}%>
+                </span>
+                </div>
+                <div class="span2"><%if(w.start_date){%><%-w.start_date%><%}%>
+                <%if(w.end_date){%>&mdash;<%-w.end_date%><%}%>
+                </div>
+              </div>
+              <%});%>
+            </div></div>
+            <%}else{%>
+              <span class="grey"><em>None found.</em></span>
+            <%}%>
+            <div class="soft-divider mjB"></div>
+            <h3 class="mlT msB">EDUCATION</h3>
+            <%if(data.education){ %>
+            <div class="table-wrap">
+            <header class="row">
+                <div class="span8">Class</div>
+                <div class="span2">Year</div>
+            </header>
+            <div class="table-body">
+              <%_.each(data.education, function(e){%>
+              <div class="row">
+                <div class="span8"><%if(e.school){%><%-e.school.name%><%}%>
+                <span class="grey">
+                <%if(e.type){%> (<em><%-e.type%></em>)<%}%>
+                </span>
+                </div>
+                <div class="span2"><%if(e.year){%><%-e.year.name%><%}else{%><span class="grey">&mdash;</span><%}%>
+                </div>
+              </div>
+              <%});%>
+            </div></div>
+            <%}else{%>
+              <span class="grey"><em>None found.</em></span>
+            <%}%>
+            <div class="soft-divider mjB"></div>
+            <center>
+            <button class="btn mdB btn-primary btn-large btn-blue starttest"><i class="mdR icon--single icon-facebook"></i>Confirm resume &amp; start test</button>
+            </center>
+        </div>
+
+        <center>
+            <div class="block">
+            <img class="mlT" src="/assets/brand/powered_by_transparent.png" />
+            <% if (test.logged_in && test.attempt_done) { %>
+                <p class="text-center txt-alt-grey">
+                    Love Programming challenges? </br>
+                    Find more problems and contests at <strong><a href="https://www.hackerrank.com/" class="txt-alt-grey">www.hackerrank.com</a></strong>
+                </p>
+
+            <% } %>
+            </div>
+        </center>
+
+    </div><!-- end .row -->
+    <div id="fb-root"></div>

@@ -1,0 +1,74 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL">Settings</h3>
+
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Team Management</h3>
+</div>
+<div class="overflow-content" id="control-overflow">
+    <% _.each(collection.models, function (model) { %>
+        <% model = model.toJSON() %>
+        <table width="100%" style="width:94%; margin:30px auto;" class="table table-radius table-out-border fnt-sz-mid">
+            <thead>
+            <tr class="prominent txt-alt-grey">
+                <th colspan="3" class="font18 font-w-600 font-clr-black">
+                    <span style="position:relative; top:-6px; left:8px;">
+                        <%= model.name %>
+                    </span>
+                </th>
+                <% if (model.edit) { %>
+                <th>
+                    <a href="javascript:;" class="pull-right btn btn-small add-usr-team" data-team-id="<%= model.id %>">
+                        <i class="icon-plus"></i>&nbsp;Add team member
+                    </a>
+                </th>
+                <th>
+                    <a href="javascript:;" style="position:relative; top:-4px; padding-right:8px;"
+                       data-team-id='<%= model.id %>' class="pull-right txt-alt-grey-dark edit-team-link">
+                        <i class="icon-cog"></i>
+                    </a>
+                </th>
+                <% } %>
+            </tr>
+            </thead>
+
+            <% _.each(model.users, function(user) { %>
+                <% user = user.toJSON() %>
+                <tr>
+                    <td width="25%" class="txt-green">
+                        <span class="msA display-block">
+                            <%= user.firstname + ' ' + user.lastname %>
+                        </span>
+                    </td>
+                    <td width="25%">
+                        <span class="msA display-block">
+                            <%= user.email %>
+                        </span>
+                    </td>
+                    <td width="10%">
+                        <span class="msA display-block">
+                            <%= user.role %>
+                        </span>
+                    </td>
+                    <td width="20%"></td>
+                    <% if (model.edit) { %>
+                        <td width="20%">
+                            <a href="javascript:;"
+                               data-id='<%= user.id %>'
+                               data-team-id='<%= model.id %>'
+                               class="btn pull-right edit-usr-team">Edit User</a>
+                        </td>
+                    <% } %>
+                </tr>
+            <% }) %>
+
+        </table>
+
+    <% }) %>
+    <% if (collection.permission == 'owner') { %>
+    <div class="row no-margin plT">
+        <div class="span-xs-16 span-md-16">
+            <button type="submit" id="add-new-team" class="btn btn-primary btn-mid">Create New Team</button>
+        </div>
+    </div>
+    <% } %>
+    <div class="dialog-wrapper"></div>
+</div>

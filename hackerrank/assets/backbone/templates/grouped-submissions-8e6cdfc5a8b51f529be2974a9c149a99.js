@@ -1,0 +1,12 @@
+HR.appController.addTemplate("backbone/templates/grouped-submissions", function(obj) {
+{
+var __t, __p = "";
+Array.prototype.join;
+}
+with (obj || {}) __p += '<section class="submissions container">\n  <div class="padded">\n    <header class="page_title clearfix">\n\n      <h1 class="pull-left">Submissions</h1>\n\n      <h3 class="page_title-subtitle">\n          ', 
+collection.challenge && collection.challenge.get("name") && (__p += "for " + (null == (__t = collection.challenge.get("name")) ? "" :__t)), 
+__p += '\n      </h3>\n\n      <div class="margin-small top pull-right btn-group submissions_filters-buttons">\n        <!-- strip trailing slash -->\n        <a href=' + (null == (__t = collection.pageURL() + "all") ? "" :__t) + '  class="backbone btn btn-white"><span class="icon-text">Sort by Date</span></a>\n        <a href=' + (null == (__t = collection.pageURL() + "grouped") ? "" :__t) + ' class="backbone btn btn-white active"><span class="icon-text">Sort by Challenge</span></a>\n      </div>\n    </header>\n\n    <div class="submissions_list text-center">\n        ', 
+collection.total > 0 ? __p += '\n        <div class="table-wrap">\n            <header class="row-clear list-header">\n                <div class="span4">\n                    <p class="submissions-title"><strong>Problem</strong></p>\n                </div>\n                <div class="span2 submissions-language">\n                    <p><strong>Language</strong></p>\n                </div>\n                <div class="span1 submissions-time">\n                    <p><strong>Time</strong></p>\n                </div>\n                <div class="span3">\n                    <p><strong>Result</strong></p>\n                </div>\n                <div class="span1">\n                    <p><strong>Score</strong></p>\n                </div>\n            </header>\n            <div class="table-body table--striped submissions-list-wrapper"></div>\n        </div>\n            ' :collection.sync_status && (__p += '\n            <div class="light-wrap padding">\n                <p>You have not made any submissions yet.</p>\n                <p class="text-center block-margin"><a href="/categories" class="btn btn-green btn-large backbone">View Challenges</a></p>\n            </div>\n            '), 
+__p += '\n    </div>\n\n    <div class="pagination-wrap clearfix pagination-wrapper">\n    </div>\n  </div<\n\n</section>\n';
+return __p;
+});

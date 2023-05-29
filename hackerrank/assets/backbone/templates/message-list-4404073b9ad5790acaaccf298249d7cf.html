@@ -1,0 +1,9 @@
+<div class="message_group">
+    <img src="<%= model.sender._data.avatar_url %>" height="50" width="50" class="avatar">
+    <div class="message_body">
+        <p><%= model.message %></p>
+    </div>
+    <footer class="message_footer">
+        <p><a href="/<%- model.sender.username %>" class="backbone"><%= model.sender.username %></a> &bull; <%= $.timeago(new Date(model.created_at)) %></p>
+    </footer>
+</div>

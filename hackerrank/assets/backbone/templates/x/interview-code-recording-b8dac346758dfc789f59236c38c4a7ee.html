@@ -1,0 +1,63 @@
+
+<div class="interview-question">
+    <strong>Question <%= index %></strong></br/>
+    <%= question.question %>
+</div>
+
+<!-- <table class="invisble-table">
+    <tr>
+        <td width="15%"><span class="underline_title margin-top-bott-15">REVIEW CODE</span></td>
+        <td width="15%">
+            <div style="margin-top:20px;" class="lang-container hidden">
+                <span class="txtbox_text">LANGUAGE:</span>&nbsp;<span><strong class="code-lang"></strong></span>
+            </div>
+        </td>
+        <td>
+            <div style="margin-top:20px;">
+                <span class="pull-left txtbox_text">TIMELINE:</span>
+                <div class="timeline-slider-wrapper">
+                    <div class="slider">
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table> -->
+
+<div class="position-relative">
+    <div class="mdA lang-container hidden">
+        Language used: <strong class="code-lang">C++</strong>
+    </div>
+    <div class="code-player" id="code-player">
+        <span class="txt-alt-grey fnt-wt-600">
+            <i class="icon-menu-large"></i>&nbsp;PLAY CODE
+        </span>
+        <div class="code_play_slide_wrap" style="display: none">
+            <div class="timeline-slider-wrapper">
+                <div class="slider" style="width:220px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<pre class="outbox cm-s-default">
+</pre>
+
+<table style="width:60%;" class="margin-top-bott-15 table table-bordered code-response-container hidden">
+    <tr>
+        <th>Time</th>
+        <th>Input</th>
+        <th>Output</th>
+    </tr>
+
+    <tr>
+        <td class="run-time"></td>
+        <td>
+            <pre class="output-pre run-input"></pre>
+        </td>
+        <td>
+            <pre class="output-pre run-output"></pre>
+        </td>
+    </tr>
+</table>
+
+

@@ -1,0 +1,599 @@
+<section class="container--inner">
+    <header class="page-title">
+        <h1>Environment and Samples</h1>
+    </header>
+
+    <ul class="nav-tabs nav margin-large bottom">
+        <li class="active"><a href="#languages" data-toggle="tab">Environment for the programming languages</a></li>
+        <li><a href="#sampleproblem" data-toggle="tab">Sample Problem Statement</a></li>
+        <li><a href="#writefile" data-toggle="tab">Writing state information to a file</a></li>
+    </ul>
+
+    <div class="tab-content">
+    <div class="tab-pane active" id="languages">
+        <h3 id="languages"><b>Environment for the programming languages</b></h3>
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th class="m">Language</th>
+                <th class="m">Version</th>
+                <th class="m">Time limit<br/>(in seconds)</th>
+                <th class="m">Memory limit<br/>(in MB)</th>
+                <th class="m">Notes</th>
+                <th class="m"> Additional libraries for Machine-Learning and Natural-Language-Processing challenges </th>
+            </tr>
+            <tr>
+                <td class="m" width="15%" >C</td>
+                <td class="m" width="20%">gcc 4.8.1, C99 Mode</td>
+                <td class="m" width="12%">2</td>
+                <td class="m" >512</td>
+                <td class="m">Math library (<code>-lm</code>)<br/><a href="http://www.digip.org/jansson/">json library</a><code>#include&lt;jansson.h&gt;</code></td>
+                <td class="m"><a href="http://www.csie.ntu.edu.tw/~cjlin/liblinear/">liblinear</a><code>#include"linear.h"</code> <a href="http://www.csie.ntu.edu.tw/~cjlin/libsvmtools/">libsvm   </a><code>#include"svm.h"</code></td>
+            </tr>
+            <tr>
+                <td class="m">C++</td>
+                <td class="m">g++ 4.8.1, C++0x Mode</td>
+                <td class="m">2</td>
+                <td class="m">512</td>
+                <td class="m">Math library (<code>-lm</code>)<br/><a href="http://sourceforge.net/projects/jsoncpp/">json library</a></br><code>#include&lt;jsoncpp/json/json.h&gt;</code></td>
+                <td class="m"><a href="http://www.csie.ntu.edu.tw/~cjlin/liblinear/">liblinear</a><code>#include"linear.h"</code> <a href="http://www.csie.ntu.edu.tw/~cjlin/libsvmtools/">libsvm   </a><code>#include"svm.h"</code></td>
+            </tr>
+            <tr>
+                <td class="m">C#</td>
+                <td class="m">Mono 2.10.8.1, C# 4</td>
+                <td class="m">5</td>
+                <td class="m">512</td>
+                <td class="m">Name your class <code>Solution</code><br/><a href="http://nuget.org/packages/newtonsoft.json/"> newtonsoft </a> json library</td>
+                <td class="m"></td>
+            </tr>
+            <tr>
+                <td class="m">Python</td>
+                <td class="m">Python 2.7.5</td>
+                <td class="m">16</td>
+                <td class="m">512</td>
+                <td class="m"></td>
+                <td class="m"><a href="http://www.numpy.org/">numpy</a>, <a href="http://www.scipy.org/">scipy</a>, <a href="http://scikit-learn.org/stable/">sklearn</a> and <a href="http://nltk.org/">nltk</a></td>
+            </tr>
+            <tr>
+                <td class="m">Python 3</td>
+                <td class="m">Python 3.3.2</td>
+                <td class="m">16</td>
+                <td class="m">512</td>
+                <td class="m"></td>
+                <td class="m"><a href="http://www.numpy.org/">numpy</a>, <a href="http://www.scipy.org/">scipy</a>, <a href="http://scikit-learn.org/stable/">sklearn</a> and <a href="http://nltk.org/">nltk</a></td>
+            </tr>
+            <tr>
+                <td class="m">Java</td>
+                <td class="m">Sun Java 1.7.0_40</td>
+                <td class="m">5</td>
+                <td class="m">512</td>
+                <td class="m">Name your class <code>Solution</code><br/> <a href="https://code.google.com/p/json-simple/"> json-simple </a> json library</td>
+                <td class="m"><a href="http://nlp.stanford.edu/software/corenlp.shtml">stanford-nlp</a>, <a href="http://www.cs.waikato.ac.nz/ml/weka/">weka</a> and <a href="http://java-ml.sourceforge.net/">java-ml</a></td>
+            </tr>
+            <tr>
+                <td class="m">PHP</td>
+                <td class="m">PHP 5.5.3</td>
+                <td class="m">16</td>
+                <td class="m">512</td>
+                <td class="m"></td>
+                <td class="m"></td>
+            </tr>
+            <tr>
+                <td class="m">Perl</td>
+                <td class="m">Perl 5.14.2</td>
+                <td class="m">16</td>
+                <td class="m">512</td>
+                <td class="m"><a href="http://search.cpan.org/~makamaka/JSON-2.59/lib/JSON.pm">json library</a></td>
+                <td class="m"></td>
+            </tr>
+            <tr>
+                <td class="m">Ruby</td>
+                <td class="m">Ruby 1.9.3p194</td>
+                <td class="m">16</td>
+                <td class="m">512</td>
+                <td class="m"></td>
+                <td class="m"></td>
+            </tr>
+            <tr>
+                <td class="m">Objective-C</td>
+                <td class="m">Objective-C 2.0: clang 3.2-7</td>
+                <td class="m">2</td>
+                <td class="m">512</td>
+                <td class="m">Runtime(gnustep-libobjc2)<br/>Foundation Kit<br/>Blocks runtime<br/>libdispatch</td>
+                <td class="m"></td>
+            </tr>
+            <tr>
+                <td class="m">Haskell</td>
+                <td class="m">haskell-platform 2013.2.0.0 0</td>
+                <td class="m">5</td>
+                <td class="m">512</td>
+                <td class="m">logict lens pipes mwc-random hashtables regex-pcre hmatrix aeson and hashmap libraries are available.</td>
+                <td class="m"></td>
+            </tr>
+            <tr>
+                <td class="m">Clojure</td>
+                <td class="m">clojure 1.4.0</td>
+                <td class="m">10</td>
+                <td class="m">512</td>
+                <td class="m"><strike>Name your namespace <code>solution</code> with <code>:gen-class</code> attribute.</strike> we have removed the restriction of defining a namespace.</td>
+                <td class="m"></td>
+                <td class="m"></td>
+            </tr>
+            <tr>
+                <td class="m">Scala</td>
+                <td class="m">scala 2.10.3</td>
+                <td class="m">10</td>
+                <td class="m">512</td>
+                <td class="m">Have your entry point inside an object named <code>Solution</code></td>
+                <td class="m"></td>
+            </tr>
+            <tr>
+                <td class="m">Lisp</td>
+                <td class="m">GNU CLISP 2.49</td>
+                <td class="m">16</td>
+                <td class="m">512</td>
+                <td class="m"></td>
+                <td class="m"></td>
+            </tr>
+            <tr>
+                <td class="m">Lua</td>
+                <td class="m">Lua 5.2.2</td>
+                <td class="m">16</td>
+                <td class="m">512</td>
+                <td class="m"></td>
+                <td class="m"></td>
+            </tr>
+            <tr>
+                <td class="m">Erlang</td>
+                <td class="m">Erlang R16B01 (erts-5.10.2)</td>
+                <td class="m">16</td>
+                <td class="m">512</td>
+                <td class="m"></td>
+                <td class="m"></td>
+            </tr>
+            <tr>
+                <td class="m">Javascript</td>
+                <td class="m">node v0.10.21</td>
+                <td class="m">16</td>
+                <td class="m">512</td>
+                <td class="m"></td>
+                <td class="m"></td>
+            </tr>
+            <tr>
+                <td class="m">Go</td>
+                <td class="m">go1.1.2</td>
+                <td class="m">6</td>
+                <td class="m">1024</td>
+                <td class="m"></td>
+                <td class="m"></td>
+            </tr>
+            <tr>
+                <td class="m">Brainf**k</td>
+                <td class="m">bf</td>
+                <td class="m">16</td>
+                <td class="m">30000 cells</td>
+                <td class="m">You can download the interpreter here: <a href="http://packages.ubuntu.com/hardy/bf">bf</a>. Decrementing 0 and incrementing 255 is disallowed. <code>\n</code> is not interpreted as 0</td>
+                <td class="m"></td>
+            </tr>
+            <tr>
+                <td class="m">Groovy</td>
+                <td class="m">1.8.6</td>
+                <td class="m">5</td>
+                <td class="m">512</td>
+                <td class="m">JVM: 1.7.0_40</td>
+                <td class="m"></td>
+            </tr>
+            <tr>
+                <td class="m">OCaml</td>
+                <td class="m">3.12.1</td>
+                <td class="m">3</td>
+                <td class="m">512</td>
+                <td class="m"></td>
+                <td class="m"></td>
+            </tr>
+            <tr>
+                <td class="m">F#</td>
+                <td class="m">Fsharp 3.0.26, Mono 2.10.8</td>
+                <td class="m">5</td>
+                <td class="m">512</td>
+                <td class="m"></td>
+                <td class="m"></td>
+            </tr>
+            <tr>
+                <td class="m">VB.NET</td>
+                <td class="m">Mono 2.10.8</td>
+                <td class="m">5</td>
+                <td class="m">512</td>
+                <td class="m"></td>
+                <td class="m"></td>
+            </tr>
+            <tr>
+                <td class="m">LOLCODE</td>
+                <td class="m">Version 1.2 with lci v0.10.3</td>
+                <td class="m">5</td>
+                <td class="m">512</td>
+                <td class="m"></td>
+                <td class="m"></td>
+            </tr>
+            <tr>
+                <td class="m">Smalltalk</td>
+                <td class="m">GNU Smalltalk 3.2.4</td>
+                <td class="m">5</td>
+                <td class="m">512</td>
+                <td class="m"></td>
+                <td class="m"></td>
+            </tr>
+            <tr>
+                <td class="m">Tcl</td>
+                <td class="m">Version 8.5 with tclsh</td>
+                <td class="m">5</td>
+                <td class="m">512</td>
+                <td class="m"></td>
+                <td class="m"></td>
+            </tr>
+        </table>
+        <p>These run on quad core Xeon machines running 64-bit Ubuntu (Ubuntu 13.10). You should, however, write your programs in a portable manner and not assume that it will <em>always</em> be run on a 32 bit architecture. We don't support multi-threaded programs and all your programs should run in a single thread.</p>
+    </div>
+    <div class="tab-pane" id="sampleproblem">
+        <h3 id="sampleproblem">Sample Problem Statement</h3>
+        <p>Given an integer <strong>N</strong>, print 'hello world' <strong>N</strong> times.</p>
+
+        <h4>Sample Input</h4>
+        <p>
+        <pre>5</pre>
+        </p>
+        <h4>Sample Output</h4>
+        <p>
+        <pre>hello world
+hello world
+hello world
+hello world
+hello world</pre>
+        </p>
+
+        <h3>Solution</h3>
+        <h4>C</h4>
+        <p>
+        <pre><xmp>#include <stdio.h>
+int main() {
+    int i, n;
+    scanf("%d", &n);
+    for (i=0; i<n; i++) {
+        printf("hello world\n");
+    }
+    return 0;
+}</xmp></pre>
+        </p>
+        <h4>C++</h4>
+        <br>
+        <pre><xmp>#include <iostream>
+using namespace std;
+int main() {
+    int i, n;
+    cin >> n;
+    for (i=0; i<n; i++) {
+        cout << "hello world\n";
+    }
+    return 0;
+}</xmp></pre>
+        <br>
+        <h4>C#</h4>
+        <br>
+        <pre><xmp>using System;
+namespace Solution {
+    class Solution {
+        static void Main(string[] args) {
+            var line1 = System.Console.ReadLine().Trim();
+            var N = Int32.Parse(line1);
+            for (var i = 0; i < N; i++) {
+                System.Console.WriteLine("hello world");
+            }
+        }
+    }
+}</xmp></pre>
+        <br>
+        <h4>Java</h4>
+        <br>
+        <pre><xmp>import java.io.*;
+public class Solution {
+    public static void main(String args[] ) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String line = br.readLine();
+        int N = Integer.parseInt(line);
+        for (int i = 0; i < N; i++) {
+            System.out.println("hello world");
+        }
+    }
+}</xmp></pre>
+        <br>
+        <h4>JavaScript</h4>
+        <br>
+        <pre><xmp>function processData(input) {
+    var i;
+    for (i = 0; i < parseInt(input); i++) {
+        console.log("hello world");
+    }
+}
+
+process.stdin.resume();
+process.stdin.setEncoding("ascii");
+_input = "";
+process.stdin.on("data", function (input) {
+    _input += input;
+});
+
+process.stdin.on("end", function () {
+   processData(_input);
+});</xmp></pre>
+        <br>
+        <h4>Python</h4>
+        <br>
+        <pre><xmp>N = int(raw_input())
+for i in xrange(N):
+    print "hello world"</xmp></pre>
+        <br>
+        <h4>Ruby</h4>
+        <br>
+        <pre><xmp>N = gets
+1.step(N.to_i, 1) { |i| print "hello world\n" }</xmp></pre>
+        <br>
+        <h4>PHP</h4>
+        <br>
+        <pre><xmp><?php
+fscanf(STDIN, "%d\n", $number);
+
+for ( $i = 0; $i < $number; $i++) {
+    echo "hello world\n";
+}</xmp></pre>
+        <br>
+        <h4>Lua</h4>
+        <br>
+        <pre><xmp>N = io.read ()
+for i = 1, tonumber(N), 1 do
+    print("hello world")
+end</xmp></pre>
+        <br>
+        <h4>Common Lisp</h4>
+        <br>
+        <pre><xmp>(setq strN (read-line))
+(setq N (parse-integer strN))
+(loop for i from 1 to N do
+    (write "hello world")
+    (terpri)
+)</xmp></pre>
+        <br>
+<!--        <h4>Haskell</h4>
+        <br>
+        <pre><xmp></xmp></pre>
+        <br>
+        <h4>Perl</h4>
+        <br>
+        <pre></pre>
+        <br>
+        <h4>Clojure</h4>
+        <br>
+        <pre></pre>
+        <br>
+        <h4>Scala</h4>
+        <br>
+        <pre></pre> -->
+    </div>
+    <div class="tab-pane" id="writefile">
+        <h3 id="writefile"><strong>Writing state information to a file</strong></h3>
+        <br/>
+        <h4>C</h4>
+        <pre><xmp>
+#include<stdio.h>
+
+int main()
+{
+    FILE *read;
+    FILE *write;
+    char *filename = "myfile.txt";
+    read = fopen( filename, "r" );
+    if( read == NULL )
+    {
+        //File doesn't exist. Have to write something
+        write = fopen( filename, "w" );
+        fprintf( write, "%s", "writesomethinghere" );
+        fclose( write );
+    }
+    else
+    {
+        //File exists. Read data from the file
+        char somedata[ 20 ];
+        fscanf( read, "%s", somedata );
+        printf( "%s\n", somedata );
+        fclose( read );
+    }
+    return 0;
+}
+        </xmp></pre>
+<br/>
+        <h4>C++</h4>
+        <pre><xmp>
+#include<iostream>
+#include<fstream>
+#include<string>
+
+using namespace std;
+
+int main()
+{
+    ifstream readfile;
+    ofstream writefile;
+    string filename = "myfile.txt";
+    readfile.open( filename.c_str() );
+    if( readfile )
+    {
+        //I can read something from the file
+        readfile.close();
+    }
+    else
+    {
+        //The file doesn't exist
+        writefile.open( filename.c_str() );
+        //write something to the file
+        writefile << " write some data " <&lt; endl;
+        writefile.close();
+    }
+    return 0;
+}
+        </xmp></pre>
+<br/>
+        <h4>JAVA</h4>
+        <pre><xmp>
+import java.io.*;
+import java.lang.*;
+
+public class Solution
+{
+    public static void main( String[] args )
+    {
+        File fileName = new File( "myfile.txt" );
+        if( !fileName.exists() )
+        {
+            System.out.println( "this file doesn't exist " );
+            try
+            {
+                fileName.createNewFile();
+                FileWriter fileWrite = new FileWriter( fileName );
+                BufferedWriter bufferedWriter = new BufferedWriter( fileWrite );
+                //bufferedWriter.write( "write something here " );
+                bufferedWriter.close();
+            } catch ( IOException e )
+            {
+                //catch exception
+            }
+        }
+        else
+        {
+            //System.out.println( "this file exists " );
+            try
+            {
+                byte[] buffer = new byte[ 100 ];
+                FileInputStream inputStream  = new FileInputStream( fileName );
+                int readLines = -1;
+                while( ( readLines = inputStream.read( buffer ) ) != -1 )
+                {
+                    //System.out.println( new String( buffer ) );
+                }
+                inputStream.close();
+            } catch ( IOException e )
+            {
+                //catch exception
+            }
+        }
+    }
+}
+        </xmp></pre>
+<br/>
+        <h4>CSHARP</h4>
+        <pre><xmp>
+using System;
+using System.IO;
+
+
+public class Solution
+{
+    public static void Main( )
+    {
+        string fileName = "myfile.txt";
+        FileStream file = new FileStream( fileName, FileMode.OpenOrCreate, FileAccess.Read );
+        StreamReader sr = new StreamReader( file );
+        string s = sr.ReadToEnd();
+        if( string.IsNullOrEmpty( s ) )
+        {
+            file.Close();
+            //The file is empty. Write something to it
+            //Console.WriteLine( "file doesn't exist " );
+            file = new FileStream( fileName, FileMode.OpenOrCreate, FileAccess.Write );
+            StreamWriter sw = new StreamWriter( file );
+            sw.Write( "Write something here " );
+            sw.Close();
+        }
+        else
+        {
+            //Console.WriteLine( s );
+        }
+    }
+}
+        </xmp></pre>
+<br/>
+        <h4>PYTHON</h4>
+        <pre><xmp>
+#!/usr/bin/python
+
+filename = "myfile.txt"
+with open( filename ) as f:
+    # file read can happen here
+    # print "file exists"
+    print f.readlines()
+
+with open( filename, "w") as f:
+    # print "file write happening here"
+    f.write("write something here ")
+        </xmp></pre>
+<br/>
+        <h4>RUBY</h4>
+        <pre><xmp>
+#!/usr/bin/env ruby
+
+filename = "myfile.txt"
+if File.exist?( filename )
+    #puts "file read happening"
+    f = File.open(filename, 'r')
+    data = f.read
+    puts data
+end
+
+f = File.open(filename, 'a+')
+#puts "file write happening"
+f.puts "write something here"
+        </xmp></pre>
+<br/>
+        <h4>PHP</h4>
+        <pre><xmp>
+<?php
+$filename = "myfile.txt";
+if(file_exists($filename)) {
+    $data = file_get_contents( $filename );
+    print $data;
+    $filewrite = fopen( $filename, 'a') or die('Cannot open file:'.$filename);
+    fwrite( $filewrite, "write something here");
+    fclose( $filewrite );
+} else {
+    $filewrite = fopen( $filename, 'w') or die('Cannot open file:'.$filename);
+    fwrite( $filewrite, "write something here");
+    fclose( $filewrite );
+}
+?>
+        </xmp></pre>
+        <h4>PERL</h4>
+        <pre><xmp>
+#!/usr/bin/env perl
+
+$filename = "myfile.txt";
+
+if( -e $filename )
+{
+    unless(open FILE, $filename)
+    {
+        die "Cannot open file";
+    }
+
+    while(my $line = <FILE>)
+    {
+        print $line;
+    }
+
+    close FILE;
+}
+unless(open FILE, '>>'.$filename)
+{
+    die "Cannot open file";
+}
+print FILE "Write something here";
+close FILE;
+        </xmp></pre>
+</section>
+</div>

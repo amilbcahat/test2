@@ -1,0 +1,150 @@
+<div class="data-section-title mlT mlB">
+    <h3>Basic Information</h3>
+</div>
+<div class="basic-info-container msL">
+    <div class="section">
+        <div class="section-title msB">
+            Company Info
+        </div>
+        <div class="row">
+            <div class="data-label span2">
+                Name:
+            </div>
+            <div class="data-val span4">
+                <%= company.name %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <div class="data-label span2">
+                Owner:
+            </div>
+            <div class="data-val span4">
+                <%= company.basic.email %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <div class="data-label span2">
+                Plan:
+            </div>
+            <div class="data-val span4">
+                <%= company.basic.stripe_plan %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <div class="data-label span2">
+                Invites Remaining:
+            </div>
+            <div class="data-val span4">
+                <%= company.basic.invites_remaining_count %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <div class="data-label span2">
+                Created On:
+            </div>
+            <div class="data-val span4">
+                <%= company.basic.created_at %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+    </div>
+
+    <div class="section mlT">
+        <div class="section-title msB">
+            Data Usage
+        </div>
+        <div class="row">
+            <div class="data-label span2">
+                Invites Sent:
+            </div>
+            <div class="data-val span4">
+                <%= company.basic.invites_sent_count %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <div class="data-label span2">
+                Tests Created:
+            </div>
+            <div class="data-val span4">
+                <%= company.basic.tests_count %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <div class="data-label span2">
+                Attempts:
+            </div>
+            <div class="data-val span4">
+                <%= company.basic.attempts_count %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <div class="data-label span2">
+                Interviews:
+            </div>
+            <div class="data-val span4">
+                <%= company.basic.interviews_count %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="section mlT">
+        <div class="section-title msB">
+            License Usage
+        </div>
+        <div class="row">
+            <div class="data-label span2">
+                Teams:
+            </div>
+            <div class="data-val span4">
+                <%= company.basic.teams_count %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <div class="data-label span2">
+                Admins:
+            </div>
+            <div class="data-val span4">
+                <%= company.basic.admins_count %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <div class="data-label span2">
+                Recruiters:
+            </div>
+            <div class="data-val span4">
+                <%= company.basic.recruiters_count %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <div class="data-label span2">
+                Developers:
+            </div>
+            <div class="data-val span4">
+                <%= company.basic.developers_count %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <div class="data-label span2">
+                Users:
+            </div>
+            <div class="data-val span4">
+                <%= company.basic.users_count %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+</div>

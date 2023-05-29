@@ -1,0 +1,53 @@
+<div>
+  <form action="" onsubmit="return false;" class="span12">
+    <fieldset>
+      <div class="control-group">
+        <label class="control-label">Type</label>
+        <div class="controls">
+          <select id="notif-type" class="input-xlarge">
+            <option value="notification">Notification</option>
+            <option value="email">Email</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label">Recipients</label>
+        <div class="controls">
+          <select id="email-notif-recipient-type" class="input-xlarge">
+            <option>All</option>
+            <option>Submitted-*</option>
+            <option>Submitted</option>
+            <option>Solved</option>
+          </select>
+          <input type="hidden" id="email-notif-challenge-input" style="width: 300px; display: none;" class="input-xlarge"></input>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="input01">Subject</label>
+        <div class="controls">
+          <input id="email-notif-subject" type="text" placeholder="Subject" class="input-xlarge span8">
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label">Message</label>
+        <div class="controls">
+          <div class="textarea">
+            <textarea id="email-notif-message" type="" style="min-height: 250px;" class="span8"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label"></label>
+        <div class="controls">
+          <button type="submit" class="send-btn btn btn-primary">Send</button>
+      <small class="error"></small>
+        </div>
+      </div>
+
+    </fieldset>
+  </form>
+</div>

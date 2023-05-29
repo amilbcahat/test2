@@ -1,0 +1,23 @@
+<div class="mjA">
+    <label class="label-title-underline">
+        SET CUTOFF SCORE
+    </label>
+    <div class="clear"></div>
+    <p class="txt-alt-grey span10 no-padding">Using this you can set a cutoff score for your test. All candidates with score greater than that will automatically be qualified for interview.</p>
+    <div class="clear"></div>
+    <form name="test-cutoff-score-form">
+        <div class="inline-block mdT">
+            <input type="text" class="no-margin wide" placeholder="Enter Cutoff Score (number)" name="cutoff-score">
+            <button type="submit" data-throbber="show" class="btn btn-primary margin-large right mdL">Set Cutoff</button>
+        </div>
+    </form>
+
+    <% if (model.cutoff_score) { %>
+    <div class="clear"></div>
+    <div class="mdT test-custom-link-wrap">
+        <div class="cust_link_bg">
+            Current Cutoff: &nbsp;&nbsp; <span><%- model.cutoff_score %></span>
+        </div>
+    </div>
+    <% } %>
+</div>

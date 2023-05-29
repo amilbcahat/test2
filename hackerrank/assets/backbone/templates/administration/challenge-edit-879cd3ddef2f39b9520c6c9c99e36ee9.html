@@ -1,0 +1,38 @@
+<section class="admin contestedit container content_wrap">
+    <header class="page-title">
+        <div class="baseless-padded">
+            <div class="clearfix">
+                <h1 class="pull-left">
+                    <% if (action != "create") { %>
+                    <%= _model.name %>
+                    <% } else { %>
+                    <%= _.capitalize(action) %> Challenge
+                    <% } %>
+                </h1>
+                <div class="pull-right margin-small top">
+                    <% if (action != "create") { %>
+                    <!-- <a target="_blank" href="/<%= _model.slug %>" class="btn margin-small right">Preview Challenge</a> -->
+                    <% } %>
+                    <button class="save-challenge btn btn-primary">Save Challenge</button>
+                </div>
+            </div>
+            <ul class="nav-tabs nav admin-tabbed-nav">
+                <li data-tab="overview"><a class="cursor change-tab">Overview</a></li>
+                <% if (action == 'edit') { %>
+                <li data-tab="testcases"><a class="cursor change-tab">Testcases</a></li>
+                <li data-tab="languages"><a class="cursor change-tab">Languages</a></li>
+                <% } %>
+                <li class="pull-right no-tab">
+                    <% if (contest_id !== null) { %>
+                    <a class="btn btn-text right-align backbone" href="/administration/contests/edit/<%= contest_id %>/challenges">View <%= contest.name %> challenges<i class="icon-right-open icon--left "></i></a>
+                    <% } else { %>
+                    <a class="btn btn-text right-align backbone" href="/administration/challenges">View all challenges<i class="icon-right-open icon--left "></i></a>
+                    <% } %>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div class="tabs-body horizontal-padded">
+        <div class="tabs-body-inner"></div>
+    </div>
+</section>

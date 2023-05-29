@@ -1,0 +1,22 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL"><%- test.name %></h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Questions</h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i><% if (edit) { %>Edit<% } else { %>Create<% } %> question</h3>
+</div><!-- end .top-fixed-bar -->
+<div class="overflow-content" id="control-overflow">
+    <form name="subjective-question-form">
+        <div class="mjA">
+            <div class="row no-margin">
+                <div class="span-xs-16 span-md-10">
+                    <label>PROBLEM STATEMENT</label>
+                    <textarea class="editor_width texteditor" name="problem-description" id="problem-description" style="width: 100%"><% if (model.question) { %><%- model.question %><% } %></textarea>
+                </div>
+            </div>
+            <div class="row no-margin plT">
+                <div class="span-xs-16 span-md-16">
+                    <button type="submit" class="btn btn-primary btn-mid">Save Question</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

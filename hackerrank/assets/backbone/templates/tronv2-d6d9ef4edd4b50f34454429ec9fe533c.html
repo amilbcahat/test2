@@ -1,0 +1,44 @@
+<style>
+    .game-grid p {
+        margin: 0px;
+    }
+    h3 {
+        margin: 0px;
+    }
+    .m {
+        text-align: center !important;
+    }
+    .translucent {
+    }
+    .playgame-row {
+        position: fixed;
+    }
+    .playgame-row .btn {
+        margin-top: 70px;
+        z-index: 999;
+    }
+    .game-message {
+        font-weight: bold;
+    }
+</style>
+<div class="game-grid" style="display: block; margin: auto; border-radius: 10px;">
+    <div class="row">
+      <div class="span8 block-center text-center" style="width: 480px">
+        <div class="span4">
+          <p>Red</p>
+        </div>
+        <div class="span4">
+          <p>Green</p>
+        </div>
+      </div>
+    </div>
+
+    <table style="margin: 20px auto;">
+        <tr style="text-align: center">
+            <td style="text-align: center" class="canvasPlaceholder">
+                <canvas id="tronV2Canvas" width="260" height="260" style="border: 10px solid">
+                </canvas>
+            </td>
+        </tr>
+    </table>
+</div>

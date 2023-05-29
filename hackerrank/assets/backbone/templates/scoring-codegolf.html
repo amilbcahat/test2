@@ -1,0 +1,35 @@
+<section class="scoring container">
+    <header class="page-title container">
+        <h2>Scoring Documentation</h2>
+    </header>
+    <div class="light-wrap">
+        <% if (model.custom_documentation) { %>
+        <%= model.custom_documentation %>
+        <% } else { %>
+        <br>
+        <h3><b>1. How is the score evaluated for each Code Golf challenge?</b></h3>
+        <p>In the code golf challenges, the score is based on the length of the code in characters. The shorter the code, the higher the score. The specific scoring details will be given in the challenge statement.</p>
+
+        <h3><b>2 Leaderboards</b></h3>
+        <p>There will be an leaderboard for every challenge, for your network, and one overall "HackerRank".</p>
+
+        <h4><b>2.1 Challenge Score</b></h4>
+        <p>The score for each type of challenge was given above. The challenge leaderboard will display all the users based on the score of their most recent submission.</p>
+
+        <h4><b>2.2 HackerRank</b></h4>
+        <p>Each user will have an overall HackerRank based on the challenges he/she has completed/competed in. Each challenge will be worth </p>
+        <p class="math">user's points = challenge points * percentile ranking</p>
+        <p>Each challenge's point value is set by us based on the difficulty of the challenge( and is seperate from the score within the challenge). The <a href="https://en.wikipedia.org/wiki/Percentile_rank">percentile ranking</a> is calculated based on where a user ranked in the challenge leaderboard, which is then normalized to get an accurate score. The overall HackerRank will be the sum of the user's points from each challenge.</p>
+
+        <h4><b>2.3 Network Leaderboard</b></h4>
+        <p>For each network, the network rating is calculated as follows,</p>
+        <p>The difference (diff) between the highest score and the lowest is calculated.</p>
+        <p class="math"> <img src="https://static.interviewstreet.com/hackerrank/scoringimages/6.png"/></p>
+        <p>now the multiplicative factor f is calculated using</p>
+        <p class="math"> <img src="https://static.interviewstreet.com/hackerrank/scoringimages/7.png"/></p>
+        <p>Score for every network is calculated as</p>
+        <p class="math"> <img src="https://static.interviewstreet.com/hackerrank/scoringimages/8.png"/></p>
+        <p>This is done for networks whose count is greater than 10</p>
+        <% } %>
+    </div>
+</section>

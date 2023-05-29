@@ -1,0 +1,80 @@
+<div class="table-primary" style="margin-bottom: 20px">
+  <div class="row light-wrap wrap" style="padding: 0; margin-left: 0;">
+    <div class="span4">
+      <p style="text-align: left;">
+        <a href="<%= ns %>challenges/<%= model.challenge.slug %>" class="backbone cursor"><%= model.challenge.name %></a>
+        <% if (submissions.length > 0) { %>
+            <a class="cursor expand" style="text-decoration:none;">[+<%= (model.total-1) %> more]</a>
+        <% } %>
+      </p>
+    </div>
+    <div class="span2">
+      <p><%= lang_display_mapping[firstSubmission.language] %></p>
+    </div>
+    <div class="span3">
+      <p><a><%= firstSubmission.time_ago %></a></p>
+    </div>
+    <div class="span3">
+      <p>
+          <% if (firstSubmission.kind == 'game') { %>
+              <% if (firstSubmission.status_code == 0) { %>
+                  Queued
+              <% } else if (firstSubmission.game_played == firstSubmission.game_total) { %>
+                  Processed
+              <% } else { %>
+                  <%= firstSubmission.game_played %>/<%= firstSubmission.game_total %> games played
+              <% } %>
+          <% } else { %>
+              <%= firstSubmission.status %>
+          <% } %>
+      </p>
+    </div>
+    <div class="span1">
+      <p><%= firstSubmission.score %></p>
+    </div>
+    <div class="span2 pull-right">
+      <a href="<%= ns %>submissions/<%= firstSubmission.kind %>/<%= firstSubmission.id %>" class="btn btn-white backbone">View Results</a>
+    </div>
+  </div>
+  <div class="table-sub" style="margin-left: 260px; margin-bottom: 20px; background-color: rgb(248, 248, 248); border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-style: none solid solid; border-right-color: rgb(228, 228, 228); border-bottom-color: rgb(228, 228, 228); border-left-color: rgb(228, 228, 228); display: none; background-position: initial initial; background-repeat: initial initial; ">
+    <% _.each(submissions, function(submission){ %>
+    <div class="row row-sub">
+      <div class="span2">
+        <p><%= lang_display_mapping[submission.language] %></p>
+      </div>
+      <div class="span3">
+        <p><a><%= submission.time_ago %></a></p>
+      </div>
+      <div class="span3">
+          <p>
+          <% if (submission.kind == 'game') { %>
+              <% if (submission.status_code == 0) { %>
+                  Queued
+              <% } else if (submission.game_played == submission.game_total) { %>
+                  Processed
+              <% } else { %>
+                  <%= submission.game_played %>/<%= submission.game_total %> games played
+              <% } %>
+          <% } else { %>
+              <%= submission.status %>
+          <% } %>
+          </p>
+      </div>
+      <div class="span1">
+        <p><%= submission.score %></p>
+      </div>
+      <div class="span2 pull-right">
+        <a href="<%= ns %>submissions/<%= submission.kind %>/<%= submission.id %>" class="btn btn-white backbone">View Results</a>
+      </div>
+    </div>
+    <% }) %>
+    <% if (model.total > model.submissions.length) { %>
+    <div class="row row-sub">
+      <div class="span9"><p></p></div>
+      <div class="span3">
+        <a href="<%= ns %>challenges/<%= model.challenge.slug %>/submissions" class="btn btn-white backbone">All Submissions</a>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>

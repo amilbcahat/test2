@@ -1,0 +1,31 @@
+<div>
+    <br>
+    <% if (collection.models.length > 0) { %>
+    <div class="warning-dialog">
+        <p class="m">Uploading testcases as Zip will delete all existing testcases and replace them with new testcases.</p>
+        <p class="m">Are you sure you want to delete <b><%= collection.models.length %></b> existing testcase?</p>
+        <p class="m">This operation can't be undone.</p>
+        <br>
+        <p class="text-center">
+            <button class="btn btn-large continue-delete-and-upload">Continue</button>
+            <span class="nb-spacing">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <button class="btn btn-large dont-delete">Cancel</button>
+        </p>
+    </div>
+    <% } %>
+    <div class="upload-zip-form" <% if (collection.models.length > 0) { %>style="display: none;"<% } %>>
+        <p class="m"><a href="http://static.hackerrank.com/helloworld_testcases.zip">Download</a> a set of sample testcases for a
+            <a href="https://www.hackerrank.com/helloworldsample/challenges/hello-bob" target="_blank">Hello World challenge</a> to
+            understand the .zip format.</p>
+
+        <p class="m">
+            <input type="file" class="upload-zip">
+        </p>
+
+        <p class="m">
+            <button class="btn btn-large upload-zip-button">Upload</button>
+        </p>
+
+        <br>
+    </div>
+</div>

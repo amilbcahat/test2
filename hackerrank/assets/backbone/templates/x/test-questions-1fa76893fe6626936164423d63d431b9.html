@@ -1,0 +1,52 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL"><%- model.name %></h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Questions</h3>
+</div>
+<div class="overflow-content" id="control-overflow">
+    <table class="sleektable full-width question-table-fix" width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr class="head">
+            <td width="10%" colspan="1"></td>
+            <td width="37%" >Question Name</td>
+            <td width="18%" >Type</td>
+            <td width="13%" >Difficulty</td>
+            <td width="7%" >Score</td>
+            <td width="15%" >Edit/TRY/DELETE</td>
+        </tr>
+        <tbody id="questions-sortable">
+            <% _.each(model.questions_data, function (question, index) { %>
+            <tr id="q-<%- question.id %>" data-qid="<%- question.id %>">
+                <td style="cursor:move" class="txt-alt-grey fnt-wt-600 draggable"><i class="icon-th-large txt-grey fnt-sz-small"></i>Q<%- index + 1 %></td>
+                <td class="txt-green fnt-wt-600">
+                    <span class="question-name-length"><% if(question.name) { %><%- question.name %><% } else { %><%- question.preview %><% } %></span>
+                    <span class="toggle-description txt-alt-grey js-toggle-question-desc" data-qid="<%- question.id %>"><i class="icon-down-open"></i></span>
+                </td>
+                <td><%- HR.util.readableQuestionType(question.type) %></td>
+                <td>moderate</td>
+                <td><%- question.points %></td>
+                <td>
+                    <a class="pmA js-backbone" href="x/tests/<%- model.id %>/questions/<%- question.id %>/edit"><i class="icon2-edit txt-alt-grey"></i></a>
+                    <a class="psA" href="#"><i class="icon2-tryquestion txt-alt-grey"></i></a>
+                    <a class="pmA" href="#"><i class="icon2-delete txt-alt-grey"></i></a>
+                </td>
+            </tr>
+            <tr id="q-<%- question.id %>-desc" class="hidden" data-qid="<%- question.id %>">
+                <td class="quest-description" colspan="6">
+                    <% if (question.name) { %>
+                    <strong><%- question.name %></strong></br>
+                    <% } %>
+                    <%= question.question %>
+                </td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <!--IMPORTANT: USE ONLY BUTTONS IN THIS DIV. This div should stay at the bottom of the contents in this .overflow-content div, no matter what -->
+    <div id="responsive-bottom-holder" class="responsive-bottom-holder text-center">
+        <a href="/x/tests/<%=model.id%>/library" class="btn btn-primary btn-mid backbone">Add from library</a>
+        <span class="alt-grey mlA">or</span>
+        <a href="#" class="btn btn-mid">Create new question</a>
+    </div>
+</div>
+
+<div id="responsive-bottom-placeholder" class="responsive-bottom-holder text-center"></div>

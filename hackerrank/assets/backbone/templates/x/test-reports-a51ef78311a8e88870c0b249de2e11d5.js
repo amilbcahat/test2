@@ -1,0 +1,19 @@
+HR.appController.addTemplate("backbone/templates/x/test-reports", function(obj) {
+{
+var __t, __p = "";
+Array.prototype.join;
+}
+with (obj || {}) __p += '<div class="top-fixed-bar">\n    <h3 class="topbar-h3 mjL text-ellipsis display-inline-block pull-left smaller-topbar" style="max-width:250px;">\n        ' + (null == (__t = test.name) ? "" :_.escape(__t)) + '\n    </h3>\n    <h3 class="topbar-h3 smaller-topbar"><i class="icon-right-open breadcrumb-chevron"></i>Reports <span class="js-subtype"></span></h3>\n    ', 
+hideElements || (__p += '\n    <a href="javascript:;" class="btn btn-line pull-right msA mjR js-pdfdl js-tooltip" style="padding: 8px 10px 10px 14px;" data-original-title="Download PDF" data-placement="bottom">\n        <i class="icon2-download"></i><span> PDF</span>\n    </a>\n    <a href="javascript:;" class="btn btn-line pull-right msA js-csvdl js-tooltip" style="padding: 8px 10px 10px 14px;" data-original-title="Download Excel" data-placement="bottom">\n        <i class="icon2-download"></i><span> Excel</span>\n    </a>\n    '), 
+__p += '\n    <a href="javascript:;" class="btn btn-line pull-right msA msR js-refresh js-tooltip" style="padding: 11px 10px 10px 14px;" data-original-title="Refresh" data-placement="bottom">\n        <i class="icon-arrows-ccw"></i>\n    </a>\n</div>\n<div class="overflow-content" id="control-overflow">\n    <div class="mdA">\n        <input style="width:130px; margin-bottom:0;" class="js-search" type="text" placeholder="Email filter"/><a class="js-emailclear txt-alt-grey" style="cursor:pointer;"><i class="icon2-status_wrong mmL"></i></a>\n        <input style="margin-bottom:0;" class="mdL js-daterange" type="text" placeholder="Date range"/><a class="js-dateclear txt-alt-grey" style="cursor:pointer;"><i class="icon2-status_wrong mmL"></i></a>\n        ', 
+hideElements || (__p += '\n            <div class="dropdown pull-right ">\n                &nbsp;\n                <a class="btn" data-toggle="dropdown" href="#">\n                    <span class="js-dropdowntxt">Candidate status</span>\n                    <i class="icon-down-open-mini msL"></i>\n                </a>\n                <ul class="dropdown-menu" id="menu1">\n                    ', 
+h = window.istreet.cfg.ats, _.each(_.keys(h), function(ats) {
+__p += '\n                    <li><a href="javascript:void(0)" class="js-filterats" data-attribute-ats="' + (null == (__t = ats) ? "" :__t) + '">' + (null == (__t = h[ats]) ? "" :__t) + "</a></li>\n                    ", 
+-1 != [ "3", "6", "10", "17" ].indexOf(ats) && (__p += '\n                    <li class="divider"></li>\n                    '), 
+__p += "\n                    ";
+}), __p += '\n                </ul>\n            </div><!-- end dropdown -->\n\n            <div class="pull-right mmT">\n                <input class="hr-sleek-input" name="qtype_check" type="checkbox" id="qtype_check" ', 
+showQuesTypes && (__p += "checked"), __p += ' >\n                <label for="qtype_check" class="fnt-sz-mid display-inline-block msR">\n                    <span></span>\n                    Question type scores\n                </label>\n                <input class="hr-sleek-input" name="qtags_check" type="checkbox" id="qtags_check" ', 
+showTags && (__p += "checked"), __p += ' >\n                <label for="qtags_check" class="fnt-sz-mid display-inline-block">\n                    <span></span>\n                    Tags scores\n                </label>\n                <!--a class="btn btn-small js-pdfdl">PDF</a-->\n            </div>\n        '), 
+__p += '\n    </div><!-- mdA ends here -->\n    <div id="datatable_container">\n        ' + (null == (__t = HR.appController.viewLoader()) ? "" :__t) + '\n    </div>\n</div><!-- end overflow-content -->\n<div class="js-modalholder"></div>\n';
+return __p;
+});

@@ -1,0 +1,173 @@
+<header class="page-title container">
+<div class="block">
+  <ul class="pull-left breadcrumb unstyled horizontal">
+    <li><a href="/manage" class="backbone">Manage</a><i class="icon-right-open-big divider"></i></li>
+    <li><a href="/manage/contest/" class="backbone">Contests</a><i class="icon-right-open-big divider"></i></li>
+    <li><a href="/manage/contest/new" class="backbone">New</a></li>
+  </ul>
+</div>
+<div class="row">
+  <h1 class="span16" id="title-thing">
+    New Contest
+  </h1>
+</div>
+</header>
+
+<section class="manage container">
+<div class="wrap container content-wrap light-wrap">
+  <div class="inline-content" style="padding-top: 10px; padding-bottom: 10px; min-height: 400px;">
+    <div class="container" id="presets-pane">
+      <div class="span15">
+        <h4>Type</h4>
+        <hr>
+      </div>
+      <div class="presets span15" style="padding-bottom: 100px;">
+        <div class="preset row">
+          <label for="acm-preset" class="row span14">
+            <div class="span1">
+              <input type="radio" name="preset-choice" value="acm" id="acm-preset" title-text="New ICPC Style Contest"/>
+            </div>
+            <div class="span6">
+              <h4>ACM ICPC Style</h4>
+              <ul style="margin: 0px; list-style-type: none;">
+                <li> Time penalty of 20 minutes.
+                <li> ACM style scoring. Either you get full score, or none.
+              </ul>
+            </div>
+          </label>
+        </div>
+        <!--div class="preset row">
+          <label for="hiring-preset" class="row span14">
+            <div class="span1">
+              <input type="radio" name="preset-choice" value="hiring" id="hiring-preset" />
+            </div>
+            <div class="span6">
+              <h4>Hiring</h4>
+              <ul style="margin: 0px; list-style-type: none;">
+                <li> Hacker applications
+                <li> Note: Please contact us to add your company and view applications
+              </ul>
+            </div>
+          </label>
+        </div-->
+        <div class="preset row">
+          <label for="custom-preset" class="row span14">
+            <div class="span1">
+              <input type="radio" name="preset-choice" value="custom" id="custom-preset" title-text="New Contest"/>
+            </div>
+            <div class="span6">
+              <h4>Custom</h4>
+              <ul style="margin: 0px; list-style-type: none;">
+                <li> Minimal settings
+              </ul>
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="container hide" style="padding-bottom: 100px;" id="basic">
+      <div class="block row span16">
+        <div class="span15">
+          <h3>Details</h3>
+          <hr>
+          <p></p>
+        </div>
+
+        <div class="span15">
+          <div class="control-group span15">
+            <label class="control-label span3" for="name">Name</label>
+            <div class="controls span7">
+              <input type="text" id="name" placeholder="Contest Name" value="">
+            </div>
+          </div>
+
+          <div class="control-group span15">
+            <label class="control-label span3" for="slug">Slug</label>
+            <div class="controls span7">
+              <input id="slug" type="text" placeholder="URL Friendly Name" value=""  />
+            </div>
+          </div>
+
+          <div class="control-group span15 slug-div">
+            <label class="control-label span3" for="slug">URL</label>
+            <div class="controls span10" id="contest-url">https://hackerrank.com/</div>
+          </div>
+
+          <div class="control-group span15">
+            <div class="span3 clear-margin">
+              <label class="control-label span3" for="startDate">Duration<br>
+              <small>All times in UTC</small></label>
+            </div>
+            <div class="span3">
+              <div class="controls span4 input-append" id="stdate" style="margin-left:20px;" data-date=" <%= $.format.date( (new Date), "yyyy-MM-dd hh:mm" ) %> ">
+                <input class="span3" id="startDate" value="" type="text" data-format="yyyy-MM-dd hh:mm" placeholder="Start"/>
+                <span class="add-on btn" style="vertical-align:top; width:18px;"><i class="icon-th"></i></span>
+              </div>
+              <div class="controls span4 input-append" id="endate" style="margin-left:20px;" data-date=" <%= $.format.date( (new Date), "yyyy-MM-dd hh:mm" ) %> ">
+                <input class="span3" id="endDate" type="text" value="" data-format="yyyy-MM-dd hh:mm" placeholder="End"/>
+                <span class="add-on btn" style="vertical-align:top; width:18px;"><i class="icon-th"></i></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="span15">
+            <p></p>
+          </div>
+
+          <div class="control-group span15 manage-description">
+            <label class="control-label span9" for="description">Description</label>
+            <div class="controls span15">
+              <ul id="description-tabs" class="nav nav-tabs">
+                <li class="active"><a href="#descriptionEditTab" data-toggle="tab">Edit</a></li>
+                <li><a href="#descriptionPreviewTab" data-toggle="tab">Preview</a></li>
+              </ul>
+
+              <div class="tab-content" style="margin-left: 0px;">
+                <div class="tab-pane active" id="descriptionEditTab">
+                  <textarea id="description"></textarea>
+                </div>
+                <div class="tab-pane" id="descriptionPreviewTab">
+                  <div class="tab-pane span10 preview" id="descriptionPreview"></div>
+                </div>
+              </div>
+
+              <script type="text/javascript">
+                $('#description-tabs a').click(function (e) {
+                    e.preventDefault();
+                    $(this).tab('show');
+                    });
+</script>
+            </div>
+          </div>
+
+          <div class="control-group span15">
+            <label class="control-label span3" for="description">Tagline</label>
+            <div class="controls span8">
+              <input type="text" id="tagline" class="full-width" placeholder="A one line tagline for the contest." value="" />
+            </div>
+          </div>
+        </div>
+        <div class="span" style="width: 691px;">
+          <button class="pull-right btn btn-primary save">Create and Add Challenges</button>
+          <div class="message error pull-left span hide" style="width:450px; margin-left: 40px;">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container hide" id="challenges-pane">
+      <div class="block row span16">
+        <div class="span15">
+          <h3>Challenges</h3>
+          <hr>
+          <p>Add challenges to the contest.</p>
+        </div>
+        <div class="challenges span15">
+        </div>
+        <div class="span" style="width: 691px;">
+          <button class="pull-right btn btn-primary done">Finish</button>
+        </div>
+      </div>
+    </div>
+</div>
+

@@ -1,0 +1,74 @@
+<div class="settings_content-pane padded">
+  <div class="settings_content-group">
+    <h3>Merge Accounts</h3>
+    <p class="aside">Accidentally create two accounts? This combines another account into the one you are currently logged in as.</p>
+    <div class="formgroup">
+      <label for="mergeaccounts">Username of the account to merge with <%=model.username%></label>
+      <div class="input-btn-group profile-input">
+        <input id="mergeaccounts" type="text" placeholder="username"/>
+        <button class="btn btn-merge">Merge</button>
+      </div>
+      <div><small class="merge-response"></small></div>
+    </div>
+    <!-- <hr> -->
+    <!-- <p class="clearfix"><a href="" class="pull-right btn btn-line btn-small orange">Delete your account</a></p> -->
+  </div>
+  <div class="settings_content-group">
+    <h3>Email Addresses</h3>
+    <p class="aside block-margin margin-large bottom">We will never share your email address or display it publicly.</p>
+    <div class="formgroup horizontal settings-addemail">
+      <div class="clearfix">
+        <label class="pull-left span3">Primary Email</label>
+        <div class="block profile-input span8 pull-left">
+          <p class="margin-small bottom settings_content-useremail"><%= _.escape(model.email) %></p>
+        </div>
+      </div>
+      <div class="clearfix">
+        <label class="pull-left span3">Secondary Emails</label>
+        <div  class="block profile-input span8 pull-left" id="secondary-emails-view"></div>
+      </div>
+    </div>
+  </div>
+  <div class="settings_content-group">
+    <h3>Connected Accounts</h3>
+    <p class="aside block-margin margin-large bottom">Connect your other accounts with HackerRank to share your progress and scores and find your friends</p>
+    <div class="clearfix connect-social">
+      <div class="formgroup">
+        <div class="row">
+          <% if (model.fb_uid) { %>
+            <a class="btn btn-facebook btn-social connected"><i class="icon-facebook"></i> Connected to Facebook</a>
+            <label for="facebook_allow_opengraph" class="filter-checkbox span3 <% if (model.facebook_allow_opengraph) { %> active <% } %>">
+                <input id="facebook_allow_opengraph" name="facebook_allow_opengraph" type="checkbox" <% if (model.facebook_allow_opengraph) { %> checked <% } %>/>
+                <i class="status-indicator <% if (model.facebook_allow_opengraph) { %> filter <% } %>"></i>
+                <% if (model.facebook_allow_opengraph) { %>
+                  <span>Sharing Turned On</span>
+                <% } else { %>
+                  <span>Sharing Turned Off</span>
+                <% } %>
+            </label>
+            <p class="padding-small top small span5">
+                <% if (model.facebook_allow_opengraph) { %>
+                  Your progress is being shared on Facebook.
+                <% } else { %>
+                  Your progress is not being shared on Facebook.
+                <% } %>
+            </p>
+          </div>
+          <% } else { %>
+            <a class="btn btn-facebook btn-social nofloat"> <i class="icon-facebook"></i> Connect to Facebook</a>
+          <% } %>
+        </div>
+        <div class="row">
+          <% if (model.gh_uid) { %>
+            <a class="btn btn-github btn-social connected"> <i class="icon-github"></i><span class="text"> Connected to Github</a>
+              <p class="padding-small top small span5">
+               You have connected your GitHub account.
+              </p>
+          <% } else { %>
+            <a class="btn btn-github btn-social"> <i class="icon-github"></i> Connect to GitHub</a>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>

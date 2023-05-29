@@ -1,0 +1,6 @@
+<input type="text" placeholder="email address" name="email" <% if (attendant.email) { %>value="<%- attendant.email %>"<% } %>>
+<input type="text" class="msL" placeholder="name" name="name" <% if (attendant.name) { %>value="<%- attendant.name %>"<% } %>>
+<input type="text" class="msL" placeholder="phone number" name="phone_number" <% if (attendant.phone_number) { %>value="<%- attendant.phone_number %>"<% } %>>
+<% if (role == 'interviewer' && add) { %>
+<a href="#" class="btn msL js-add-interviewer" style="top: -4px; position: relative;"><i class="icon-plus"></i>&nbsp;Add another</a>
+<% } %>

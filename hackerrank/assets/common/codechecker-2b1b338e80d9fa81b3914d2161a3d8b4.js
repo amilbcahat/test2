@@ -1,0 +1,444 @@
+var lang_mime_mapping = {
+c:"text/x-csrc",
+cpp:"text/x-c++src",
+java:"text/x-java",
+csharp:"text/x-csharp",
+haskell:"text/x-haskell",
+php:"text/x-php",
+python:"text/x-python",
+perl:"text/x-perl",
+ruby:"text/x-ruby",
+bash:"text/x-bash",
+oracle:"text/x-plsql",
+mysql:"text/x-plsql",
+sql:"text/x-plsql",
+clojure:"text/x-scheme",
+scala:"text/x-scala",
+code:"text/plain",
+text:"text/plain",
+brainfuck:"text/plain",
+javascript:"text/javascript",
+d:"text/x-d",
+go:"text/x-go",
+lua:"text/x-lua",
+erlang:"text/x-erlang",
+sbcl:"text/x-common-lisp",
+ocaml:"text/x-ocaml",
+pascal:"text/x-pascal",
+python3:"text/x-python",
+groovy:"text/x-groovy",
+text_pseudo:"text/plain",
+objectivec:"text/x-csrc",
+fsharp:"text/x-fsharp",
+visualbasic:"text/x-vb"
+}, lang_display_mapping = {
+c:"C",
+cpp:"C++",
+java:"Java",
+csharp:"C#",
+haskell:"Haskell",
+php:"PHP",
+python:"Python 2",
+ruby:"Ruby",
+perl:"Perl",
+bash:"BASH",
+oracle:"Oracle",
+mysql:"MySQL",
+sql:"SQL",
+clojure:"Clojure",
+scala:"Scala",
+code:"Generic",
+text:"Plain Text",
+brainfuck:"Brainfuck",
+javascript:"Javascript",
+lua:"Lua",
+sbcl:"Lisp",
+erlang:"Erlang",
+go:"Go",
+d:"D",
+ocaml:"OCaml",
+pascal:"Pascal",
+python3:"Python 3",
+groovy:"Groovy",
+objectivec:"Objective C",
+text_pseudo:"Plain Text",
+fsharp:"F#",
+visualbasic:"VB.NET"
+}, default_head_end = {
+c:"/* Head ends here */",
+cpp:"/* Head ends here */",
+java:"/* Head ends here */",
+csharp:"/* Head ends here */",
+haskell:"-- Head ends here",
+php:"/* Head ends here */",
+python:"# Head ends here",
+perl:"# Head ends here",
+ruby:"# Head ends here",
+bash:"# Head ends here",
+clojure:"; Head ends here",
+scala:"/* Head ends here */",
+sbcl:"; Head ends here",
+lua:"-- Head ends here",
+javascript:"/* Head ends here */",
+pascal:"{ Head ends here }",
+python3:"# Head ends here",
+groovy:"// Head ends here",
+objectivec:"// Head ends here",
+fsharp:"// Head ends here",
+visualbasic:"' Head ends here"
+}, lang_fold_mapping = {
+c:"brace",
+cpp:"brace",
+java:"brace",
+csharp:"brace",
+haskell:"indent",
+php:"brace",
+python:"indent",
+ruby:"indent",
+perl:"brace",
+bash:"brace",
+oracle:"indent",
+mysql:"indent",
+sql:"indent",
+clojure:"indent",
+scala:"brace",
+code:"brace",
+text:"indent",
+brainfuck:"indent",
+javascript:"brace",
+lua:"indent",
+sbcl:"indent",
+erlang:"indent",
+go:"brace",
+d:"brace",
+ocaml:"indent",
+pascal:"indent",
+python3:"indent",
+groovy:"brace",
+objectivec:"brace",
+text_pseudo:"indent",
+fsharp:"indent",
+visualbasic:"indent"
+}, default_tail_start = {
+c:"/* Tail starts here */",
+cpp:"/* Tail starts here */",
+java:"/* Tail starts here */",
+csharp:"/* Tail starts here */",
+haskell:"-- Tail starts here",
+php:"/* Tail starts here */",
+python:"# Tail starts here",
+perl:"# Tail starts here",
+ruby:"# Tail starts here",
+bash:"# Tail starts here",
+clojure:"; Tail starts here",
+scala:"/* Tail starts here */",
+sbcl:"; Tail starts here",
+lua:"-- Tail starts here",
+javascript:"/* Tail starts here */",
+pascal:"{ Tail starts here }",
+python3:"# Tail starts here",
+groovy:"// Tail starts here",
+objectivec:"// Tail starts here",
+fsharp:"// Tail starts here",
+visualbasic:"' Tail starts here"
+}, lang_default_text = {
+c:"#include <stdio.h>\n#include <string.h>\n#include <math.h>\n#include <stdlib.h>\n\nint main() {\n\n    /* Enter your code here. Read input from STDIN. Print output to STDOUT */    \n    return 0;\n}\n",
+cpp:"#include <cmath>\n#include <cstdio>\n#include <vector>\n#include <iostream>\n#include <algorithm>\nusing namespace std;\n\n\nint main() {\n    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   \n    return 0;\n}\n",
+java:"import java.io.*;\nimport java.util.*;\nimport java.text.*;\nimport java.math.*;\nimport java.util.regex.*;\n\npublic class Solution {\n\n    public static void main(String[] args) {\n        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */\n    }\n}",
+csharp:"using System;\nusing System.Collections.Generic;\nusing System.IO;\nclass Solution {\n    static void Main(String[] args) {\n        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution */\n    }\n}",
+php:'<?php\n$_fp = fopen("php://stdin", "r");\n/* Enter your code here. Read input from STDIN. Print output to STDOUT */\n\n?>',
+ruby:"# Enter your code here. Read input from STDIN. Print output to STDOUT",
+python:"# Enter your code here. Read input from STDIN. Print output to STDOUT",
+perl:"# Enter your code here. Read input from STDIN. Print output to STDOUT",
+haskell:"-- Enter your code here. Read input from STDIN. Print output to STDOUT",
+clojure:"; Enter your code here. Read input from STDIN. Print output to STDOUT\n;",
+lua:"-- Enter your code here. Read input from STDIN. Print output to STDOUT",
+sbcl:";; Enter your code here. Read input from STDIN. Print output to STDOUT",
+erlang:"% Enter your code here. Read input from STDIN. Print output to STDOUT\n% Your class should be named solution\n\n-module(solution).\n-export([main/0]).\n\nmain() ->\n	.\n",
+scala:"object Solution {\n\n    def main(args: Array[String]) {\n        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution\n*/\n    }\n}",
+go:'package main\nimport "fmt"\n\nfunc main() {\n //Enter your code here. Read input from STDIN. Print output to STDOUT\n}',
+javascript:'function processData(input) {\n    //Enter your code here\n} \n\nprocess.stdin.resume();\nprocess.stdin.setEncoding("ascii");\n_input = "";\nprocess.stdin.on("data", function (input) {\n    _input += input;\n});\n\nprocess.stdin.on("end", function () {\n   processData(_input);\n});\n',
+d:"/* Enter your code here. Read input from STDIN. Print output to STDOUT */",
+ocaml:"(* Enter your code here. Read input from STDIN. Print output to STDOUT *)",
+pascal:"(* Enter your code here. Read input from STDIN. Print output to STDOUT *)",
+groovy:"//Enter your code here. Read input from STDIN. Print output to STDOUT",
+text:"",
+objectivec:"//Enter your code here. Read input from STDIN. Print output to STDOUT",
+fsharp:"//Enter your code here. Read input from STDIN. Print output to STDOUT",
+visualbasic:"'Enter your code here. Read input from STDIN. Print output to STDOUT"
+}, default_checker_limits = {
+c:{
+timelimit:3
+},
+clojure:{
+timelimit:5
+},
+cpp:{
+timelimit:3
+},
+csharp:{
+timelimit:5
+},
+go:{
+timelimit:6
+},
+haskell:{
+timelimit:5
+},
+java:{
+timelimit:5
+},
+javascript:{
+timelimit:16
+},
+perl:{
+timelimit:16
+},
+php:{
+timelimit:16
+},
+python:{
+timelimit:16
+},
+ruby:{
+timelimit:16
+},
+scala:{
+timelimit:5
+}
+}, codechecker_resource_limits = {
+c:{
+title:"C",
+min_mem:256,
+max_mem:512,
+def_mem:512,
+min_time:2,
+max_time:6,
+def_time:3
+},
+cpp:{
+title:"C++",
+min_mem:256,
+max_mem:512,
+def_mem:512,
+min_time:2,
+max_time:6,
+def_time:3
+},
+java:{
+title:"Java",
+min_mem:256,
+max_mem:512,
+def_mem:512,
+min_time:2,
+max_time:10,
+def_time:5
+},
+csharp:{
+title:"C#",
+min_mem:256,
+max_mem:512,
+def_mem:512,
+min_time:2,
+max_time:10,
+def_time:5
+},
+php:{
+title:"PHP",
+min_mem:256,
+max_mem:512,
+def_mem:512,
+min_time:2,
+max_time:32,
+def_time:16
+},
+ruby:{
+title:"Ruby",
+min_mem:256,
+max_mem:512,
+def_mem:512,
+min_time:2,
+max_time:32,
+def_time:16
+},
+python:{
+title:"Python 2",
+min_mem:256,
+max_mem:512,
+def_mem:512,
+min_time:2,
+max_time:32,
+def_time:16
+},
+perl:{
+title:"Perl",
+min_mem:256,
+max_mem:512,
+def_mem:512,
+min_time:2,
+max_time:32,
+def_time:16
+},
+haskell:{
+title:"Haskell",
+min_mem:256,
+max_mem:512,
+def_mem:512,
+min_time:2,
+max_time:10,
+def_time:5
+},
+clojure:{
+title:"Clojure",
+min_mem:256,
+max_mem:512,
+def_mem:512,
+min_time:2,
+max_time:20,
+def_time:10
+},
+scala:{
+title:"Scala",
+min_mem:256,
+max_mem:512,
+def_mem:512,
+min_time:2,
+max_time:20,
+def_time:10
+},
+clisp:{
+title:"CLISP",
+min_mem:256,
+max_mem:512,
+def_mem:256,
+min_time:2,
+max_time:32,
+def_time:16
+},
+lua:{
+title:"Lua",
+min_mem:256,
+max_mem:512,
+def_mem:256,
+min_time:2,
+max_time:32,
+def_time:16
+},
+erlang:{
+title:"Erlang",
+min_mem:256,
+max_mem:512,
+def_mem:512,
+min_time:2,
+max_time:32,
+def_time:16
+},
+brainfuck:{
+title:"Brainfuck",
+min_mem:256,
+max_mem:512,
+def_mem:512,
+min_time:2,
+max_time:4,
+def_time:2
+},
+javascript:{
+title:"Javascript",
+min_mem:256,
+max_mem:512,
+def_mem:256,
+min_time:2,
+max_time:32,
+def_time:16
+},
+go:{
+title:"Go",
+min_mem:256,
+max_mem:1024,
+def_mem:1024,
+min_time:2,
+max_time:12,
+def_time:6
+},
+d:{
+title:"D",
+min_mem:256,
+max_mem:512,
+def_mem:256,
+min_time:2,
+max_time:40,
+def_time:20
+},
+ocaml:{
+title:"OCaml",
+min_mem:256,
+max_mem:512,
+def_mem:512,
+min_time:2,
+max_time:6,
+def_time:3
+},
+pascal:{
+title:"Pascal",
+min_mem:256,
+max_mem:512,
+def_mem:512,
+min_time:2,
+max_time:6,
+def_time:3
+},
+sbcl:{
+title:"Lisp",
+min_mem:256,
+max_mem:512,
+def_mem:512,
+min_time:2,
+max_time:32,
+def_time:16
+},
+python3:{
+title:"Python 3",
+min_mem:256,
+max_mem:512,
+def_mem:512,
+min_time:2,
+max_time:32,
+def_time:16
+},
+groovy:{
+title:"Groovy",
+min_mem:256,
+max_mem:512,
+def_mem:512,
+min_time:2,
+max_time:10,
+def_time:5
+},
+objectivec:{
+title:"Objective C",
+min_mem:256,
+max_mem:512,
+def_mem:512,
+min_time:2,
+max_time:6,
+def_time:3
+},
+fsharp:{
+title:"F#",
+min_mem:256,
+max_mem:512,
+def_mem:512,
+min_time:2,
+max_time:10,
+def_time:5
+},
+visualbasic:{
+title:"VB.NET",
+min_mem:256,
+max_mem:512,
+def_mem:512,
+min_time:2,
+max_time:10,
+def_time:5
+}
+};

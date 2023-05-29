@@ -1,0 +1,124 @@
+<style>
+    .gameback
+    {
+        width: 432px;
+        margin: auto;
+        border: 1px solid #333;
+        margin-bottom: 20px;
+        background: url("/assets/games/backgammon_board.jpg");
+        height: 300px;
+        padding:14px 0px 14px 8px;
+    }
+    .dice{
+        float: left;
+        width: 32px;
+        height: 300px;
+        margin-right: 8px;
+    }
+    .dice td {
+        vertical-align: middle;
+        text-align: center;
+    }
+    .moves {
+        float: left;
+        height: 300px;
+        width: 392px;
+    }
+    .moves td {
+        width:24px !important;
+        text-align: center;
+        vertical-align: inherit;
+    }
+    .moves td:nth-child(7){
+        width:50px !important;
+    }
+    .moves td:nth-child(14){
+        width:50px !important;
+    }
+    .coin {
+        height:20px;
+        width: 20px;
+        border-radius: 12px;
+        border: 1px solid #000;
+        display: inline-block;
+    }
+    .bar-0 .coin, .bar-1 .coin, td.0-12 .coin, td.1-12 .coin {
+        margin:0 5px;
+    }
+    .coin.c2 {
+        background: #000;
+        color: #FFF;
+        border: 1px solid #FFF;
+    }
+    .coin.c1 {
+        background: #FFF;
+        color: #000;
+    }
+    .game-grid {
+    }
+    .coint {
+        height:;
+    }
+
+    .dice_coin {
+        background: url("/assets/games/dice.png");
+        background-size: 160px;
+        height: 25px;
+        width:24px;
+        display: inline-block;
+    }
+    .dice_coin.n1 {
+        background-position: -11px;
+    }
+    .dice_coin.n2 {
+        background-position: -33px;
+    }
+    .dice_coin.n3 {
+        background-position: -56px;
+    }
+    .dice_coin.n4 {
+        background-position: -78px;
+    }
+    .dice_coin.n5 {
+        background-position: -100px;
+    }
+    .dice_coin.n6 {
+        background-position: -123px;
+    }
+    .player_info .active{
+        border-bottom: 2px solid green;
+    }
+</style>
+<div>
+    <div class="game-grid" style="display: block; margin: auto; border-radius: 10px;">
+        <% var rows = 2; %>
+        <% var columns = 13; %>
+        <div class="gameback">
+            <table class="dice"><tr><td>
+            </td></tr></table><table class="moves">
+                <% for (i = 0; i < rows; i++) { %>
+                <tr style="vertical-align: <%=  (i==1) ? "bottom": "top"  %>" >
+                    <% for (j = 0; j < columns; j++) { %>
+                       <td class="<%= i %>-<%= j %>" style="">&nbsp;</td>
+                       <% if(j==5) { %>
+                            <td class="bar-<%= i %>" style="">&nbsp;</td>
+                       <% } %>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>
+        </div>
+        <div class="player_info" style="text-align:center">
+            <div style="display:inline-block; margin:0 5px;" class="player1">
+                <div class="coin c1"></div>
+                <br/>
+                Player 1
+            </div>
+            <div style="display:inline-block; margin:0 5px;" class="player2">
+                <div class="coin c2"></div>
+                <br/>
+                Player 2
+            </div>
+        </div>
+    </div>
+</div>

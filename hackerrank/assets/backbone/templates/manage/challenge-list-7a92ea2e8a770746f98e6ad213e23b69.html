@@ -1,0 +1,60 @@
+<section class="container">
+    <header class="page-title container">
+        <ul class="breadcrumb unstyled horizontal">
+            <li><a href="/manage/" class="backbone">Manage Home</a><i class="icon-right-open-big divider"></i></li>
+            <li><a href="/manage/challenge/" class="backbone">Challenges</a><i class="icon-right-open-big divider"></i></li>
+        </ul>
+        <div class="clearfix">
+            <h1 class="pull-left">My Challenges</h1>
+            <a class="pull-right btn btn-green margin-small top" href="/manage/challenge/edit/new">Create A New Challenge</a>
+        </div>
+    </header>
+  
+  
+  <div class="clearfix">
+      <div class="pull-right">
+          <input type="text" class="search" placeholder="Search for..." />
+      </div>
+  </div>
+  <% if(collection.total != 0){ %>
+  <div class="table-wrap">
+      <header class="text-center">
+          <div class="span1">
+            <p>#</p>
+          </div>
+          <div class="span4">
+            <p>Challenge Name</p>
+          </div>
+          <div class="span2">
+            <p>Type</p>
+          </div>
+          <div class="span3">
+            <p>Contest</p>
+          </div>
+          <div class="span2">
+            <p>Submissions</p>
+          </div>
+          <div class="span3">
+            <p></p>
+          </div>
+      </header>
+      
+      <div class="challenge-list-wrapper table-body text-center">
+      </div>
+      
+      <div class="pagination-wrap clearfix pagination-wrapper" style="margin-bottom:20px;">
+      </div>
+  </div>
+      <% } else { %>
+        <div class="light-wrap">
+          <p>
+          <% if(collection.query && collection.query != "") { %>
+            Cannot find challenges matching the filter.
+          <% } else { %>
+            You have not submitted any challenges yet.
+          <% } %>
+          </p>
+        </div>
+      <% } %>
+  
+</section>

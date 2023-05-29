@@ -1,0 +1,28 @@
+<section class="admin contestedit">
+    <header class="page-title grey-header">
+        <div class="container">
+            <div class="clearfix">
+                <h1 class="pull-left"><%= _.capitalize(action) %> Contest</h1>
+                <div class="pull-right margin-small top">
+                    <% if (action != "create") { %>
+                    <a target="_blank" href="/<%= _model.slug %>" class="btn margin-small right">Preview Contest</a>
+                    <% } %>
+                    <button class="save-contest btn btn-primary">Save Contest</button>
+                </div>
+            </div>
+            <ul class="nav-tabs nav">
+                <li data-tab="overview"><a class="cursor change-tab">Overview</a></li>
+                <% if (action == 'edit') { %>
+                <li data-tab="challenges"><a class="cursor change-tab">Add Challenges</a></li>
+                <!-- <li data-tab="options"><a class="cursor change-tab">Options</a></li> -->
+                <% } %>
+                <li class="pull-right no-tab">
+                    <a class="btn btn-text right-align backbone" href="/administration/contests">View all contests<i class="icon-right-open icon--left "></i></a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div class="tabs-body container">
+        <div class="tabs-body-inner"></div>
+    </div>
+</section>

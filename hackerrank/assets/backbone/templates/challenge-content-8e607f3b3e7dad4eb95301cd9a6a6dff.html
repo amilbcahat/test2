@@ -1,0 +1,24 @@
+<% if (model.has_ended) { %> <strong> Submissions will no longer be placed on the leaderboard. You may still attempt this problem for practice. </strong><%}%>
+<% if (!model.has_started) { %> <strong> Hi Admin, this challenge is not yet open to the public. </strong><%}%>
+<div class="row">
+    <div class="span11 challenge-text content-text hr_tour-problem-statement">
+        <%= model.body_html %>
+    </div>
+</div>
+<p class="clearfix"><a href="#" align="right" class="js-suggest-edits btn btn-line fade in pull-right challenge_suggestion-toggle fullscreen-hide">Suggest Edits</a></p>
+<div class="challenge_suggestion fullscreen-hide">
+  <div class='formgroup clearfix m'>
+    <div class='alert error hide'></div>
+  </div>
+  <form id="suggestion-form" class="hide challenge_suggestion-form fullscreen-hide">
+    <p class="challenge_suggestion-header">Thanks for helping us refine this problem statement. Please address your suggestions below. </p>
+    <textarea id='suggestion' rows='10' class='challenge_suggestion-input'></textarea>
+    <div class='challenge_suggestion-buttons access-buttons clearfix'>
+    	<div class="pull-right">
+            <button class="btn btn-green js-suggestion-save pull-right" data-analytics="Submit Suggestion">Submit Suggestion</button>
+            <button class="btn btn-alert js-suggestion-cancel pull-right" data-analytics="Cancel Suggestion">Cancel</button>
+    	</div>
+    </div>
+  </form>
+</div>
+<br>

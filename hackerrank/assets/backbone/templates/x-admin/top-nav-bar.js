@@ -1,0 +1,12 @@
+HR.appController.addTemplate("backbone/templates/x-admin/top-nav-bar", function(obj) {
+{
+var __t, __p = "";
+Array.prototype.join;
+}
+with (obj || {}) __p += '<span class="nav-logo">\n                <a href="/x" class="HackerRankLogo backbone page_header-logo none">\n                    <!--?xml version=\'1.0\' encoding=\'utf-8\'?-->\n                    <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n                    <svg width="156" height="45">\n                        <image xlink:href="/assets/brand/HRX_logo_wordmark.svg"\n                               src="/assets/brand/HRX_logo_wordmark.png" width="156" height="45"></image>\n                    </svg>\n                </a>\n            </span><!-- end .nav-logo -->\n', 
+!model.authkey && model.company && (__p += '\n<span class="nav-login-patch">\n\n                <div class="admin-dropdown page_header_dropdown-toggle pull-right" id="profile-menu">\n                    <a class="backbone dropdown-toggle page_header-userbtn" href="" data-toggle="dropdown">\n                        <div class="hre-username pull-left">\n                            ', 
+__p += model.firstname ? "\n                            " + (null == (__t = _.escape(model.firstname)) ? "" :__t) + "\n                            " :"\n                            " + (null == (__t = _.escape(model.email)) ? "" :__t) + "\n                            ", 
+__p += '\n                        </div>\n                        <i class="icon-down-open-mini"></i>\n\n                        <div class="clear"></div>\n                    </a>\n                    <ul class="unstyled dropdown-menu page_header_dropdown">\n                        <li><a href="/x/tests">Go back to Website</a></li>\n                        <li><a href="/x/api/v1/users/logout" class="logout-button">Logout</a></li>\n                    </ul>\n                </div>\n\n            </span>\n\n<ul class="selector-nav-tabs hre-margin">\n    <li class="js-admin-section js-nav-sections">\n    <a href="admin" id="navigate-to-admin" class="js-nav-link">Admin</a>\n    </li>\n    <li class="js-analytics-section js-nav-sections">\n    <a href="analytics" id="navigate-to-analytics" class="js-nav-link">Analytics</a>\n    </li>\n</ul>\n'), 
+__p += "\n";
+return __p;
+});

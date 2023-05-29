@@ -1,0 +1,62 @@
+<div class="<%= model.template_class%> blog-post container"><!-- class names: blog-standard [ standard post ] , blog-quote [ quote post ] , ... -->
+    <br>
+    <div class="breadcrumbs">
+        <ul class="pull-left breadcrumb unstyled horizontal">
+            <li><a href="<%= HR.appController.get_contest_namespace() %>/blog" class="backbone"> Blog </a>
+            <i class="icon-right-open-big divider"></i></li>
+        </ul>
+    </div>
+
+    <% if(model.draft) { %> <h2> THIS POST IS STILL A DRAFT.</h2> <%}%>
+    <header class="page-title">
+        <h1><%= model.title %></h1>
+    </header>
+
+    <div class="row">
+        <div class="span11 content-wrap">
+             <ul class="unstyled horizontal social-buttons">
+                <li><a class="js-blog-tweet" style="cursor:pointer;"><img src="/assets/tweet-filler.png"></a></li>
+                <li><a class="js-blog-fb-share" style="cursor:pointer;"><img src="/assets/fb-share.png"></a></li>
+            </ul>
+            <div class="light-wrap post-content">
+                <!--CONTENT FOR STANDARD POST -->
+
+                <%= model.html_content %>
+                <div class="post-meta">
+                    <p class="no-flow posted-on"> <%= model.date %> </p>
+                </div>
+
+                <!-- END -->
+
+                <!-- CONTENT FOR QUOTE POST
+
+                <blockquote>
+                    <p class="quote-body"><q>Someone who can make a computer do what he wants—whether the computer wants to or not.</q></p>
+                    <footer><p class="quote-attribution">Paul Graham</p></footer>
+                </blockquote>
+                <p>"I think I remember some such story as you were telling," said Flask, when at last the two boats were slowly advancing with their burden towards the ship, "but I can't remember where."</p>
+
+                END -->
+            </div>
+            <ul class="unstyled horizontal social-buttons">
+                <li><a class="js-blog-tweet" style="cursor:pointer;"><img src="/assets/tweet-filler.png"></a></li>
+                <li><a class="js-blog-fb-share" style="cursor:pointer;"><img src="/assets/fb-share.png"></a></li>
+            </ul>
+        </div>
+        <div class="span4 post-sidebar pull-right">
+            <img src="<%=model.owner_avatar%>" height="64" width="64" class="avatar post-author-avatar">
+            <p class="author-byline"><%= model.owner_name || model.owner_username %></p>
+            <p class="author-username no-flow"><a href="/<%= model.owner_username%>" class="backbone"><%= model.owner_username%></a></p>
+            <% if(current_hacker.is_admin || current_hacker.id == model.owner) { %> <br/><a class="js-edit-blog backbone" href="/blog/<%=model.id%>/edit">Edit Blog</a>  <%}%>
+            <!-- Not sure how this will be working yet, so hiding for now -->
+            <!--<ul class="post-tags unstyled">
+                <li class="group-heading"><h2>Posted In:</h2></li>
+                <li class="tag">Javascript</li>
+                <li class="tag">Education</li>
+                <li class="tag">Tic Tac Toe</li>
+            </ul>-->
+        </div>
+    </div>
+
+
+</div>

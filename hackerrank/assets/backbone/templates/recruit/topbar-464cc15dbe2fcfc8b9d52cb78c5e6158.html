@@ -1,0 +1,33 @@
+<div id="navigation">
+    <header class="nav-make-fixed min-1024" id="page-header">
+        <div class="row-fluid">
+
+            <div class="span6">
+                <span class="nav-logo"><a class="HackerRankLogo backbone logo-candidate-site"><!--?xml version='1.0' encoding='utf-8'?--><!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                    <img src="/assets/brand/h_mark_sm.png" /></a></span>
+                <span style="padding-left:50px;" class="text-ellipsis txt-white mlA"><%- test.get('name') %></span>
+            </div> <!-- .span7 -->
+
+            <div class="span2 timerspan text-center <% if (showalert) {%>alerttimer<%}%>">
+                <div class="mlT"><i class="icon-clock txt-alt-grey"></i>&nbsp;<span class="txt-white fnt-sz-mid" id="countdown-timer"></span><br><span class="timer-tag" id="timertag"></span></div>
+            </div> <!-- .span3 -->
+            <div class="span1">&nbsp;</div>
+
+            <div class="span4">
+                <div class="mlT txt-white fnt-sz-mid">
+                    <div class="dark-theme-progress small">
+                        <div class="base">
+                            <div class="cover progress-done"></div>
+                        </div>
+                    </div>
+                    &nbsp;<span class="qdone"></span>/<span class="qcount"></span> Attempted
+                </div>
+            </div> <!-- .span4 -->
+
+            <div class="span3">
+                <span class="text-ellipsis txt-white mlT"><i class="icon-user txt-alt-grey fnt-sz-mid"></i>&nbsp;<%- attempt.get('email') %></span>
+            </div> <!-- .span2 -->
+
+        </div> <!-- .row-fluid -->
+    </header>
+</div><!-- #navigation ends -->

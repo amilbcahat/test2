@@ -1,0 +1,20 @@
+/*
+ * Basic jQuery Slider plug-in v.1.1
+ * 
+ * http://www.basic-slider.com
+ *
+ * Authored by John Cobb
+ * Visit my blog at http://www.johncobb.name
+ * Or say helo on twitter: @john0514
+ *
+ * Copyright 2011, John Cobb
+ * Free for all to use, abuse and improve under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ * 
+ * First published: August 2011
+ * Updated v1.1: September 2011
+ * Updated v1.2: Janurary 2012
+ * 
+ */
+!function(e){e.fn.bjqs=function(a){var t={},i={width:700,height:300,animation:"fade",animationDuration:450,automatic:!0,rotationSpeed:4e3,hoverPause:!0,showControls:!0,centerControls:!0,nextText:"Next",prevText:"Prev",showMarkers:!0,centerMarkers:!0,keyboardNav:!0,useCaptions:!0},n=this,s=n.find(".bjqs"),r=s.children("li"),o=r.length,l=!1,d=!1,c=0,h=1,p=0,f=r.eq(c),v="forward",u="backward";if(t=e.extend({},i,a),r.css({height:t.height,width:t.width}),s.css({height:t.height,width:t.width}),n.css({height:t.height,width:t.width}),r.addClass("bjqs-slide"),t.showControls&&o>1){var w=e('<ul class="bjqs-controls"></ul>'),m=e('<li><a href="#" class="bjqs-next" class="controls">'+t.nextText+"</a></li>"),k=e('<li><a href="#" class="bjqs-prev" class="controls">'+t.prevText+"</a></li>");if(m.click(function(e){e.preventDefault(),l||D(v,!1)}),k.click(function(e){e.preventDefault(),l||D(u,!1)}),m.appendTo(w),k.appendTo(w),w.appendTo(n),t.centerControls){var q=m.children("a"),C=(n.height()-q.height())/2;m.children("a").css("top",C).show(),k.children("a").css("top",C).show()}}if(t.showMarkers&&o>1){var g,T,C,b=e('<ol class="bjqs-markers"></ol>');e.each(r,function(a){"slide"===t.animType?0!==a&&a!==o-1&&(g=e('<li><a href="#">'+a+"</a></li>")):(a++,g=e('<li><a href="#">'+a+"</a></li>")),g.click(function(t){t.preventDefault(),e(this).hasClass("active-marker")||l||D(!1,a)}),g.appendTo(b)}),T=b.children("li"),T.eq(c).addClass("active-marker"),b.appendTo(n),t.centerMarkers&&(C=(t.width-b.width())/2,b.css("left",C))}t.keyboardNav&&o>1&&e(document).keyup(function(e){d||(clearInterval(x),d=!0),l||(39===e.keyCode?(e.preventDefault(),D(v,!1)):37===e.keyCode&&(e.preventDefault(),D(u,!1))),d&t.automatic&&(x=setInterval(function(){D(v)},t.rotationSpeed),d=!1)}),t.useCaptions&&e.each(r,function(a,t){var i=e(t),n=i.children("img:first-child"),s=n.attr("title");if(s){var r=e('<p class="bjqs-caption">'+s+"</p>");r.appendTo(i)}}),t.hoverPause&&t.automatic&&n.hover(function(){d||(clearInterval(x),d=!0)},function(){d&&(x=setInterval(function(){D(v)},t.rotationSpeed),d=!1)}),"slide"===t.animation&&o>1&&($first=r.eq(0),$last=r.eq(o-1),$first.clone().addClass("clone").removeClass("slide").appendTo(s),$last.clone().addClass("clone").removeClass("slide").prependTo(s),r=s.children("li"),o=r.length,$wrapper=e('<div class="bjqs-wrapper"></div>').css({width:t.width,height:t.height,overflow:"hidden",position:"relative"}),s.css({width:t.width*o,left:-t.width}),r.css({"float":"left",position:"relative",display:"list-item"}),$wrapper.prependTo(n),s.appendTo($wrapper));var j=function(e){return"fade"===t.animation&&(e===v?f.next().length?p++:p=0:e===u&&(f.prev().length?p--:p=o-1)),"slide"===t.animation&&(e===v&&(p=h+1),e===u&&(p=h-1)),p};if(t.automatic&&o>1)var x=setInterval(function(){D(v,!1)},t.rotationSpeed);r.eq(c).show(),s.show();var D=function(e,a){l||(p=e?j(e):a&&"fade"===t.animation?a-1:a,l=!0,"fade"===t.animation?(t.showMarkers&&(T.eq(c).removeClass("active-marker"),T.eq(p).addClass("active-marker")),m=r.eq(p),f.fadeOut(t.animationDuration),m.fadeIn(t.animationDuration,function(){f.hide(),c=p,f=m,l=!1})):"slide"===t.animation&&(t.showMarkers&&(T.eq(h-1).removeClass("active-marker"),p===o-1?T.eq(0).addClass("active-marker"):0===p?T.eq(o-3).addClass("active-marker"):T.eq(p-1).addClass("active-marker")),s.animate({left:-p*t.width},t.animationDuration,function(){0===p?(h=o-2,s.css({left:-h*t.width})):p===o-1?(h=1,s.css({left:-t.width})):h=p,l=!1})))};return this}}(jQuery);
+//# sourceMappingURL=basic-jquery-slider-8505cf2e8b76b1d96f5dd29c9275d1d1.js.map

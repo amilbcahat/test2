@@ -1,0 +1,26 @@
+<div class="row">
+    <% if (model.length > 0) { %>
+        <div class="pull-right contest-selection">
+            <select id="rating-dropdown">
+            <% _.each(model, function(item) { %>
+                <option value='<%=item.id%>'><%= item.text %></option>
+                <option value='<%=item.id+1%>'><%= item.text %></option>
+            <% }); %>
+            </select>
+        </div>
+    <% } %>
+
+    <div class="pull-left rating-header">
+        <h5 class="mlT mmB small">Contest Performance</h5>
+        <h6 class="msB small">
+            <span class="zeta" >Rank: </span> <span id="rating-rank">N/A</span>
+            <span class="msL zeta" >Title:</span> <span id="rating-title">N/A</span>
+            <span class="msL zeta">Score:</span> <span id="rating-rating">N/A</span>
+        </h6>
+    </div>
+</div>
+
+<div class="row" style="height:300px;width:700px;display:block;">
+    <div class="history-chart" style="height:275px;width:650px;display:block;">
+    </div>
+</div>

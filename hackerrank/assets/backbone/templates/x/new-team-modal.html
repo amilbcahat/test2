@@ -1,0 +1,24 @@
+<div id="new-team-modal" class="modal">
+    <form class="form-horizontal" name="team-form">
+        <div class="modal-header text-center">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4>New Team</h4>
+        </div>
+
+        <div class="modal-body">
+            <div class="alert alert-error hidden"></div>
+            <div class="control-group">
+                <label class="control-label">Name:</label>
+                <div class="controls">
+                    <input type="text" name="new-team-name"/>
+                </div>
+            </div>
+        </div><!-- end modal-body -->
+
+        <div class="modal-footer">
+            <center>
+                <button type="submit" class="inline_block button-green big_button_padding rcorners_mid" href="#"><% if (model.name) { %>Save<% } else { %>Create<% } %> team</button>
+            </center>
+        </div><!-- end modal-footer -->
+    </form>
+</div><!-- end modal -->

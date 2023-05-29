@@ -1,0 +1,38 @@
+<div class="blogindex container">
+    <div class="content_wrap narrow">
+        <div class="sidebar--inline padded">
+            <div class="sidebar_group">
+                <h1><strong>The Array</strong></h1>
+                <p class="secondary margin-large bottom top">This blog is maintained by the HackerRank team, and is intended to be a source of programming guidance and inspiration. If you have an idea for a post, please <a href="mailto:hackers@hackerrank.com">contact us</a>. Happy hacking!</p>
+                <% if(current_hacker.is_admin) {%>
+                <p class='btn-wrap'><a href="/oldblog/new/edit" class="backbone btn btn-green"><i class="icon-plus"></i>New post</a></p>
+                <%} else {%>
+                <p class="btn-wrap"><a href="/rest/blogs.rss" class="btn"><i class="icon-rss"></i>Subscribe</a></p>
+                <% } %>
+            </div>
+        </div>
+        <div class="content--inline">
+            <% if(_.isEmpty(collection)) { %>
+              There are no articles to share.
+            <% } %>
+
+            <% _.each(collection, function(blog) { %>
+                <div class="padded blogindex_post <%= blog.template_class%>">
+                    <% if (blog.template_class === "blog-standard") { %>
+                        <h2 class="post_title"><a class="backbone" href="/oldblog/<%=blog.slug%>"><%=blog.title%></a></h2>
+                        <div class="meta margin-large bottom">
+                            <p><span class="blog_post-date"><%=$.format.date(new Date(blog.date), "MMM dd yyyy")%></span> by <span class="blog_post-byline"><a href="/<%= blog.owner_username %>"> <%= blog.owner_name %></a></span></p>
+                        </div>
+                    <% } else { %>
+                        <div class="meta margin-large bottom">
+                            <p class="blog_post-date"><%=$.format.date(new Date(blog.date), "MMM dd yyyy")%></p>
+                        </div>
+                    <% } %>
+                    <%= blog.preview %>
+                </div>
+            <% })%>
+
+            <div class="blog_pagination-wrapper pagination-wrapper"></div>
+        </div>
+    </div>
+</div>

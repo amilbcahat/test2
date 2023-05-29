@@ -1,0 +1,60 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL"><%- model.name %></h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Invite Candidates</h3>
+</div>
+<div class="overflow-content" id="control-overflow">
+    <div class="mjA">
+        <div class="span16">
+        Invites Remaining: <% if (user.type == 'unlimited') { %>unlimited<% } else { %><%= parseInt(user.company.invites, 10) + parseInt(user.company.subscription_invites, 10) %><% } %>
+        </div>
+        <div class="formgroup">
+            <label>ENTER EMAIL ADDRESS</label>
+            <p class="txt-alt-grey mdB span10 no-padding">Enter email address of candidates you want to invite to take your test. You can invite more than one candidate by separating addresses with a comma.</p>
+            <textarea id="emails" name="emails" rows="2" class="txt_box span12" placeholder="Type the e-mail ids of the candidates that you want to take the test."></textarea>
+            <div class="clear"></div>
+        </div>
+        <div class="formgroup">
+            <label>SUBJECT</label>
+            <input type="text" class="wide" value="<%- model.name %> Invite" name="subject"></input>
+        </div>
+        <div class="span5">
+            <label class="display-inline">Do you want to provide a test link?</label>
+            <div class="formgroup radio inline">
+                <label><input type="radio" name="prefs-link" value="1" checked> Yes</label>
+                <label><input type="radio" name="prefs-link" value="0"> No</label>
+            </div>
+        </div>
+        <div class="span8">
+            <label class="display-inline">Do you want the test to be available on a paticular time?</label>
+            <div class="formgroup radio inline">
+                <label><input type="radio" name="prefs-time" value="1" checked> Yes</label>
+                <label><input type="radio" name="prefs-time" value="0"> No</label>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="formgroup">
+            <label>EMAIL CONTENT (optional)</label>
+            <textarea class="editor_width texteditor" name="email-content" id="email_content" style="width: 100%"><% if (!model.template_email || model.template_email !== "True") { %><%= model.email %><% } %></textarea>
+        </div>
+        <div class="span8">
+            <label>Saved Responses</label>
+            <div id="saved-responses-container"></div>
+        </div>
+        <div class="clear"></div>
+        <button type="button" class="btn btn-primary hidden" id="preview">Preview Invite</button>
+    </div>
+    <div id="responsive-bottom-holder" class="responsive-bottom-holder">
+        <button type="button" class="btn btn-primary" id="send_invites">Send Invite</button>
+        <span class="invite_message hidden"></span>
+    </div>
+</div>
+<div class="modal fade in" id="preview-mail-modal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <div class="underline_title">
+            Preview Invite
+        </div>
+    </div>
+    <div class="modal-body" id="preview-body">
+    </div>
+</div>

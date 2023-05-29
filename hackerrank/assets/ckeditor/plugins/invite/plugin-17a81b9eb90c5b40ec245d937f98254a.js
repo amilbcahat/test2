@@ -1,0 +1,2 @@
+CKEDITOR.plugins.add("invite",{init:function(i){i.addCommand("invitePreview",{exec:function(){$("#preview").trigger("click")}}),i.ui.addButton("Invite",{label:"Preview Invite",command:"invitePreview",icon:this.path+"images/preview.png"})}});
+//# sourceMappingURL=plugin-29799f1f2dbf1d32d6fbe812f5e7597d.js.map

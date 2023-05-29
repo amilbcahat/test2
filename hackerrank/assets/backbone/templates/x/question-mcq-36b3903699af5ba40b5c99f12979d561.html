@@ -1,0 +1,52 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL"><%- test.name %></h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Questions</h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i><% if (edit) { %>Edit<% } else { %>Create<% } %> question</h3>
+</div><!-- end .top-fixed-bar -->
+<div class="overflow-content" id="control-overflow">
+    <form name="mcq-question-form">
+        <div class="mjA">
+            <div class="row no-margin">
+                <div class="span-xs-16 span-md-10">
+                    <label>PROBLEM STATEMENT</label>
+                    <textarea class="editor_width texteditor" name="problem-description" id="problem-description" style="width: 100%"><% if (model.question) { %><%- model.question %><% } %></textarea>
+                </div>
+                <div class="span-xs-16 span-md-6">
+                    <label>TAGS</label>
+                    <div class="input-btn-group">
+                        <input id="q-tag-inp" type="text" placeholder="tags">
+                        <a href="#" class="btn" id="add-tag-link">Add</a>
+                    </div>
+                    <div class="tag-names-container">
+                        <% _.each(tags, function(tag, index) {%>
+                            <span class="label q-tags"><%= tag %></span>&nbsp;
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row no-margin plT">
+                <label>CHOICES &nbsp;<a href="#" class="fnt-sz-mid js-toggle-richtext"><% if (richtext == "True") { %>(edit as normal text)<% } else { %>(edit as rich text)<% } %></a></label>
+                <div class="span-md-8">
+                    <ul class="mcq-choice" id="choices-container">
+                    </ul>
+                    <div class="span-xs-16 span-md-16">
+                        <button type="button" class="btn btn-mid js-add-choice">Add one more choice</button>
+                    </div>
+                    <div class="clear_float"></div>
+                </div><!-- end .span -->
+            </div>
+
+            <div class="error-container" id="error-container" style="display: none">
+                <div class="clear_float"></div>
+                <div class="text-error"></div>
+            </div>
+
+            <div class="row no-margin plT">
+                <div class="span-xs-16 span-md-16">
+                    <button type="submit" class="btn btn-primary btn-mid">Save Question</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

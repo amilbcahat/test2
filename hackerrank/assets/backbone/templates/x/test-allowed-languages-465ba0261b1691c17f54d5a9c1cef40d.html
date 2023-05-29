@@ -1,0 +1,62 @@
+<div class="mjA">
+    <label class="label-title-underline">
+        SET ALLOWED LANGUAGES
+    </label>
+    <div class="clear"></div>
+    <p class="txt-alt-grey span10 no-padding">Select the languages for your coding questions.</p>
+    <div class="clear"></div>
+    <div class="formgroup radio inline-block mlT">
+        <div class="formgroup horizontal checkbox hr_checkbox psB">
+            <label for="select_all" class="hr-checkbox select-all">
+            <input id="select_all" name="select-all" type="checkbox" value="all" />
+            <span class="">Select all</span>
+            </label>
+        </div>
+    </div>
+
+    <% var languages = {
+        'c': 'C',
+        'cpp': 'C++',
+        'java': 'Java',
+        'csharp': 'C#',
+        'php': 'PHP',
+        'python': 'Python 2',
+        'ruby': 'Ruby',
+        'javascript': 'Javascript',
+        'perl': 'Perl',
+        'haskell': 'Haskell',
+        'scala': 'Scala',
+        'clojure': 'Clojure',
+        'go': 'Go',
+        'erlang': 'Erlang',
+        'groovy': 'Groovy',
+        'objectivec': 'Objective C'
+    } %>
+    <form name="test-allowedLanguages-form">
+        <table class="languages_table mlT" border="0" cellpadding="0" cellspacing="0">
+            <tbody>
+                <% i = 0 %>
+                <% _.each(languages, function(label, key) { %>
+                    <% if (i == 0) { %>
+                    <tr>
+                    <% } else if (i%8 == 0) { %>
+                    </tr>
+                    <tr>
+                    <% } %>
+                    <td>
+                       <div class="formgroup horizontal checkbox hr_checkbox psB">
+                          <label for="allowed_lang_<%- key %>" class="hr-checkbox languages <% if (!model.allowedLanguages || allowedLanguages.indexOf(key) != -1) { %>active<% } %>">
+                            <input id="allowed_lang_<%- key %>" name="allowedLanguages" type="checkbox" <% if (!model.allowedLanguages || allowedLanguages.indexOf(key) != -1) { %> checked <% } %> value="<%- key %>" />
+                            <span class=""><%- label %></span>
+                          </label>
+                        </div>
+                    </td>
+                    <% i++ %>
+                <% }); %>
+            </tbody>
+        </table>
+
+        <button type="submit" class="btn btn-primary margin-large right">Save</button>
+    </form>
+
+</div><!-- end .mjA -->

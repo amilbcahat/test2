@@ -1,0 +1,23 @@
+<div class="container--inner">
+    <header class="page-title">
+        <div class="clearfix">
+            <!--<div class="breadcrumbs"></div>-->
+            <h1 class="pull-left"><%= challenge.get('name') %></h1>
+        </div>
+
+        <ul class="nav-tabs nav">
+            <li><a class="hr-problem-link backbone" href="<%= challenge.pageURL() %>"><i class="icon-bolt"></i> Problem</a></li>
+            <li><a class="hr-submissions-link backbone" href="<%= challenge.pageURL() %>/submissions"><i class="icon-list-bullet-small"></i> Submissions</a></li>
+            <li><a class="hr-leaderboard-link backbone" href="<%= challenge.pageURL() %>/leaderboard"><i class="icon-trophy"></i> Leaderboard</a></li>
+            <li class="active"><a class="hr-forum-link backbone" href="<%= challenge.pageURL() %>/forum/questions"><i class="icon-comment"></i> Discussions</a></li>
+        </ul>
+
+    </header>
+
+    <section class="forum">
+        <div class="clearfix">
+            <div id="question-list-view"></div>
+            <div class="forum-sidebar sidebar span4 pull-right"></div>
+        </div>
+    </section>
+</div>

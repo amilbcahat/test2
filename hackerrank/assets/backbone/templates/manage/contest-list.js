@@ -1,0 +1,11 @@
+HR.appController.addTemplate("backbone/templates/manage/contest-list", function(obj) {
+{
+var __p = "";
+Array.prototype.join;
+}
+with (obj || {}) __p += '<section class="container">\n  <div class="padded">\n    <header class="page-title">\n        <ul class="breadcrumb unstyled horizontal">\n            <li><a href="/manage/" class="backbone">Manage Home</a><i class="icon-right-open-big divider"></i></li>\n            <li><a href="/manage/contest/" class="backbone">Contests</a><i class="icon-right-open-big divider"></i></li>\n        </ul>\n        <div class="clearfix">\n            <h1 class="pull-left">HackerRank Contests</h1>\n            <a class="pull-right btn btn-green margin-small top" href="/manage/contest/new">Create A New Contest</a>\n        </div>\n    </header>\n\n    <div class="clearfix">\n        <div class="pull-right">\n            <input type="text" class="search" placeholder="Search for..." />\n        </div>\n    </div>\n    ', 
+0 != collection.total ? __p += '\n    <div class="table-wrap">\n        <header class="text-center row-clear">\n            <div class="span1">\n              <p>#</p>\n            </div>\n            <div class="span4">\n              <p>Contest Name</p>\n            </div>\n            <div class="span2">\n              <p>Status</p>\n            </div>\n            <div class="span2">\n              <p>Count</p>\n            </div>\n            <div class="span3">\n              <p>Notification</p>\n            </div>\n            <div class="span3">\n              <p></p>\n            </div>\n        </header>\n\n        <div class="contest-list-wrapper table-body text-center">\n        </div>\n\n        <div class="pagination-wrap clearfix pagination-wrapper" style="margin-bottom:20px;">\n        </div>\n    </div>\n    ' :(__p += '\n    <div class="content_wrap light-wrap padded text-center">\n        <p>\n          ', 
+__p += query && "" != query ? "\n            Cannot find contest matching the filter.\n          " :"\n            You haven't created any contests yet. Go ahead and create one!\n          ", 
+__p += "\n        </p>\n    </div>\n    "), __p += "\n  </div>\n</section>\n";
+return __p;
+});

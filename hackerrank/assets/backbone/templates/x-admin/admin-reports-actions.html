@@ -1,0 +1,217 @@
+<hr>
+<div class="invite-customization-fields-container mlT">
+
+    <div class="date-range-container mlB">
+        <div class="section-header msB">
+            <h3>Select Date Range</h3>
+        </div>
+
+        <div class="date-range">
+            <input type="text" id="invite-report-date-range" value="<%= startDate + ' - ' + endDate  %>"/>
+        </div>
+    </div>
+
+    <div class="user-select-container mlB">
+        <div class="section-header msB">
+            <h3>Select Users</h3>
+        </div>
+
+        <div class="select-all-container">
+            <label for="select-all-users"
+                   class="users">
+                <input id="select-all-users" class="select-all-input select-all" name="users" type="checkbox"
+                       value="select-all" data-list-container="user-custom-container" checked="checked"/>
+                <span class="">All Users</span>
+            </label>
+        </div>
+
+        <div class="show-custom-user-options">
+            <a href="#" data-container="user-custom-container" class="show-custom-link">Show Users Table <i
+                    class="icon-down-open-mini"></i></a>
+            <a href="#" data-container="user-custom-container" class="hide-custom-link hidden">Hide Users Table <i
+                    class="icon-up-open-mini"></i></a>
+        </div>
+
+        <div class="mlT hidden user-custom-container custom-container">
+            <table class="users_table table dt-sleektable" border="0" cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        id
+                    </td>
+                    <td>
+                        Name
+                    </td>
+                    <td>
+                        Email
+                    </td>
+                </tr>
+                </thead>
+                <tbody>
+                <% _.each(model.users, function(user) { %>
+                <tr>
+                        <td>
+                            <input id="user-<%= user.id %>" name="users" type="checkbox"
+                                   value="<%= user.id %>" checked="checked" class="row-checkbox"/>
+                        </td>
+                        <td>
+                            <label for="user-<%= user.id %>" class="users" style="font-weight: 400">
+                            <%= user.id%>
+                            </label>
+                        </td>
+                    <td>
+                            <label for="user-<%= user.id %>" class="users" style="font-weight: 400">
+                            <%= user.firstname %>
+                            </label>
+                        </td>
+                        <td>
+                            <label for="user-<%= user.id %>" class="users" style="font-weight: 400">
+                            <%= user.email %>
+                            </label>
+                        </td>
+                </tr>
+                <% }); %>
+                </tbody>
+            </table>
+        </div>
+        <div class="clearfix"></div>
+
+    </div>
+
+    <div class="test-select-container mlB">
+
+        <div class="section-header msB">
+            <h3>Select Tests</h3>
+        </div>
+
+        <div class="select-all-container">
+            <label for="select-all-tests"
+                   class="tests">
+                <input id="select-all-tests" class="select-all-input select-all" name="tests" type="checkbox"
+                       value="select-all" data-list-container="tests-custom-container" checked="checked"/>
+                <span class="">All Tests</span>
+            </label>
+        </div>
+
+        <div class="show-custom-test-options">
+            <a href="#" data-container="tests-custom-container" class="show-custom-link">Show Tests Table <i
+                    class="icon-down-open-mini"></i></a>
+            <a href="#" data-container="tests-custom-container" class="hide-custom-link hidden">Hide Tests Table <i
+                    class="icon-up-open-mini"></i></a>
+        </div>
+
+        <div class="mlT hidden tests-custom-container custom-container">
+            <table class="tests_table table dt-sleektable" border="0" cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        id
+                    </td>
+                    <td>
+                        Name
+                    </td>
+                </tr>
+                </thead>
+                <tbody>
+                <% _.each(model.tests, function(test) { %>
+                <tr>
+                    <td>
+                        <input id="test-<%= test.id %>" name="tests" type="checkbox"
+                               value="<%= test.id %>" checked="checked" class="row-checkbox"/>
+                    </td>
+                    <td>
+                        <label for="test-<%= test.id %>" class="tests" style="font-weight: 400">
+                            <%= test.id %>
+                        </label>
+                    </td>
+                    <td>
+                        <label for="test-<%= test.id %>" class="tests" style="font-weight: 400">
+                            <%= test.name %>
+                        </label>
+                    </td>
+                </tr>
+                <% }); %>
+                </tbody>
+            </table>
+        </div>
+        <div class="clearfix"></div>
+
+    </div>
+
+    <div class="fields-select-container">
+
+        <div class="section-header">
+            <h3>Select Report Fields</h3>
+        </div>
+
+        <div class="select-all-container">
+            <label for="select-all-fields"
+                   class="tests">
+                <input id="select-all-fields" name="fields" type="checkbox"
+                       value="select-all" class="select-all-fields select-all" data-list-container="fields-custom-container"/>
+                <span class="">All Fields</span>
+            </label>
+            <label for="select-default-fields"
+                   class="tests">
+                <input id="select-default-fields" name="fields" type="checkbox"
+                       value="select-default" checked="checked" class="select-default-fields select-all" data-list-container="fields-custom-container"/>
+                <span class="">Default Fields</span>
+            </label>
+        </div>
+
+        <div class="show-custom-field-options">
+            <a href="#" data-container="fields-custom-container" class="show-custom-link">Show Fields List <i
+                    class="icon-down-open-mini"></i></a>
+            <a href="#" data-container="fields-custom-container" class="hide-custom-link hidden">Hide Fields List <i
+                    class="icon-up-open-mini"></i></a>
+        </div>
+
+        <div class="mlT hidden fields-custom-container custom-container">
+            <table class="fields_table table data-sleektable" border="0" cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        Field
+                    </td>
+                </tr>
+                </thead>
+                <tbody>
+                <% _.each(allFields, function(field) { %>
+                <tr>
+                    <td>
+                        <input id="field-<%= field.id %>" name="fields" type="checkbox"
+                               value="<%= field.id %>" class="row-checkbox" <% if(defaultFields.indexOf(field.id) != -1) { %> checked="checked" <% } %>/>
+                    </td>
+                    <td>
+                        <label for="field-<%= field.id %>" class="fields" style="font-weight: 400">
+                            <%= field.value %>
+                        </label>
+                    </td>
+                </tr>
+                <% }); %>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="row no-margin plT">
+        <div class="span-xs-16 span-md-16">
+            <button type="submit" id="create-report" class="btn btn-primary btn-mid">Generate
+            </button>
+        </div>
+    </div>
+
+    <div class="report-link-section mlT">
+        <a href="" target="_blank" id="link-box" class="hidden"></a>
+    </div>
+</div>

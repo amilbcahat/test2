@@ -1,0 +1,67 @@
+<style>
+	.battleship-grid {
+		margin: auto 0px;
+		border: 4px solid #666;
+		background: #ededed;
+        width: <%= (27*columns)-2 %>px;
+        display: inline-block;
+        margin-right: 100px;
+	}
+	.battleship-row {
+		background-color: none;
+		border: none;
+        height: 26px;
+	}
+	.battleship-col {
+		height: 24px;
+		width: 24px;
+        border: 1px dotted black;
+        display: inline-block;
+		background-color: none;
+		font-size: 6px;
+		text-align: center;
+	}
+
+	.battleship-mine {
+      position: absolute;
+      left: 1px;
+      top: 2px;
+    }
+
+	.battleship-ship-init {
+      position: relative;
+      top: -1px;
+    }
+
+	.battleship-col-fire {
+		background: rgb(59, 107, 59);
+        opacity: 0.6;
+	}
+	.battleship-col-fire.battleship-col-hit {
+		background: rgb(231, 41, 41);
+        background-image-position: center;
+        background-repeat: none;
+        opacity: 0.95;
+        position: relative;
+	}
+
+    .battleship-vertical {
+      transform-origin: 0% 0%;
+      transform: rotate(90deg); 
+      -webkit-transform: rotate(90deg); 
+      -moz-transform: rotate(90deg); 
+      -o-transform: rotate(90deg);
+      -ms-transform: rotate(90deg); 
+      -webkit-transform-origin: 0% 0%;
+      -moz-transform-origin: 0% 0%;
+      -o-transform-origin: 0% 0%;
+      -ms-transform-origin: 0% 0%;
+      margin-left: 26px;
+    }
+</style>
+<div class="row">
+  <div class="row" style="margin: 0 auto; width: 640px;">
+    <div class="span battleship-grid battleship-grid-0"><% _.times(rows, function(row) { %><div class="battleship-row"><% _.times(columns, function(column) { %><div class="battleship-col" data-row="<%= row %>" data-column="<%= column %>"></div><% }); %></div><% }); %></div>
+    <div class="span battleship-grid battleship-grid-1" style="margin-right: 0px;"><% _.times(rows, function(row) { %><div class="battleship-row"><% _.times(columns, function(column) { %><div class="battleship-col" data-row="<%= row %>" data-column="<%= column %>"></div><% }); %></div><% }); %></div>
+  </div>
+</div>

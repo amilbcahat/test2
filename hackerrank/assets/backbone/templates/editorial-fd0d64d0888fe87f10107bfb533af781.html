@@ -1,0 +1,96 @@
+<div class="row">
+    <div class="span11">
+        <% if(model.draft) { %> <h2 class="text-center">THIS POST IS STILL A DRAFT.</h2> <%}%>
+
+        <!-- if an approach is included -->
+        <% if(model._data.approach) { %>
+
+        <!-- and if there is an editorialist, include these -->
+        <% if(model._data.editorialist) { %>
+            <p class="bold msB">
+                <img src="<%= model.editorialist_avatar %>" height="25" width="25" class="avatar" onerror="this.onerror=null; this.src='https://d3rpyts3de3lx8.cloudfront.net/hackerrank/assets/gravatar.jpg';">
+                Editorial by <a class="backbone" href="/<%= model._data.editorialist %>" ><%= model._data.editorialist %></a>
+                
+            </p>
+        <%}%> <!-- end editorialist -->
+        <div class="mlB">
+            <%= model._data.approach %>
+        </div>
+
+        <%}%> <!-- end approach -->
+
+        <!-- If we include the problem setter's code -->
+        <% if(model._data.setter_code) { %>
+
+        <!-- and if we have their name, include these -->
+        <% if(model._data.setter_name) { %>
+            <p class="bold msB">
+                <img src="<%= model.setter_avatar %>" height="25" width="25" class="avatar" onerror="this.onerror=null; this.src='https://d3rpyts3de3lx8.cloudfront.net/hackerrank/assets/gravatar.jpg';">
+                Set by <a class="backbone" href="/<%= model._data.setter_name %>"><%= model._data.setter_name %></a>
+            </p>
+        <%}%>
+        <p class="bold msB">
+            Problem Setter's code : 
+        </p>
+         <!-- end problem setter name -->
+        <div class="mlB">
+            <%= model._data.setter_code %>
+        </div>
+
+        <%}%> <!-- end problem setter code -->
+
+        <!-- If we include the problem tester's code -->
+        <% if(model._data.tester_code) { %>
+
+        <!-- and if we have their name, include these -->
+
+        <% if(model._data.tester_name) { %>
+            <p class="bold msB">
+                <img src="<%= model.tester_avatar %>" height="25" width="25" class="avatar" onerror="this.onerror=null; this.src='https://d3rpyts3de3lx8.cloudfront.net/hackerrank/assets/gravatar.jpg';">
+                Tested by <a class="backbone" href="/<%= model._data.tester_name %>"><%= model._data.tester_name %></a>
+            </p>
+
+        <%}
+        <p class="bold msB">
+            Problem Tester's code : 
+        </p>%> <!-- end problem tester's name -->
+        
+      
+        <div class="mlB">
+            <%= model._data.setter_code %>
+        </div>
+
+        <%}%> <!-- end problem tester's code -->
+    </div>
+    <div class="span4 pull-right">
+
+        <% if(model._data){%>
+        <div class="mlB">
+            <h4 class="bold">Statistics</h4>
+            <% if(model._data.difficulty) { %><p class="small bold"><span class="zeta">Difficulty: </span><span class=""><%= model._data.difficulty %></span></p><%}%>
+            <% if(model.statistics) { %>
+            <% var statistics_json = JSON.parse(model.statistics) %>
+            <% }%>
+            <% if(statistics_json){%>
+            <p class="small bold"><span class="zeta">Success Rate: </span><span class=""><%= ((statistics_json.successful_submissions*100)/statistics_json.challenge_submissions).round(2) %>%</span></p>
+            <% }%>
+            <% if(model._data.time_complexity) { %><p class="small bold"><span class="zeta">Time Complexity: </span><span class=""><%= model._data.time_complexity %></span></p><%}%>
+            <% if(model._data.required_knowledge) { %><p class="small bold"><span class="zeta">Required Knowledge: </span><%= model._data.required_knowledge %></p><%}%>
+            <p class="small bold"><span class="zeta">Publish Date: </span><span class=""><%=$.format.date(new Date(model.created_at), "MMM dd yyyy")%></span></p>
+        </div>
+        
+
+        <% if(_model.contest_slug=="master") { %>
+        <p><span class="small bold">Originally featured in <a class="backbone" href="/contests/<%= model.contest_slug %>"><%= model.contest_name %></a></span></p>
+        <%}%>
+        <% if(statistics_json){%>
+        <p class="mlB">Of the <%= statistics_json.contest_participation%> contest participants,
+           <%= statistics_json.challenge_submissions%>
+           (<%= ((statistics_json.challenge_submissions*100)/statistics_json.contest_participation).round(2) %>%)
+           submitted code for this challenge.
+        </p>
+        <%}%>
+
+        <%}%>
+    </div>
+</div>

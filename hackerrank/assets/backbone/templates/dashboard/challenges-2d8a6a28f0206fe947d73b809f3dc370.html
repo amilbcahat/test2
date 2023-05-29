@@ -1,0 +1,140 @@
+<div class="container">
+   <div class="content_wrap wide">
+        <% if (contest.slug == 'master') { %>
+        <div class="pull-left track-nav-wrapper sidebar--inline">
+            <ul class="sidebar_list unstyled" id="challengeAccordion">
+                <% categories.each(function(category) { %>
+                <a class="sidebar_list-heading challenges_tracks-toggle <%= activeCategory == category.get('slug') ? 'active':'' %>" data-slug="<%= category.get('slug') %>" data-toggle="collapse" data-parent="#challengeAccordion" href="#<%= category.get('slug') %>-wrapper"><i class=" <%= (activeCategory == category.get('slug')) ? 'icon-down-open': 'icon-right-open' %> pull-right"></i> <%= category.get("name") %></a>
+                <ul class="<%= category.get('slug') %>-wrapper <%= (activeCategory == category.get('slug')) ? 'in': '' %> accordion-body collapse" id="<%= category.get('slug') %>-wrapper">
+                    <% category.children().each(function(track) { %>
+                    <li class="<%= track.active ? 'active':'' %> sidebar_list-item">
+                        <a class="backbone change-track challenges_trackname" data-track="<%= track.get('slug') %>" href="<%= track.pageURL() %>">
+                            <%= track.get('name') %>
+                        </a>
+                    </li>
+                    <% }) %>
+                </ul>
+                <% }) %>
+            </ul>
+        </div>
+        <% } %>
+        <div class="content--inline tab-content pull-right light-wrap<% if (contest.slug != 'master') { %> full-width<% } %>">
+            <div class="content_header"><!-- add .fixed-header here -->
+                <div class="container-fixed">
+                    <a class="btn btn-small <% if (contest.slug != 'master') { %>hide <% } %> <%= (filter != null)? 'active': ''%>" id="filters-toggle">
+                        <%= (filter == null)? 'Show Filters&nbsp;&nbsp;<i class="icon-down-open-mini"></i>': 'Hide Filters&nbsp;&nbsp;<i class="icon-up-open-mini"></i>' %></a>
+                    <% if (track) { %>
+
+                    <% } %>
+                    <!--<span class="fixed-link pull-left"><i class="icon-up-arrow"></i>Back to top</span>-->
+                    <span class="search_form pull-right">
+                        <form class="form-search pull-right">
+                            &nbsp;
+                            <input type="text" id="search-text" class="input-medium search-query" autocomplete="off">
+                            <i class="icon-search"></i>
+                        </form>
+                        <div class="search-result hide" style="display: none; width: 142px;">
+                            <ul class="unstyled">
+                            </ul>
+                        </div>
+                    </span>
+                </div>
+            </div>
+            <div class="tab-pane active">
+                <div class="<%= (filter == null)? 'hide': ''%> challengeslist_filters" id="challenges-filters">
+                    <div class="close">&times;</div>
+                    <div class="row">
+                        <div class="span">
+                            <p class="small challengeslist_filters-header">Only show challenges that are:</p>
+                            <form id="filter-form" class="clearfix">
+                                <div class="countrol-group clearfix">
+                                    <div class="controls">
+                                        <% if (profile.id) { %>
+                                            <% if ($.inArray('incomplete', filters) >= 0) { %>
+                                            <label class="pull-left filter-checkbox active" for="showUnattempted">
+                                                <input type="checkbox" id="showUnattempted" value="incomplete" checked>
+                                                <i class="status-indicator filter"></i>
+                                                <span class="challenges-filters_label">Incomplete</span>
+                                            </label>
+                                            <% } else {%>
+                                            <label class="pull-left filter-checkbox" for="showUnattempted">
+                                                <input type="checkbox" id="showUnattempted" value="incomplete"><i class="status-indicator"></i><span class="challenges-filters_label">Incomplete</span>
+                                            </label>
+                                            <% } %>
+                                            <% if ($.inArray('complete', filters) >= 0) { %>
+                                            <label class="pull-left filter-checkbox active" for="showAttempted">
+                                                <input type="checkbox" id="showAttempted" value="complete" checked>
+                                                <i class="status-indicator filter"></i>
+                                                <span class="challenges-filters_label">Completed</span>
+                                            </label>
+                                            <% } else {%>
+                                            <label class="pull-left filter-checkbox" for="showAttempted">
+                                                <input type="checkbox" id="showAttempted" value="complete"><i class="status-indicator"></i><span class="challenges-filters_label">Completed</span>
+                                            </label>
+                                            <% } %>
+                                        <% } %>
+                                        <% if ($.inArray('sponsored', filters) >= 0) { %>
+                                        <label class="pull-left filter-checkbox active" for="showSponsored">
+                                            <input type="checkbox" id="showSponsored" value="sponsored" checked>
+                                            <i class="status-indicator filter"></i>
+                                            <span class="challenges-filters_label">Sponsored</span>
+                                        </label>
+                                        <% } else {%>
+                                        <label class="pull-left filter-checkbox" for="showSponsored">
+                                            <input type="checkbox" id="showSponsored" value="sponsored"><i class="status-indicator"></i><span class="challenges-filters_label">Sponsored</span>
+                                        </label>
+                                        <% } %>
+                                    </div>
+                                </div>
+                                <div class="control-group challengeslist_filters-tags">
+                                    <p class="small challengeslist_filters-header">Show challenges from these categories:</p>
+                                    <div class="controls">
+                                        <label class="">
+                                            <input type="hidden" id="tag-list" data-element='tag-list' value="<%= (select2filters != undefined)? select2filters : '' %>"/>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="control-group challengeslist_filters-buttons">
+                                    <div class="controls">
+                                        <button id="submit-filters" type="btn" class="btn btn-green backbone pull-right">Apply filters</button>
+                                        <button id="clear-filters" type="btn" class="btn btn-line orange backbone pull-right">Clear filters</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <!-- We don't have difficulty or tts settings yet -->
+                        <!-- <div class="span6">
+                            <p class="small filter-header">Difficulty</p>
+                        </div>
+                        <div class="span4 pull-right">
+                            <p class="small filter-header">Time to solve:</p>
+                            <div class="select-wrap ">
+                                <input type="hidden" value="" id="submissions-filter">
+                                <a href="" class="dropdown-toggle clearfix"data-toggle="dropdown">
+                                    <span class="select">Any</span><span class="indent"><b class="caret"></b></span></a>
+                                <ul class="dropdown-menu unstyled">
+                                    <li class="change-filter"><a href="" class="backbone">Any</a></li>
+                                    <li class="change-filter"><a href="" class="backbone">&lt; 10 minutes</a></li>
+                                    <li class="change-filter"><a href="" class="backbone">&lt; 30 minutes</a></li>
+                                    <li class="change-filter"><a href="" class="backbone">&lt; 1 hour</a></li>
+                                </ul>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <% if (activeTag == "all") { %>
+                    <div class="row padding-large left right content_subheader">
+                        <div class="span5 sort-title"><a class="sort_wrap backbone" href="#">Challenge Title<span class="sort_icons-group"><i class="icon-up-dir"></i><i class="icon-down-dir"></i></span></a></div>
+                        <div class="span2 sort-date"><a class="sort_wrap backbone" href="#">Release Date<span class="sort_icons-group"><i class="icon-up-dir"></i><i class="icon-down-dir"></i></span></a></div>
+                    </div>
+                <% } %>
+                <div class="challenges-list"></div>
+                <div class="challengeslist_pagination-wrapper pagination-wrapper">
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>

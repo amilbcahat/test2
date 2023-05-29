@@ -1,0 +1,2 @@
+(function(){$(document).ready(function(){var r,n;return n={lineNumbers:!1,lineWrapping:!0,matchBrackets:!0,mode:"text/x-markdown",indentUnit:4},r=$("#Answer").get(0),HR.appController.loadCodeMirrorMode("markdown",function(){return function(){var e;return r?e=CodeMirror.fromTextArea(r,n):void 0}}(this)),$("#submit").click(function(){return document.location.href="/manage/forum/upload"})})}).call(this);
+//# sourceMappingURL=manageforum-84b18a9bf7a6b931e679d313f7842080.js.map

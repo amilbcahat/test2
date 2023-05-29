@@ -1,0 +1,45 @@
+<style>
+    .moves {
+        width: 200px;
+        margin: auto;
+        border: 1px solid #333;
+        margin-bottom: 20px;
+    }
+    .moves td {
+        width: 100px;
+        border: 1px solid #333;
+    }
+    .moves tr {
+        border: 1px solid #333;
+    }
+    .bot {
+        background: url('/assets/games/bot.png') no-repeat top left;
+        background-size: 20px 20px;
+        width: 20px;
+        height: 20px;
+    }
+    .mine {
+        background: url('/assets/games/mine.png') no-repeat top left;
+        background-size: 15px 15px;
+        background-repeat:no-repeat;
+        background-position:center;
+        width: 20px;
+        height: 20px;
+    }
+</style>
+<div>
+    <div class="game-grid" style="display: block; margin: auto; border-radius: 10px;">
+        <% var rows = 20; %>
+        <% var columns = 10; %>
+        <table style="margin: 20px auto; border: 2px solid #666;">
+            <% for (i = 0; i < rows; i++) { %>
+            <tr style=" background-color: #ddd; border: 2px solid #666;">
+                <% for (j = 0; j < columns; j++) { %>
+                   <td class="<%= i %>-<%= j %> m" style="height: 20px; width: 20px; background-color: #eee; border: 2px solid #666; font-size: 6px; text-align: center;">
+                   </td>
+                <% } %>
+            </tr>
+            <% } %>
+        </table>
+    </div>
+</div>

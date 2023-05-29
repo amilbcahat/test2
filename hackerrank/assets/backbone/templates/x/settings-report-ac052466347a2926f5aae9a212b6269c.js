@@ -1,0 +1,17 @@
+HR.appController.addTemplate("backbone/templates/x/settings-report", function(obj) {
+{
+var __p = "";
+Array.prototype.join;
+}
+with (obj || {}) __p += '<div class="top-fixed-bar">\n    <h3 class="topbar-h3 mjL">Settings</h3>\n    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Report Preferences</h3>\n</div>\n<div class="overflow-content" id="control-overflow">\n    <div class="mjA">\n        <div class="msT msB">\n            <label>EXCEL</label>\n            <div class="formgroup horizontal checkbox hr_checkbox psB">\n                <div style="float: left; padding-right: 20px">\n                    <input id="excel-prefs-question-wise" class="js-switch" name="excel_prefs" value="question_wise" type="checkbox" ', 
+current_user.excel_prefs && current_user.excel_prefs.question_wise && (__p += "checked"), 
+__p += ' />\n                </div>\n                <span>Show scores for every question</span>\n            </div>\n            <div class="formgroup horizontal checkbox hr_checkbox psB">\n                <div style="float: left; padding-right: 20px">\n                    <input id="excel-prefs-coding-details" class="js-switch" name="excel_prefs" type="checkbox" value="coding_details" ', 
+current_user.excel_prefs && current_user.excel_prefs.coding_details && (__p += "checked"), 
+__p += ' />\n                </div>\n                <span>Detailed question analysis (Lines of code, attempts, testcase wise split-up, mcq answer, etc.)</span>\n            </div>\n            <div class="formgroup horizontal checkbox hr_checkbox psB">\n                <div style="float: left; padding-right: 20px">\n                    <input id="excel-prefs-feedback" class="js-switch" name="excel_prefs" type="checkbox" value="feedback"', 
+current_user.excel_prefs && current_user.excel_prefs.feedback && (__p += "checked"), 
+__p += ' />\n                </div>\n                <span>Show candidate feedback</span>\n            </div>\n        </div>\n        <div class="msT msB">\n            <label>PDF</label>\n\n            <div class="formgroup horizontal checkbox hr_checkbox psB">\n                <div style="float: left; padding-right: 20px">\n                    <input id="pdf-prefs-feedback" class="js-switch" name="pdf_prefs" type="checkbox" value="feedback"', 
+current_user.pdf_prefs && current_user.pdf_prefs.feedback && (__p += "checked"), 
+__p += ' />\n                </div>\n                <span>Show candidate feedback</span>\n            </div>\n\n            <div class="formgroup horizontal checkbox hr_checkbox psB">\n                <div style="float: left; padding-right: 20px">\n                    <input id="pdf-prefs-output" class="js-switch" name="pdf_prefs" type="checkbox" value="output"', 
+current_user.pdf_prefs && current_user.pdf_prefs.output && (__p += "checked"), __p += ' />\n                </div>\n                <span>Show output for coding questions</span>\n            </div>\n        </div>\n\n        <div class="row no-margin plT">\n            <div class="span-xs-16 span-md-16">\n                <button type="submit" id="update-basic-info" data-throbber="show" class="btn btn-primary btn-mid">Save</button>\n            </div>\n        </div>\n    </div>\n </div>\n';
+return __p;
+});

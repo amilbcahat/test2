@@ -1,0 +1,27 @@
+<hr>
+<div class="run-time full-width">
+    <p class="title <%=st_class%>">Testcase <span class="testcase-no"><%=tno%></span>: <em><%=compiler_msg%></em></p>
+
+    <% if (!(_.isUndefined(output) || _.isNull(output))) { %>
+        <p class="field-label">Your Output</p>
+        <pre class="error-output"><xmp class="testcase-output"><%=output%></xmp></pre>
+    <% } else { %>
+        <!-- <p class="field-label">Your Output</p> -->
+        <pre class="error-output"><xmp class="testcase-output">Output hidden</xmp></pre>
+    <% } %>
+
+    <% if (exp_output) { %>
+        <p class="field-label">Expected Output</p>
+        <pre class="error-output"><xmp class="testcase-expected-output"><%=exp_output%></xmp></pre>
+    <% } %>
+
+    <% if (output_debug) { %>
+        <p class="field-label">Debug Output</p>
+        <pre class="error-output"><xmp class="testcase-output"><%=output_debug%></xmp></pre>
+    <% } %>
+
+    <% if (_.isNumber(score)) { %>
+        <p class="field-label">Score</p>
+        <pre class="error-output"><xmp class="testcase-expected-output"><%= score %></xmp></pre>
+    <% } %>
+</div>

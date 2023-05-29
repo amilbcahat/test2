@@ -1,0 +1,72 @@
+<div class="row">
+    <h4 class="span6">
+        <div class="packer">
+            <a href="#userModal" data-toggle="modal" class="span1">
+                <img src="<%= _model.player1_gravatar %>" height="30" width="30" class="circle">
+            </a>
+            <span class="username"><%= _model.player1_username %></span>
+            <% if (_model.result == 1) { %>
+            <span class="win">
+                <img src="/assets/trophy.png" alt="winner">
+            </span>
+            <% } %>
+        </div>
+    </h4>
+    <h5 class="span1">vs.</h5>
+    <h4 class="span6">
+        <div class="packer">
+            <a href="#userModal" data-toggle="modal" class="span1">
+                <img src="<%= _model.player2_gravatar %>" height="30" width="30" class="circle">
+            </a>
+            <span class="username"><%= _model.player2_username %></span>
+            <% if (_model.result == 2) { %>
+            <span class="win">
+                <img src="/assets/trophy.png" alt="winner">
+            </span>
+            <% } %>
+        </div>
+    </h4>
+    <!-- <p class="span3"><% if (_model.result == 0) { %>Tie<% } else { %>Player <%= _model.result %> Won<% } %></p> -->
+    <div class="span2">
+        <a class="play_game btn btn-white" href="submission/game/<%= submission_id %>/play/<%= _model.id %>">Play Game</a>
+    </div>
+</div>
+<div class="row">
+    <div class="submission-game-container-wrapper" style="margin-left: 40px;"></div>
+</div>
+<div class="row">
+    <h4 class="span6">
+        <div class="packer">
+            <a href="#userModal" data-toggle="modal" class="span1">
+                <img src="<%= model.player1_gravatar %>" height="30" width="30" class="circle">
+            </a>
+            <span class="username"><%= model.player1_username %></span>
+            <% if (model.result == 1) { %>
+            <span class="win">
+                <img src="/assets/trophy.png" alt="winner">
+            </span>
+            <% } %>
+        </div>
+    </h4>
+    <h5 class="span1">vs.</h5>
+    <h4 class="span6">
+        <div class="packer">
+            <a href="#userModal" data-toggle="modal" class="span1">
+                <img src="<%= model.player2_gravatar %>" height="30" width="30" class="circle">
+            </a>
+            <span class="username"><%= model.player2_username %></span>
+            <% if (model.result == 2) { %>
+            <span class="win">
+                <img src="/assets/trophy.png" alt="winner">
+            </span>
+            <% } %>
+        </div>
+    </h4>
+    <!-- <p class="span3"><% if (model.result == 0) { %>Tie<% } else { %>Player <%= model.result %> Won<% } %></p> -->
+    <div class="span2">
+        <a class="play_game btn btn-white" href="submission/game/<%= submission_id %>/play/<%= model.id %>">Play Game</a>
+    </div>
+</div>
+<div class="row">
+    <div class="submission-game-container-wrapper" style="margin-left: 40px;"></div>
+</div>

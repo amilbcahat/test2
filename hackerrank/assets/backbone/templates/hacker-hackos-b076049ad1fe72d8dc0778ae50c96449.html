@@ -1,0 +1,171 @@
+<div class="container--inner">
+  <header class="clearfix page-title">
+     <h1>Your Hacko Transactions</h1>
+  </header>
+ <div class="row">
+   <div class="plR span-xs-16 span-sm-16 span-md-12 span-lg-10 span-xl-8">
+    <% if(collection.total != 0){ %>
+      <h3>Total Hackos: <%= collection.gross %> </h3>
+      <hr/>
+      <div class="text-center hacko-transaction-list">
+      <div class="table-wrap">
+            <header class="row-clear list-header">
+                <div class="span-xs-2">
+                 <p>Sl No. </p>
+                </div>
+                <div class="span-xs-8">
+                  <p>Action</p>
+                </div>
+                <div class="span-xs-6">
+                  <p>Hackos Earned</p>
+                </div>
+            </header>
+
+            <div class="text-center table-body transaction-list-wrapper table--striped">
+            </div>
+
+            <div class="pagination-wrap clearfix pagination-wrapper">
+            </div>
+        </div>
+      </div>
+
+    <% } else { %>
+      <div class="light-wrap padded">
+        <p>Earn Hackos by completing challenges and logging in daily.</p>
+      </div>
+    <% } %>
+  </div>
+
+  <div class="span-xs-16 span-md-12 span-lg-6 span-xl-6">
+    <p class="plB"><strong> What are Hackos?</strong><br/>
+     Hackos are hackerrank currency you can earn and spend on the site</p>
+    <p class="plB"><strong> How do I get Hackos?</strong><br/>
+    Everyone starts of with 100 Hackos, and gets hackos for solving challenges, and
+    maintaining a login streak. For challenges the hacko points earned are based on
+    the level of the challenge.<br/>
+    </p>
+    <div class="hacko-level plB text-center">
+      <div class="table-wrap">
+        <header class="row-clear list-header row">
+            <div class="span-xs-8">
+              <p>Level of Challenge</p>
+            </div>
+            <div class="span-xs-8">
+              <p>Hackos Earned</p>
+            </div>
+        </header>
+        <div class="table-body submissions-list-wrapper table--striped">
+          <div class="row-clear row">
+            <div class="span-xs-8">
+              <p>1</p>
+            </div>
+            <div class="span-xs-8">
+              <p>0</p>
+            </div>
+          </div>
+        </div>
+        <div class="table-body submissions-list-wrapper table--striped">
+          <div class="row-clear row">
+            <div class="span-xs-8">
+              <p>2</p>
+            </div>
+            <div class="span-xs-8">
+              <p>5</p>
+            </div>
+          </div>
+        </div>
+        <div class="table-body submissions-list-wrapper table--striped">
+          <div class="row-clear row">
+            <div class="span-xs-8">
+              <p>3</p>
+            </div>
+            <div class="span-xs-8">
+              <p>10</p>
+            </div>
+          </div>
+        </div>
+        <div class="table-body submissions-list-wrapper table--striped">
+          <div class="row-clear row">
+            <div class="span-xs-8">
+              <p>4</p>
+            </div>
+            <div class="span-xs-8">
+              <p>25</p>
+            </div>
+          </div>
+        </div>
+        <div class="table-body submissions-list-wrapper table--striped">
+          <div class="row-clear row">
+            <div class="span-xs-8">
+              <p>5</p>
+            </div>
+            <div class="span-xs-8">
+              <p>50</p>
+            </div>
+          </div>
+        </div>
+        <div class="table-body submissions-list-wrapper table--striped">
+          <div class="row-clear row">
+            <div class="span-xs-8">
+              <p>6</p>
+            </div>
+            <div class="span-xs-8">
+              <p>100</p>
+            </div>
+          </div>
+        </div>
+        <div class="table-body submissions-list-wrapper table--striped">
+          <div class="row-clear row">
+            <div class="span-xs-8">
+              <p>7</p>
+            </div>
+            <div class="span-xs-8">
+              <p>200</p>
+            </div>
+          </div>
+        </div>
+        <div class="table-body submissions-list-wrapper table--striped">
+          <div class="row-clear row">
+            <div class="span-xs-8">
+              <p>8</p>
+            </div>
+            <div class="span-xs-8">
+              <p>350</p>
+            </div>
+          </div>
+        </div>
+        <div class="table-body submissions-list-wrapper table--striped">
+          <div class="row-clear row">
+            <div class="span-xs-8">
+              <p>9</p>
+            </div>
+            <div class="span-xs-8">
+              <p>700</p>
+            </div>
+          </div>
+        </div>
+        <div class="table-body submissions-list-wrapper table--striped">
+          <div class="row-clear row">
+            <div class="span-xs-8">
+              <p>10</p>
+            </div>
+            <div class="span-xs-8">
+              <p>1000</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="plB"> You also get hackos for maintaing a login streak, where a streak of 1 day = 1 hackos,
+    2 days = 2 hackos, and so on with an upper limit of 10.</p>
+
+    <p class="plB"><strong> Where can I use Hackos?</strong><br/>
+    You can currently use Hackos to buy test cases, with each on at 5 points for seeing
+    tricky corner cases.</p>
+    <p class="plB"><strong> Is that all?</strong><br/>
+    Currently yes, but we will be adding both more methods to get and use Hackos.</p>
+  </div>
+</div>
+</div>
+

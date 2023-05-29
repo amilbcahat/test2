@@ -1,0 +1,18 @@
+<div class="row playoff-round">
+    <div class="span6">
+        <p class="player"><img src="<%= model.hacker_avatar1 %>" class="circle" height="25" width="25"> <span class="name"><%= model.hacker_name1 %><% if (model.winner == 1) { %><span class="win"><img src="/assets/trophy.png" alt="winner"></span><% } %></span></p>
+        <p class="player"><img src="<%= model.hacker_avatar2 %>" class="circle" height="25" width="25"> <span class="name"><%= model.hacker_name2 %><% if (model.winner == 2) { %><span class="win"><img src="/assets/trophy.png" alt="winner"></span><% } %></span></p>
+    </div>
+    <div  class="span2 button-wrap">
+        <% if (model.hacker_id1 != -1 && model.hacker_id2 != -1) { %>
+        <a style="cursor: pointer;" class="btn btn-primary play-game">Play Game</a>
+        <% } else { %>
+        <a style="cursor: pointer;" class="btn" disabled="disabled">Play Game</a>
+        <% } %>
+    </div>
+    <p class="span6 round-winner"><strong>Winner:</strong>
+        <% if (model.winner == 1) { %><%= model.hacker_name1 %> <% } %>
+        <% if (model.winner == 2) { %><%= model.hacker_name2 %> <% } %>
+    </p>
+</div>
+<div class="row output-area-wrapper span15"></div>

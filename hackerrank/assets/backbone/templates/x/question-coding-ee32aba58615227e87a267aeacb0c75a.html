@@ -1,0 +1,47 @@
+<div class="top-fixed-bar support-sub-bar">
+    <h3 class="topbar-h3 mjL"><%- test.name %></h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Questions</h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i><% if (edit) { %>Edit<% } else { %>Create<% } %> coding question</h3>
+
+
+    <div class="clear"></div>
+    <div class="sub-top-bar">
+        <% if (edit) { %>
+        <ul class="nav-tabs nav">
+            <li <% if (step == "step1") { %>class="active"<% } %>><a class="js-backbone" href="tests/<%- test.id %>/questions/<%- model.id %>/edit/step1"><i class="icon-bolt"></i> Problem Statement</a></li>
+            <li <% if (step == "step2") { %>class="active"<% } %>><a class="js-backbone" href="tests/<%- test.id %>/questions/<%- model.id %>/edit/step2"><i class="icon-check"></i> Languages</a></li>
+            <li <% if (step == "step3") { %>class="active"<% } %>><a class="js-backbone" href="tests/<%- test.id %>/questions/<%- model.id %>/edit/step3"><i class="icon2-tryquestion fnt-sz-small"></i> Test Cases</a></li>
+            <% if (model.type == "approx") { %>
+            <li <% if (step == "step4") { %>class="active"<% } %>><a class="js-backbone" href="tests/<%- test.id %>/questions/<%- model.id %>/edit/step4"><i class="icon-tools"></i> Custom Checker</a></li>
+            <% } %>
+        </ul>
+        <!-- @akshay add .make-clickable class to the UL below after they cross step 1 -->
+        <% } else { %>
+        <ul class="wizard-steps">
+            <li class="active">
+                <span class="wizard-numb">1</span> PROBLEM STATEMENT
+                <span class="chevron"></span>
+            </li>
+            <li>
+                <span class="wizard-numb">2</span> LANGUAGES
+                <span class="chevron"></span>
+            </li>
+            <li>
+                <span class="wizard-numb">3</span> TEST CASES
+                <span class="chevron"></span>
+            </li>
+            <% if (model.type == "approx") { %>
+            <li>
+                <span class="wizard-numb">4</span> CUSTOM CHECKER
+                <span class="chevron"></span>
+            </li>
+            <% } %>
+        </ul>
+        <% } %>
+
+    </div><!-- end .sub-top-bar -->
+
+</div><!-- end .top-fixed-bar -->
+<div class="overflow-content adjust-two-fixed-bar" id="control-overflow">
+</div>
+<div id="responsive-bottom-placeholder" class="responsive-bottom-holder"></div>

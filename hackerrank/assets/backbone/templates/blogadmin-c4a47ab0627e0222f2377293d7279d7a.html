@@ -1,0 +1,100 @@
+<style>
+.floating-message
+{
+  position:fixed;
+  top:10px;
+  right:0px;
+  z-index: 2000;
+  display: none;
+}
+</style>
+<div class="blog-new-post container">
+    <div class="content_wrap mid">
+        <div class="sidebar--inline padded">
+            <div class="sidebar_group">
+                <h1>Edit Post</h1>
+                <a href="/blog"><i class="icon-left-open"></i>Back to Blog Index</a>
+
+            <div class="sidebar_admin light-wrap padded">
+                <div class="post-status sidebar-group no-flow">
+                    <p><strong>Status:</strong> <% if (model.draft == false) { %> Published</p>
+                    <p class="meta margin-small bottom"><%= model.date %></p>
+                    <p class="text-center"><a class="js-unpublish btn btn-small">Revert to draft</a></p><%} else { %> Draft</p><% } %>
+                </div>
+                <% if (model.draft == false) { } else { %>
+                    <label>Select post template:</label>
+                    <select class="js-template" id="selected-filter" data-toggle="dropdown">
+                            <% _.each(templates, function(template) { %>
+                                <option value=<%=template.id%>><%=template.name%></li>
+                            <% })%>
+                    </select>
+                <% } %>
+            </div>
+            <% if (model.draft == false) { %>
+                    <p class="btn-wrap text-center"><a href="" class="btn btn-green js-save-draft">Save Changes</a></p>
+                <% } else { %>
+                    <ul class="horizontal unstyled">
+                        <li><a class="btn btn-white margin-small right js-save-draft">Save Draft</a></li>
+                        <li><a class="btn btn-green js-publish-post">Publish</a></li>
+                    </ul>
+                <%}%>
+            </div>
+
+        </div>
+
+        <div class="content--inline padded">
+        <!-- FILL OUT FOR ALL POST TYPES FOR SEO PURPOSES -->
+            <label for="postTitle">Title:</label>
+            <input type="text" placeholder="The post title" class="postTitle blogAdminInput" id="postTitle">
+
+            <label for="postSlug">Slug:</label>
+            <input type="text" placeholder="The post slug, leave blank to use parameratized title" class="js-slug blogAdminInput" id="postSlug">
+
+            <!-- show for admin-standard, hide for admin-quote and admin-link -->
+            <label for="postConten">Post Content:</label>
+            <div class="new-post-admin">
+                <!--<div class="wysiwyg-editor table-head clearfix">
+                    <!--<span class="icon-group clearfix">
+                        <a href=""><i class="icon-bold"></i></a>
+                        <a href=""><i class="icon-italic"></i></a>
+                    </span>
+                    <span class="icon-group clearfix">
+                        <a href=""><i class="icon-align-left"></i></a>
+                        <a href=""><i class="icon-align-center"></i></a>
+                        <a href=""><i class="icon-align-right"></i></a>
+                        <a href=""><i class="icon-align-justify"></i></a>
+                    </span>
+                    <span class="icon-group clearfix">
+                        <a href=""><i class="icon-quote"></i></a>
+                        <a href=""><i class="icon-list-bullet-large"></i></a>
+                        <a href=""><i class="icon-list-numbered"></i></a>
+                    </span>
+                </div>-->
+                <textarea class="postContent" id="postContent"></textarea>
+            </div>
+            <!-- show for admin-link, hide for admin-standard and admin-quote
+            <div class="formgroup">
+                <label for="blogLink">The link</label>
+                <input type="text" class="blogAdminInput" id="blogLink" value="http://">
+            </div>
+
+            <div class="formgroup">
+                <label for="blogLinkText">Text to show</label>
+                <input type="text" class="blogAdminInput" id="blogLinkText">
+            </div>
+
+            <!-- END -->
+            <p class="btn-wrap margin-large top bottom"><a href="#" class="btn btn-green btn-large js-preview-post">Preview <% if (model.draft == false) { %>Changes<% } else { %>Post<% } %></a></p>
+            <div class="js-post-preview content-text">
+               <div class="margin-large top <%= model.template_class%> blog-post light-wrap padded">
+                    <header class="page-title">
+                        <h1><%= model.title %></h1>
+                    </header>
+
+                    <%= model.html_content %>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

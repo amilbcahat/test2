@@ -1,0 +1,92 @@
+<p class="aside block-margin margin-large">This is the basic information
+    that describes your challenge.</p>
+
+<div class="formgroup horizontal row">
+    <label for="name" class="pull-left span3">Challenge Name</label>
+    <div class="block span12 profile-input">
+        <input id="name" type="text" class="span12 auto-save"/>
+        <small class="error name span12"></small>
+    </div>
+</div>
+
+<% if (action != "create") { %>
+<div class="formgroup horizontal row">
+    <label for="slug" class="pull-left span3">Contest Slug</label>
+    <div class="block span12 profile-input pull-left">
+        <p class="host-name pull-left"><%= document.location.protocol + '//' + document.location.host + '/.../' %></p>
+        <p class="slug pull-left"><%= model.get('slug') %></p>
+        <p class="pull-left"><input type="text" class="edit-slug" style="display: none;" value="<%= model.get('slug') %>" /></p>
+        <p class="pull-left"><a class="btn btn-text update-slug" style="display: none;">update</a></p>
+        <p class="pull-left"><a class="btn btn-text cancel-update-slug" style="display: none;">cancel</a></p>
+        <p class="pull-left"><a class="btn btn-text edit-slug">edit</a></p>
+        <small class="slug error span8"></small>
+    </div>
+</div>
+<% } %>
+
+<div class="formgroup horizontal row">
+    <label for="description" class="pull-left span3">Description</label>
+    <div class="block span12 profile-input pull-left">
+        <textarea rows="6" class="description span12 auto-save"></textarea>
+        <small class="description pull-left sub-help">Characters left: <%= model.max_limit.description %></small>
+    </div>
+</div>
+
+<div class="formgroup horizontal row">
+    <label for="description" class="pull-left span3">Problem Statement</label>
+    <div class="block span12 profile-input pull-left">
+        <div class="markdown-editor-header">
+            <p class="pull-left">Markdown Editor</p>
+            <div class="pull-right">
+                <button class="btn btn-small mkd-cheat-sheet msR">Cheatsheet</button>
+            </div>
+        </div>
+        <textarea rows="7" class="problem-statement span12"></textarea>
+        <small class="problem-statement error span12"></small>
+        <div class="preview-wrap clearfix hide">
+            <h4>Preview</h4>
+            <div class="controls">
+                <div id="problem-statement-preview" class="preview"></div>
+            </div>
+        <div>
+    </div>
+</div>
+
+<% if (action != "create") { %>
+<div class="formgroup horizontal row">
+    <label for="tags" class="pull-left span3">Tags</label>
+    <div class="block span12 profile-input pull-left">
+        <input id="tags" class="tags" type="text" class="span8"/>
+        <small class="error tags span12"></small>
+    </div>
+</div>
+<% } %>
+
+<% if (action != "create") { %>
+<div class="formgroup horizontal row">
+    <label for="moderator" class="pull-left span3">Moderators</label>
+    <div class="block span12 profile-input pull-left">
+        <input id="moderator" type="text" class="span7 float-left left-half no-margin" value=""/><button class="btn moderator-save right-half">Add</button>
+        <small class="moderator pull-left sub-help">Enter moderator's HackerRank username. Moderators can edit this challenge.</small>
+    </div>
+</div>
+<div class="formgroup horizontal span12">
+    <div class="offset3 span6 moderators-list pull-left">
+        <% if (model.get("hacker_username") != false && model.get("hacker_username") != null) { %>
+        <%= HR.util.genModContainer({
+                name: model.get("hacker_username"),
+                avatar: model.get("hacker_avatar"),
+                role: "owner",
+            }) %>
+        <% } %>
+        <% _.each (model.get('moderators'), function(moderator) { %>
+        <%= HR.util.genModContainer({
+                name: moderator.username,
+                avatar: moderator.avatar,
+                role: "moderator",
+                close: true,
+            }) %>
+        <% }); %>
+    </div>
+</div>
+<% } %>

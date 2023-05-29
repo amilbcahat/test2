@@ -1,0 +1,41 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL">Payment</h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Credit Card Details</h3>
+</div>
+<div class="overflow-content" id="control-overflow">
+    <div class="mjA">
+
+        <% if(model.credit_card_number) { %>
+        <h4>Credit card in use: <%= _.escape(model.credit_card_number) %></h4><br/>
+        <% } %>
+
+        <h4>Update Credit Card Details</h4>
+
+        <form name="credit-card-details">
+            <div class="msT msB">
+                <label>Card Number</label>
+                <input type="text" id="card-number" class="wide">
+            </div>
+
+            <div class="msT msB">
+                <label>Expiry date</label>
+                <input type="text" id="expiry-month" placeholder="MM">&nbsp;/&nbsp;<input type="text" id="expiry-year"  placeholder="YYYY">
+            </div>
+
+            <div class="msT msB">
+                <label>Security code (CVV)</label>
+                <input type="password" id="cvv" />
+                <a href="https://checkout.google.com/support/bin/answer.py?answer=43073&hl=en_US" class="underline">What is this?</a>
+                        <span class="help-prompt">
+                            <i class="icon-help-circled icon--single"></i>
+                            <span class="help-text">This gives additional information or context.</span>
+                        </span>
+            </div>
+            <button id="card-details-submit" type="submit">Save</button>
+        </form>
+    </div>
+
+
+    </div>
+    <!-- end mjA -->
+</div>

@@ -1,0 +1,8 @@
+<% if(model.length == 0) {%>
+    <p><%= hacker %> has made no posts</p>
+<% } %>
+<% _.each( model , function(post,index) { %>
+    <p><%= post.text %>
+        <span class="timestamp">&nbsp;-&nbsp;<%= post.time %></span>
+    </p>
+<% }); %>

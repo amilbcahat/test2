@@ -1,0 +1,46 @@
+<div class="<%= model.template_class%> blog-post content_wrap container"><!-- class names: blog-standard [ standard post ] , blog-quote [ quote post ] , ... -->
+
+    <% if(model.draft) { %> <h2 class="text-center">THIS POST IS STILL A DRAFT.</h2> <%}%>
+    <header class="page-title">
+        <div class="row">
+            <h1 class="span11 block-center text-center beta"><%= model.title %></h1>
+        </div>
+        <div class="text-center margin-large top bottom">
+            <img src="<%=model.owner_avatar%>" height="50" width="50" class="avatar blog_post-avatar margin-small right" style="display: inline-block; vertical-align: middle">
+            <h3 class="blog_post-meta blog--single_post-meta" style="display: inline-block; vertical-align: middle"><a href="/<%= model.owner_username%>" class="blog_post-author"><%= model.owner_name || model.owner_username %></a></h3>
+        </div>
+        <p class="text-center aside"><%= model.date %></p>        
+    </header>
+
+    <div class="">
+    	
+        <div class="span11 block-center content-text">
+            <div class="post-content">
+                <!--CONTENT FOR STANDARD POST -->
+
+                <%= model.html_content %>
+
+                <!-- END -->
+
+                <!-- CONTENT FOR QUOTE POST
+
+                <blockquote>
+                    <p class="quote-body"><q>Someone who can make a computer do what he wants—whether the computer wants to or not.</q></p>
+                    <footer><p class="quote-attribution">Paul Graham</p></footer>
+                </blockquote>
+                <p>"I think I remember some such story as you were telling," said Flask, when at last the two boats were slowly advancing with their burden towards the ship, "but I can't remember where."</p>
+
+                END -->
+            </div>
+            <div class="clearfix">
+                <% if(current_hacker.is_admin || current_hacker.id == model.owner) { %>
+                <a class="js-edit-blog backbone pull-right btn btn-line" href="/blog/<%=model.id%>/edit">Edit Blog</a>
+                <%}%>
+            <div class="pull-left">
+                <a class="js-blog-tweet pull-left" style="cursor:pointer;"><img src="/assets/tweet-filler.png"></a>
+                <a class="js-blog-fb-share pull-left" style="cursor:pointer;"><img src="/assets/fb-share.png"></a>
+            </div>
+        </div>
+    </div>
+
+</div>

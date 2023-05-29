@@ -1,0 +1,54 @@
+<div class="span-xl-16">
+    <div class="question-item-container">
+        <table width="100%">
+            <tr>
+                <td width="45%"><span class="fnt-wt-600 txt-alt-grey"><%=hrqn[question.type]%>
+                <%if (question.name){ %>
+                  &nbsp;&nbsp;</span><strong><%-question.name%></strong></td>
+                <% } %>
+                <td width="13%" class="fnt-sz-small"><span class="fnt-wt-600 txt-alt-grey">SCORE: </span><strong><%=question.points%> points</strong></td>
+                <td width="22%" class="fnt-sz-small"><span class="fnt-wt-600 txt-alt-grey">TESTCASE: </span><strong>30 (2 sample)</strong></td>
+                <td width="20%" class="fnt-sz-small text-right">
+                    <%_.each(question.tags_array, function(tag) { %>
+                    <span class="block-highlight"><%=tag%></span>
+                    <% }); %>
+                </td>
+            </tr>
+        </table>
+        <div class="row no-margin">
+            <div class="span12 no-padding msT">
+                <div class="<%if (!noexpand) {%>text-ellipsis-oneline<%}%> js-qcontent">
+                    <%=question.question%>
+                    <% if(question.type == "mcq") { %>
+                        <ul style="list-style-type: none;">
+                        <% var i=1;_.each(question.options, function(name) { %>
+                          <li><% if ((""+i) == question.answer) { %><img class='mcq-opt-img' src="/assets/mcq_options/img_mcq_ny.png" />&nbsp;&nbsp;<% } else { %><img class='mcq-opt-img' src="/assets/mcq_options/img_mcq_nn.png" />&nbsp;&nbsp;<% } %><%= name %></li>
+                        <% ;i++;}); %>
+                        </ul>
+                    <% } else if (question.type == "multiple_mcq") { %>
+                        <ul style="list-style-type: none;">
+                        <% var i =1, ans = question.answer;
+                           _.each(question.options, function(name) { %>
+                          <li>
+                          <% if ($.inArray(i, ans) != -1) { %>
+                            <img class='mcq-opt-img' src="/assets/mcq_options/img_mcq_ny.png" />&nbsp;&nbsp;
+                          <% } else { %>
+                            <img class='mcq-opt-img' src="/assets/mcq_options/img_mcq_nn.png" />&nbsp;&nbsp;
+                          <% } %>
+                          <%= name %></li>
+                        <% i++}); %>
+                        </ul>
+                    <% } %>
+                </div>
+                <%if (!noexpand) {%>
+                <a class="block js-toggleHeight" href="#" data-state="collapsed" >expand <i class="icon-down-open"></i></a>
+                <%}%>
+            </div>
+            <% if (test.questions_array.indexOf(question.id.toString()) != -1) { %>
+            <a href="#" class="btn btn-alert mlT pull-right js-remove-question" style="width:140px;" data-qid="<%=question.id%>" data-quid="<%=question.unique_id%>">Remove</a>
+            <% } else { %>
+            <a href="#" class="btn btn-primary mlT pull-right js-add-question" style="width:140px;" data-qid="<%=question.id%>" data-quid="<%=question.unique_id%>">Add</a>
+            <% } %>
+        </div>
+    </div>
+</div>

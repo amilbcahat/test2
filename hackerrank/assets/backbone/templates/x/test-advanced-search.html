@@ -1,0 +1,74 @@
+<style>
+    .filters .formgroup {
+        width: 360px;
+    }
+    .filters .two-row {
+        display: inline-block;
+        vertical-align: middle;
+        min-width: 740px;
+    }
+    .filters .formgroup label{
+        margin-top: 5px;
+        margin-right: 10px;
+        width: 90px;
+        text-align: right;
+    }
+    .filters .formgroup input[type=text] {
+        width: 250px;
+        margin-top: 0px;
+        padding-left: 10px;
+    }
+    .filters .formgroup .input-icon i{
+        font-size: 14px;
+        top:9px;
+    }
+
+</style>
+<div class="filters">
+    <form name="advanced-search" class="no-margin">
+        <div class="row pjR pjL psT">
+            <div class="text-center" style="display:table-cell;">
+                <div class="two-row">
+                    <div class="formgroup inline pull-left no-margin psR">
+                        <label>Test Name</label>
+                        <div class="input-icon">
+                            <input name="test-name" type="text" id="test-name" value="<%- filters["test-name"] || '' %>" placeholder="Test Title" style="display:block" />
+                            <a href="#" class="js-clear"><i class="icon2-status_wrong right" ></i></a>
+                        </div>
+                    </div>
+                    <div class="formgroup inline pull-left no-margin psR">
+                        <label>Question</label>
+                        <div class="input-icon">
+                            <input name="question" type="text" id="question" value="<%- filters["question-name"] || filters["question-question"] || '' %>" placeholder="Text or Name" style="display:block" />
+                            <a href="#" class="js-clear"><i class="icon2-status_wrong right" ></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="two-row" style="margin-bottom:-8px;">
+                    <div class="formgroup inline pull-left no-margin psR">
+                        <label>Owner</label>
+                        <div class="input-icon">
+                            <input name="owner" type="text" id="owner" value="<%- filters["test-user_name"] || filters["test-user_email"] || '' %>" placeholder="Name or Email" style="display:block" />
+                            <a href="#" class="js-clear"><i class="icon2-status_wrong right" ></i></a>
+                        </div>
+                    </div>
+                    <div class="formgroup inline pull-left no-margin psR">
+                        <label>Created</label>
+                        <div class="input-icon">
+                            <input name="created" type="text" id="created" placeholder="Date Range" class="js-daterange pull-left" style="display:block;" />
+                            <a class="js-dateclear" href="#"><i class="icon2-status_wrong right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="display:table-cell; vertical-align:middle; min-width:230px;">
+                <div class="pull-left">
+                    <button class="btn btn-green js-applyfilter" style="padding:9px 15px; margin-left: 10px;"  type="submit">Search</button>
+                </div>
+                <div class="pull-left no-margin psA">
+                    <a href="#" class="js-clearAll">clear filters</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

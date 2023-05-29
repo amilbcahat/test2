@@ -1,0 +1,103 @@
+<div class="game-container">
+    <div style="margin:0px;" class="clearfix">
+        <ul class="nav nav-tabs unstyled">
+            <div>
+                <div style="text-align: right;"><a class="close"><span style="font-size: 30px; font-weight: bold; position: relative; top: 10px;">&times;</span></a></div>
+            </div>
+        </ul>
+        <div class="game-links clearfix">
+            <ul class="social-component hide pull-right" style="margin-left: 0">
+                <a class="fb-share" style="cursor:pointer;"><span class="btn btn-facebook btn-small" data-analytics="Game Facebook Share"><i class="icon-facebook"></i>Share</span></a>
+                <a class="tweet" style="cursor:pointer;"><span class="btn btn-twitter btn-small" data-analytics="Game Tweet"><i class="icon-twitter"></i>Tweet</span></a>
+                <a target="_blank" style="cursor:pointer;" class="btn btn-small permalink"><i class="icon-link"></i>Permalink</a>
+            </ul>
+        </div>
+        <div class="tab-content hide"></div>
+    </div>
+    <div class="game-info-message-wrap">
+        <p style="text-align:center; width: 100%; padding-bottom: 10px;font-size: 16px;font-weight: 600;" class="game-info-message"></p>
+    </div>
+    <div class="hide controls">
+        <div class="game-buttons">
+            <a id="step-backward" class="cursor btn"><i class="icon-fast-backward"></i></a>
+            <a class="hide cursor btn" id="pause"><i class="icon-pause"></i></a>
+            <a id="play" class="cursor btn"><i class="icon-play"></i></a>
+            <a id="stop" class="cursor btn"><i class="icon-stop"></i></a>
+            <a id="step-forward" class="cursor btn"><i class="icon-fast-forward"></i></a>
+        </div>
+    </div>
+
+    <div id="game-moves"></div>
+    <p class="hide download-wrap text-center margin-large top bottom">
+        <a class="download cursor btn-text" target="_blank">Download moves as file <i class="icon-download-alt icon-white"></i></a>
+    </p>
+</div>
+<br>
+<script id="moves-template" type="text/template">
+    <div class="game-moves" style="padding: 10px;">
+        <table class="table table-bordered table-hover" style="width:100%">
+            <tbody>
+                <tr>
+                    <td colspan="2" class="text-center header">
+                        <div class="pull-left">
+                            Player: <span class="player"></span>
+                        </div>
+                        <div class="pull-right">
+                            <!-- Move# <span class="move"></span> -->
+                            Round# <span class="round"></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center" width="50%"><b>Input</b></td>
+                    <td class="text-center" width="50%"><b>Output</b></td>
+                </tr>
+                <tr>
+                    <td class="std-console" id="in">
+                        <div class="restrictor">
+                            <table class="scroll-fix">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <pre class="stdin"></pre>
+                                        <td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                    <td class="std-console" id="out">
+                        <div class="restrictor">
+                            <table class="scroll-fix">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <pre class="stdout"></pre>
+                                        <td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="std-console" id="err">
+                        <div class="error-padding"></div>
+                        <div class="error-title">Error</div>
+                        <div class="restrictor">
+                            <table class="scroll-fix">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <pre class="stderr"></pre>
+                                        <td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</script>

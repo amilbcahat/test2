@@ -1,0 +1,44 @@
+<section class="leaderboard container">
+  <header class="page-title container">
+    <div class="row">
+      <h1 class="span16"><div class="title-img"></div> <% if(kind) {%> <%= kind.toProperCase() %><% } else { %>Networks v/s Networks <% } %> Leaderboard</h1>
+    </div>
+  </header>
+  <div class="light-wrap table-wrap text-center span16">
+    <div class="table-head row">
+      <div class="span3">
+        <p>Rank <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span> </p>
+      </div>
+      <div class="span6">
+        <p>Name<span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span> </p>
+      </div>
+      <div class="span3">
+        <p>Score<span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span> </p>
+      </div>
+      <div class="span3">
+        <p>Members<span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span> </p>
+      </div>
+    </div>
+    <% _.each(leaderboard, function(leader, index) { %>
+    <div class="row<% if (index%2 == 0) { %> row-alt<% } %>">
+      <div class="span3">
+        <p><%= leader.rank %></p>
+      </div>
+      <div class="span6">
+        <p><%= leader.name %></p>
+      </div>
+      <div class="span3">
+        <p><%= leader.score %></p>
+      </div>
+      <div class="span3">
+        <p>
+          <%= leader.members %>
+        </p>
+      </div>
+    </div>
+    <% }); %>
+  </div>
+
+  <div class="pagination-wrap clearfix pagination-wrapper">
+  </div><!--pagination-wrap-->
+</section><!--.leaderboard-->

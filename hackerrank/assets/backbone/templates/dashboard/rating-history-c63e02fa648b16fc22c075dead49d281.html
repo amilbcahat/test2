@@ -1,0 +1,23 @@
+<ul id="rating-tabs" class="unstyled nav nav-tabs">
+    <% _.each(model, function(item) { %>
+        <li <%= item.id == 1 ? "class = 'active'" : "" %> ><a href="#tab<%- item.id %>" data-toggle="tab"><%= item.text %></a></li>
+    <% }); %>
+</ul>
+<div class="tab-content">
+    <% _.each(model, function(item) { %>
+        <div id="tab<%- item.id %>" class="tab-pane<%- item.id == 1 ? " active" : "" %>" >
+            <div class="pull-left">
+                <% if (rating[item.text]) { %>
+                <h5 class="mlT mmB small">Contest Performance</h5>
+                <h6 class="msB small">
+                    <span class="zeta">Rank: </span><%= rating[item.text].rank %>
+                    <span class="msL zeta">Title:</span><%= rating[item.text].title %>
+                    <span class="msL zeta">Score:</span><%= rating[item.text].rating.round() %>
+                </h6>
+                <% } %>
+            </div>
+            <div class="<%- item.id %>-history-chart">
+            </div>
+       </div>
+    <% }); %>
+</div>

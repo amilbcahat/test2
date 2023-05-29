@@ -1,0 +1,79 @@
+<div class="top-fixed-bar support-sub-bar">
+    <h3 class="topbar-h3 mjL">Interview</h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Candidate report</h3>
+    <a href="#" class="btn btn-line pull-right msA mjR"><i class="icon-left-open"></i> Back</a>
+    <div class="clear"></div>
+
+    <div class="sub-top-bar">
+        <% if (model.candidates && model.candidates.length > 0) { %>
+        <h4 style="margin:18px 30px;" class="pull-left"><% candidate = model.candidates[0] %><%- candidate.name || candidate.email || '-' %></h4>
+        <% } else { %>
+        <h4 style="margin:18px 30px;" class="pull-left"><%- model.title %></h4>
+        <% } %>
+        <a href="#" class="btn pull-right btn-line msA js-share-report" style="margin-top:6px;"><i class="icon2-sharetest"></i></a>
+        <div class="btn-group thumbs-states js-status" style="margin:0px 15px 3px 15px;">
+        </div>
+        <% if (model.interviewers && model.interviewers.length > 0) { %>
+        <% interviewer = model.interviewers[0] %>
+        <% if (interviewer.name || interviewer.email) { %>
+        <h4 class="pull-right txt-alt-dark-grey mdA mjR">Interviewed by: <% interviewer = model.candidates[0] %><%- interviewer.name || interviewer.email %></h4>
+        <% } %>
+        <% } %>
+
+    </div><!-- end .sub-top-bar -->
+</div><!-- end .top-fixed-bar -->
+
+
+<div class="overflow-content adjust-two-fixed-bar" id="control-overflow">
+    <div class="mjA">
+        <div class="js-feedback"></div>
+
+        <div class="clear"></div>
+
+        <div class="code-review-section mlT js-recordings">
+        </div><!-- .code-review-section -->
+
+        <!-- <div class="common_margin">
+            <table class="invisble-table cnt-feedback">
+            </table>
+
+            <div class="divider_smallheight"></div>
+            <div class='cnt-recordings'></div>
+
+            <div class="clear"></div>
+
+            <span class="underline_title margin-top-bott-15">COMMENTS</span>
+            <table class="invisble-table">
+                <tr>
+                    <td width="15%"><span class="font16">Vivek Ravisankar</span></td>
+                    <td width="70%">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    </td>
+                    <td width="15%"><span class="txtbox_text pull-right">Yesterday 2:15pm</span></td>
+                </tr>
+                <tr>
+                    <td width="15%"><span class="font16">Paul barber</span></td>
+                    <td width="70%">
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+                    </td>
+                    <td width="15%"><span class="txtbox_text pull-right">Yesterday 2:15pm</span></td>
+                </tr>
+                <tr>
+                    <td width="15%"><span class="font16">Vivek Ravisankar</span></td>
+                    <td width="70%">
+                        It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                    </td>
+                    <td width="15%"><span class="txtbox_text pull-right">Yesterday 2:15pm</span></td>
+                </tr>
+                <tr>
+                    <td width="15%"><span class="font16">Isaac John</span></td>
+                    <td width="70%">
+                        <textarea style="width:100%;" placeholder="Add your comment here..."></textarea>
+                    </td>
+                    <td width="15%"><a href="#" class="pull-right button-green btn_mid rcorners_mid">Comment</a></td>
+                </tr>
+            </table>
+        </div> --><!-- end .common_margin-->
+    </div><!-- .mjA -->
+</div>
+<div class="modal-container"></div>

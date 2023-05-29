@@ -1,0 +1,280 @@
+<header class="page-title container">
+    <ul class="breadcrumb unstyled horizontal">
+        <li><a href="/manage/" class="backbone">Manage Home</a><i class="icon-right-open-big divider"></i></li>
+        <li><a href="/manage/challenge/" class="backbone">Challenges</a><i class="icon-right-open-big divider"></i></li>
+        <li><a href="/manage/challenge/edit/<%= model.id || "new" %>" class="backbone"><%= new_model ? "New Challenge" : model.name %></a></li>
+    </ul>
+
+    <h1><%= new_model ? "New" : "Edit" %> Challenge</h1>
+</header>
+
+<section class="manage container">
+    <div class="wrap content_wrap narrow">
+        <div class="sidebar--inline">
+            <ul class="sidebar_list unstyled" id="challengeTabs">
+                <li class="sidebar_list-heading active"><a href="/manage/challenge/edit/<%= model.id || "new" %>/basic" data-target="#basic" data-toggle="tab">Basic</a></li>
+                <% if( !new_model ) { %>
+                <li class="sidebar_list-heading"><a href="/manage/challenge/edit/<%= model.id || "new" %>/testcases" data-target="#testcases" data-toggle="tab">Testcases</a></li>
+                <% } %>
+                <li class="sidebar_list-heading"><a href="/manage/challenge/edit/<%= model.id || "new" %>/template-code" data-target="#template-code" data-toggle="tab">Language Templates</a></li>
+                <li class="sidebar_list-heading"><a href="/manage/challenge/edit/<%= model.id || "new" %>/checkerlimits" data-target="#checkerlimits" data-toggle="tab">Checker Limits</a></li>
+                <% if( model.kind == "game" ) { %>
+                <li class="sidebar_list-heading"><a href="/manage/challenge/edit/<%= model.id || "new" %>/judgebot-code" data-target="#judgebot-code" data-toggle="tab">Judgebot</a></li>
+                <% } %>
+                <% if( model.custom && model.kind == "code" ) { %>
+                <li class="sidebar_list-heading"><a href="/manage/challenge/edit/<%= model.id || "new" %>/checker-code" data-target="#checker-code" data-toggle="tab">Custom Checker</a></li>
+                <% } %>
+                <% if( !new_model ) { %>
+                <li class="sidebar_list-heading"><a href="/manage/challenge/edit/<%= model.id || "new" %>/moderators" data-target="#moderators" data-toggle="tab">Moderators</a></li>
+                <% } %>
+            </ul>
+            <button class="margin-large bottom span3 block-center btn btn-large btn-green save" id="challenge-edit-save" data-analytics="SaveChallenge">Save</button>
+            <div class="message span4 tabsidebar-message"></div>
+        </div>
+
+        <div class="edit-challenge tab-content content--inline">
+            <div class="tab-pane padded active" id="basic">
+                <h3>Basic</h3>
+                <p class="aside block-margin margin-large bottom">Basic information about the challenge.</p>
+                <div class="formgroup horizontal">
+                    <label class="pull-left span3" for="name">Name</label>
+                    <div class="span8">
+                        <input type="text" id="name" class="span8" placeholder="Challenge Name" value="<%= model.name %>">
+                    </div>
+                </div>
+                
+                <div class="formgroup horizontal">
+                    <label class="pull-left span3" for="name">Slug</label>
+                    <div class="span8">
+                        <input type="text" id="slug" class="span8" placeholder="Friendly Name in URL" value="<%= model.slug %>">
+                    </div>
+                </div>
+            
+                <div class="formgroup horizontal">
+                    <label class="pull-left span3" for="name">Type</label>
+                    <div class="span8">
+                        <select id="kind" style="height: auto;">
+                            <option value="code" <%= model.kind == "code" ? "selected='selected'" : "" %>>Algorithm</option>
+                            <option value="game" <%= model.kind == "game" ? "selected='selected'" : "" %>>Game</option>
+                        </select>
+                    </div>
+                </div>
+
+                <% if( model.kind == "game" ) { %>
+                <div class="formgroup horizontal">
+                    <label class="pull-left span3" for="player_count">Players</label>
+                    <div class="span8">
+                        <input type="text" class="span8" id="player_count" placeholder="No. of players" value="<%= model._data.player_count || 2 %>">
+                        <small class="sub-help">Simultaneous players per game</small>
+                    </div>
+                </div>
+                <% } %>
+
+                <% if( model.kind != "game" ) { %>
+                <div class="row margin-large top bottom">
+                    <p class="margin-small bottom">
+                        <label class="span4" for="custom">Custom Checker</label>
+                        <small class="sub-help">For approximate challenges</small>
+                    </p>
+                  </label>
+                  <div class="offset4">
+                      <div class='manage-switch' data-on='success' data-off='info'>
+                          <input <% if( model.custom ) { %>checked<% } %> name="custom" id="custom" type="checkbox" value="true" />
+                      </div>
+                  </div>
+                </div>
+                <% } %>
+
+                <div class="row margin-large top bottom">
+                    <p class="margin-small bottom">
+                        <label class="span4" for="public_test_cases">Public Testcases</label>
+                        <small class="sub-help">Allows users to buy testcases on main site or makes testcases available after a contest ends.</small>
+                    </p>
+                    <div class="offset4">
+                        <div class='manage-switch' data-on='success' data-off='info'>
+                            <input <% if( model.public_test_cases ) { %>checked<% } %> id="public_test_cases" name="public_test_cases" type="checkbox" value="true" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row margin-large top bottom">
+                    <p class="margin-small bottom">
+                        <label class="span4" for="public_solutions">Public Solutions</label>
+                        <small class="sub-help">Allows users to view submissions after solving the challenge on main site or makes all solutions downloadable after a contest ends.</small>
+                    </p>
+                    <div class="offset4">
+                        <div class='manage-switch' data-on='success' data-off='info'>
+                            <input <% if( model.public_solutions ) { %>checked<% } %> name="public_solutions" id="public_solutions" type="checkbox" value="true" />
+                        </div>
+                    </div>
+                </div>
+
+                <% if(current_hacker.is_admin) { %>
+                <div class="row margin-large top bottom">
+                    <p class="margin-small bottom">
+                        <label class="span4" for="submit_disabled">Disable Submission</label>
+                        <small class="sub-help">Disables the submit button for this challenge across all contests</small>
+                    </p>
+                    <div class="offset4">
+                        <div class='manage-switch' data-on='success' data-off='info'>
+                            <input  <% if( model.submit_disabled ) { %>checked<% } %> name="submit_disabled" id="submit_disabled" type="checkbox" value="true" />
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+
+                <div class="formgroup horizontal">
+                    <label class="span3" for="inputpreview">Description</label>
+                    <textarea id="preview" style="height:75px; width: 95%;" placeholder="Short Description of The Challenge"><%= model.preview %></textarea>
+                </div>
+
+                <div class="formgroup horizontal">
+                    <label for="statement" class="control-label span3">Problem Statement</label>
+                    <input type="checkbox" id="sync" style="display: none;" checked="true" />
+                    <!--label for="sync" style="display:inline-block;"><small>Sync Preview</small></label>-->
+                    <div class="controls statement">
+                        <ul id="statement-tabs" class="unstyled nav nav-tabs">
+                            <li class="active"><a href="#statementEditTab" data-toggle="tab">Edit</a></li>
+                            <li><a href="#statementPreviewTab" data-toggle="tab">Preview</a></li>
+                        </ul>
+                 
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="statementEditTab">
+                                <textarea id="statement"><%= model.body %></textarea>
+                            </div>
+                            <div class="tab-pane" id="statementPreviewTab">
+                                <div class="tab-pane" id="statementPreview"></div>
+                            </div>
+                        </div>
+                 
+                        <script type="text/javascript">
+                          $('#statement-tabs a').click(function (e) {
+                              e.preventDefault();
+                              $(this).tab('show');
+                              });
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <% if( !new_model ) { %>
+            <div class="tab-pane padded" id="testcases">
+                <h3>Testcases</h3>
+                <p class="aside block-margin margin-large bottom">Sample testcases are shown to users.</p>
+                <p><a href="http://static.hackerrank.com/helloworld_testcases.zip">Download</a> a set of sample testcases for a <a href="https://www.hackerrank.com/helloworldsample/challenges/hello-bob">Hello World challenge</a> to understand the .zip format.</p>
+           
+              <div class="block-center row margin-large top bottom">
+                <div class="test-case block-center row" style="margin-top:20px; margin-bottom:20px;">
+                  <div class="test-case-error table-wrap text-center span10 light-wrap" style="margin-left:23px;">
+                    <div class="table-head row" style="padding:10px 0">
+                      Please save challenge to add test cases.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <% } %>
+
+            <div class="tab-pane padded" id="template-code">
+                <h3>Language Templates</h3>
+                <p class="aside block-margin margin-large bottom">Boilerplate code for each language.</p>
+
+                <div class="formgroup horizontal">
+                    <label class="span2">Language</label>
+                    <div class="span7 judgebot_language select-wrap" >
+                        <input type="hidden" id="current_lang" value="cpp" />
+                        <a href="" class="dropdown-toggle clearfix select-wrap" id="" data-toggle="dropdown"><span class="select"><span id="lang_template_lang" class="text">C++</span></span><span class="indent"><b class="caret"></b></span></a>
+                        <ul class="dropdown-menu unstyled" id="" style="max-height:200px; overflow:auto;">
+                            <% _.each( lang_display_mapping, function( val, key ){ %>
+                            <li>
+                                <a class="template_lang" data-lang="<%= key %>" data-mime="<%= lang_mime_mapping[key] %>"><%= val %></a>
+                            </li>
+                            <% }) %>
+                        </ul>
+                    </div>
+                </div>
+             
+                <div class="formgroup horizontal hr_lang-template-head">
+                    <p><strong>Head</strong></p>
+                    <p class="margin-small bottom"><small class="sub-help">The required header/import files to run the program.</small></p>
+                    <textarea id="lang_template_head" style="height:75px;" placeholder="Template Head"></textarea>
+                </div>
+             
+                <div class="formgroup horizontal hr_lang-template-body">
+                    <p><strong>Body</strong></p>
+                    <p class="margin-small bottom"><small class="sub-help">The part in which the main program has to be written.</small></p>
+                    <textarea id="lang_template" style="height:75px;" placeholder="Template Body"></textarea>
+                </div>
+               
+                <div class="formgroup horizontal hr_lang-template-tail">
+                    <p><strong>Tail</strong></p>
+                    <p class="margin-small bottom"><small class="sub-help">The majority of the read write operations.</small></p>
+                    <textarea id="lang_template_tail" style="height:75px;" placeholder="Template Body"></textarea>
+                </div>
+            </div>
+
+            <div class="tab-pane padded hr_checker-limits" id="checkerlimits">
+                <h3>Codechecker Limits</h3>
+                <p class="aside block-margin margin-large bottom">The runtime environment limits for a submission.</p>
+                <textarea id="checkerlimits" class="span11" style="height:100px;" placeholder="Checker limits (json)"></textarea>
+            </div>
+
+            <div class="tab-pane padded" id="checker-code">
+                <% if( model.custom && model.kind == "code" ) { %>
+                <h3>Custom Checker</h3>
+                <p class="aside block-margin margin-large bottom">It evaluates the approximate type challenges.</p>
+              
+                <div class="formgroup horizontal">
+                    <label class="span3">Language</label>
+                    <div class="span8 judgebot_language select-wrap" >
+                        <a href="" class="dropdown-toggle clearfix select-wrap" id="" data-toggle="dropdown"><span class="select"><span id="custom_lang" class="text"><%=  lang_display_mapping[model._data.custom_language || ""] || "Language" %></span></span><span class="indent"><b class="caret"></b></span></a>
+                        <ul class="dropdown-menu unstyled" id="" style="max-height:200px; overflow:auto;">
+                        <% _.each( lang_display_mapping, function( val, key ){ %>
+                            <li><a class="checker_program" data-lang="<%= key %>" data-mime="<%= lang_mime_mapping[key] %>"><%= val %></a></li>
+                        <% }) %>
+                        </ul>
+                    </div>
+                </div>
+              
+                <div class="formgroup horizontal hr_checker-program">
+                    <label class="control-label" for="checker_program">Code</label>
+                    <small class="sub-help">The custom checker code.</small>
+                    <textarea id="checker_program" style="height:75px;" placeholder="Checker Program"><%= model._data.checker_program || "" %></textarea>
+                </div>
+                <% } %>
+            </div>
+            
+            <% if(model.kind == "game") { %>
+            <div class="tab-pane padded" id="judgebot-code">
+                <h3>Judge Bot</h3>
+                <p class="aside block-margin margin-large bottom">User's compile and tests are played against the judge bot.</p>
+            
+                <div class="formgroup horizontal">
+                    <label class="span2">Language</label>
+                    <div class="span7 judgebot_language select-wrap" >
+                        <input type="hidden" value="" id="">
+                        <a href="" class="dropdown-toggle clearfix select-wrap" id="" data-toggle="dropdown"><span class="select"><span id="judgebot_lang" class="text"><%=  lang_display_mapping[model._data.judgebot_language || ""] || "Language" %></span></span><span class="indent"><b class="caret"></b></span></a>
+                        <ul class="dropdown-menu unstyled" id="" style="max-height:200px; overflow:auto;">
+                            <% _.each( lang_display_mapping, function( val, key ){ %>
+                            <li><a class="judgebot" data-lang="<%= key %>" data-mime="<%= lang_mime_mapping[key] %>"><%= val %></a></li>
+                            <% }) %>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="formgroup horizontal hr_judgebot-code">
+                    <p><strong>Code</strong></p>
+                    <p class="margin-small bottom"><small class="sub-help">The judge bot code.</small></p>
+                    <textarea id="judgebot" style="height:75px;" placeholder="Judge Bot"><%= model._data.judgebot || "" %></textarea>
+                </div>
+            </div>
+            <% } %>
+            
+            <div class="tab-pane padded" id="moderators">
+                <h3>Moderators</h3>
+                <p class="aside block-margin margin-large bottom">Add/Remove moderators. Moderators have full control over the challenge.</p>
+                <div class="moderators-view"></div>
+            </div>
+        </div>
+  </div>
+</section>

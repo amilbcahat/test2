@@ -1,0 +1,27 @@
+<div class="row notification-contianer status-<%= model.STATUS_TEXT[model.STATUS_CODE[_model.notification_status]] %>">
+    <div class="pull-right">
+        <p><%= model.STATUS_TEXT[model.STATUS_CODE[_model.notification_status]] %></p>
+    </div>
+    <div class="span10">
+        <p class="subject"><a data-id="<%= _model.id %>" class="show-body" style="cursor: pointer;"><%= _model.subject %><a></p>
+        <p class="from">
+            <span class="tag">On:</span>
+            <% d = new Date(0) %>
+            <% d.setUTCSeconds(_model.created_at_epoch) %>
+            <%= moment(d).format('MMMM Do YYYY, h:mm:ss a') %>
+            <% if (_model.from != null) { %>
+                <span class="tag">From:</span>
+                <a>
+                    <%= _.escape(_model.from.username) %>
+                    <% if (_model.from.is_admin) { %>
+                        <span class="label label-info">MOD</span>
+                    <% } %>
+                </a>
+            <% } %>
+        </p>
+        <p class="notification-body" <% if (!showbody) { %> style="display: none;" <% } %>><%= _model.body %></p>
+    </div>
+    <div class="span10 buttons">
+        <% if (_model.notification_status < model.STATUS.READ) { %><a class="mark-as-read">mark as read</a> |<% } %> <a class="delete">delete</a>
+    </div>
+</div>

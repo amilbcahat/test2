@@ -1,0 +1,47 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL">Company Dashboard <% if(company.name) { %>- <%= company.name %> <% } %></h3>
+</div>
+<div class="overflow-content" id="control-overflow">
+    <div class="dash-container mjA">
+        <div class="msT msB">
+            <div class="span2">Search By :</div>
+            <div class="span14 search-radio-grp">
+                <label>
+                    <input id="search-fields-id" name="search-field" type="radio" value="id" <% if(searchBy == 'id') { %> checked='checked' <% } %>/>ID
+                </label>
+                <label>
+                    <input id="search-fields-name" name="search-field" type="radio"
+                           value="name" <% if(searchBy == 'name') { %> checked='checked' <% } %> />Name
+                </label>
+                <label>
+                    <input id="search-fields-email" name="search-field" type="radio"
+                           value="email" <% if(searchBy == 'email') { %> checked='checked' <% } %> />Email
+                </label>
+            </div>
+        </div>
+
+        <div class="msT msB">
+            <div class="span2">Company: </div>
+            <div class="span14"></div>
+            <input type="hidden" id="company-select2" class="wide company-select2">
+        </div>
+        <hr>
+
+        <div class="mjT mjB">
+            <div class="btn-group">
+                <a href="#" class="btn change-view-type <% if(subViewType == 'basic') { %> active btn-primary <% } %>"
+                   data-view-type="basic">Basic Information</a>
+                <a href="#" class="btn change-view-type <% if(subViewType == 'data') { %> active btn-primary <% } %>"
+                   data-view-type="data">Data Usage</a>
+                <a href="#" class="btn change-view-type <% if(subViewType == 'license') { %> active btn-primary <% } %>"
+                   data-view-type="license">License Usage</a>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="mjT" id="sub-view-container">
+        </div>
+    </div>
+
+</div>

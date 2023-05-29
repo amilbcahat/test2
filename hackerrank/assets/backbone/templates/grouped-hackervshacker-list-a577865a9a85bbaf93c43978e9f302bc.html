@@ -1,0 +1,74 @@
+<div class="table-primary" style="margin-bottom: 20px">
+  <div class="row light-wrap wrap" style="border-radius: 5px 5px 0 5px; -webkit-border-radius: 5px 5px 0 5px; padding: 0; margin-left: 0;">
+    <div class="span4">
+      <p style="text-align: left;">
+        <a href="<%= HR.appController.get_current_contest_namespace() %>/challenges/<%= model.challenge.slug %>" class="backbone cursor"><%= model.challenge.name %></a>
+      </p>
+    </div>
+    <div class="span2">
+      <p><%= model.stats.win1 %></p>
+    </div>
+    <div class="span2">
+      <p><a title="<% d = new Date(0); d.setUTCSeconds(0); %><%= moment(d).format('LLL') %>"><%= model.stats.win2 %></a></p>
+    </div>
+    <div class="span2">
+      <p><%= model.stats.tie %></p>
+    </div>
+    <div class="span2">
+      <p><%= model.total %></p>
+    </div>
+    <div class="span2 pull-right">
+      <% if(!model.filter_applied) { %>
+      <a href="<%= HR.appController.get_current_contest_namespace() %>/hackervshacker/<%= model.challenge.slug %>/submissions" class="btn btn-white cursor expand" style="vertical-align:middle">[+]</a>
+      <% } %>
+    </div>
+  </div>
+  <div class="table-sub" style="margin-left: 0px; margin-bottom: 20px; background-color: rgb(248, 248, 248); border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-style: none solid solid; border-right-color: rgb(228, 228, 228); border-bottom-color: rgb(228, 228, 228); border-left-color: rgb(228, 228, 228); display: <%= model.filter_applied ? "block" : "none"  %>; background-position: initial initial; background-repeat: initial initial; ">
+    <div class="table-head row row-sub" style="height:43px; padding:0px; margin-left:0px;">
+      <div class="span2 text-left">
+        <p>Language 1</p>
+      </div>
+      <div class="span3 text-left">
+        <p>Time</p>
+      </div>
+      <div class="span2 text-left">
+        <p>Language 2</p>
+      </div>
+      <div class="span5 text-left">
+        <p>Result</p>
+      </div>
+      <div class="span3 pull-right">
+        <p></p>
+      </div>
+    </div>
+    <% _.each(games, function(game){ %>
+    <div class="row row-sub" style="margin-left:0px;">
+      <div class="span2 text-left">
+        <p><%= lang_display_mapping[game.lang1] %></p>
+      </div>
+      <div class="span3 text-left">
+        <p><a title="<% d = new Date(0); d.setUTCSeconds(game.epoch); %><%= moment(d).format('LLL') %>"><%= game.time_ago %></a></p>
+      </div>
+      <div class="span2 text-left">
+        <p><%= lang_display_mapping[game.lang2] %></p>
+      </div>
+      <div class="span5 text-left">
+        <p><%= game.winner %></p>
+      </div>
+      <div class="span3 pull-right">
+        <a href="<%= HR.appController.get_current_contest_namespace() %>/showgame/<%= game.id %>" class="btn btn-white playgame" data-id="<%= game.id %>">Play Game</a>
+      </div>
+    </div>
+    <div class="row container game-<%= game.id %>" style="margin-left:-10px;">
+        <div class="submission-game-container-wrapper" style="margin-left: 18px;"></div>
+    </div>
+    <% }) %>
+    <% if ( (model.total > model.games.length) && !model.filter_applied ) { %>
+    <div class="row row-sub" style="margin-left:0px;">
+      <div class="span3">
+        <a href="<%= HR.appController.get_current_contest_namespace() %>/hackervshacker/<%= hacker1.username %>/vs/<%= hacker2.username %>/<%= model.challenge.slug %>" class="btn btn-white backbone">All Games</a>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="span16">
+    <% _.each(collection.slice(0, 5), function (model) { %>
+    <p class="row">
+        Submitted for
+        <a class="challenge-slug backbone" href="<%= HR.appController.get_current_namespace() %>/challenges/<%= model.challenge.slug %>">
+            <%= model.challenge.name %>
+        </a>
+        in <em><%= lang_display_mapping[model.language] || model.language %></em>
+        <%= model.time_ago %> ago.
+        <a href="<%= HR.appController.get_current_namespace() %>/submissions/<%= model.kind %>/<%= model.id %>"
+              class="pull-right backbone small">
+        View Submission
+        </a>
+    </p>
+<% }) %>
+</div>
+<div class="clearfix"></div>

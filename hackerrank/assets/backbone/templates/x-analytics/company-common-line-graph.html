@@ -1,0 +1,45 @@
+<div class="section mlT mlB">
+    <div class="section-header">
+        Tests Vs Created On Graph
+    </div>
+
+    <form class="form-horizontal pull-left mlL mlT">
+        <fieldset class="plR">
+            <div class="control-group">
+                <label class="control-label" for="date-range-select">Select Duration:</label>
+
+                <div class="controls">
+                    <div class="input-prepend">
+                        <span class="add-on"><i class="icon-calendar"></i></span><input type="text" name="date-range-select" id="date-range-select" value="<%= startDate + ' - ' + endDate %>"/>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+
+    <form class="form-horizontal pull-left mlL mjT">
+        <fieldset class="plL mlT">
+            <div class="control-group mmT">
+                <div class="controls">
+                    <div class="input-prepend">
+                        <span class="add-on"></span>
+                        <select id="aggregation-select">
+                            <option value="hour" <% if(aggregation_frame == 'hour') { %> selected <% } %>>Hour</option>
+                            <option value="day"<% if(aggregation_frame == 'day') { %> selected <% } %>>Day</option>
+                            <option value="week"<% if(aggregation_frame == 'week') { %> selected <% } %>>Week</option>
+                            <option value="month"<% if(aggregation_frame == 'month') { %> selected <% } %>>Month</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+
+    <div class="graph-container">
+
+    </div>
+
+    <div class="graph-data-view-container">
+
+    </div>
+</div>

@@ -1,0 +1,67 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL">Settings</h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Basic info</h3>
+    <h5 class="pull-right txt-alt-dark-grey mdA mjR">Last login: <% if (current_user.timezone) { %><%= moment(current_user.last_sign_in_at).tz(current_user.timezone).format('MMMM Do YYYY, h:mm:ss a') %><% } else { %><%= moment(current_user.last_sign_in_at).format('MMMM Do YYYY, h:mm:ss a') %><% } %></h5>
+</div>
+<div class="overflow-content" id="control-overflow">
+
+    <form id="settings-basic-info-form" class="mjA">
+        <div class="pull-right msT msB" style="margin-right:100px; text-align: center">
+            <label style="text-align: center">Company Logo</label>
+            <img src="<% if (current_user.company.logo_url) { %><%= current_user.company.logo_url %><% } else { %>/assets/company-logo-placeholder.gif<% } %>" style="margin-bottom: 5px;">
+            <br/>
+            <a id='c-logo-upload-btn' class="btn uploadLogo" href="javascript:;">Upload</a>
+        </div>
+
+        <div class="msT msB">
+            <label>Email Address</label>
+            <input type="email" class="wide" disabled value="<%= current_user.email %>">
+        </div>
+
+        <div class="msT msB">
+            <label>Your Name</label>
+            <input id="usr-fname" class="user-det" type="text" placeholder="First Name" value="<%= current_user.firstname %>">
+            <input id="usr-lname" class="mdL user-det" type="text"  placeholder="Last Name" value="<%= current_user.lastname %>">
+        </div>
+
+        <div class="msT msB">
+            <label>Your company name</label>
+            <input id="usr-cname" type="text" class="wide user-det" value="<%= current_user.company.name %>">
+        </div>
+
+        <div class="msT msB">
+            <label>Contact Number</label>
+            <input id="usr-phone" type="text" class="wide user-det" value="<%= current_user.phone %>">
+        </div>
+
+        <div class="msT msB">
+            <label>Send Invites As</label>
+            <input id="usr-cemailfrom" type="text" class="wide user-det" value="<%= current_user.company.email_from %>">
+        </div>
+
+        <div class="msT msB">
+            <label>Your Country</label>
+            <input type="hidden" id="user-country-select2" class="wide user-det" value=<% if (current_user.country) { %>"<%= current_user.country %>"<% } else { %>N/A<% } %>>
+        </div>
+
+        <div class="msT msB">
+            <label>Your Time Zone</label>
+            <input type="hidden" id="usr-tz-select2" class="wide" value="<%= current_user.timezone_local ?  "" : current_user.timezone %>">
+        </div>
+
+        <% if(current_user.personal_api_key) { %>
+        <div class="msT msB">
+            <label>API Key</label>
+            <input type="text" class="wide" disabled value="<%= current_user.personal_api_key %>">
+        </div>
+        <% } %>
+
+        <div class="row no-margin plT">
+            <div class="span-xs-16 span-md-16">
+                <button type="submit" id="update-basic-info" class="btn btn-primary btn-mid" data-throbber="show">Save</button>
+            </div>
+        </div>
+
+    </form>
+    <div class="dialog-wrapper"></div>
+</div>

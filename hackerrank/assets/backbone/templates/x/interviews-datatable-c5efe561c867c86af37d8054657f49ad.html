@@ -1,0 +1,46 @@
+<p class='datatable-title mjA'>
+    <% if (showTitle) { %>
+    <div class='empty_height_spacer'></div>
+    <h4 class='pull-left-h4'><%= title %></h4>
+    <% } %>
+
+    <% if (typeof showSelect !== 'undefined' && showSelect && typeof selectOptions !== 'undefined') { %>
+    <div class='pull-right'>
+        <select id='choose'>
+            <% _.each(selectOptions, function (v, k) { %>
+                <option value='<%- k %>'><%- v %></option>
+            <% }); %>
+        </select>
+    </div>
+    <% } %>
+    <div class='clear_float'></div>
+</p>
+
+<p class="mjA">
+    Show me interviews taken by
+    <select id="interviewer">
+        <option value="0" selected>All</option>
+    </select>
+    in the status
+    <select id="thumbs">
+        <option value="0" selected>All</option>
+        <option value="1">Thumbs Down</option>
+        <option value="2">Thumbs Up</option>
+    </select>
+    in the date range
+    <span class="add-on"><i class="icon-calendar"></i></span>
+    <input type="text" class="txt_box input-large" id="daterange">
+</p>
+
+<table class="dt-sleektable" id="datatable<%= typeof id_suffix === 'undefined' ? '' : id_suffix %>" cellpadding="0" cellspacing="0" border="0" style="overflow: none; width: 100%">
+    <thead>
+        <tr class='sleekhead'>
+            <% _.each(fields, function (field) { %>
+            <th class='<%= field.className %>'><%= field.name %></th>
+            <% }); %>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>

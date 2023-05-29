@@ -1,0 +1,165 @@
+<div class="padded challenge-testcases">
+    <p class="aside block-margin margin-large">Testcases weight the strength of the code
+    and allow users to test their code before submitting. Include at least one testcase
+    your challenge and mark whether it can be used as an example with an explaination is
+    required.</p>
+
+    <% if (collection.sync_status) { %>
+        <% var errors = [];
+           if (collection.models.length == 0) {
+               errors.push("You dont have any testcases for this challenge. Please upload atleast one testcase.");
+           } else {
+               samples = _.filter(_collection, function (model) {
+                   return (model.sample == true);
+               });
+
+               if (samples.length == 0) {
+                   errors.push("You dont have any <b>sample</b> testcases for this challenge. Sample testcases help users to understand the challenge and debug their code easily.");
+               }
+
+               if (samples.length == collection.models.length) {
+                   errors.push("You should not mark all testcases as <b>sample</b> testcase. Making a testcase sample will make it public and thus users can hard code the testcases in their code to get full score.");
+               }
+
+               total_strength = _.reduce(_.compact(_.map(_collection, function (model) {
+                   return model.score;
+               })), function (memo, num) {
+                   return memo + num;
+               },0);
+
+               if (total_strength <= 0) {
+                   errors.push("Looks like total strength of your testcases is zero. Total strength for your testcases should be a positive number.");
+               }
+           }
+           %>
+        <% if (errors.length > 0) { %>
+            <div class="row padded10">
+                <div class="alert alert-block testcase-alert-block">
+                    <h4>Warning!</h4>
+                    <ul class="testcase-alert-list">
+                        <% _.each(errors, function (error) { %>
+                        <li><%= error %></li>
+                        <% }) %>
+                    </ul>
+                </div>
+            </div>
+        <% } %>
+    <% } %>
+
+    <div class="row padded10">
+        <div class="span5 pull-right">
+            <!-- I'm Sorry :( -->
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            <button class="btn upload-zip">Upload Zip</button>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            <button class="btn add-testcase btn-primary">+ Add Testcase</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="split-table-head">
+            <div class="split-table-head-inner">
+                <div class="order pull-left">
+                    <p>Order
+                        <span class="help-prompt"><i class="icon-help-circled icon-single"></i><span class="help-text">Order in which testcases will get processed. Drag and drop to reorder.</span></span>
+                    </p>
+                </div>
+
+                <div class="input pull-left m">
+                    <p>Input
+                        <span class="help-prompt"><i class="icon-help-circled icon-single"></i><span class="help-text">Input testcase, will be fed as STDIN for a submission.</span></span>
+                    </p>
+                </div>
+
+                <div class="output pull-left m">
+                    <p>Output
+                        <span class="help-prompt"><i class="icon-help-circled icon-single"></i><span class="help-text">Expected output testcase, will be compared with STDOUT of a submission.</span></span>
+                    </p>
+                </div>
+
+                <div class="tag pull-left m">
+                    <p>Tag
+                        <span class="help-prompt"><i class="icon-help-circled icon-single"></i><span class="help-text">Tag your testcases to identify them among other testcases.</span></span>
+                    </p>
+                </div>
+
+                <div class="sample pull-left m">
+                    <p>Sample
+                        <span class="help-prompt"><i class="icon-help-circled icon-single"></i><span class="help-text">If enabled, the testcase will no longer be hidden. Generally,
+                                its a good idea to set 1 or 2 testcase(s) as sample, it helps users to debug the their code much easier.</span></span>
+                    </p>
+                </div>
+
+                <div class="strength pull-left m">
+                    <p>Strength
+                        <span class="help-prompt"><i class="icon-help-circled icon-single"></i><span class="help-text">Relative strength of the testcase. Used for score distribution.</span></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <% if (collection.sync_status) { %>
+            <% _.each(_collection, function (test_case, index) { %>
+            <div class="split-table-body" draggable="true"
+                 data-index="<%= index %>" data-id="<%= test_case.id %>">
+                <div class="grip"></div>
+                <div class="split-table-body-inner">
+
+                    <div class="order pull-left">
+                        <%= index + 1 %>
+                    </div>
+
+                    <div class="input pull-left m">
+                        <a href="<%= collection.get(test_case.id).url() %>/download?f=input" target="_blank">
+                            input<%= (index/100).toFixed(2).split(".")[1] %>.txt (<%= test_case.h_input_size || 'N/A' %>)
+                        </a>
+                    </div>
+
+                    <div class="output pull-left m">
+                        <a href="<%= collection.get(test_case.id).url() %>/download?f=output" target="_blank">
+                            output<%= (index/100).toFixed(2).split(".")[1] %>.txt (<%= test_case.h_output_size || 'N/A' %>)
+                        </a>
+                    </div>
+
+                    <div class="tag pull-left m">
+                        <% if (test_case.tag) { %>
+                            <%= test_case.tag %>
+                        <% } else { %>
+                            <span class="gray-text"><b>-</b></span>
+                        <% } %>
+                    </div>
+
+                    <div class="sample pull-left m">
+                        <% if (test_case.sample) { %>
+                            <img src="/assets/tick.png"/>
+                        <% } else { %>
+                            <span class="nb-spacing">&nbsp;&nbsp;<span>
+                        <% } %>
+                    </div>
+
+                    <div class="strength pull-left m">
+                        <%= test_case.score %>
+                    </div>
+
+                    <div class="controls pull-right">
+                        <p>
+                            <a title="more options" class="btn btn-text cursor edit-test-case" data-index="<%= index %>" data-id="<%= test_case.id %>">
+                                <i class="icon-pencil"></i></a>
+                            <a title="remove" class="cursor remove-test-case" data-index="<%= index %>" data-id="<%= test_case.id %>">&#215;</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+        <% } else { %>
+            <%= HR.appController.viewLoader(64) %>
+        <% } %>
+    </div>
+</div>

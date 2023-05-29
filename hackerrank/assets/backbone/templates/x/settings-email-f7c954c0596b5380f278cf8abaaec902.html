@@ -1,0 +1,32 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL">Settings</h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Email Notifications</h3>
+</div>
+<div class="overflow-content" id="control-overflow">
+    <div class="mjA">
+        <form class="email-radio-group-form">
+            <div class="msT msB">
+                <label>
+                    <input type="radio" name="usr-email-noti" value="0" <% if(current_user.notification && current_user.notification == 0) { %> checked='checked' <% } %> />
+                    No Email: <span class="fnt-sz-mid fnt-wt-400">I will check the test attempts at hackerrank.com/x/</span>
+                </label>
+            </div>
+            <div class="msT msB">
+                <label>
+                    <input type="radio" name="usr-email-noti" value="2" <% if(current_user.notification && current_user.notification == 2) { %> checked='checked' <% } %> />
+                    Email: <span class="fnt-sz-mid fnt-wt-400">Send email to me as soon as someone attempts the test.</span>
+                </label>
+            </div>
+            <div class="msT msB">
+                <label><input type="radio" name="usr-email-noti" value="3" <% if(current_user.notification && current_user.notification == 3) { %> checked='checked' <% } %> />
+                    Email: <span class="fnt-sz-mid fnt-wt-400">Send a mail to me only if a candidate clears the cutoff</span> </label>
+            </div>
+
+            <div class="row no-margin plT">
+                <div class="span-xs-16 span-md-16">
+                    <button type="submit" id="update-basic-info" class="btn btn-primary btn-mid">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

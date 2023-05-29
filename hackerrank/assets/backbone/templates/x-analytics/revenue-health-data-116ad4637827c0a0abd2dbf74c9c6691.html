@@ -1,0 +1,43 @@
+<div class="table-container mlT">
+    <div class="table-header bold">
+        Opportunities for
+
+        <% if(reportType == 'current') { %>
+            <% if(month == 'current') { %>
+                <%= moment().format('MMMM, YYYY') %>
+            <% } else { %>
+                <%= moment().subtract('month', 1).format('MMMM, YYYY') %>
+            <% } %>
+        <% } else { %>
+            <%= reportDate %>
+        <% } %>
+
+        with type <%= type.replace("_", " ") %>
+    </div>
+    <table cellpadding="0" cellspacing="0" border="0" class="revenue-table table dt-sleektable">
+        <thead>
+        <tr>
+            <td>Account</td>
+            <td>Name</td>
+            <td>Type</td>
+            <td>Owner name</td>
+            <td>Stage</td>
+            <td>Close date</td>
+            <td>Amount</td>
+        </tr>
+        </thead>
+        <tbody>
+        <% _.each(data, function(company) { %>
+        <tr>
+            <td><%= company.account_name %></td>
+            <td><%= company.name %></td>
+            <td><%= company.type %></td>
+            <td><%= company.sales_rep %></td>
+            <td><%= company.stage_name %></td>
+            <td><%= company.close_date %></td>
+            <td>$ <%= company.amount %></td>
+        </tr>
+        <% }) %>
+        </tbody>
+    </table>
+</div>

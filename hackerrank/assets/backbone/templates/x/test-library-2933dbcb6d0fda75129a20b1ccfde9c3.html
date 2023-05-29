@@ -1,0 +1,48 @@
+<div class="top-fixed-bar support-sub-bar">
+    <h3 class="topbar-h3 mjL"><%-test.name %></h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Questions</h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Choose from library</h3>
+    <div class="lib-added-indicator pull-right hidden">
+        <strong class="txt-alt-grey-dark"><span class="qcount">-</span></strong> questions / <strong class="txt-alt-grey-dark"><span class="setcount">-</span></strong> points &nbsp;<i class="icon-menu-large"></i>
+    </div>
+    <div class="clear"></div>
+    <div class="sub-top-bar">
+        <ul class="sub-topbar-tabs pull-left mjL">
+            <% _.each(["personal", "interviewstreet"], function (lib) { %>
+              <li class="backbone <%if(lib==library){%>active<%}%>" >
+                <a href="/x/tests/<%=test.id%>/library/<%=lib%>" data-lib="<%=lib%>" ><%=lib[0].toUpperCase() + lib.slice(1)%></a>
+              </li>
+            <% }); %>
+        </ul>
+
+        <div class="btn-group" style="margin:8px;">
+            <% _.each(["coding", "multiple", "others"], function (fil) { %>
+                <a href="/x/tests/<%=test.id%>/library/<%=library%>/<%=fil%>" data-filter="<%=fil%>" class="btn backbone <%if (fil == filter){%>active<%}%>"><%=fil[0].toUpperCase() + fil.slice(1)%></a>
+            <% }); %>
+        </div>
+
+        <div class="input-icon pull-right" style="margin-top: 3px; margin-right: 25px;">
+            <input type="text" placeholder="search questions">
+            <i class="icon-search"></i>
+        </div>
+    </div><!-- end .sub-top-bar -->
+</div><!-- end .top-fixed-bar -->
+<div class="overflow-content adjust-two-fixed-bar" id="control-overflow">
+    <!-- filters section -->
+    <div class="question-filter-wrapper">
+        <label>Add filters:</label>
+        <input type="text" placeholder="choose a tag">
+        <span class="pull-right txt-alt-grey">Count: <strong>-</strong> fillme</span>
+        <div class="clear"></div>
+        <!-- this is for question sets
+        <div class="formgroup radio inline">
+            <legend>Show question sets</legend>
+            <label><input type="radio">Yes</label>
+            <label><input type="radio">No</label>
+        </div>-->
+    </div>
+    <div class="row no-margin libcontent">
+        <!-- sets and questions go here-->
+        <p style="margin:8px;"><em>Loading..</em></p>
+    </div>
+</div>

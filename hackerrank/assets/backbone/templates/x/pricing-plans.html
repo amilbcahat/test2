@@ -1,0 +1,202 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL">Payments</h3>
+
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Plans</h3>
+</div>
+<div class="overflow-content" id="control-overflow">
+    <% var old_plan = false %>
+    <% current_plans = ['user-startup', 'user-professional', 'user-enterprise', 'free', 'trial'] %>
+    <% if (model.plan && model.plans && $.inArray(model.plan, current_plans) == -1) { %>
+        <% old_plan = true %>
+            <div><center><h4>You are currently in the <%= model.plans[model.plan]['name'] %> Plan</h4>These are our new plans:</center></div>
+        <% } %>
+
+    <div class="fixed980 display-table">
+
+        <div style="margin-left: 259px;" class="pricing-head">
+            <div class="text-center pdA" style="position: relative; left: 10px;">
+                <div class="txt-alt-grey plan-names">
+                    STARTUP
+                </div>
+                <div class="pricing-price">$199</div>
+                <div class="fnt-sz-small txt-alt-grey" style="margin-top:7px;">
+                    per USER/MONTH
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="pricing-head">
+            <div class="text-center pdA" style="position: relative; left: 10px;">
+                <div class="txt-alt-grey plan-names">
+                    PROFESSIONAL
+                </div>
+                <div class="pricing-price txt-green">$299</div>
+                <div class="fnt-sz-small txt-alt-grey" style="margin-top:7px;">
+                    per USER/MONTH
+                </div>
+            </div>
+        </div> -->
+
+        <div style="border-right: 1px solid #eee; padding:0 8px;" class="pricing-head">
+            <div class="text-center pdA">
+                <div class="txt-alt-grey plan-names">
+                    ENTERPRISE
+                </div>
+                <div class="pricing-number">1.415.900.4023</div>
+                <div class="fnt-sz-small txt-alt-grey">
+                    CALL US
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end .fixed 980 -->
+
+    <div class="mjB">
+        <div class="fixed980 display-table">
+            <div class="pricing-body-desc">
+                <ul class="hov-green striped-list">
+                    <!--<li class="no-padding">-->
+                        <!--<a href="javascript:void(0)" class="no-cursor display-block psA tooltipsrc">Minimum Billing-->
+                            <!--frequency</a>-->
+                    <!--</li>-->
+                    <li class="no-padding">
+                        <a href="javascript:void(0)" class="no-cursor display-block psA tooltipsrc"
+                           data-placement="right" data-trigger="hover" data-toggle="tooltip"
+                           data-original-title="The number of separate login credentials per account.">Number of
+                            users</a>
+                    </li>
+                    <li class="no-padding">
+                        <a href="javascript:void(0)" class="no-cursor display-block psA tooltipsrc"
+                           data-placement="right" data-trigger="hover" data-toggle="tooltip"
+                           data-original-title="The number of email invites to challenges available per account.">Number
+                            of invites</a>
+                    </li>
+                    <li class="no-padding">
+                        <a href="javascript:void(0)" class="no-cursor display-block psA tooltipsrc"
+                           data-placement="right" data-trigger="hover" data-toggle="tooltip"
+                           data-original-title="Unparalleled support provides uncompromising availability.">Support</a>
+                    </li>
+                    <li class="no-padding">
+                        <a href="javascript:void(0)" class="no-cursor display-block psA tooltipsrc"
+                           data-placement="right" data-trigger="hover" data-toggle="tooltip"
+                           data-original-title="The real-time collaborative coding tool for phone interviews and white-boarding.">CodePair
+                            <small style="font-size: 70%">(Beta)</small>
+                        </a>
+                    </li>
+                    <li class="no-padding">
+                        <a href="javascript:void(0)" class="no-cursor display-block psA tooltipsrc"
+                           data-placement="right" data-trigger="hover" data-toggle="tooltip"
+                           data-original-title="Access to our candidate interface inserted directly into your webpage.">Embed
+                            Challenges</a>
+                    </li>
+                    <li class="no-padding">
+                        <a href="javascript:void(0)" class="no-cursor display-block psA tooltipsrc"
+                           data-placement="right" data-trigger="hover" data-toggle="tooltip"
+                           data-original-title="Our API is available, plus support to integrate with customers' ATS tools">API</a>
+                    </li>
+                    <li class="no-padding">
+                        <a href="javascript:void(0)" class="no-cursor display-block psA tooltipsrc"
+                           data-placement="right" data-trigger="hover" data-toggle="tooltip"
+                           data-original-title="Compares candidates individually or by group criteria, as well as interviewer success and productivity.">Recruiting
+                            analytics
+                            <small style="font-size: 70%">(Beta)</small>
+                        </a>
+                    </li>
+                    <li class="no-padding">
+                        <a href="javascript:void(0)" class="no-cursor display-block psA tooltipsrc"
+                           data-placement="right" data-trigger="hover" data-toggle="tooltip"
+                           data-original-title="Advanced customization pulls client branding into the candidate interface.">White
+                            labeled page</a>
+                    </li>
+                    <li class="no-padding">
+                        <a href="javascript:void(0)" class="no-cursor display-block psA tooltipsrc"
+                           data-placement="right" data-trigger="hover" data-toggle="tooltip"
+                           data-original-title="Highly similar and Identical sections in code submissions are analyzed and flagged.">Plagiarism
+                            detection</a>
+                    </li>
+                    <li class="no-padding">
+                        <a href="javascript:void(0)" class="no-cursor display-block psA tooltipsrc"
+                           data-placement="right" data-trigger="hover" data-toggle="tooltip"
+                           data-original-title="A dedicated Customer Success Manager ensures maximum return in utilization and productivity.">Account
+                            manager</a>
+                    </li>
+                    <li class="no-padding">
+                        <a href="javascript:void(0)" class="no-cursor display-block psA tooltipsrc"
+                           data-placement="right" data-trigger="hover" data-toggle="tooltip"
+                           data-original-title="Challenges can be posted to our problem-solving community on HackerRank.com.">Submit
+                            to HackerRank</a>
+                    </li>
+                    <li class="no-padding">
+                        <a href="javascript:void(0)" class="no-cursor display-block psA tooltipsrc"
+                           data-placement="right" data-trigger="hover" data-toggle="tooltip"
+                           data-original-title="Integration with existing ATS tools is available to lower adoption and support costs.">Integration
+                            with existing ATS</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- end .pricing-body-desc -->
+            <div class="pricing-body">
+                <ul class="striped-list text-center">
+                    <!--<li>Monthly</li>-->
+                    <li>1</li>
+                    <li>50/month</li>
+                    <li>e-mail</li>
+                    <li><i class="icon2-close txt-alt-grey"></i></li>
+                    <li><i class="icon2-close txt-alt-grey"></i></li>
+                    <li><i class="icon2-close txt-alt-grey"></i></li>
+                    <li><i class="icon2-close txt-alt-grey"></i></li>
+                    <li><i class="icon2-close txt-alt-grey"></i></li>
+                    <li><i class="icon2-close txt-alt-grey"></i></li>
+                    <li><i class="icon2-close txt-alt-grey"></i></li>
+                    <li><i class="icon2-close txt-alt-grey"></i></li>
+                    <li><i class="icon2-close txt-alt-grey"></i></li>
+                    <li class="no-padding"></li>
+                    <% if (model.plan && model.plan === 'user-startup') { %>
+                        <h3 style="color:#8db32c;">Current Plan</h3>
+                        <div style="height:14px"></div>
+                    <% } else if (model.plans && model.plans['user-startup'] && !model.plans['user-startup']['subscribe']) { %>
+                        <div style="height:14px"></div>
+                        Can't subscribe to this plan
+                        <i class="icon-question-sign tip" data-original-title="<%= model.plans['user-startup']['message'] %>"></i>
+                        <div style="height:14px"></div>
+                    <% } else if (old_plan) { %>
+                        <a href="/contact_us" class="common_margin block button-green big_button_padding rcorners_mid">
+                            Contact Us&nbsp;
+                            <i class="icon-question-sign tip" data-original-title="Please contact us to migrate to this plan"></i>
+                        </a>
+                    <% } else if (model.permission) { %>
+                    <li>
+                        <a href="javascript:;" class="btn btn-primary payment-button" data-plan='user-startup' data-cost="199" data-invites="unlimited">
+                            Proceed To Checkout
+                        </a>
+                    </li>
+
+                    <% } %>
+                </ul>
+            </div>
+            <!-- end .pricing-body -->
+            <div class="pricing-body margin-left-15">
+                <ul class="striped-list text-center">
+                    <!--<li>Monthly</li>-->
+                    <li>More than 1</li>
+                    <li>300</li>
+                    <li>e-mail + phone</li>
+                    <li><i class="icon-ok txt-green"></i></li>
+                    <li><i class="icon-ok txt-green"></i></li>
+                    <li><i class="icon-ok txt-green"></i></li>
+                    <li><i class="icon-ok txt-green"></i></li>
+                    <li><i class="icon-ok txt-green"></i></li>
+                    <li><i class="icon-ok txt-green"></i></li>
+                    <li><i class="icon-ok txt-green"></i></li>
+                    <li><i class="icon-ok txt-green"></i></li>
+                    <li><i class="icon-ok txt-green"></i></li>
+                    <li class="no-padding"></li>
+                    <li><a href="/x/contact" style="width:191px;" class="btn">Contact Us</a></li>
+                </ul>
+            </div>
+            <!-- end .pricing-body -->
+        </div>
+        <!-- end .fixed 980 -->
+    </div>
+    <!-- end .mjB -->
+</div> <!-- end .overflow-content -->

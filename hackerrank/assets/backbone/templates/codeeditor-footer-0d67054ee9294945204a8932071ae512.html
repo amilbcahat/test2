@@ -1,0 +1,22 @@
+<div class="code-checker-sub">
+    <% if (model.compile_and_test && model.custom_case) { %>
+    <div>
+        &nbsp;<input type="checkbox" id="customtestcase">
+        &nbsp;&nbsp;<label for="customtestcase" style="display:inline">Use a custom test case</label>
+        <br/>
+        <textarea rows="5" class="span8" id="custominput" style="display:none"></textarea>
+    </div>
+    <% } %>
+    <div class="pull-left access-buttons" style="width: 100%;">
+      <% if (model.compile_and_test) { %>
+      <button class="btn btn-white compile pull-left" data-analytics="Compile and Test">Compile &amp; Test</button>
+      <% } %>
+      <button class="btn btn-primary submit pull-left" data-analytics="Submit Code" style="margin-left: 5px;"><% if (profile.isLoggedIn()) { %>Submit<% if(model.compile_and_test) { %> Code<% } %><% } else { %>Login to Submit<% } %></button>
+
+      <div class="pull-right">
+          <button class="btn btn-text upload_file" data-analytics="Upload File"><i class="icon-upload"></i> Upload Code as File</button>
+      </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<br>

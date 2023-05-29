@@ -1,0 +1,49 @@
+<section class="forum container">
+  <header class="page-title container">
+    <h1><%=challenge.get('name')%> Forum</h1>
+  </header>
+  <div class="row">
+    <div class="span12 forum-new-question pull-left">
+      <form class="question-form light-wrap padding">
+          <h3 class="forum-ask-title"><%= (question.id)? "Edit":"Ask a"%> question</h3>
+          <fieldset>
+            <div class="control-group">
+              <label for="question-title" class="control-label">Title</label>
+              <div class="controls">
+                <input type="text" id="question-title" class="span10" value="<%= question.get('title') %>"></input>
+              </div>
+            </div>
+            <div class="control-group">
+              <label for="question-description" class="control-label">Question</label>
+              <div class="controls">
+                <textarea rows="10" class="span10" id="question-description"></textarea>
+              </div>
+            </div>
+            <div class="control-group preview-wrap hide">
+              <label for="question-preview" class="control-label">Preview</label>
+              <div class="controls">
+                <div id="question-preview" class="preview"></div>
+              </div>
+            </div>
+            <div class="control-group">
+              <label>Tags (optional)</label>
+              <div class="controls">
+                <input type="text" id="question-tags" class="span10" value="<%= question.get('tags').join(',&nbsp;') %>">
+              </div>
+              <p class="small">Separate tags with a comma. Enclose tags of two or more words in quotations.</p>
+            </div>
+
+            <p class="text-center"><a href='#' class='ask-question btn btn-blue btn-large' data-analytics="Question Form" ><%= (question.id)? "Update":"Ask"%> Question</a></p>
+            <p class="text-center"><small id="question-error" class="error hide">Please fill in all the required (*) fields.</small></p>
+          </fieldset>
+      </form>
+    </div>
+    <div class="sidebar span4 pull-right">
+      <section class="related-questions related">
+        <small>
+          <a class="backbone" href="/challenges/<%=challenge.get('slug')%>/forum/questions">← All <%= challenge.get('name') %> Questions</a>
+        </small>
+      </section>
+    </div>
+  </div>
+</section>

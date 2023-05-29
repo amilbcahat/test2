@@ -1,0 +1,15 @@
+<div class="modal modal-mid" id="timezone-modal" style="display: none;">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+
+        <h3 class="dialog-title\">Timezone mismatch</h3>
+    </div>
+    <div class="modal-body dialog-body">
+        The timezone in your settings is <strong><%= userTimeZone %></strong> where as your current timezone according
+        to your browser is <strong><%= currentTimeZone %></strong>. Would you like to change it?
+    </div>
+    <div class="modal-footer">
+        <a class="btn save-button" data-loading-text=\"Saving...\">Update timezone</a>
+        <a class="btn cancel-button" data-loading-text=\"Saving...\">No, I'm good</a>
+    </div>
+</div>

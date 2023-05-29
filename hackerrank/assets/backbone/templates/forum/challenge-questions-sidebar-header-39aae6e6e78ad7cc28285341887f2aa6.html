@@ -1,0 +1,5 @@
+<% if (profile.isLoggedIn()) { %>
+<a href="<%= HR.appController.get_contest_namespace() %>/challenges/<%= challenge.get('slug') %>/forum/questions/ask" class="btn btn-primary btn-blue backbone" data-analytics="Ask Question">Ask New Question</a>
+<% } else { %>
+<p class="gray">You have to be loggedin in order to ask a question</p>
+<% } %>

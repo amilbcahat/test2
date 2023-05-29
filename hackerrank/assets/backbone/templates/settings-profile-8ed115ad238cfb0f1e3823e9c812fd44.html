@@ -1,0 +1,88 @@
+<div class="padded settings_content-pane">
+  <div class="settings_content-group">
+    <h3>Personal Information</h3>
+    <p class="aside block-margin margin-large bottom">This information will appear on the leaderboard or your public profile.</p>
+    <div class="formgroup horizontal">
+      <label for="name" class="pull-left span3">Your Full Name</label>
+      <div class="block span8 profile-input pull-left">
+        <input id="name" type="text" class="xwide" value="<%= _.escape(model.name || '' )%>"/>
+        <small class="error"><%= (model.errors || {}).name || '' %></small>
+      </div>
+    </div>
+    <div class="formgroup horizontal">
+      <label for="username" class="pull-left span3">Your Username</label>
+      <div class="block span8 profile-input pull-left">
+        <input id="username" type="text" class="xwide" value="<%= _.escape(model.username || '') %>"/>
+        <small class="error"><%= (model.errors || {}).username || '' %></small>
+        <small class="sub-help">This is how users will see you on HackerRank</small></br>
+      </div>
+    </div>
+
+    <div class="formgroup horizontal">
+      <label for="school" class="pull-left span3">School</label>
+      <div class="block span8 profile-input pull-left">
+        <input id="school" autocomplete="off" type="text" class="xwide" value="<%= _.escape(model.school || "" )%>"/>
+      </div>
+    </div>
+
+    <div class="formgroup horizontal">
+      <label for="company" class="pull-left span3">Company</label>
+      <div class="block span8 profile-input pull-left">
+        <input id="company" autocomplete="off" type="text" class="xwide" value="<%= _.escape(model.company || "" )%>"/>
+      </div>
+    </div>
+
+    <div class="formgroup horizontal">
+      <label for="country" class="pull-left span3">Country</label>
+      <div class="block span8 profile-input pull-left">
+        <input class="pull-left clear-margin" type="text" id="country"  style="width:220px !important;"/>
+      </div>
+    </div>
+
+    <div class="formgroup horizontal">
+      <label for="website" class="pull-left span3">Website</label>
+      <div class="block span8 profile-input pull-left">
+        <input id="website" type="text" class="xwide" value="<%= _.escape(model.website || '') %>" placeholder="http://www.yourwebsite.com"/>
+        <small class="sub-help">So others can find your homepage or blog</small>
+      </div>
+    </div>
+    <div class="formgroup horizontal">
+      <label for="full_name" class="pull-left span3">Your Biggest Hack</label>
+      <div class="block span8 profile-input pull-left">
+        <textarea id="hack" class="xwide"><%= _.escape(model.hack || "") %></textarea>
+        <small class="sub-help">Share your biggest hack with your network. Wrote your own kernel? Co-founded a web app? Share a link!</small>
+      </div>
+    </div>
+    <div class="formgroup horizontal">
+      <label for="full_name" class="pull-left span3">T-Shirt Size</label>
+      <div class="block span8 profile-input pull-left">
+        <select id="tsize" name="tsize">
+        <option>--</option>
+        <option <% if (model.tsize=="S"){ %>selected="selected"<% } %> value="S">S</option>
+        <option <% if (model.tsize=="M"){ %>selected="selected"<% } %> value="M">M</option>
+        <option <% if (model.tsize=="L"){ %>selected="selected"<% } %> value="L">L</option>
+        <option <% if (model.tsize=="XL"){ %>selected="selected"<% } %> value="XL">XL</option>
+        <option <% if (model.tsize=="XXL"){ %>selected="selected"<% } %> value="XXL">XXL</option>
+        </select>
+      </div>
+    </div>
+    <!--
+    <div class="formgroup horizontal">
+      <label for="chat" class="pull-left span3">Chat</label>
+      <div class="block span8 profile-input pull-left">
+        <span class='switch' data-on='success' data-off='info'>
+          <input id='chat_enabled' name='chat_enabled' type='checkbox' <% if (model.chat_enabled) { %>checked<% } %> />
+        </span>
+        <p><small class="sub-help block">Refresh for chat changes to take effect</small></p>
+      </div>
+    </div>
+    -->
+  </div>
+  <!--<div class="settings_content-group">
+     <p class="clearfix"><a href="" class="pull-right btn btn-line btn-small orange">Delete your account</a></p>
+  </div>-->
+</div>
+<script type="text/javascript">
+  (function(a){if(window.filepicker){return}var b=a.createElement("script");b.type="text/javascript";b.async=!0;b.src=("https:"===a.location.protocol?"https:":"http:")+"//api.filepicker.io/v1/filepicker.js";var c=a.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c);var d={};d._queue=[];var e="pick,pickMultiple,read,write,writeUrl,export,convert,store,storeUrl,remove,stat,setKey,constructWidget,makeDropPane".split(",");var f=function(a,b){return function(){b.push([a,arguments])}};for(var g=0;g<e.length;g++){d[e[g]]=f(e[g],d._queue)}window.filepicker=d})(document);
+  filepicker.setKey(HR.PREFETCH_DATA.metadata.filepicker_key);
+</script>

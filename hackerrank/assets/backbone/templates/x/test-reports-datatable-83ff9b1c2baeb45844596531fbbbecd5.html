@@ -1,0 +1,31 @@
+<table class="table dt-sleektable" id="reports-datatable" cellpadding="0" cellspacing="0" border="0">
+    <thead>
+        <tr>
+            <th>
+                <input class="hr-sleek-input" name="all_checkbox" type="checkbox" id="all_checkbox">
+                <label for="all_checkbox">
+                    <span></span>
+                </label>
+            </th>
+            <% if (invite_mode) {%>
+            <th></th>
+            <th>E-Mail address</th>
+            <th></th>
+            <th>Invite time</th>
+            <th></th>
+            <th></th>
+            <th>Actions</th>
+            <%} else {%>
+            <th>Name</th>
+            <th>E-Mail address</th>
+            <th>Score</th>
+            <th style="min-width:160px;">End time</th>
+            <th>Category</th>
+            <th>Time remaining</th>
+            <th>Report link</th>
+            <% } %>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>

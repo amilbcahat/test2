@@ -1,0 +1,21 @@
+<div class="clearfix notifications_single status-<%= model.STATUS_TEXT[model.STATUS_CODE[_model.notification_status]] %>">
+
+    <div class="span10">
+        <h4 class="notifications_single-subject show-body" data-id="<%= _model.id %>"><%= _model.subject %></h4>
+        <p class="notifications_single-body notification-body" <% if (!showbody) { %> <% } %>><%= _model.body %></p>
+    </div>
+    <div class="span5 pull-right">
+    	<p class="notifications_single-date small"><span class="alpha">Posted On: </span><% d = new Date(0) %><% d.setUTCSeconds(_model.created_at_epoch) %><%= moment(d).format('MMMM Do YYYY at h:mm:ss a') %></p>
+		<% if (_model.from != null) { %>
+        <p class="notifications_single-author small"><span class="alpha">Posted By: </span><%= _.escape(_model.from.username) %>
+            <!--<% if (_model.from.is_admin) { %>
+                <span class="label label-info">MOD</span>
+            <% } %>-->
+        </p>
+        <% } %>
+        <p class="notifications_single-status"><%= model.STATUS_TEXT[model.STATUS_CODE[_model.notification_status]] %></p>
+		<div class="notifications_single-buttons">
+		    <% if (_model.notification_status < model.STATUS.READ) { %><a class="notifications_single-markread mark-as-read btn btn-mini"><i class="icon-ok">Mark as read</i></a><% } %> <a class="notifications_single-delete delete btn btn-alert btn-mini"><i class="icon-trash"></i>Delete</a>
+		</div>
+    </div>
+</div>

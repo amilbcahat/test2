@@ -1,0 +1,56 @@
+<div id="edit-user-modal" class="modal modal-mid">
+    <form class="form-horizontal" name="team-member-form">
+        <div class="modal-header text-center">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4>Edit Team Member</h4>
+        </div>
+
+        <div class="modal-body">
+            <div class="alert alert-error hidden"></div>
+
+            <input type="hidden" name="edit-user-label" value="" />
+            <input type="hidden" name="edit-user-team-id" value="" />
+            <div class="control-group">
+                <label class="control-label" for="inputName">Name:</label>
+                <div class="controls">
+                    <input class="fw" type="text" id="inputName" name="edit-user-name" autocomplete="off" value="<%= model.firstname %> <%= model.lastname %>" disabled/>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputEmail">Email address:</label>
+                <div class="controls">
+                    <input class="fw" type="text" id="inputEmail" name="edit-user-email" value="<%= model.email %>" disabled />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="input-roles">Role:</label>
+                <div class="controls">
+                    <select id="input-roles" name="new-user-role">
+                        <option value="recruiter">Recruiter</option>
+                        <option value="developer">Developer</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <label class="checkbox">
+                        <input type="checkbox" name="edit-user-tests-permission" <% if (model.tests_permission && model.tests_permission >= 2) { %>checked<% } %>> Can edit tests
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" name="edit-user-questions-permission" <% if (model.questions_permission && model.questions_permission >= 2) { %>checked<% } %>> Can edit questions
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" name="edit-user-candidates-permission" <% if (model.candidates_permission && model.candidates_permission >= 2) { %>checked<% } %>> Can view all candidates
+                    </label>
+                </div>
+            </div>
+
+        </div><!-- end modal-body -->
+        <div class="modal-footer">
+            <center>
+                <button type="submit" class="btn btn-primary">Save User</button>
+            </center>
+        </div><!-- end modal-footer -->
+    </form>
+</div><!-- end modal -->

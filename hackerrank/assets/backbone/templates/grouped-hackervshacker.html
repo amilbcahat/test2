@@ -1,0 +1,61 @@
+<section class="submissions container">
+    <header class="page-title container">
+    <div class="">
+        <ul class="breadcrumb unstyled horizontal">
+            <li><a href="<%= HR.appController.get_current_contest_namespace() %>/" class="backbone">HackerVsHacker</a><i class="icon-right-open-big divider"></i></li>
+            <li><a href="<%= HR.appController.get_current_contest_namespace() %>/hackervshacker/<%= collection.hacker1.username %>/vs/<%= collection.hacker2.username %>" class="backbone"><%= collection.hacker1.username %> vs <%= collection.hacker2.username %></a><i class="icon-right-open-big divider"></i></li>
+            <% if( collection.filter_challenge ) { %>
+            <li><a href="<%= HR.appController.get_current_contest_namespace() %>/hackervshacker/<%= collection.hacker1.username %>/vs/<%= collection.hacker2.username %>" class="backbone/<%= collection.filter_challenge %>" class="backbone"><%= collection.filter_challenge %></a><i class="icon-right-open-big divider"></i></li>
+            <% } %>
+        </ul>
+    </div>
+    <div class="row">
+      <h2 class="span16">
+        <%= collection.hacker1.username %> vs <%= collection.hacker2.username %>
+        <% if (collection.challenge && collection.challenge.get('name')) { %>
+        for <%= collection.challenge.get('name') %>
+        <% } %>
+      </h2>
+      <!--Filter for problem list - hold for now
+      <div id="filter-select" class="span5 pull-right">
+        <p class="small left">Filter by Level</p>
+        <p class="small right">Filter by Category</p>
+        <div id="slider-bar"><div id="slider-knob"></div></div>
+      </div>
+      -->
+    </div>
+  </header>
+  <div class="table-wrap text-center">
+    <div class="row" style="margin-bottom: 20px; padding-left: 20px; margin-bottom: 0;">
+      <% if(collection.total != 0) { %>
+      <div class="span4">
+        <p style="text-align: left;"><strong>Problem</strong></p>
+      </div>
+      <div class="span2">
+        <p><strong><%= collection.hacker1.username %> Win#</strong></p>
+      </div>
+      <div class="span2">
+        <p><strong><%= collection.hacker2.username %> Win#</strong></p>
+      </div>
+      <div class="span2">
+        <p><strong>Game Ties#</strong></p>
+      </div>
+      <div class="span2">
+        <p><strong>Game Total#</strong></p>
+      </div>
+      <div class="span2">
+        <p></p>
+      </div>
+      <% } else { %>
+      <div class="light-wrap">
+        <p> You have not made any submissions yet.</p>
+      </div>
+      <% } %>
+    </div>
+    <div class="hackervshacker-list-wrapper"></div>
+  </div>
+
+  <div class="pagination-wrap clearfix pagination-wrapper">
+  </div>
+
+</section>

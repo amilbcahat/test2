@@ -1,0 +1,115 @@
+<%
+console.log(model.submission_history);
+var submission_max = 1;
+for (submission in model.submission_history) {
+        if (submission_max < model.submission_history[submission].total) {
+            submission_max = model.submission_history[submission].total
+        }
+    }
+var Months=["January", "February","March","April","May","June","July","August","September","October","November", "December"];
+var this_month= new Date;
+%>
+<div class="container">
+    <section class="profile">
+
+        <!-- Profile Info Block -->
+
+        <header class="clearfix mlT">
+            <div class="pull-left content_group--block content_side">
+                <img src="<%= model.avatar %>" height="200" width="200" class="avatar profile-avatar">
+            </div>
+            <div class="pull-left content_group--block content_primary">
+                <div class="row">
+                    <div class="span-flex-10">
+                        <h2 class="profile-username"><%- model.username %></h2>
+                        <% if (model.current_rating["Overall"]) { %>
+                        <span class="profile_rating"><%= model.current_rating["Overall"].title %></span>
+                        <% } else { %>
+                        <span class="zeta msT">Not rated</span>
+                        <span class="help-prompt"><i class="icon-help-circled icon--single"></i>
+                            <span class="help-text small"><% if (model.id === HR.profile().get('id')) { %>Participate in a contest to become rated.<% } else { %>The user has not participated in any contest yet.<% } %></span>
+                        </span>
+                        <% } %>
+                        <% if (model.short_bio) {%>
+                            <p class="msB"><%= model.short_bio %></p>
+                        <% } %>
+                        <h6 class="msB small zeta">
+                            <% if (model.country){ %>
+                            <i class="icon-location"></i> <%- model.country %>
+                            <% } %>
+                            <% var joining_date = new Date(model.created_at) %>
+
+                            <span class="msL">Member Since:</span> <%= Months[joining_date.getMonth()] %> <%= joining_date.getFullYear() %>
+
+                        </h6>
+                        <% var languages = model.languages %>
+                        <% if (!_.isArray(languages)) { %>
+                            <% languages = languages.split(',') %>
+                        <% } %>
+                        <ul class="profile-skills">
+                            <% for (language in languages) { %>
+                                <li><%= lang_display_mapping[languages[language]] %></li>
+                            <% } %>
+                        </ul>
+                    </div>
+                    <div class="span-flex-6">
+                        <% if ( model.id === HR.profile().get('id') ) { %>
+                             <a class="btn btn-primary backbone pull-right mdT" href="/settings/profile">Edit Profile</a>
+                         <% } else { %>
+                             <a class="btn btn-primary send-message pull-right mdT">Message <%- model.username %></a>
+                         <% } %>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="pull-left content_group--block content_side">
+
+            <ul class="profile-aside profile-histogram">
+                <h5 class="strong mlT msB small">Submission history</h5>
+                <% for (submission in model.submission_history) { %>
+                    <li data-success="<%= model.submission_history[submission] %>" data-attempts="<%= model.submission_history[submission].total %>" rel="tooltip"
+                    title="Attempts: <%= model.submission_history[submission].total %> <br/> Successful: <%= model.submission_history[submission].successful%>"
+                    class="histogram-month" data-month="<%= Months[this_month.getMonth()].slice(0,3) %>">
+                    <span class="submissions" style="width: <%= (model.submission_history[submission].total/submission_max) * 100 %>%;"></span>
+                    <span class="success" style="width: <%= (model.submission_history[submission].successful/submission_max) * 100 %>%;"></span>
+                </li>
+                <% this_month.setMonth(this_month.getMonth()-1); %>
+                <% } %>
+            </ul>
+            <div class="mlT psA fill-grey light-wrap">
+                <h5 class="small">Longest Streak: <span class="pull-right msR">15 days</span></h5>
+                <h5 class="small">Current Streak: <span class="pull-right msR">2 days</span></h5>
+                <h5 class="small">Forum Questions: <span class="pull-right msR">14</span></h5>
+                <h5 class="small">Forum Answers: <span class="pull-right msR">3</span></h5>
+            </div>
+        </div>
+        <div class="pull-left content_group--block content_primary">
+            <div class="row">
+                <div class="profile-progress span-flex-10">
+                    <h5 class="mlT mmB small">Contest Performance</h5>
+                    <h6 class="msB small">
+                        <span class="zeta">Rank: </span>245
+                        <span class="msL zeta">Title:</span> O(N)
+                        <span class="msL zeta">Score:</span> 7821
+                    </h6>
+                    <div id="profile-graph-view">
+                        <% if (_.isNumber(model.rank)) { %>
+                            <%= HR.appController.viewLoader(64) %>
+                        <% } else { %>
+                            <% if ( model.id === HR.profile().get('id') ) { %>
+                                <p class="mlT mlB text-center aside">Solve your first challenge to see your progress graph.</p>
+                                <p class="text-center"><a href="/categories" class="btn span3 block-center backbone">View Challenges</a></p>
+                            <% } else { %>
+                                <p class="block-margin text-center"><%- model.username %> has not solved any challenges yet.</p>
+                            <% } %>
+                        <% } %>
+                    </div>
+                </div>
+                <div class="profile-event-view span-flex-6 plL">
+                    <%= HR.appController.viewLoader(64) %>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

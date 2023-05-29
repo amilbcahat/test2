@@ -1,0 +1,44 @@
+<section class="submissions-details container">
+    <% if (model.view_by_owner === false) { %>
+        <div>
+            <p style="background: lemonChiffon; border: 1px solid khaki; padding: 5px 10px; margin-bottom: 0px;">This <%= model.name %> submission belongs to <b><%= model.hacker_username %></b></p>
+        </div>
+    <% } %>
+    <header class="page-title container">
+        <% if (model.code != null) { %>
+        <% if (model.slug) { %>
+        <div class="breadcrumbs"></div>
+        <% } %>
+        <% } %>
+        <div class="row">
+            <h1 class="span16">Submission Details</h1>
+	    </div>
+    </header>
+    <div id="submission-stats-wrapper"></div>
+    <div id="submission-manual-game-play-wrapper"></div>
+    <% if (model.kind == 'game') { %>
+        <br>
+        <div id="submission-game-set-wrapper"></div>
+    <% } %>
+    <br>
+    <% if (model.code != null) { %>
+        <div class="light-wrap">
+            <h3>Submitted Code</h3>
+            <div class="code-header clearfix">
+                <div class="pull-left">
+                    <p>&nbsp;&nbsp;<%= lang_display_mapping[model.language] %>&nbsp;&nbsp;</p>
+                </div>
+                <div class="pull-right">
+                    <button class="btn copy_to_clipboard"><i class="icon-edit"></i> Open in editor</button>
+                </div>
+            </div>
+            <div id="submission-code"></div>
+        </div>
+    <% } %>
+    <% if (!model.slug) { %>
+        <div class='gray'>
+          <div style='background: url(/assets/ajax-view-loader.gif); height: 32px; width: 32px; display: inline-block;'></div>
+          <p class="msg m" style="margin:0px; padding:0px; color: #555;"></p>
+        </div>
+    <% } %>
+</section>

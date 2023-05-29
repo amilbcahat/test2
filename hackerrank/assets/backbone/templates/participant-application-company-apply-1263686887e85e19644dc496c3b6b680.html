@@ -1,0 +1,71 @@
+<div class="company-info-box scroll-box">
+  <div class="company-info-head clearfix">
+    <h4>Apply to <%= meta_model.name %></h4>
+  </div>
+  <div class="company-info-content-section clearfix">
+    <p class="company-info-section-title">Positions</p>
+    <table>
+      <% _.each(meta_model.company_positions, function(position) { %>
+      <tr>
+        <td>
+          <input type="checkbox" id="position_<%= position.id %>"/>
+        </td>
+        <td>
+          <p><label for="position_<%= position.id %>" class="cursor no-select">
+          <%= position.name %></label></p>
+        </td>
+      </tr>
+      <% }); %>
+    </table>
+  </div>
+  <div class="company-info-content-section clearfix">
+    <p class="company-info-section-title">Offices</p>
+    <table class="office-table">
+      <tr>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td class="m">
+          <small style="font-weight: bold; color: #aaa;">VISA Status</small>
+        </td>
+      </tr>
+      <% _.each(meta_model.company_offices, function(office) { %>
+      <tr>
+        <td>
+          <input type="checkbox" name="offices" id="office_<%= office.id %>"/>
+        </td>
+        <td class="location-label">
+          <p><label for="office_<%= office.id %>" class="cursor no-select">
+            <% if (office.city && office.city.name) { %><%= office.city.name %>,<% } %>
+            <% if (office.country && office.city.name) { %><%= office.country.name %><% } %>
+          </label></p>
+        </td>
+        <td>
+          <select disabled="disabled">
+            <option>Not required</option>
+            <option>Already have</option>
+            <option>Don't have</option>
+            <option>Don't know</option>
+          </select>
+        </td>
+      </tr>
+      <% }); %>
+    </table>
+  </div>
+  <div class="company-info-content-section clearfix">
+    <p class="company-info-section-title">Role</p>
+    <table>
+      <tr>
+        <td><input type="radio" name="role" checked="checked" id="role_fulltime"/></td>
+        <td class="role-label">
+          <p><label for="role_fulltime" class="cursor no-select">Fulltime</label></p>
+        </td>
+        <td><input type="radio" name="role" id="role_internship"/></td>
+        <td class="role-label">
+          <p><label for="role_internship" class="cursor no-select">Internship</label></p>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL">All Tests</h3>
+    <a href="#" style="margin: 9px 25px;" class="btn btn-primary pull-right"><i class="icon2-createtest"></i>Create new test</a>
+</div>
+<div class="overflow-content" id="control-overflow">
+    <!-- any contents add here -->
+    <ul class="alltests-table" id="tests-container">
+    </ul>
+    <% if (pagination) { %>
+        <%= pagination.html() %>
+    <% } %>
+</div><!-- end .overflow-content -->
+
+<div id="responsive-bottom-placeholder" class="responsive-bottom-holder text-center"></div>

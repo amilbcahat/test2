@@ -1,0 +1,37 @@
+<div id="add-client-modal" class="modal modal-mid">
+    <form class="form-horizontal" name="add-client-form">
+        <div class="modal-header text-center">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4>Add Client</h4>
+        </div>
+
+        <div class="modal-body">
+            <div class="alert alert-error hidden"></div>
+
+            <input type="hidden" name="new-client-id" value="" />
+            
+            <div class="control-group">
+                <label class="control-label" for="inputName">Name:</label>
+                <div class="controls">
+                    <input class="fw" type="text" id="inputName" name="new-client-name" autocomplete="off"/>
+                </div>
+            </div>
+
+                     
+            <div class="control-group">
+                <label class="control-label" for="inputRedirectUri">Redirect URI(s):</label>
+                <div class="controls">
+                    <input class="fw" id="inputRedirectUri" type="text" name="new-client-uri" placeholder="Enter a comma separated list of absolute URIs here."/>
+                </div>
+            </div>
+
+  
+
+        </div><!-- end modal-body -->
+        <div class="modal-footer">
+            <center>
+                <button type="submit" class="btn btn-primary">Add Client</button>
+            </center>
+        </div><!-- end modal-footer -->
+    </form>
+</div><!-- end modal -->

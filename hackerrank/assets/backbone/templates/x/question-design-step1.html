@@ -1,0 +1,29 @@
+<div class="mjA">
+    <form name="design-question-step1-form">
+        <div class="mjA">
+            <div class="row no-margin">
+                <div class= "span-xs-16 span-md-10">
+                    <label>PROBLEM STATEMENT</label>
+                    <textarea class="editor_width texteditor" name="problem-description" id="problem-description" style="width: 100%"><% if (model.question) { %><%- model.question %><% } %></textarea>
+                </div>
+                <div class="span-xs-16 span-md-6">
+                    <label>PROBLEM NAME</label>
+                    <input type="text" name="name" id="problem-name" value="<% if (model.name) { %><%- model.name %><% } %>">
+                </div>
+                <div class="span-xs-16 span-md-6">
+                    <label>SCORE</label>
+                    <input type="text" placeholder="Enter score" id="score" <%if (model.score){%>value="<%=model.score%>" <%}else{%> value="0"<%}%> >
+                    <div class="clear"/>
+                    <small class="grey"><em>This score is only for reference. The score for a candidate has to be marked manually after reviewing the answer.</em></small>
+                </div>
+            </div>
+
+            <div class="row no-margin plT">
+                <div class="span-xs-16 span-md-16">
+                    <button type="submit" class="btn btn-primary btn-mid">Save & Proceed</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div><!-- end mjA -->

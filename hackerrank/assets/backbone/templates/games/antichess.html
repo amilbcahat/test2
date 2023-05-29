@@ -1,0 +1,18 @@
+<style>
+    .game-grid {
+        width: 480px;
+        height: 480px;
+        display: block;
+        margin: auto;
+    }
+</style>
+<div>
+    <div class="span8 block-center text-center" style="width: 480px">
+        <%= model.actors[0].hacker_username %>
+    </div>
+    <div class="game-grid" id="chess-board-wrapper" >
+    </div>
+    <div class="span8 block-center text-center" style="width: 480px">
+        <%= model.actors[1].hacker_username %>
+    </div>
+</div>

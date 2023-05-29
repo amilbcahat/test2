@@ -1,0 +1,14 @@
+<td width="15%"><span class="underline_title margin-top-bott-15">FEEDBACK</span></td>
+<td class='feedback' width='70%'>
+    <%= _.escape(model.feedback) || _.escape(feedback) || '<strong><i>Please click to enter feedback</i></strong>' %>
+</td>
+<td class='edit-feedback' style='display:none' width='70%'>
+    <textarea id='feedback' style='width:92%; margin:12px;' placeholder='Please enter your feedback here'><%= model.feedback || feedback %></textarea>
+</td>
+<td class="button-holder" width='15%'>
+    <div class='edit-feedback' class="margin-top-8" style='display:none'>
+        <button id='btn-feedback' class='trybtn_css button-green big_button_padding rcorners_mid'>Save</button>
+        <button id='btn-feedback-cancel' class='trybtn_css button-white big_button_padding rcorners_mid'>Cancel</button>
+    </div>
+    <button id='btn-edit-feedback' class="feedback pull-right button-white btn_mid rcorners_mid">Edit Feedback</button>
+</td>

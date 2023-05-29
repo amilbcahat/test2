@@ -1,0 +1,30 @@
+<% if (model && model.id) { %>
+<section class="container">
+    <div class="wrap content_wrap narrow">
+        <div id="profile-settings-sidebar" class="plB sidebar--inline">
+            <section class="plA clearfix settings_sidebar-top">
+                <img src="<%= model.avatar %>" class="avatar block-center" alt="<%= model.username %>" title="<%= model.username %>" height="75" width="75">
+		        <button class="btn btn-small block-center mlT" id="upload-avatar">Change Avatar</button>
+            </section>
+            <div class="sidebar_list" id="profileTabs">
+                <a class="sidebar_list-heading active backbone" id="profile" href="/settings/profile">Profile</a>
+                <a class="sidebar_list-heading backbone" id="account" href="/settings/account">Account</a>
+                <a class="sidebar_list-heading backbone" id="teams" href="/settings/teams">Teams</a>
+                <a class="sidebar_list-heading backbone" id="change-password" href="/settings/change-password">Change Password</a>
+                <a class="sidebar_list-heading backbone" id="email-preferences" href="/settings/email-preferences">Email Preferences</a>
+            </div>
+            <p class="text-center"><button class="msT btn btn-green settings_save" id="save-btn">Save Changes</button></p>
+            <div class="text-center"><p id="save-success" class="psT hide"><small>Changes saved</small></p></div>
+        </div>
+        <div class="content--inline pull-right settings_group">
+            <article id="settings-subview" class="profile"></article>
+        </div>
+    </div>
+</section>
+<% } else { %>
+<section class='user-profile-edit container'>
+    <div class="light-wrap padded span8 block-center">
+        <h4 class="text-center">Please login to manage your settings.</h4>
+    </div>
+</section>
+<% } %>

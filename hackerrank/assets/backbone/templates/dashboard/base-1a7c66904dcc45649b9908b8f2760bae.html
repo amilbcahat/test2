@@ -1,0 +1,42 @@
+<div class="container dashboard">
+	<div class="row">
+	    <div class="span11">
+			<div class="light-wrap dashboard_group dashboard_header">
+				<p class="dashboard_group-title">Your History</p>
+				<div class="dashboard_history"></div>
+			</div>
+
+            <!--<div class="statisticsSmall">
+                <% _.each(model.networks, function (network) { %>
+                <p class="stat-line">
+                    <%= network.name%> Rank
+                    <span class="pull-right">
+                        #<%= network.rank %> / <%= network.total %>
+                    </span>
+                </p>
+                <% }) %>
+
+                <!-- <a href="" class="btn btn-white pull-right">Edit Statistics</a> -->
+            <!--</div>-->
+            <div class="light-wrap dashboard_group dashboard_progress clearfix">
+                <p class="dashboard_group-title">Your Progress</p>
+                <div class="dashboard_tracks"></div>
+            </div>
+        </div>
+        <div class="span5 dashboard_right">
+        	<div class="dashboard_group light-wrap profile_stats">
+        		<ul class="clearfix unstyled horizontal">
+                    <li class="profile_stats-rank profile_stats-group">Rank<span class="profile_stat-number"><%= model.rank || "N/A" %></span></li>
+                    <li class="profile_stats-score profile_stats-group">Score<span class="profile_stat-number"><%= (model.score || 0).round() %></span></li>
+                </ul>
+                <p class="profile_stats-helplink"><a href="/scoring">How is this calculated?</a></p>
+			</div>
+			<div class="light-wrap dashboard_group">
+			    <p class="dashboard_group-title">Recent Submissions</p>
+			    <div class="dashboard_submissions"></div>
+			</div>
+			<p class="text-center block-margin"><a href="/settings/profile" class="btn btn-line btn-small">Edit your profile & Settings</a></p>
+        </div>
+
+    </div> 
+</div>

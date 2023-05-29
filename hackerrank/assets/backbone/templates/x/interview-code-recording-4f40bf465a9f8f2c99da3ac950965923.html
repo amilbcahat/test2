@@ -1,0 +1,74 @@
+<div class="code-review-head">
+    <span class="fnt-sz-big fnt-wt-600">Question <%= index %></span>
+</div>
+<% if (question.question) { %>
+<div class="question-wrapper-collapsed">
+    <p class="fnt-sz-small txt-alt-grey fnt-wt-600 mdB">QUESTION DESCRIPTION</p>
+    <span class="span16 text-ellipsis-span no-padding js-question">
+        <%= question.question %>
+    </span>
+    <div class="clear"></div>
+    <!-- <a class=" font12 terquoise block showmore js-showmoretoggle" href="#">show more <i class="icon-down-open"></i></a> -->
+</div>
+<% } %>
+<div class="span16 answer-player-wrapper">
+    <div class="pull-left mmT">
+        <span class="txt-alt-grey">Language: </span><span class="code-lang fnt-wt-600">C++</span>
+    </div>
+    <div class="pull-right">
+        <div class="timeline-slider-wrapper">
+            <div class="slider" style="width:220px;"></div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+
+<pre class="outbox cm-s-default">
+</pre>
+
+<table style="width:60%;" class="margin-top-bott-15 table table-bordered code-response-container hidden">
+    <tr>
+        <th>Time</th>
+        <th>Input</th>
+        <th>Output</th>
+    </tr>
+
+    <tr>
+        <td class="run-time"></td>
+        <td>
+            <pre class="output-pre run-input"></pre>
+        </td>
+        <td>
+            <pre class="output-pre run-output"></pre>
+        </td>
+    </tr>
+</table>
+
+
+<!-- <div class="interview-question">
+    <strong>Question <%= index %></strong></br/>
+    <%= question.question %>
+</div>
+
+<div class="position-relative">
+    <div class="mdA lang-container hidden">
+        Language used: <strong class="code-lang">C++</strong>
+    </div>
+    <div class="code-player" id="code-player">
+        <span class="txt-alt-grey fnt-wt-600">
+            <i class="icon-menu-large"></i>&nbsp;PLAY CODE
+        </span>
+        <div class="code_play_slide_wrap" style="display: none">
+            <div class="timeline-slider-wrapper">
+                <div class="slider" style="width:220px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<pre class="outbox cm-s-default">
+</pre>
+
+
+
+
+ -->

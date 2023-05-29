@@ -1,0 +1,24 @@
+<style>
+    .game-grid {
+        width: 480px;
+        height: 480px;
+        display: block;
+        margin: auto;
+    }
+    .square-55d63, .black-3c85d, .white-1e1d7 {
+        background-color: #f0d9b5 !important;
+    }
+    .square-c6, .square-f6, .square-c3, .square-f3 {
+        background-color: #b58863 !important;
+    }
+</style>
+<div>
+    <div class="span8 block-center text-center" style="width: 480px">
+        <%= model.actors[0].hacker_username %>
+    </div>
+    <div class="game-grid" id="chess-board-wrapper" >
+    </div>
+    <div class="span8 block-center text-center" style="width: 480px">
+        <%= model.actors[1].hacker_username %>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="top-fixed-bar" style="text-align:center;">
+    <h3 class="topbar-h3 mjL pull-left" style="min-width:220px; text-align:left;" id="tests-title">All Tests</h3>
+    <a href="javascript:;" id="new-test-popup-link" style="margin: 9px 25px;" class="btn btn-primary pull-right">
+        <i class="icon2-createtest"></i>Create new test</a>
+    <div  style="margin:12px 0px; display:inline-block; ">
+        <div id="search-loading" class="psT" style=" <%= (HR.search.tests.length > 0) ? 'display:none' : '' %> ">
+            Loading....
+        </div>
+        <div id="basic-search" style=" <%= advanced_search_open || (HR.search.tests.length == 0) ? 'display:none' : '' %> ">
+            <form name="search" class="pull-left">
+                <div class="input-icon">
+                    <input id="test-search-input" name="test-search" type="text" placeholder="Search Test Title" value="<%= search_test_name || "" %>" style="margin-top:0px;"/>
+                    <i class="icon-search" style="top:9px;"></i>
+                    <a href="#" class="js-clear-title"><i class="icon2-status_wrong right" style="top:9px;"></i></a>
+                </div>
+            </form>
+            <a href="#" class="showAdvanceSearch pull-left psT psL"><small>&plus; more filters</small></a>
+        </div>
+        <a href="#" class="hideAdvanceSearch pull-left psT" style=" <%= !advanced_search_open ? 'display:none' : '' %> "><small>&minus; hide filters</small></a>
+    </div>
+    <div id="new-test-popup" class="new-test-popup hidden" style="text-align:left">
+        <form name="new-test-form" class="no-margin">
+            <div class="mlA">
+                <label>TEST NAME</label>
+                <input id="new-test-name" name="test-name" type="text" class="fw" placeholder="Test Name">
+                <label>TEST DURATION</label>
+                <input id="new-test-duration" data-validation="number" name="test-duration" type="text" placeholder="(min)" style="width:80px;"><span class="mdL" style="position:relative; top:-4px;">minutes</span>
+            </div>
+            <div class="test-popup-footer">
+                <a id="new-test-popup-cancel" class="btn btn-line">Cancel</a>
+                <button type="submit" class="btn btn-primary msL">Create Test</button>
+            </div>
+            <div class="response-message hidden"></div>
+        </form>
+    </div><!-- end new-test-popup -->
+    <% if(!collection.length && !searchOn) { %>
+    <!-- you will need to add .hidden class for hiding when the first test is created -->
+    <img id="create-new-test-pointer" class="create-first-test-pointer" src="/assets/test_placeholder.png"/>
+    <% } %>
+</div>
+<div class="account-locked hidden">
+    <div class="account-locked-wrapper" style="text-align: center">
+        <h4>Your account is currently locked.</h4>
+        <p class="font16 text_center">Please subscribe to any of our plans to continue.</p>
+        <center>
+            <a href="payments/plans" style="position:relative; top:20px;" class="btn btn-primary js-backbone">CHOOSE PLAN</a>
+        </center>
+    </div>
+</div>
+<div class="overflow-content" id="control-overflow">
+    <div id="advanced-search" class="fill-light" style="border-bottom: 1px solid #e0e0e0; <%= !advanced_search_open ? 'display:none' : '' %> "></div>
+    <!-- any contents add here -->
+    <ul class="alltests-table" style="margin-bottom:30px;" id="tests-container">
+        <li style="border-bottom:0px;">
+            <div class="pjA">
+                <center><Strong class="0-tests-message">No matching test found</Strong></center>
+            </div>
+        </li>
+    </ul>
+    <% if (pagination) { %>
+        <%= pagination.html() %>
+    <% } %>
+    <br/>
+</div><!-- end .overflow-content -->
+
+<div id="responsive-bottom-placeholder" class="responsive-bottom-holder text-center"></div>
+<div class="hre-footer fnt-sz-small">
+  <center class="mmT mmB">
+    <a class="mdR mdL" href="/aboutus" target="_blank">About</a>
+    <a class="mdR" href="privacy" target="_blank">Privacy policy</a>
+    <a class="mdR" href="tos" target="_blank">Terms of service</a>
+    <a class="mdR" href="http://blog.interviewstreet.com/" target="_blank">Blog</a>
+    <a class="mdR" href="contact" target="_blank">Contact us</a>
+    <a class="btn btn-small btn-line " href="http://support.hackerrank.com" target="_blank">Support</a>
+  <center>
+</div>

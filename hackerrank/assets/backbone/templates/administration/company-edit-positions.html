@@ -1,0 +1,20 @@
+<p class="aside block-margin margin-large">Positions for which the Company is
+  hiring for.</p>
+
+<div class="formgroup horizontal row">
+  <div class="span16">
+    <button class="add-position btn btn-green">+ Add Position</button>
+  </div>
+</div>
+
+<% _.each(_model.company_positions, function(position) { %>
+<div class="formgroup horizontal row" style="border-bottom: 2px solid #eee; padding-bottom: 15px;">
+  <div class="span14">
+    <p><strong><%= position.name %></strong><br><%= position.description %></p>
+  </div>
+  <div class="span2 right">
+    <button class="btn btn-text edit-position" data-id="<%= position.id %>"><i class="icon-pencil"></i> edit</button> &nbsp;&nbsp;&nbsp;
+    <button class="btn btn-text remove-position" data-id="<%= position.id %>">&#215; delete</button>
+  </div>
+</div>
+<% }); %>

@@ -1,0 +1,37 @@
+<div class="blogindex container">
+    <header class="clearfix page-title">
+        <h1 class="span11 text-center block-center">HackerBlog</h1>
+		<div class="span11 block-center margin-large top unstyled horizontal text-center">
+		    <a href="/rest/blogs.rss" class="btn btn-orange"><i class="icon-rss"></i>Subscribe</a>
+		    <% if(current_hacker.is_admin) {%>
+		    <a href="/blog/new/edit" class="backbone btn btn-green margin-small left"><i class="icon-plus"></i>New post</a>
+		    <%}%>
+		</div>
+    </header>
+
+    <div class="">
+        <div class="span11 block-center">
+            <% if(_.isEmpty(collection)) { %>
+              There are no articles to share.
+            <% } %>
+
+            <% _.each(collection, function(blog) { %>
+                <div class="light-wrap padded blogindex_post <%= blog.template_class%> content-text">
+                    <% if (blog.template_class === "blog-standard") { %>
+                        <h2 class="blogindex_post_title beta"><a class="backbone" href="/blog/<%=blog.slug%>"><%=blog.title%></a></h2>
+                        <div class="blog_post-meta blogindex_post-meta">
+                            <p><small><span class="blog_post-byline"><a href="/<%= blog.owner_username %>"> <%= blog.owner_name %></a></span> on <span class="blog_post-date"><%=blog.date%></span></small></p>
+                        </div>
+                    <% } else { %>
+                        <div class="blog_post-meta blogindex_post-meta">
+                            <p class="blog_post-date"><%=blog.date%></p>
+                        </div>
+                    <% } %>
+                    <%= blog.preview %>
+                    <% if(blog.template_class === "blog-standard") { %> <p class="blog-readmore"><strong><a class="backbone btn btn-line" href="/blog/<%=blog.slug%>">Read More</a><strong></p> <%}%>
+                </div>
+            <% })%>
+        </div>
+    </div>
+    <div class="blog_pagination-wrapper pagination-wrapper"></div>
+</div>

@@ -1,0 +1,26 @@
+<li class="<%= model.active ? 'active':'' %> sidebar_list-item">
+  <a class="change-track backbone" href="/contests/<%= model.get('slug') %>">
+    <span class="track-heading"><%= model.get('name') %></span>
+    <span class="contest-status">
+      <small>
+        <% if (model.get('archived')) { %>
+        <% } else if (model.get('ended')) { %>
+        <i class="status-indicator completed"></i>
+        Ended
+        <% } else if (model.get('started') ) { %>
+        <i class="status-indicator active"></i>
+        In Progress. Ends
+        <time class="timeago" datetime="<%= model.nextMilestone().toISOString() %>">
+          <%= model.nextMilestone().toString() %>
+        </time>
+        <% } else { %>
+        <i class="status-indicator pending"></i>
+        Starts
+        <time class="timeago" datetime="<%= model.nextMilestone().toISOString() %>">
+          <%= model.nextMilestone().toString() %>
+        </time>
+        <% } %>
+      </small>
+    </span>
+  </a>
+</li>

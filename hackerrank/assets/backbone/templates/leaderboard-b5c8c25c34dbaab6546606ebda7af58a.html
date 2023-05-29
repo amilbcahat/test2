@@ -1,0 +1,136 @@
+<% if (!challenge) { %>
+<div class="container--inner">
+<% } %>
+    <% if(challenge) { %>
+        <% if (contest.slug == "master" && challenge.primary_contest) { %>
+            <div class="pull-right">
+                <span>Show practice</span>
+                <input id="showPractice" type="checkbox" <% if (showPractice) { %> checked="checked" <% } %> >
+            </div>
+            <div class="clearfix"></div>
+        <% } %>
+    <% } else { %>
+        <% if (contest.slug == "master") { %>
+            <p class="alert alert-info">
+                The new & upgraded leaderboard coming soon.
+                <a target="_blank" href="https://www.hackerrank.com/blog/introducing-rating-system">Read more</a>
+            </p>
+        <% } %>
+        <header class="page-title">
+            <div class="">
+                <h1 class="span6">Leaderboard</h1>
+            </div>
+        </header>
+    <% } %>
+
+    <section class="leaderboard">
+        <div class="table-wrap">
+            <header class="text-center">
+            <% if (contest.leaderboard_format == 'acm' && collection.contest_challenges !== undefined) { %>
+                <div class="span1">
+                    <p>Rank</p>
+                </div>
+                <div class="span2">
+                    <p>Team</p>
+                </div>
+                <div class="span1">
+                    <p>Solved
+                        <span class="help-prompt"><i class="icon-help-circled icon-single"></i><span class="help-text">Total Challenges Solved.</span>
+                    </p>
+                </div>
+                <div class="span1">
+                    <p>Time
+                        <span class="help-prompt"><i class="icon-help-circled icon-single"></i><span class="help-text">Total time (in minutes) taken to solve the challenges including penalty.</span>
+                    </p>
+                </div>
+                <div class="span11">
+                <% if (collection.contest_challenges.length > 0) { %>
+                    <% var challenges_count = collection.contest_challenges.length; %>
+                    <% var width = 100/(challenges_count * 1.0); %>
+                    <% _.each(collection.contest_challenges, function (val, idx) { %>
+                        <div style="width: <%= width %>%; float: left; box-sizing: border-box; margin-left: 0;">
+                            <p><%= val.letter %></p>
+                            <span class="acm-challenge-balloon" style="background-color: <%= val.color %>; margin-left: 0px"></span>
+                        </div>
+                    <% }); %>
+                <% } %>
+                </div>
+            <% } else if (contest.slug == "master" && !challenge && !archived) { %>
+                <div class="span2">
+                    <p>Rank <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span> </p>
+                </div>
+                <div class="span4">
+                    <p>User <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span> </p>
+                </div>
+                <div class="span3">
+                    <p>
+                        Score
+                        <span class="help-prompt">
+                            <i class="icon-help-circled icon--single"></i>
+                            <span class="help-text">Overall rating of the hacker. You can read more about it <a style="color: #0076b9" href='/scoring/ratings' target="blank_">here</a>.</span>
+                        </span>
+                        <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span>
+                    </p>
+                </div>
+                <div class="span2">
+                    <p>Title <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span></p>
+                </div>
+                <div class="span3">
+                    <p>Country <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span></p>
+                </div>
+            <% } else { %>
+                <% if (contest.leaderboard_type != "country" && show_code) { %>
+                    <% widths = [2, 3, 2, 2, 2, 2]; index = 0; %>
+                <% } else if (contest.leaderboard_type != "country") { %>
+                    <% widths = [2, 4, 3, 3, 2]; index = 0; %>
+                <% } else if (show_code) { %>
+                    <% widths = [2, 4, 3, 3, 2]; index = 0; %>
+                <% } else { %>
+                    <% widths = [2, 5, 3, 4]; index = 0; %>
+                <% } %>
+                <div class="span<%= widths[index] %><% index += 1; %>">
+                    <p>Rank <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span> </p>
+                </div>
+                <div class="span<%= widths[index] %><% index += 1; %>">
+                    <p>User <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span> </p>
+                </div>
+                <div class="span<%= widths[index] %><% index += 1; %>">
+                    <p>Score <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span> </p>
+                </div>
+                <div class="span<%= widths[index] %><% index += 1; %>">
+                    <p>Country <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span></p>
+                </div>
+                <% if (contest.leaderboard_type != "country") { %>
+                    <div class="span<%= widths[index] %><% index += 1; %>">
+                        <p><%= contest.leaderboard_type %> <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span></p>
+                    </div>
+                <% } %>
+                <% if (show_code) { %>
+                    <div class="span<%= widths[index] %><% index += 1; %>">
+                        <p>Solution</p>
+                    </div>
+                <% } %>
+            <% } %>
+            </header>
+
+            <div id="blank-reason-container" class="table-body text-center">
+                <div class="row">
+                    <div class="span16">
+                        <p style="padding:20px" class="blank-reason">
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="leaders" class="table-body text-center">
+            </div>
+        </div>
+
+        <div class="light-wrap clearfix table-wrap text-center self-rank hide" id="leader-self">
+        </div>
+        <div class="pagination-wrap clearfix pagination-wrapper">
+        </div><!--pagination-wrap-->
+    </section><!--.leaderboard-->
+<% if (!challenge) { %>
+</div>
+<% } %>

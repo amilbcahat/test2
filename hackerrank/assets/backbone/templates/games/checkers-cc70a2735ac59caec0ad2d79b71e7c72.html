@@ -1,0 +1,87 @@
+<style>
+
+.white-grid {
+    background-color:#ffeebb;
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+}
+
+.black-grid {
+    background-color:#332f25;
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+}
+
+.black-block {
+    background-color:#998e70;
+    width:30px;
+    height:30px;
+    border-radius: 15px;
+    margin: auto;
+}
+
+.white-block {
+    background-color:#e5e4e2;
+    width:30px;
+    height:30px;
+    border-radius: 15px;
+    margin: auto;
+}
+
+.doubleblack-block {
+    background-color:#918866;
+    width:30px;
+    height:30px;
+    border-radius: 15px;
+    border-width:3px;
+    border-color:#000000;
+    margin: auto;
+}
+
+.doublewhite-block {
+    background-color:#eceae9;
+    width:30px;
+    height:30px;
+    border-radius: 15px;
+    border-width:3px;
+    border-color:#000000;
+    margin: auto;
+}
+
+.empty-block {
+    width:30px;
+    height:30px;
+}
+
+table#graph-grid{
+    background-image: url('/assets/checkers.png');
+    margin: auto;
+}
+
+</style>
+<div>
+  <div class="checkers-grid" style="display: block; margin: auto; ">
+  <% var rows = 8; %>
+  <% var columns = 8; %>
+  <% var style = ["white-grid","black-grid"]; %>
+  <div class="span8 block-center text-center" style="width: 480px">
+    <%= model.actors[0].hacker_username %>
+  </div>
+
+  <table style="margin: 20px auto; border: 2px solid #666;">
+    <% for (i = 0; i < rows; i++) { %>
+      <tr>
+        <% for (j = 0; j < columns; j++) { %>
+          <% grid_style = style[((i+j)%2)] %>
+          <td id="<%= i %>-<%= j %>" class="<%= grid_style %>"></td>
+        <% } %>
+      </tr>
+    <% } %>
+  </table>
+  <div class="span8 block-center text-center" style="width: 480px">
+    <%= model.actors[1].hacker_username %>
+  </div>
+  </div>
+</div>

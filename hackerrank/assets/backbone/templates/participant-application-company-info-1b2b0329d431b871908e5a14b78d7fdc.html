@@ -1,0 +1,31 @@
+<div class="company-info-box scroll-box">
+  <div class="company-info-head clearfix">
+    <img alt="<%= meta_model.name %>" class="company-img pull-left" height="100" width="100"
+         src="https://s3.amazonaws.com/hackerrank-companies/<%= meta_model.logo %>"/>
+    <div class="pull-right" style="padding-right: 10px; padding-top: 10px;">
+      <h4><%= meta_model.name %></h4>
+      <p><a href="#">www.academic.edu</a></p>
+    </div>
+    <div class="clearfix"></div>
+    <p><%= meta_model.pitch %></p>
+  </div>
+  <div class="company-info-content-section clearfix">
+    <p class="company-info-section-title">Positions</p>
+    <ul>
+      <% _.each(meta_model.company_positions, function (position) { %>
+      <li><strong><%= position.name %></strong><br><%= position.description %></li>
+      <% }); %>
+    </ul>
+  </div>
+  <div class="company-info-content-section clearfix">
+    <p class="company-info-section-title">Offices</p>
+    <ul>
+      <% _.each(meta_model.company_offices, function (office) { %>
+      <li>
+        <% if (office.city && office.city.name) { %><%= office.city.name %>,<% } %>
+        <% if (office.country && office.city.name) { %><%= office.country.name %><% } %>
+      </li>
+      <% }); %>
+    </ul>
+  </div>
+</div>

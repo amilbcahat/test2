@@ -1,0 +1,49 @@
+<section class="submissions container">
+    <header class="page-title container">
+      <div class="breadcrumbs">
+      </div>
+      
+      <!-- ##Breadcrumbs should only show on challenge-specific submission lists-->
+
+        <div class="row">
+            <h1 class="span12 pull-left">Submissions
+                <% if (collection.challenge && collection.challenge.get('name')) { %>
+                for <%= collection.challenge.get('name') %>
+                <% } %>
+            </h1>
+        </div>
+  </header>
+  <div class="light-wrap table-wrap text-center span16">
+    <div class="table-head row">
+      <% if(collection.total != 0){ %>
+      <div class="span4">
+        <p>Problem</p>
+      </div>
+      <div class="span2">
+        <p>Language</p>
+      </div>
+      <div class="span2">
+        <p>Time</p>
+      </div>
+      <div class="span3">
+        <p>Result</p>
+      </div>
+      <div class="span1">
+        <p>Score</p>
+      </div>
+      <div class="span2">
+        <p></p>
+      </div>
+      <% } else { %>
+      <p>You have not made any submissions for <%= collection.challenge.get("name") %> yet.</p>
+      <p class="text-center"><a href="<%= HR.appController.get_contest_namespace() %>/challenges/<%= collection.challenge.get('slug') %>" class="btn btn-primary btn-large">Solve <%= collection.challenge.get("name") %></a></p>
+      <% } %>
+    </div>
+    <div class="submissions-list-wrapper">
+    </div>
+  </div>
+
+  <div class="pagination-wrap clearfix pagination-wrapper">
+  </div>
+  <div class="clearfix">&nbsp;</div>
+</section>

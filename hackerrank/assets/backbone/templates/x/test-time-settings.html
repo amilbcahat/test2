@@ -1,0 +1,32 @@
+<div class="mjA">
+    <label class="label-title-underline">
+        TIME SETTINGS
+    </label>
+
+    <form name="time-settings-form" class="mdT">
+        <div class="datepair">
+            <div class="pull-left span3" style="padding-left:0;">
+                <input type="text" id="date-from" class="fw input-small is-date date start"
+                       value="<%= Date.parse(model.starttime) ? HR.util.formatTimeInUserTz(model.starttime, 'YYYY/M/D') : '' %>"
+                       name="interview-start-date" placeholder="Start date">
+            </div>
+            <div class="pull-left span2 bootstrap-timepicker">
+                <input type="text" class="fw input-small time start txt_box"
+                       value="<%= Date.parse(model.starttime) ? HR.util.formatTimeInUserTz(model.starttime, 'HH:mm') : '' %>" id="time_picker_start"
+                       name="interview-start-time" placeholder="Start time">
+            </div>
+            <span class="pull-left msA">to</span>
+            <div class="pull-left span2 bootstrap-timepicker">
+                <input type="text" class="fw input-small time end txt_box"
+                       value="<%= Date.parse(model.endtime) ? HR.util.formatTimeInUserTz(model.endtime, 'HH:mm') : '' %>" id="time_picker_end"
+                       name="interview-end-time" placeholder="End time">
+            </div>
+            <div class="pull-left span3">
+                <input id="date-to" type="text" class="fw input-small is-date end date" name="interview-end-date"
+                       value="<%= Date.parse(model.endtime) ? HR.util.formatTimeInUserTz(model.endtime, 'YYYY/M/D') : '' %>" placeholder="End date">
+            </div>
+        </div>
+        <button type="submit" data-throbber="show" class="btn btn-primary right">Save</button>
+        <button id="clear-time" class="btn right mdL">Reset</button>
+    </form>
+</div>

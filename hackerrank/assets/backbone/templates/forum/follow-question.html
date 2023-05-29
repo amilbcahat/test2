@@ -1,0 +1,9 @@
+<p class="pull-right">
+  <% if (HR.util.isAvailable(challenge.get('slug'))) { %>
+  <a href="<%= HR.appController.get_current_contest_namespace() %>/challenges/<%= challenge.get('slug') %>/forum/questions"
+     class="backbone btn btn-text"><i class="icon-left-open"></i> All Discussions</a>
+  <% } %>
+</p>
+<% if (profile.isLoggedIn()) { %>
+<p class="forum-sidebar-button"><a class="btn btn-primary btn-large head-btn pull-right" id="follow-button"><%= (model.subscribed)? "Unfollow Question":"Follow Question"  %></a></p>
+<% } %>

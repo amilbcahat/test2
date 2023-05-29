@@ -1,0 +1,23 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL">Dashboard</h3>
+</div>
+<div class="account-locked hidden">
+    <div class="account-locked-wrapper" style="text-align: center">
+        <h4>Your account is currently locked.</h4>
+        <p class="font16 text_center">Please subscribe to any of our plans to continue.</p>
+        <center>
+            <a href="payments/plans" style="position:relative; top:20px;" class="btn btn-primary js-backbone">CHOOSE PLAN</a>
+        </center>
+    </div>
+</div>
+<div class="overflow-content" id="control-overflow">
+    <% if (len == 0 && HR.currentUser && HR.currentUser.canCreateInterviews()) { %>
+ 	<div class="no-interview-tooltip"></div>
+    <% } %>
+    <div id='cnt-upcoming'></div>
+    <div class="clear_float"></div>
+    <div class="fixed-height-adjust"></div>
+    <div id='cnt-done'></div>
+</div>
+
+<div class="modal-container"></div>

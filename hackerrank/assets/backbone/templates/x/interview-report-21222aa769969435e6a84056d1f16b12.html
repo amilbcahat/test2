@@ -1,0 +1,71 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL">Interview</h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Report for <% candidate = model.candidates[0] %><%- candidate.name || candidate.email || 'IUnknown' %></h3>
+</div>
+<div class="overflow-content" id="control-overflow">
+    <div class="mjA">
+        <div class="container_head float-head">
+            <div class="pull-right">
+                <a href="#" class="trybtn_css button-white big_button_padding rcorners_mid js-share-report">Share Report</a>
+            </div>
+
+            <div class="title-text-padding inline-block pull-right txt-box-rt-space">
+                <div class='cnt-status'></div>
+            </div>
+
+            <div class="title-text-padding inline-block pull-right txt-box-rt-space">
+                <span class="block font-light pull-left">Interviewed by: &nbsp;</span>
+                <span class="block pull-left">
+                    <% _.each(model.interviewers, function(interviewer, key) { %>
+                    <%- interviewer.name || interviewer.email || 'IUnknown' %>
+                    <% }); %>
+                </span>
+            </div>
+        </div><!-- end container_head -->
+
+        <div class="clear_float"></div>
+        <div class="fixed-height-adjust"></div>
+
+        <div class="common_margin">
+            <table class="invisble-table cnt-feedback">
+            </table>
+
+            <div class="divider_smallheight"></div>
+            <div class='cnt-recordings'></div>
+
+            <div class="clear"></div>
+
+            <!-- <span class="underline_title margin-top-bott-15">COMMENTS</span>
+            <table class="invisble-table">
+                <tr>
+                    <td width="15%"><span class="font16">Vivek Ravisankar</span></td>
+                    <td width="70%">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    </td>
+                    <td width="15%"><span class="txtbox_text pull-right">Yesterday 2:15pm</span></td>
+                </tr>
+                <tr>
+                    <td width="15%"><span class="font16">Paul barber</span></td>
+                    <td width="70%">
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+                    </td>
+                    <td width="15%"><span class="txtbox_text pull-right">Yesterday 2:15pm</span></td>
+                </tr>
+                <tr>
+                    <td width="15%"><span class="font16">Vivek Ravisankar</span></td>
+                    <td width="70%">
+                        It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                    </td>
+                    <td width="15%"><span class="txtbox_text pull-right">Yesterday 2:15pm</span></td>
+                </tr>
+                <tr>
+                    <td width="15%"><span class="font16">Isaac John</span></td>
+                    <td width="70%">
+                        <textarea style="width:100%;" placeholder="Add your comment here..."></textarea>
+                    </td>
+                    <td width="15%"><a href="#" class="pull-right button-green btn_mid rcorners_mid">Comment</a></td>
+                </tr>
+            </table> -->
+        </div><!-- end .common_margin-->
+    </div><!-- .container_1column -->
+</div>

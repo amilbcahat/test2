@@ -1,0 +1,11 @@
+HR.appController.addTemplate("backbone/templates/dashboard/archived-contests", function(obj) {
+{
+var __t, __p = "";
+Array.prototype.join;
+}
+with (obj || {}) __p += '<div class="challenges-sorted-list">\n    <div class="table-wrap">\n        <header class="row row-flex psL psR">\n            <div class="span-flex-8">\n                Contest\n                <!-- <span class="sort_icons">\n                        <span class="sort-up">&#9650;</span>\n                        <span class="sort-down">&#9660;</span>\n                </span> -->\n            </div>\n            <div class="span-flex-4">\n                Date\n                <!-- <span class="sort_icons">\n                        <span class="sort-up">&#9650;</span>\n                        <span class="sort-down">&#9660;</span>\n                </span> -->\n            </div>\n\n            <div class="span-flex-4">\n                Submissions\n                <!-- <span class="sort_icons">\n                        <span class="sort-up">&#9650;</span>\n                        <span class="sort-down">&#9660;</span>\n                </span> -->\n            </div>\n        </header>\n        <div class="table-body">\n            ', 
+_.each(contests.models, function(contest) {
+1 == contest.get("ended") && (__p += '\n            <div class="row row-flex psL psR">\n                <div class="span-flex-8">\n                    <a href="/' + (null == (__t = contest.get("slug")) ? "" :__t) + '/challenges" class="backbone root">' + (null == (__t = contest.get("name")) ? "" :_.escape(__t)) + '</a>\n                </div>\n                <div class="span-flex-4">\n                    <span class="small">' + (null == (__t = $.format.date(new Date(1e3 * contest.get("epoch_starttime")), "MMMM yyyy")) ? "" :__t) + '</span>\n                </div>\n\n                <div class="span-flex-4">\n                    <span class="small">' + (null == (__t = contest.get("submissions_count")) ? "" :__t) + "</span>\n                </div>\n            </div>\n            ");
+}), __p += '\n        </div>\n        <div class="pagination-wrapper"></div> \n    </div>\n</div>\n';
+return __p;
+});

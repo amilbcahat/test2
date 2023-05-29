@@ -1,0 +1,10 @@
+HR.appController.addTemplate("backbone/templates/x/card-details", function(obj) {
+{
+var __t, __p = "";
+Array.prototype.join;
+}
+with (obj || {}) __p += '<div class="top-fixed-bar">\n    <h3 class="topbar-h3 mjL">Payment</h3>\n    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Credit Card Details</h3>\n</div>\n<div class="overflow-content" id="control-overflow">\n    <div class="mjA">\n\n        ', 
+model.credit_card_number && (__p += "\n        <h4>Credit card in use: " + (null == (__t = _.escape(model.credit_card_number)) ? "" :__t) + "</h4><br/>\n        "), 
+__p += '\n\n        <h4>Update Credit Card Details</h4>\n\n        <form name="credit-card-details" autocomplete="off">\n            <div class="msT msB">\n                <label>Card Number</label>\n                <input type="text" id="card-number" class="wide">\n            </div>\n\n            <div class="msT msB">\n                <label>Expiry date</label>\n                <input type="text" id="expiry-month" placeholder="MM">&nbsp;/&nbsp;<input type="text" id="expiry-year"  placeholder="YYYY">\n            </div>\n\n            <div class="msT msB">\n                <label>Security code (CVV)</label>\n                <input type="password" id="cvv" />\n                <a href="https://checkout.google.com/support/bin/answer.py?answer=43073&hl=en_US" target="_blank" class="underline">What is this?</a>\n                        <span class="help-prompt">\n                            <i class="icon-help-circled icon--single"></i>\n                            <span class="help-text">A Card Verification Code, or CVC, is a number that provides extra security to credit and debit card holders</span>\n                        </span>\n            </div>\n            <button id="card-details-submit" data-throbber="show" type="submit" class="btn btn-primary">Save</button>\n        </form>\n    </div>\n    <div class="response-message plA hidden" >\n    </div>\n    <!-- end mjA -->\n</div>\n';
+return __p;
+});

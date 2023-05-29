@@ -1,0 +1,29 @@
+<div class="clearfix row-btn submissions_item">
+    <div class="span2 submissions-title">
+        <p><a class="challenge-slug backbone" href="<%= ns %>judge/submissions/challenge/<%= challenge.slug %>"><%= challenge.name %></a></p>
+    </div>
+    <div class="span2 submissions-title">
+        <p><a class="challenge-slug backbone" href="<%= ns %>judge/submissions/team/<%= model.get('hacker_username') %>"><%= model.get('hacker_username') %></a></p>
+    </div>
+    <div class="span1 submissions-id">
+        <p><%= model.get('id') %></p>
+    </div>
+    <div class="span2 submissions-language">
+        <p class="small"><%= lang_display_mapping[model.get('readable_language')] || model.get('language') %></p>
+    </div>
+    <div class="span2 submissions-time">
+        <p class="small"><%= formattedTime %></p>
+    </div>
+    <div class="span3" rel="tooltip" data-original-title="<%= tooltip %>">
+        <p class="small"><%= model.get('status') %> <% if (model.get('status_code') == 0) { %><img src="/assets/queued.gif" /><% } %></p>
+    </div>
+    <div class="span1" rel="tooltip" data-original-title="<%= tooltip %>">
+        <p class="small"><%= model.get('score') > 0 ? 1 : 0 %></p>
+    </div>
+    <div class="span2">
+      <input type="checkbox" <% if ((model.get('score') > 0) && (model.get('status_code') == 2)) { %>checked <% } %>class="hr_set-status">
+    </div>
+    <div class="span1">
+        <p class="btn-wrap"><a href="rest/submissions/<%= model.get('id') %>/code" class="view-results">View</a></p>
+    </div>
+</div>

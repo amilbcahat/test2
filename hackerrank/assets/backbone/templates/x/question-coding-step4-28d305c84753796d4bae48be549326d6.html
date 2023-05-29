@@ -1,0 +1,35 @@
+<form name="coding-question-step4-form">
+    <div class="mjA">
+        <div class="formgroup">
+            <label>Custom Checker</label>
+            <p class="txt-alt-grey-dark span9 no-padding">Choose the langugage in which you will write the checker for your approximate question.</p>
+        </div>
+        <div class="clear"></div>
+        <label class="mdT">Write your checker here</label>
+        <div class="span-xs-16 span-md-11 mdT no-padding">
+            <div class="codeblock-wrapper span16 no-padding">
+                <% if(model.evaluator_language) { %>
+                <% lang = model.evaluator_language %>
+                <% } else { %>
+                <% lang = 'cpp' %>
+                <% } %>
+                <div class="codeblock-head no-background">
+                    <div class="pull-right">
+                        <input type="hidden" id="code-editor-lang-select2" class="wide" value="<%= lang %>">
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <textarea id="evaluator_code"><%- model.evaluator_code || "" %></textarea>
+            </div>
+        </div>
+
+        <div class="mjA">
+            <div class="row no-margin plT">
+                <div class="span-xs-16 span-md-16">
+                    <button type="submit" class="btn btn-primary btn-mid">Save Question</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>

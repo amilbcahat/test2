@@ -1,0 +1,67 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL"><%- test.name %></h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Questions</h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i><% if (edit) { %>Edit<% } else { %>Create<% } %> question</h3>
+</div><!-- end .top-fixed-bar -->
+<div class="overflow-content" id="control-overflow">
+    <form name="question-complete-form" class="mjA">
+        <div class="formgroup">
+            <label>Problem statement</label>
+            <p class="txt-alt-grey-dark span11 no-padding">The text you enter into the box below will be shown as a preamble to the sentence that needs to be completed. Enter any instructions, show any diagrams, or set the context for your question in any other way. You could leave this box empty if you so choose to.</p>
+            <div class="clear"></div>
+
+            <textarea name="problem-statement" class="texteditor"><% if(model.question) { %><%= model.question %><% } %></textarea>
+        </div>
+        <div class="formgroup">
+            <label>Complete string</label>
+            <p class="txt-alt-grey-dark span11 no-padding">This is the sentence that needs to be completed by the candidate. You have to insert the sequence {blank} including the curly braces wherever you want to display a literal blank line where the candidate will type her answer. There can be more than one {blank}</p>
+            <textarea id="problem-text" name="text" rows="2" class="txt_box span12 mlT" placeholder="Enter sentence here"><% if(model.complete_string) { %><%= model.complete_string %> <% } %></textarea>
+            <div class="clear"></div>
+        </div>
+
+            <div class="formgroup blanks-container">
+                <label>Choices</label>
+                <p class="txt-alt-grey-dark span9 no-padding">Enter the correct answers below</p>
+                <div class="clear"></div>
+
+                <% if(model.options) { %>
+                    <% _.each(model.options, function(blank) { %>
+                        <div class="white-grid-block no-margin no-padding blank-container">
+                            <div class="mlA">
+                                <div class="choices-container">
+                                    <% _.each(blank, function(choice) { %>
+                                    <div class="new-choice">
+                                        <input type="text" value="<%= choice %>"/><a href="javascript:;" class="delete-choice" class="txt-alt-grey msL"><i class="icon2-close fnt-sz-big"></i></a>
+                                        <br/>
+                                    </div>
+                                    <% }) %>
+                                </div>
+                                <button class="btn add-new-choice">Add one more Choice</button>
+                            </div>
+                        </div>
+                <% }) %>
+                <% } else { %>
+                    <div class="white-grid-block no-margin no-padding blank-container">
+                        <div class="mlA">
+                            <div class="choices-container">
+                                <div class="new-choice">
+                                    <input type="text" /><a href="javascript:;" class="delete-choice" class="txt-alt-grey msL"><i class="icon2-close fnt-sz-big"></i></a>
+                                    <br/>
+                                </div>
+                            </div>
+                            <button class="btn add-new-choice">Add one more Choice</button>
+                        </div>
+                    </div>
+                <% } %>
+
+            </div>
+            <button class="btn add-new-blank">Add one more Blank</button>
+
+        <div class="row no-margin plT">
+            <div class="span-xs-16 span-md-16">
+                <button type="submit" class="btn btn-primary btn-mid">Save Question</button>
+                <div id="complete-sentence-response-box" class="hidden mlT">Some Error</div>
+            </div>
+        </div>
+    </form>
+</div>

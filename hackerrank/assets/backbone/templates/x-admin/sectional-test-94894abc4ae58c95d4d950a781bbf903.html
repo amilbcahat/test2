@@ -1,0 +1,163 @@
+<div class="test-info mjT mjB">
+    <div class="header bold">Test Info</div>
+    <div class="mmT">
+        <div class="span2">
+            Name:
+        </div>
+        <div class="span3">
+            <%= model.name || model.preview %>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="mmT">
+        <div class="span2">
+           No. of Questions:
+        </div>
+        <div class="span3">
+            <%= model.questions.length %>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="mmT">
+        <div class="span2">
+           Duration:
+        </div>
+        <div class="span3">
+            <%= model.duration %>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="mmT">
+        <div class="span2">
+           Shuffle Questions:
+        </div>
+        <div class="span3">
+            <%= model.shuffle_questions == 'True' %>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<div id="sectional-sections-container" class="mjT">
+    <div class="header bold">
+        All Test Sections
+    </div>
+    <div class="sections-table-header-container table-header pmT pmB mlT mmB bold table-bordered">
+        <div class="span3">Section Name</div>
+        <div class="span3">No. Questions</div>
+        <div class="span3">Duration</div>
+        <div class="span7">Actions</div>
+        <div class="clearfix"></div>
+    </div>
+    <% if (!(model.time_slots_decoded && model.time_slots_decoded.length)) { %>
+    <div class="bold center-align mlA">
+        No sections exist for this question
+    </div>
+    <% } else { %>
+    <% _.each(model.time_slots_decoded, function(section, i) { %>
+    <div class="sectional-test-wrapper">
+        <div class="section-info">
+            <div class="section-name span3 psT">
+            <%= section.name %>
+            </div>
+            <div class="section-questions span3 psT">
+            <%= section.questions %>
+            </div>
+            <div class="section-duration span3 psT">
+            <%= section.duration %>
+            </div>
+
+            <div class="section-actions span7 pmT">
+                <a href="#" class="show-edit-section-button btn btn-primary" data-index="<%= i %>">Edit</a>
+                <a href="#" class="remove-section-button btn" data-index="<%= i %>">Remove</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="section-edit hidden">
+            <div class="span3"><input type="text" class="section-name"  style="width: 160px" value="<%= section.name %>"></div>
+            <div class="span3"><input type="text" class="section-no-ques" style="width: 160px" value="<%= section.questions %>">
+            </div>
+            <div class="span3"><input type="text" class="section-duration" style="width: 160px" value="<%= section.duration %>">
+            </div>
+            <div class="span7">
+                <button class="btn btn-primary confirm-edit-section-button"
+                        data-index="<%= i %>">Confirm
+                </button>
+                <a href="#" class="cancel-edit-section-button btn">Cancel</a>
+            </div>
+            <div class="clearfix"></div>
+            <div class="edit-section-msg msT mjL hidden"></div>
+        </div>
+    </div>
+    <% }) %>
+</div>
+<% } %>
+
+<div class="add-section-form border-box table-out-border plA mjT">
+    <div class="header bold mjB ">
+        New Section Form
+    </div>
+    <div class="span4">
+        <input type="text" id="new-section-name" class="input-small" placeholder="Name">
+    </div>
+    <div class="span4">
+        <input type="text" id="new-section-no-ques" class="input-small" placeholder="Number of Questions">
+    </div>
+    <div class="span4">
+        <input type="text" id="new-section-duration" class="input-small" placeholder="Duration">
+    </div>
+    <div class="section-actions span4">
+        <button class="btn btn-primary" id="confirm-new-section-button">Add</button>
+    </div>
+    <div class="clearfix"></div>
+    <div class="new-section-msg hidden mlT mjL"></div>
+</div>
+
+<div id="sectional-questions-container" class="mjT mjB">
+    <div class="header bold">
+        Questions
+    </div>
+
+    <div class="sections-table-header-container table-header pmT pmB mlT mmB bold table-bordered" style="border-left: solid 3px transparent;">
+        <div class="span1 pjL">S No.</div>
+        <div class="span2">Section</div>
+        <div class="span3">Unique Id</div>
+        <div class="span3">Type</div>
+        <div class="span6">Name/Preview</div>
+        <div class="clearfix"></div>
+    </div>
+
+    <% _.each(model.questions, function(question, index) { %>
+    <div class="sectional-question-wrapper span16" style="border-bottom: 1px solid #EEEEEE ;border-left: solid 3px; <% if(question.time_slot_index != null) { %> border-left-color: <%= colors[(question.time_slot_index % 4)] %><% } else {%> border-left-color: transparent <% } %>">
+        <div class="span1 psT psB pjL">
+            <%= index + 1 %>
+        </div>
+        <div class="span2 psT psB">
+            <% if(question.time_slot_index != null) { %>
+            <%= model.time_slots_decoded[question.time_slot_index].name %>
+            <% } else {%>
+            No Section
+            <% } %>
+        </div>
+        <div class="span3 psT psB">
+            <%= question.unique_id %>
+        </div>
+        <div class="span3 psT psB">
+            <%= question.type %>
+        </div>
+        <div class="span6 psT psB">
+            <%= question.name || question.preview %>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <% }) %>
+    <div class="clearfix"></div>
+</div>
+
+<div class="row no-margin plT">
+    <div class="span-xs-16 span-md-16">
+        <button type="submit" id="update-test" class="btn btn-primary btn-mid">Update
+        </button>
+    </div>
+</div>

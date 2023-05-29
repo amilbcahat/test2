@@ -1,0 +1,7 @@
+<a href="#" style="right:40px;" class="mcq-btn mcq-mark-ans btn btn-mini js-mark-answer"><% if (answer) { %>Unmark<% } else { %>Mark<% } %> as answer</a>
+<a href="#" class="mcq-btn mcq-remove-btn btn btn-mini js-remove-option">✕</a>
+<div class="mcq-option">
+ <center><span class="option-title"><%- String.fromCharCode(65 + index) %></span><br><span class="mcq-choice-ico"></span></center>
+</div>
+<textarea rows="3" class="pull-left choice-textarea choices" tabindex="3" id="choice_<%- index %>"><%- choice %></textarea>
+<div class="clear_float"></div>

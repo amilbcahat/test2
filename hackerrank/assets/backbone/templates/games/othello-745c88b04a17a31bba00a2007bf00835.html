@@ -1,0 +1,59 @@
+<style>
+    .game-grid p {
+        margin: 0px;
+    }
+    h3 {
+        margin: 0px;
+    }
+    .m {
+        text-align: center !important;
+    }
+    .translucent {
+    }
+    .playgame-row {
+        position: fixed;
+    }
+    .playgame-row .btn {
+        margin-top: 70px;
+        z-index: 999;
+    }
+    .game-message {
+        font-weight: bold;
+    }
+    .cell {
+        width: 48px;
+        height: 48px;
+    }
+    .blank {
+        background-image: url('/assets/othello-green.png');
+
+    }
+    .white {
+        background-image: url('/assets/othello-white.png');
+
+    }
+    .black {
+        background-image: url('/assets/othello-black.png');
+
+    }
+    .move {
+        background-image: url('/assets/othello-move.png');
+
+    }
+
+
+</style>
+<div class="game-grid" style="display: block; margin: auto; border-radius: 10px;">
+  <p style="text-align: center;">Black(<span class="player1_discs">2</span>) vs <span class="player-2">White(<span class="player2_discs">2</span>)</span> </p>
+  <table style="margin: 20px auto;">
+    <% var rows = 8 %>
+    <% var cols = 8 %>
+    <% for (var i = 0; i < rows; i++) { %>
+        <tr style="text-align: center">
+        <% for (var j = 0; j < cols; j++) { %>
+            <td id="<%= i %>-<%= j %>" class="blank cell"></td>
+        <% } %>
+        </tr>
+    <% } %>
+  </table>
+</div>

@@ -1,0 +1,20 @@
+
+<%if (model.get('link')) { %>
+     <a href="<%= model.get('link') %>" class="backbone" > <div class="clearfix row row-btn row-clear submissions_item">
+<% } else { %>
+    <div class="clearfix row row-btn row-clear submissions_item"  >
+<% } %>
+    <div class="span-xs-2">
+        <p><%= sl+1 %></p>
+    </div>
+    <div class="span-xs-8">
+    <p style="text-transform: capitalize;"><%= model.get('description') %></p>
+    </div>
+    <div class="span-xs-6">
+        <p><%= model.get('amount') %></p>
+     </div>
+<%if (model.get('link')) { %>
+    </div></a>
+<% } else { %>
+    </div>
+<% } %>

@@ -1,0 +1,100 @@
+<% if (model.has_ended) { %> <strong> Submissions will no longer be placed on the leaderboard. You may still attempt this problem for practice. </strong><%}%>
+<% if (!model.has_started) { %> <strong> Hi Admin, this challenge is not yet open to the public. </strong><%}%>
+<% if (model.has_started && !model.has_ended && contest.kind == 'weekly') { %> <strong> Your submission will run against only preliminary test cases. Full test cases will run at the end of the day.</strong> <% } %>
+<div class="row">
+    <div class="span11 hr_tour-problem-statement">
+      
+      <% if(model.available_translations.length > 1) {%>
+        Change language : 
+            <select class='translations'>
+              <% 
+              _.each(model.available_translations, function(translation) { %>
+              <option value="<%= translation.language %>" > <%= translation.language%> </option>
+              <% }); %>
+            </select>
+      <% } %>
+      
+        <div class="content-text challenge-text">
+            <%= model.preferred_challenge_body_html || model.body_html %>
+        </div>
+        <footer><a href="#" class="js-suggest-edits btn btn-line fade in challenge_suggestion-toggle fullscreen-hide">Suggest Edits</a></footer>
+    </div>
+    <aside class="span4 pull-right fullscreen-hide">
+        <% if (model.real_dynamic) { %>
+            <strong class="mlL pmL">Max Score: <%= model.max_score %>pts</strong>
+            <a href="/scoring/dynamic-scoring" target="_blank" rel="tooltip"
+             data-original-title="The score is dynamic based on the number of solves." id="dynamic-popover">
+            <small class="label label-info">dynamic</small>
+            </a>
+        <% } %>
+
+        <% if (model.contest_slug == 'master') { %>
+            <% if ((model.kind == 'code' && model.is_custom) || (model.kind == 'game' && model._data.player_count == 1)) { %>
+                <strong class="mlL pmL" rel="tooltip" data-original-title="We will consider you have solved this challenge if you get greater than or equal to this score.">Solved score: <%= (model.factor * model.solved_score).toFixed(2) %>pts</strong>
+            <% } %>
+        <% } %>
+
+        <% if (model.hacker && model.hacker.id) { %>
+            <div class="clearfix mlL pmL">
+                <% if (model.hacker.avatar) { %>
+                    <img src="<%= model.hacker.avatar %>" height="45" width="45" class="avatar pull-left msR"
+                     onerror="this.onerror=null; this.src='https://d3rpyts3de3lx8.cloudfront.net/hackerrank/assets/gravatar.jpg';">
+                <% } %>
+                <span><strong>Authored by <a class="backbone color-blue" href="/<%= model.hacker.username %>"><%= model.hacker.username %></a></strong></span><br>
+                <span class="zeta"><em>March 4, 2014</em></span>
+            </div>
+        <% } %>
+        <section class="mlT mlL">
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="hackerSubmissions-Grid">
+                    <header class="bold small zeta mmL"><a href="<%= HR.appController.get_current_contest_namespace()%>/challenges/<%= model.slug %>/leaderboard" data-toggle="tab" class="btn btn-text backbone"><%= model.submitted_hackers_count %> hackers</a> have submitted code</header>
+                    <div class="justify">
+                        <% if (recent_hackers) { %>
+                            <% _.each(recent_hackers, function(hacker) { %>
+                                <a href="/<%= hacker.username %>" data-username="<%= hacker.username %>" class="hacker-wrap" ><img src="<%= hacker.avatar %>" height="40" width="40" class="avatar mmA" onerror="this.onerror=null; this.src='https://d3rpyts3de3lx8.cloudfront.net/hackerrank/assets/gravatar.jpg';"></a>
+                            <% }) %>
+                        <% } else { %>
+                            <% HR.appController.viewLoader(32) %>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <% if (model.hackos_total) { %>
+        <section class="mlT mlL">
+            <div class="tab-content">
+                <% if (model.hackos_earned) { %>
+                    <strong>Hackos Earned: <%= model.hackos_earned%>/<%= model.hackos_total%></strong>
+                <%} else { %>
+                    <strong> Solve this to earn <%= model.hackos_total %> hackos </strong>
+                <% } %>
+            </div>
+        </section>
+        <% } %>
+        <p class="zeta bold plL">
+            <span class="share-group horizontal">
+                <a class="btn btn-line"><i class="icon-share"></i>Share</a>
+                <a class="share-link facebook"><i class="msL icon-facebook"></i></a>
+                <a class="share-link twitter"><i class="msL icon-twitter"></i></a>
+                <a class="share-link gplus"><i class="msL icon-gplus"></i></a>
+            </span>
+        </p>
+    </aside>
+</div>
+<div class="challenge_suggestion fullscreen-hide">
+    <div class='formgroup clearfix m'>
+        <div class='alert error hide'></div>
+    </div>
+    <form id="suggestion-form" class="hide challenge_suggestion-form fullscreen-hide">
+        <p class="challenge_suggestion-header">Thanks for helping us refine this problem statement. Please address your suggestions below. </p>
+        <textarea id='suggestion' rows='10' class='challenge_suggestion-input'></textarea>
+        <div class='challenge_suggestion-buttons access-buttons clearfix'>
+            <div class="pull-right">
+                <button class="btn btn-green js-suggestion-save pull-right" data-analytics="Submit Suggestion">Submit Suggestion</button>
+                <button class="btn btn-alert js-suggestion-cancel pull-right" data-analytics="Cancel Suggestion">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
+<br>

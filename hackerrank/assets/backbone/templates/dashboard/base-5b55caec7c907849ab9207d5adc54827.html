@@ -1,0 +1,40 @@
+<div class="container light-wrap dashboard">
+    <div class="dashboard-section"></div>
+    <div class="clearfix dashboardHead dashboard-section">
+        <p class="section-heading">Rank Changes</p>
+        <div class="history span10"></div>
+        <div class="dashboardStatistics span5 pull-right no-flow">
+            <div class="row text-center">
+                <div class="span2">
+                    <p class="">Current Rank</p>
+                    <p class="number"><%= model.rank || 'N/A' %></p>
+                </div>
+                <div class="span3">
+                    <p class="">Current Score</p>
+                    <p class="number"><%= (model.score || 0).round() %></p>
+                </div>
+            </div>
+
+            <div class="statisticsSmall">
+                <% _.each(model.networks, function (network) { %>
+                <p class="stat-line">
+                    <%= network.name%> Rank
+                    <span class="pull-right">
+                        #<%= network.rank %> / <%= network.total %>
+                    </span>
+                </p>
+                <% }) %>
+
+                <!-- <a href="" class="btn btn-white pull-right">Edit Statistics</a> -->
+            </div>
+        </div>
+    </div>
+    <div class="dashboardProgress dashboard-section clearfix">
+        <p class="section-heading">Your Progress</p>
+        <div class="tracks"></div>
+    </div>
+    <div class="dashboardSubmissions dashboard-section">
+        <p class="section-heading">Recent Submissions</p>
+        <div class="submissions"></div>
+    </div>
+</div>

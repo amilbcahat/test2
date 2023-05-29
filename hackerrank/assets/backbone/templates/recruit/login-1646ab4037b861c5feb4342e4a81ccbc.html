@@ -1,0 +1,167 @@
+
+    <div class="row">
+        <center>
+            <div class="padding-top-20"><h2 class="headline"><%- test.name %></h2></div>
+            <% if (test.logged_in && test.attempt_done) { %>
+
+            <p class="f-weight-600">YOU HAVE SUCCESSFULLY COMPLETED THE TEST.</p>
+            <br/>
+            <p class="text-center"><img src="/assets/icons/test-completed.png" /></p>
+            <p class="mdT mlB text-center">Thank you for taking the test. We will contact you soon.</p>
+
+            <% } else { %>
+
+            <div class="sub-headline">
+                <span class="ico-questions"></span>
+                <span class="grey"><%- test.questions_count %> QUESTIONS
+                    <% if (test.sectional) {%> (with sections)<%}%>
+                </span>
+                <span class="ico-time"></span>
+                <span class="grey test-duration"><%- test.duration %> MINUTES</span>
+            </div> <!-- .sub-headline -->
+
+            <% } %>
+        </center>
+
+        <div class="white-block main-content">
+            <% if (!test.logged_in) { %>
+
+            <span class="challengeslist_challenge-title green-title">INSTRUCTIONS</span>
+            <%= test.instructions %>
+            <% if (test.sectional) {%>
+
+            <br/>
+            <p>
+                <strong>Note: </strong>
+                <ul>
+                    <li>This test has sections, each with some alotted time.</li>
+                    <li>Closing a section manually will carry-over the remaining time into the next section.</li>
+                </ul>
+            </p>
+
+            <% } %>
+
+            <div class="soft-divider mjB"></div>
+            <!-- The following section will be auto populated when there is any error in the login page -->
+            <div class="alert mlB hide" id="error-message">
+                <header></header>
+                <p></p>
+            </div>
+
+            <form id="test-login-form" class="no-margin">
+                <div class="formgroup">
+                    <p class="text-center msB"><strong>Please fill all the details mentioned below</strong></p>
+                </div>
+
+                <div class="formgroup horizontal">
+                    <label class="span3 support-long-text">Email address</label>
+                    <div class="block pull-left">
+                        <input type="text" class="with-help wide" name="email">
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+
+                <% if (!test.auth_valid) { %>
+
+                <div class="formgroup horizontal">
+                    <label class="span3 support-long-text">Password</label>
+                    <div class="block pull-left">
+                        <input type="password" class="with-help wide" name="password">
+                    </div>
+                </div>
+                <% } %>
+
+                <div class="clear"></div>
+
+                <% _.each(test.collect_info, function(item) {
+                item.field_name = "user_" + item.field_name;
+                %>
+
+                <div class="formgroup horizontal">
+                    <label class="span3 support-long-text"><%= item.title %></label>
+                    <div class="block pull-left">
+                        <% if (item.field_name == "user_resume") { %>
+                        <input type="file" class="with-help wide" name="<%- item.field_name %>">
+                        <% } else if (item.field_name == "user_gender") { %>
+                        <label class="widget"><input type="radio" name="<%- item.field_name %>"> Male</label>
+                        <label class="widget"><input type="radio" name="<%- item.field_name %>"> Female</label>
+                        <% } else if (item.field_name == "user_degree") { %>
+                        <select name="user_degree" class="with-help wide">
+                            <option value="" selected="selected">Choose your degree</option>
+                            <option value="B.E">B.E</option>
+                            <option value="B.Tech">B.Tech</option>
+                            <option value="M.Tech">M.Tech</option>
+                            <option value="Dual Degree">Dual Degree</option>
+                            <option value="B.C.A.">B.C.A.</option>
+                            <option value="M.C.A.">M.C.A.</option>
+                            <option value="B.B.A.">B.B.A.</option>
+                            <option value="M.B.A.">M.B.A.</option>
+                            <option value="B.Com">B.Com</option>
+                            <option value="M.Com">M.Com</option>
+                            <option value="B.Cs">B.Cs</option>
+                            <option value="B.Arch">B.Arch</option>
+                            <option value="B.Pharm">B.Pharm</option>
+                            <option value="B.Sc">B.Sc</option>
+                            <option value="M.Sc">M.Sc</option>
+                            <option value="B.A.">B.A.</option>
+                            <option value="M.A.">M.A.</option>
+                        </select>
+                        <% } else { %>
+                        <input type="text" class="with-help wide" name="<%- item.field_name %>">
+                        <% } %>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <% }); %>
+
+                <div class="formgroup">
+                    <div class="span3">
+                        <input type="checkbox" name="acknowledge" id="acknowledge" class="pull-right" style="margin-top:10px;"/>
+                    </div>
+                    <div class="span7"><label class="acknowledge-text" for="acknowledge">I acknowledge that all answers will be provided solely by me, and that I will not consult any other person, or use any external resource.</label></div>
+                </div>
+
+                <div class="clear"></div>
+
+                <div class="formgroup horizontal no-margin">
+                    <br/>
+                    <center>
+                        <button class="btn btn-primary btn-large test-submit">Submit</button>
+                    </center>
+                </div>
+            </form>
+
+            <%} else if (test.logged_in && !test.attempt_done) { %>
+
+            <div class="alert alert-info">
+                <header>Already logged in.</header>
+                <p>You are already logged into this test -- redirecting you into the test...</p>
+            </div>
+
+            <% } else if  (test.logged_in && test.attempt_done) { %>
+
+            <p class="mdB"><label>Please let us know any additional comments/feedback.</label></p>
+            <textarea name="candidate-comment" rows="6" style="width:100%;" class="feedback-text"></textarea>
+            <br/>
+            <p class="text-center mdT">
+                <button class="btn btn-primary test-submit-feedback">Submit feedback & logout</button>
+            </p>
+        <% } %>
+        </div> <!-- .white-block main-content -->
+
+        <center>
+            <div class="block mlB">
+            <img class="margin-20" src="/assets/brand/powered_by_transparent.png" />
+            <% if (test.logged_in && test.attempt_done) { %>
+                <p class="text-center txt-alt-grey">
+                    Love Programming challenges? </br>
+                    Find more problems and contests at <strong><a href="https://www.hackerrank.com/" class="txt-alt-grey">www.hackerrank.com</a></strong>
+                </p>
+
+            <% } %>
+            </div>
+        </center>
+
+    </div><!-- end .row -->

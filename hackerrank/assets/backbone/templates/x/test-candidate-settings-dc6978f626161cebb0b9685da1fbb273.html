@@ -1,0 +1,45 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL"><%- model.name %></h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>Candidate Settings</h3>
+</div>
+<div class="overflow-content" id="control-overflow">
+    <div class="mjA">
+        <p class="pdB">
+            These are the instructions that will be shown to the candidates before they start the test.
+        </p>
+        <form name="test-candidate-settings-form">
+            <table class="languages_table" border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                <% i = 0 %>
+                <% _.each(candidateSettings, function(data, title) { %>
+                    <% if (i == 0) { %>
+                    <tr>
+                    <% } else if (i%3 == 0) { %>
+                    </tr>
+                    <tr>
+                    <% } %>
+
+                    <td>
+                        <input class="hr-sleek-input" id="cand_<%- title %>" name="<%- data.name %>" type="checkbox" <% if (data.checked) { %> checked <% } %> value="<%- data.value %>" />
+                        <label for="cand_<%- title %>">
+                            <span></span>
+                            <%= data.label %>
+                        </label>
+                    </td>
+
+                    <% i++ %>
+                <% }); %>
+                </tbody>
+            </table>
+
+            <div class="row no-margin plT">
+                <input class="no-margin" type="text" value="" placeholder="Add a custom detail" name="custom_field" />
+                <a href="#" class="btn btn-mid js-add-custom-field" data-throbber="show">Add</a>
+            </div>
+
+            <div class="plT">
+                <button type="submit" class="btn btn-primary btn-mid" data-throbber="show">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

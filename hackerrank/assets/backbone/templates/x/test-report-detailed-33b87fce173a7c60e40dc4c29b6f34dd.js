@@ -1,0 +1,2 @@
+HR.appController.addTemplate("backbone/templates/x/test-report-detailed",function(obj){{var __p="";Array.prototype.join}with(obj||{})__p+='<div class="mjA" id="detailed-report">\n</div>\n';return __p});
+//# sourceMappingURL=test-report-detailed-eb2e6b495281676d17d24e79b458e84b.js.map

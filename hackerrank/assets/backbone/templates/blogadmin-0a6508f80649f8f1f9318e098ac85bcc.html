@@ -1,0 +1,110 @@
+<style>
+.floating-message
+{
+  position:fixed;
+  top:10px;
+  right:0px;
+  z-index: 2000;
+  display: none;
+}
+</style>
+<div class="blog-new-post container">
+    <header class="page-title">
+        <h1>HackerRank Blog Admin</h1>
+    </header>
+
+    <div class="row">
+        <div class="span11">
+            <!-- FILL OUT FOR ALL POST TYPES FOR SEO PURPOSES -->
+            Title: <input type="text" placeholder="Title of your post" class="postTitle blogAdminInput" id="postTitle">
+            Slug: <input type="text" placeholder="Slug of your post, leave blank to use parameratized title" class="js-slug blogAdminInput" id="postSlug">
+
+            <!-- show for admin-standard, hide for admin-quote and admin-link -->
+            <div class="table-wrap light-wrap new-post-admin">
+                <div class="wysiwyg-editor table-head clearfix">
+                    <!--<span class="icon-group clearfix">
+                        <a href=""><i class="icon-bold"></i></a>
+                        <a href=""><i class="icon-italic"></i></a>
+                    </span>
+                    <span class="icon-group clearfix">
+                        <a href=""><i class="icon-align-left"></i></a>
+                        <a href=""><i class="icon-align-center"></i></a>
+                        <a href=""><i class="icon-align-right"></i></a>
+                        <a href=""><i class="icon-align-justify"></i></a>
+                    </span>
+                    <span class="icon-group clearfix">
+                        <a href=""><i class="icon-quote"></i></a>
+                        <a href=""><i class="icon-list-bullet-large"></i></a>
+                        <a href=""><i class="icon-list-numbered"></i></a>
+                    </span>-->
+                </div>
+                <textarea class="postContent" id="postContent"></textarea>
+            </div>
+            <!-- show for admin-link, hide for admin-standard and admin-quote
+            <div class="formgroup">
+                <label for="blogLink">The link</label>
+                <input type="text" class="blogAdminInput" id="blogLink" value="http://">
+            </div>
+
+            <div class="formgroup">
+                <label for="blogLinkText">Text to show</label>
+                <input type="text" class="blogAdminInput" id="blogLinkText">
+            </div>
+
+            <!-- END -->
+            <a href="#" class="btn btn-primary js-preview-post">Preview Post</a>
+            <div class="js-post-preview">
+               <div class="<%= model.template_class%> blog-post container">
+                    <header class="page-title">
+                        <h1><%= model.title %></h1>
+                    </header>
+
+                    <div class="row">
+                        <div class="span11 content-wrap">
+                            <div class="light-wrap post-content">
+                                <%= model.html_content %>
+                                <div class="post-meta">
+                                    <p class="no-flow posted-on"> <%= model.date %> </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="span5">
+            <header class="clearfix post-buttons sidebar-group">
+                <% if (model.draft == false) { %>
+                    <a href="" class="btn btn-primary  js-save-draft">Save</a>
+                <% } else { %>
+                    <a href="" class="btn btn-white js-save-draft">Save Draft</a>
+                    <a href="" class="btn btn-primary js-publish-post">Publish Post</a>
+                <%}%>
+            </header>
+            <div class="sidebar-admin">
+                <div class="post-status sidebar-group no-flow">
+                    <p><strong>Status:</strong> <% if (model.draft == false) { %> Published <a class="js-unpublish">Unpublish</a> <%} else { %> Draft <% } %> </p>
+                </div>
+                <div class="post-template sidebar-group">
+                    <p class="group-heading no-flow">Select post template</p>
+                    <div class="select-wrap large">
+                        <select class="js-template" id="selected-filter" data-toggle="dropdown">
+                            <% _.each(templates, function(template) { %>
+                                <option value=<%=template.id%>><%=template.name%></li>
+                            <% })%>
+                        </select>
+                    </div>
+                </div>
+                <!--<div class="post-categories sidebar-group">
+                    <div class="formgroup horizontal no-flow">
+                        <p class="group-heading">Add tags</p>
+                        <input type="text">
+                        <a href="" class="btn btn-white">Add</a>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+    </div>
+
+
+</div>

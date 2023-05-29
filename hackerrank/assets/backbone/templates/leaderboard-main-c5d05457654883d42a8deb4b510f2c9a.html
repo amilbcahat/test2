@@ -1,0 +1,161 @@
+<div class="container--inner">
+    <header class="page-title clearfix">
+        <h1 class="pull-left mlR">Leaderboard</h1>
+        <div class="pull-right track-selection">
+            <select>
+                <option value="algorithms" <% if (track == "algorithms") { %>selected="true"<% } %>>Algorithms</option>
+                <option value="ai" <% if (track == "ai") { %>selected="true"<% } %>>Artificial Intelligence</option>
+                <option value="fp" <% if (track == "fp") { %>selected="true"<% } %>>Functional Programming</option>
+                <option value="miscellaneous" <% if (track == "miscellaneous") { %>selected="true"<% } %>>Miscellaneous</option>
+            </select>
+        </div>
+    </header>
+    <section class="leaderboard pull-left" style="width: 65%" >
+        <div class="pull-left">
+            <% if (type == 'contest') { %>
+                <h4 class="bold">Contest Ranking</h4>
+            <% } else { %>
+                <h4 class="bold">Practice Ranking</h4>
+            <% } %>
+        </div>
+        <% if (HR.profile().isLoggedIn()) { %>
+            <div class="toggle toggle-leaderboard pull-right">
+                <a title="Practice Leaderboard" rel="tooltip"><?xml version="1.0" encoding="utf-8"?>
+                <!-- Generator: Adobe Illustrator 17.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     viewBox="0 0 10 20" enable-background="new 0 0 10 20" xml:space="preserve" style="height: 30px; width: 20px; margin-bottom: -10px;">
+                    <g>
+                        <polygon fill="#F4F6F9" points="5.1,16.6 7.1,18.6 7.1,7.4 5.1,7.4 4.9,7.4 2.9,7.4 2.9,18.6 4.9,16.6     "/>
+                        <g>
+                            <polyline fill="none" stroke="#6C6F75" stroke-miterlimit="10" points="6.8,18.2 7.1,18.6 7.1,18.1        "/>
+
+                                <line fill="none" stroke="#6C6F75" stroke-miterlimit="10" stroke-dasharray="0.9249,0.9249" x1="7.1" y1="17.2" x2="7.1" y2="8.4"/>
+                            <polyline fill="none" stroke="#6C6F75" stroke-miterlimit="10" points="7.1,7.9 7.1,7.4 6.6,7.4       "/>
+                            <polyline fill="none" stroke="#6C6F75" stroke-miterlimit="10" stroke-dasharray="1.0764,1.0764" points="5.5,7.4 5.1,7.4
+                                4.9,7.4 3.9,7.4         "/>
+                            <polyline fill="none" stroke="#6C6F75" stroke-miterlimit="10" points="3.4,7.4 2.9,7.4 2.9,7.9       "/>
+
+                                <line fill="none" stroke="#6C6F75" stroke-miterlimit="10" stroke-dasharray="0.9249,0.9249" x1="2.9" y1="8.8" x2="2.9" y2="17.6"/>
+                            <polyline fill="none" stroke="#6C6F75" stroke-miterlimit="10" points="2.9,18.1 2.9,18.6 3.3,18.2        "/>
+
+                                <line fill="none" stroke="#6C6F75" stroke-miterlimit="10" stroke-dasharray="0.602,0.602" x1="3.7" y1="17.8" x2="4.3" y2="17.2"/>
+                            <polyline fill="none" stroke="#6C6F75" stroke-miterlimit="10" points="4.5,17 4.9,16.6 5.1,16.6 5.3,16.8         "/>
+                            <line fill="none" stroke="#6C6F75" stroke-miterlimit="10" stroke-dasharray="0.689,0.689" x1="5.8" y1="17.3" x2="6.5" y2="18"/>
+                        </g>
+                    </g>
+                    <circle fill="#F4F6F9" stroke="#6C6F75" stroke-miterlimit="10" stroke-dasharray="1" cx="5" cy="5.1" r="4.3"/>
+                </svg></a>
+
+                <div class="inline">
+                    <input class="leaderboard-option js-switch" type="checkbox" <% if (type == 'contest') { %>checked="checked"<% } %>>
+                </div>
+
+                <a title="Contest Leaderboard" rel="tooltip"><?xml version="1.0" encoding="utf-8"?>
+                <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     viewBox="0 0 10 20" enable-background="new 0 0 10 20" xml:space="preserve" style="height: 30px; width: 20px; margin-bottom: -10px;">
+                     <polygon fill="#F65039" stroke="#D14233" stroke-miterlimit="10" points="5.1,16.6 7.1,18.6 7.1,7.4 5.1,7.4 4.9,7.4 2.9,7.4
+                        2.9,18.6 4.9,16.6 "/>
+                     <circle fill="#F4D647" stroke="#EFBE25" stroke-miterlimit="10" cx="5" cy="5.1" r="4.3"/>
+                </svg></a>
+
+            </div>
+        <% } else { %>
+            <!-- Empty state goes here -->
+        <% } %>
+
+        <div class="clearfix table-wrap">
+            <% if (type == 'contest') { %>
+                <ul class="nav-tabs nav ungroup" style="margin-bottom: 1px">
+                    <li class="<% if (level == 1) { %>active<% } %> text-center levelTab"><a href="" data-toggle="tab" data-level="1" class="rg_1 js-leaderboard-tab">O(1)</a></li>
+                    <li class="<% if (level == 2) { %>active<% } %> text-center levelTab"><a href="" data-toggle="tab" data-level="2" class="rg_2 js-leaderboard-tab">O(logN)</a></li>
+                    <li class="<% if (level == 3) { %>active<% } %> text-center levelTab"><a href="" data-toggle="tab" data-level="3" class="rg_3 js-leaderboard-tab">O(N)</a></li>
+                    <li class="<% if (level == 4) { %>active<% } %> text-center levelTab"><a href="" data-toggle="tab" data-level="4" class="rg_4 js-leaderboard-tab">O(N<sup>2</sup>)</a></li>
+                    <li class="<% if (level == 5) { %>active<% } %> text-center levelTab"><a href="" data-toggle="tab" data-level="5" class="rg_5 js-leaderboard-tab">O(2<sup>N</sup>)</a></li>
+                </ul>
+            <% } else { %>
+                <ul class="nav-tabs nav ungroup" style="margin-bottom: 1px"></ul>
+            <% } %>
+            <header style="background: white">
+                <div class="span-flex-2 text-center">
+                    <p>Rank</p>
+                </div>
+                <div class="span-flex-8">
+                    <p>Hacker</p>
+                </div>
+                <div class="span-flex-3">
+                    <p>Score</p>
+                </div>
+                <div class="span-flex-3 text-center">
+                    <p>Country</p>
+                </div>
+            </header>
+
+            <div id="blank-reason-container" class="table-body text-center">
+                <div class="row">
+                    <p class="emptyState_container blank-reason mlA"></p>
+                </div>
+            </div>
+
+            <div class='tab-content'>
+                <div class='tab-pane active'>
+                    <div id="leaders" class="table-body">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="msT">
+            <a href="/scoring/ratings" target="_blank" class="small">How is this calculated?</a>
+        </p>
+
+        <div class="pagination-wrap clearfix pagination-wrapper mlB msT">
+        </div>
+    </section>
+    <section class="leaderboard-sidebar pull-right" style="width: 30%;">
+        <% if (scores.length > 0) { %>
+            <!-- Render current track -->
+            <% _.each(scores, function(score) {
+                if (score.slug == track) { %>
+                    <div class="callout callout-rounded text-center mlB">
+                        <header class="calloutBody">
+                            <small class="zeta bold"><%= score.name %> Rating</small>
+                            <h4 class="color-blue bold mmT"><%= level_to_title[score.contest.level - 1] %></h4>
+                        </header>
+                        <div class="calloutFooter">
+                            <div class="row">
+                                <div class="span-flex-8 calloutFooter-group">
+                                    <small class="zeta bold">Contest Score</small>
+                                    <p class="bold"><%= score.contest.score.toFixed(2) %></p>
+                                </div>
+                                <div class="span-flex-8 calloutFooter-group">
+                                    <small class="zeta bold">Practice Score</small>
+                                    <p class="bold"><%= score.practice.score.toFixed(2) %></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            <%  }
+            }) %>
+            <!-- Note the class of "listItem" on the li element. If you add a view-wrapping div here, make sure that it has this class instead. The ".listItem" must be an immediate child of the ul -->
+            <ul class="listGroup listBound listSelectable list-group-Leaderboard">
+                <% _.each(scores, function(score) {
+                    if (score.slug != track) { %>
+                        <li class="listGroup-item leaderboardTrack-AI">
+                            <i class="listGroup-icon leaderboardTrack-icon"><%= score.short %></i>
+                            <h5 class=""><%= score.name %></h5>
+                            <ul class="leaderboardTrack-meta inline lines small zeta bold">
+                                <li>Rank: <%= score.contest.rank %></li>
+                                <li>Score: <%= score.contest.score.toFixed(2) %></li>
+                                <li>Rating: <%= level_to_title[score.contest.level - 1] %></li>
+                            </ul>
+                        </li>
+                <%  }
+                }) %>
+            </ul>
+        <% } else if (HR.profile().isLoggedIn()) { %>
+            <%= HR.appController.viewLoader(64) %>
+        <% } %>
+    </section>
+</div>

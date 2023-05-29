@@ -1,0 +1,23 @@
+<div class="light-wrap span8 track_card">
+    <div class="body padded">
+        <header class="track_card-header">
+            <h3 class="beta"><%= model.name %></h3>
+            <p class="track_card-meta"><%= model.dynamic.challenges_count %> challenges &bull; <%= model.dynamic.submissions_count %> submissions</p>
+        </header>
+        <p class="track_card-description"><%= model.descriptions %></p>
+        <p class="text-center margin-large top bottom"><a href="/tracks/<%=model.slug%>" class="btn track_card-button backbone">View Challenges</a></p>
+    </div>
+    <footer class="padded track_card-footer">
+        <div class="row">
+            <div class="span8 track_progress pull-left">
+                <div style="height:10px; width:90%; background: #dfe0e1; border-radius: 25px; margin-top: 8px;">
+                    <div style="height:10px; width: <%=parseFloat(model.hacker_progress.solved_challenges.length) * 100 / parseFloat(model.dynamic.challenges_count)%>%; background: #979FAF; border-radius: 25px;">
+                    </div>
+                </div>
+                <p class="margin-mini top">
+                    <small class="aside alpha margin-mini top">Your progress</small>
+                    <!--<small class="track_percentage">75%</small>-->
+                </p>
+            </div>
+    </footer>
+</div>

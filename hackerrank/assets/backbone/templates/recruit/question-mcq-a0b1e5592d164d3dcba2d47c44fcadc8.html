@@ -1,0 +1,20 @@
+<% if (question.type == "mcq") { %>
+<h5 class="psB msT">PICK ONE OF THE CHOICES</h5>
+<% } else { %>
+<h5 class="psB msT">PICK THE CORRECT CHOICES</h5>
+<% } %>
+<ul class="mcq-question-choices">
+  <% if (question.type == "mcq") { %>
+    <% i=0;_.each(question.options, function(o){ i++; %>
+     <li><input type="radio" name="mcqopts" id="mcqopts<%=i%>" value="<%=i%>"/><label for="mcqopts<%=i%>"><%=o%></label></li>
+    <% }); %>
+  <% } else { %>
+    <% i=0;_.each(question.options, function(o){ i++; %>
+     <li><input type="checkbox" name="mcqopts" id="mcqopts<%=i%>" value="<%=i%>"/><label for="mcqopts<%=i%>"><%=o%></label></li>
+    <% }); %>
+  <% } %>
+  <a href="#" class="clearall">Clear selection</a>
+  <% if (question.explanation_box && question.explanation_box == "true") { %>
+  <label for="explanation">Explanation</label><textarea id="explanation" name="explanation" rows="10" cols="80"></textarea>
+  <% } %>
+</ul>

@@ -1,0 +1,41 @@
+<section class="forum">
+    <div class="forum-new-question">
+        <form class="question-form row">
+            <p class="pull-right margin-large right"><a class="backbone btn btn-text" href="<%= HR.appController.get_current_contest_namespace() %>/challenges/<%= challenge.get('slug') %>/forum/questions"><i class="icon-left-open"></i> All Discussions</a></p>
+            <div class="span11 margin-large left">
+                <h3 class="forum-ask-title"><%= (question.id)? "Edit":"Ask a"%> Question</h3>
+                <p class=""><small id="question-error" class="error hide">Please fill in all the required (*) fields.</small></p>
+                <fieldset>
+                    <div class="control-group">
+                        <label for="question-title" class="control-label">Title</label>
+                        <div class="controls">
+                            <input type="text" id="question-title" class="" value="<%= question.get('title') %>"></input>
+                        </div>
+                    </dv>
+                    <div class="control-group">
+                        <label for="question-description" class="control-label">Question</label>
+                        <div class="controls">
+                            <textarea rows="10" class="" id="question-description"></textarea>
+                        </div>
+                    </div>
+                    <div class="control-group preview-wrap hide">
+                        <label for="question-preview" class="control-label">Preview</label>
+                        <div class="controls">
+                            <div id="question-preview" class="preview"></div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label>Tags (optional)</label>
+                        <div class="controls">
+                            <input type="text" id="question-tags" class="" value="<%= question.get('tags').join(',&nbsp;') %>">
+                        </div>
+                        <p class="small">Separate tags with a comma. Enclose tags of two or more words in quotations.</p>
+                    </div>
+               </div>
+               <div class="span4 pull-right">
+                   <p class="padding-large right"><a href='#' class='ask-question btn btn-green btn-large pull-right' data-analytics="Question Form" ><%= (question.id)? "Update":"Ask"%> Question</a></p>
+               </div>
+            </fieldset>
+        </form>
+    </div>
+</section>

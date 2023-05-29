@@ -1,0 +1,136 @@
+<% if (model.status > 0) { %>
+    <% if (model.result == 0) { %>
+    <ul class='nav-tabs ungroup'>
+        <% if (model.customtestcase) { %>
+            <% if (model.signal[0] == 0) { %>
+                <li class='active'><a href='#testcase1' data-toggle='tab'>Client<i class='icon--right icon-ok success'></i></a></li>
+            <% } else if (model.signal[0] > 0) { %>
+                <li class='active'><a href='#testcase1' data-toggle='tab'>Client<i class='icon--right icon-cancel-large error'></i></a></li>
+            <% } %>
+            <% if (model.signal_server && model.signal_server == 0) { %>
+                <li class=''><a href='#testcase_server' data-toggle='tab'>Server<i class='icon--right icon-ok success'></i></a></li>
+            <% } else { %>
+                <li class=''><a href='#testcase_server' data-toggle='tab'>Server<i class='icon--right icon-cancel-large error'></i></a></li>
+            <% } %>
+
+        <% } else {
+            _.each(model.testcase_status, function (status, index) {
+                if (status == 1) { %>
+                    <li class="<%= index == 0 ? 'active' : '' %>" ><a href='#testcase<%= index + 1 %>' data-toggle='tab'>Client <%= index %><i class='icon--right icon-ok success'></i></a></li>
+                <% } else { %>
+                    <li class="<%= index == 0 ? 'active' : '' %>"><a href='#testcase<%= index + 1 %>' data-toggle='tab'>Client <%= index %><i class='icon--right icon-cancel-large error'></i></a></li>
+                <% } %>
+            <% }); %>
+            <li class=''><a href='#testcase_server' data-toggle='tab'>Server <i class='icon--right icon-ok success'></i></a></li>
+        <% } %>
+    </ul>
+    <% } else { %>
+        <p class="status"><span class="red">Compile time error</span></p>
+    <% } %>
+
+    <% if (model.result == 0) { %>
+    <div class='tab-content light-wrap'>
+        <div class='tab-pane plA' id='testcase_server'>
+            <% if (model.signal_server && model.signal_server == 0) { %>
+                <p class='large bold'>Compilation Successful</p>
+            <% } else if ( model.signal_server && model.signal_server[0] > 0) { %>
+                <p class='large bold'>Runtime error</p>
+            <% } %>
+
+            <% if (!_.isEmpty(model.compilemessage)) { %>
+                <div class="compile-time">
+                    <div class="rotate">Compile Time</div>
+                    <p class="field-label">Compile Message</p>
+                    <% if (!_.isEmpty(model.compilemessage)) { %>
+                        <pre class="error-output"><xmp><%= model.compilemessage %></xmp></pre>
+                    <% } else { %>
+                        <p class="no-response">~ no response on stderr ~</p>
+                    <% } %>
+                    <% if (model.result > 0) { %>
+                        <p class="field-label">Exit Status</p>
+                        <pre class="error-output"><xmp><%= model.result %></xmp></pre>
+                    <% } %>
+                </div>
+            <% } %>
+
+            <div class="run-time">
+                <div class="rotate">Run Time</div>
+                <p class="field-label">Your Output</p>
+                <% if (!_.isEmpty(model.stdout_server)) { %>
+                    <pre class="error-output"><xmp><%= model.stdout_server[0] %></xmp></pre>
+                <% } else { %>
+                    <p class="no-response">~ no response on stdout ~</p>
+                <% } %>
+                <% if (!_.isEmpty(model.stderr_server)) { %>
+                   <p class="field-label">Error (stderr)</p>
+                   <pre class="error-output"><xmp><%= model.stderr_server[0] %></xmp></pre>
+                <% } %>
+            </div>
+        </div>
+
+        <% if (model.customtestcase) { %>
+            <div class='tab-pane plA active' id='testcase1'>
+                <div class="run-time">
+                    <div class="rotate">Run Time</div>
+                    <p class="field-label">Input (stdin)</p>
+                    <pre class="error-output"><xmp><%= model.stdin[0] %></xmp></pre>
+                    <p class="field-label">Your Output</p>
+                    <% if (!_.isEmpty(model.stdout[0])) { %>
+                        <pre class="error-output"><xmp><%= model.stdout[0] %></xmp></pre>
+                    <% } else { %>
+                        <p class="no-response">~ no response on stdout ~</p>
+                    <% } %>
+                    <% if (!_.isEmpty(model.stderr[0])) { %>
+                       <p class="field-label">Error</p>
+                       <pre class="error-output"><xmp><%= model.stderr[0] %></xmp></pre>
+                    <% } %>
+                </div>
+            </div>
+        <% } else { %>
+            <% _.each(model.testcase_status, function(status, index) { %>
+            <div class='tab-pane plA <%= index == 0 ? 'active' : '' %>' id='testcase<%= index + 1 %>'>
+                <% if (status == 1) { %>
+                    <p class='large bold'>Congratulations, you passed this test case!</p>
+                <% } else { %>
+                    <p class='large bold'>Nice try, but you did not pass this test case.</p>
+                <% } %>
+
+                <% if (_.isNumber(model.score)) { %>
+                    <p class="title">Score: <%= model.score %></p>
+                <% } %>
+
+                <div class='run-time'>
+                    <div class="rotate">Run Time</div>
+                    <p class='field-label'>Input (stdin)</p>
+                    <pre class='error-output'><xmp><%= model.stdin[index] %></xmp></pre>
+
+                    <p class="field-label">Your Output (stdout)</p>
+                    <% if (!_.isEmpty(model.stdout[index])) { %>
+                        <pre class="error-output"><xmp><%= model.stdout[index] %></xmp></pre>
+                    <% } else { %>
+                        <h5 class="no-response msB">~ no response on stdout ~</h5>
+                    <% } %>
+
+                    <p class="field-label">Expected Output</p>
+                    <% if (!_.isEmpty(model.expected_output[index])) { %>
+                        <pre class="error-output"><xmp><%= model.expected_output[index] %></xmp></pre>
+                    <% } else { %>
+                        <p class="no-response">~ no response on stdout ~</p>
+                    <% } %>
+
+                    <% if (!_.isEmpty(model.testcase_message[index]) && model.testcase_message[index] !== 'Success' && !_.isNumber(model.score)) { %>
+                        <p class="field-label">Testcase Message</p>
+                        <pre class="error-output"><xmp><%= model.testcase_message[index] %></xmp></pre>
+                    <% } %>
+
+                    <% if (!_.isEmpty(model.stderr[index])) { %>
+                       <p class="field-label">Error (stderr)</p>
+                       <pre class="error-output"><xmp><%= model.stderr[index] %></xmp></pre>
+                    <% } %>
+                </div>
+            </div>
+            <% }); %>
+        <% } %>
+    </div>
+    <% } %>
+<% } %>

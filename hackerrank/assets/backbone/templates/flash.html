@@ -1,0 +1,22 @@
+<% _.each(models, function(flash){ %>
+<div id="success-status" class="alert notification">
+  <button class="close" data-dismiss="alert">x</button>
+  <div class="container">
+    <p>
+    <% if (flash.type === 'game-win') { %>
+      Congrats on the successful submission of the game. Enjoyed it?&emsp;
+      <% var msg = "I just beat " +  flash.list.length + " hackers in a game @hackerank " + HR.currentHost %>
+      <a href="https://twitter.com/share?url=&text=<%= msg %>" target="_blank"><img src="/assets/tweet-filler.png"/></a>
+    <% } else if (flash.type.split('-')[0] === 'forum') { %>
+      <%= flash.text %>
+      <% if (flash.list) { %>
+      By <em><%= flash.list.join(",&nbsp;") %></em>
+      <% } %>
+      &emsp;<a class="backbone btn btn-white" href="/challenges/<%= flash.data.challenge_slug %>/forum/questions/<%= flash.data.id %>">Visit Forum</a>
+    <% } else { %>
+      <%= flash.text %>
+    <% } %>
+  </p>
+  </div>
+</div>
+<% }) %>

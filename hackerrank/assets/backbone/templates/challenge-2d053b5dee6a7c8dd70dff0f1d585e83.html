@@ -1,0 +1,33 @@
+<% if (model.get('contest_slug') && model.get('contest_slug') != 'master') { %>
+<div class="page_nav-sub clearfix">
+    <div class="pull-left dropdown">
+        <a class="btn btn-text btn-small padding-small right" data-toggle="dropdown">
+            <i class="icon-cog icon--left"></i>
+        </a>
+        <div class="dropdown-menu padded" id="contestOptions">
+            <header>
+                <small class="alpha">Contest Options</small>
+            </header>
+            <div class="body">
+                <label id="slideAwayToggle">
+                    <input type="checkbox" <% if ($.cookie("hr_sidebar_visibility") === "0") { %> checked="true" <% } %> > Hide Menu
+                </label>
+            </div>
+        </div>
+    </div>
+    <input style="position: relative; top: 5px;" class="pull-left hr_contest-list">
+    <a class="btn btn-text padded padding-large left backbone hr_dynamic-challenges" href="/contests/<%= model.get('contest_slug') %>/challenges">View All Challenges <i class="icon--right icon-right-open"></i></a>
+    <div class="contest_links btn-group pull-right">
+        <a class="btn btn-text green backbone hr_dynamic-submissions" href="/contests/<%= model.get('contest_slug') %>/submissions">Review Submissions</a>
+        <a class="btn btn-text green backbone hr_dynamic-leaderboard" href="/contests/<%= model.get('contest_slug') %>/leaderboard">Contest Leaderboard</a>
+    </div>
+</div>
+<% } %>
+<div class="container--inner">
+    <div class="challenge-header">
+    </div>
+    <section class="challenge-interface">
+        <div class="challenge-body">
+        </div>
+    </section>
+</div>

@@ -1,0 +1,63 @@
+<div class="hre-sidebar closed" id="hre-sidebar">
+    <div class="sidebar-scroller bottom hidden">
+        <i class="icon-down-open-bold"></i>
+        <i class="icon-up-open-bold"></i>
+    </div>
+
+    <!-- This is the expand and collapse icon that will appear when in smaller screens -->
+    <div class="sidebar-toggle" id="sidebar-menu-icon">
+        <i class="icon-menu-large sidebar-menu-icon"></i>
+    </div>
+
+    <div class="hre-sidebar-inner">
+        <div class="mlA hre-sidebar-innerblock">
+            <!-- <p class="sidebar-nav-title"><span class="hre-sidebar-label">PERSONAL</span></p> -->
+            <ul class="hre-sidebar-list">
+            <!-- Have to check for every links which one is active -->
+                <li>
+                    <a class="js-backbone hre-sidebar-link"  href="#" >P<span class="hre-sidebar-label">ERSONAL</span></a>
+                </li>
+                <li <% if (active_nav_link == 'personal') { %>class="active"<% } %>>
+                    <a href="library/personal" class="js-backbone hre-sidebar-link">
+                    <i data-original-title="All Questions" class="icon2-questions js-tooltip" data-placement="right"></i>
+                        <span class="hre-sidebar-label">All Questions</span>
+                    </a>
+                </li>
+                <li <% if (active_nav_link == 'personal_mine') { %>class="active"<% } %>>
+                    <a href="library/personal/mine" class="js-backbone hre-sidebar-link">
+                        <i data-original-title="My Questions" class="icon-user js-tooltip" data-placement="right"></i>
+                        <span class="hre-sidebar-label">My Questions</span>
+                    </a>
+                </li>
+                <li <% if (active_nav_link == 'personal_shared') { %>class="active"<% } %>>
+                    <a href="library/personal/shared" class="js-backbone hre-sidebar-link">
+                        <i data-original-title="Shared With Me" class="icon2-sharetest js-tooltip" data-placement="right"></i>
+                        <span class="hre-sidebar-label">Shared With Me</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <span class="dark-divider"></span>
+
+        <div class="mlA hre-sidebar-innerblock">
+            <ul class="hre-sidebar-list">
+                <li>
+                    <a class="js-backbone hre-sidebar-link" href="#">H<span class="hre-sidebar-label">ACKERRANKX</span></a>
+                </li>
+                <li <% if (active_nav_link == 'hackerrank') { %>class="active"<% } %>>
+                    <a href="library/hackerrank" class="js-backbone hre-sidebar-link">
+                        <i data-original-title="All Questions" class="icon2-questions js-tooltip" data-placement="right"></i>
+                        <span class="hre-sidebar-label">All Questions</span>
+                    </a>
+                </li>
+            </ul>
+        </div><!-- end .mlA -->
+    </div>
+    <div class="hre-sidebar-bottom">
+        <div class="sidebar-button-margins">
+            <a href="#" class="btn btn-primary primary-dark btn-mid sidebar-full-btn js-backbone js-create-question"><span class="hre-sidebar-label">New Question</span></a>
+        </div>
+    </div>
+</div>
+<div id="modal-container"></div>

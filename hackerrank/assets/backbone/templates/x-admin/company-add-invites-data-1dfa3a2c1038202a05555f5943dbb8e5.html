@@ -1,0 +1,81 @@
+<div class="company-data-container">
+    <div class="msL">
+        <div class="container-header mlB bold">
+            Summary
+        </div>
+        <div class="row">
+            <div class="span2 bold">
+                ID
+            </div>
+            <div class="span12 value">
+                <%= model.id %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <div class="span2 bold">
+                Name
+            </div>
+            <div class="span12 value">
+                <%= model.name %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <div class="span2 bold">
+                Owner
+            </div>
+            <div class="span12 value">
+                <%= model.owner.firstname %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <div class="span2 bold">
+                Plan
+            </div>
+            <div class="span12 value">
+                <%= model.plan_name %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <div class="span2 bold">
+                Temporary Invites
+            </div>
+            <div class="span12 value">
+                <%= model.subscription_invites %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <div class="span2 bold">
+                Permanent invites
+            </div>
+            <div class="span12 value">
+                <%= model.invites %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="msT msB">
+        <div class="span2 msT">No. of Invites</div>
+        <input type="text" class="wide" id="invites-count">
+    </div>
+
+    <div class="msT msB">
+        <div class="span2 msT">Type</div>
+        <select class="wide" id="invites-type">
+            <option value="temporary">Temporary Invites</option>
+            <option value="permanent">Permanent Invites</option>
+        </select>
+    </div>
+
+    <div class="row no-margin plT">
+        <div class="span-xs-16 span-md-16">
+            <button type="submit" id="extend-trial" class="btn btn-primary btn-mid">Apply
+            </button>
+        </div>
+    </div>
+</div>

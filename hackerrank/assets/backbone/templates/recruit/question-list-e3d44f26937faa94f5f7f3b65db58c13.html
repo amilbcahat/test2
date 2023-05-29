@@ -1,0 +1,30 @@
+<div class="container" style="margin-top:63px;">
+	<table class="candidate-sleek-table candidate-question-list" width="100%" cell-spacing="0" cell-padding="0">
+		<thead>
+			<tr>
+				<td width="5%"></td>
+				<td width="46%" class="upper-case grey">QUESTION NAME</td>
+				<td width="12%" class="upper-case grey">TYPE</td>
+				<td width="12%" class="upper-case grey">STATUS</td>
+				<td width="19%"></td>
+			</tr>
+		</thead>
+	</table>
+    <% for(i=1; i<=section_count; i++) { %>
+	<table class="candidate-sleek-table candidate-question-list section<%=i%> <%if(i!=current_section){%>disabled<%}%>" width="100%" cell-spacing="0" cell-padding="0" >
+	</table>
+	<center>
+		<button class="btn margin-20 section-finish-<%=i%> next-section hidden" data-section="<%- i %>">Close and goto next section</button>
+		<br/>
+	</center>
+	<% } %>
+    <div style="margin-top:60px"></div><!-- Don't remove this empty div. -->
+    <div style="width:100%;background:white;margin-top:60px;" class="sticktobottom">
+	<center>
+		<button class="btn margin-20 test-done">I am done with the test</button>
+	</center>
+    </div>
+</div>
+
+
+

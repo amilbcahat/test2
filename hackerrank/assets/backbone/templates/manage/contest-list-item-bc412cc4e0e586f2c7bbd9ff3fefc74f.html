@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="span1">
+      <p><%= index %></p>
+    </div>
+    <div class="span3">
+      <p><a class="challenge-slug" target="_blank" href="/<%= model.slug %>"><%=  model.name %></a></p>
+    </div>
+    <div class="span3">
+      <p><%= status %></p>
+    </div>
+    <div class="span1">
+      <p><%= model.participation_count %></p>
+    </div>
+    <div class="span4">
+      <p style='font-size: 14px;'>
+        <% _.each(model.notifications, function(notification, index) { %>
+          <%= notification %>
+          <br/>
+        <% }) %>
+        <% if( model.notifications == null || model.notifications.length == 0 ) { %>
+            No Notifications
+        <% } %>
+      </p>
+    </div>
+    <div class="span3 pull-right">
+      <p class="btn-wrap">
+        <a href="/manage/contest/edit/<%= model.slug %>" class="btn btn-white backbone">Edit</a>
+        <a href="#" class="btn btn-white delete">Delete</a>
+      </p>
+    </div>
+</div>

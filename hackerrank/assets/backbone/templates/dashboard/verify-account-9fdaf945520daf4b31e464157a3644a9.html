@@ -1,0 +1,16 @@
+
+  <% if (_model.confirmed === false) { %>
+  <div class="gradient">
+    <div class="message text-center">
+      <p>The email address you signed up with has not been verified. You won't be ranked on the leaderboard until you verify your account.</p>
+      <% if (verification_sent_status == 2) { %>
+      <p style="font-size: 13px;" class="action-message">Verification Sent! Check your inbox. (<a class="send-verification cursor">re-send?</a>)</p>
+      <% } else if (verification_sent_status == 1) { %>
+      <p style="font-size: 13px;" class="action-message">Sending Verification...</p>
+      <% } else { %>
+      <p style="font-size: 13px;" class="action-message"><a class="send-verification btn btn-white">Re-send the verification email</a></p>
+      <% } %>
+    </div>
+    <div class="close">&times</div>
+  </div>
+  <% } %>

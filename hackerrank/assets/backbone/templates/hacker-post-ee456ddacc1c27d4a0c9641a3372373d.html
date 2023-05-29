@@ -1,0 +1,12 @@
+<% if(model.length == 0) { %>
+  <% if (hacker === HR.profile().get('username') ) { %>
+    <p class="mlB aside text-center">You have not commented on any discussions.</p>
+  <% } else { %>
+    <p class="mlB aside text-center"><%= hacker %> has not commented on any discussions.</p>
+  <% } %>
+<% } %>
+<% _.each( model , function(post,index) { %>
+    <p class="msT"><%= post.text %>
+       <span class="aside small">(<%= post.time %>)</span>
+    </p>
+<% }); %>

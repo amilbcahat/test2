@@ -1,0 +1,23 @@
+<div class="clearfix codeeditor_header" style="position: relative;">
+    <div class="btn-group codeeditor_header-buttons pull-left">
+        <a href="" class="emacs btn btn-white editor-mode-button" data-editor="emacs">Emacs</a>
+        <a href="" class="default btn btn-white editor-mode-button" data-editor="default">Normal</a>
+        <a href="" class="vim btn btn-white editor-mode-button" data-editor="vim">Vim</a>
+    </div>
+    <div class="codeeditor-right-sidebar-button pull-right" style="position: absolute; right: 1em; top: 1em; width: 60%;">
+        <div class="codeeditor-action-button pull-right">
+            <a class="cursor codeeditor_header-action toggle-theme"><i class="icon-adjust"></i></a>
+            <% if (profile.get('id')) { %>
+            <a class="cursor codeeditor_header-action codeeditor_header-save save-code"><i class="icon-floppy"></i></a>
+            <% } %>
+            <a class="fullscreen active-link codeeditor_header-action codeeditor_header-fullscreen"
+               data-analytics="Switch to fullscreen"><i class="icon-resize-full-alt"></i></a>
+            <a class="restorefullscreen force-hide active-link codeeditor_header-action codeeditor_header-fullscreenrestore">
+                <i class="icon-resize-small-alt"></i></a>
+        </div>
+        <div class="clearfix codeeditor_header-language pull-right">
+            <span class="padding-small left gray-text">Select Language:</span>
+            <span class="hr_tour-select-language"><input type="text" id="language-select"/></span>
+        </div>
+    </div>
+</div>

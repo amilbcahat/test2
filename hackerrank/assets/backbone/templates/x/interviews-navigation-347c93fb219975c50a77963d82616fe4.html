@@ -1,0 +1,30 @@
+<div class="hre-sidebar" id="hre-sidebar">
+    <div class="sidebar-scroller bottom hidden">
+        <i class="icon-down-open-bold"></i>
+        <i class="icon-up-open-bold"></i>
+    </div>
+
+    <!-- This is the expand and collapse icon that will appear when in smaller screens -->
+    <div class="showfor1024" id="sidebar-menu-icon" style="display: none">
+        <i class="icon-menu-large sidebar-menu-icon"></i>
+    </div>
+
+    <div class="mlA">
+        <p class="sidebar-nav-title"><span class="hidefor1024">INTERVIEWS</span></p>
+        <ul class="hre-sidebar-list">
+            <li <% if (!active_nav_link || active_nav_link == 'dashboard' || active_nav_link == "") { %>class="active"<% } %>><a href="/x/interviews" class="js-backbone"><i class="icon2-interviews"></i><span class="hidefor1024">Dashboard</span></a></li>
+            <li <% if (active_nav_link == 'upcoming') { %>class="active"<% } %>><a href="/x/interviews/upcoming" class="js-backbone"><i class="icon2-upcoming"></i><span class="hidefor1024">Upcoming</span></a></li>
+            <li <% if (active_nav_link == 'done') { %>class="active"<% } %>><a href="/x/interviews/done" class="js-backbone"><i class="icon-circle"></i><span class="hidefor1024">Completed</span></a></li>
+            <li <% if (active_nav_link == 'thumbsup') { %>class="active"<% } %>><a href="/x/interviews/thumbsup" class="js-backbone"><i class="icon2-thumbsup"></i><span class="hidefor1024">Thumbs Up</span></a></li>
+            <li <% if (active_nav_link == 'thumbsdown') { %>class="active"<% } %>><a href="/x/interviews/thumbsdown" class="js-backbone"><i class="icon2-thumbsdown"></i><span class="hidefor1024">Thumbs Down</span></a></li>
+            <!-- <li><a href="#"><i class="icon-calendar" style="top:-1px;"></i><span class="hidefor1024">Calendar</span></a></li> -->
+        </ul>
+        <div class="clear"></div>
+    </div>
+</div>
+
+<div class="hre-sidebar-bottom">
+    <div class="sidebar-button-margins">
+        <a href="/x/interviews/new" class="btn btn-primary btn-mid sidebar-full-btn js-backbone"><span class="hidefor1024">New Interview</span><i class="icon2-interviews"></i></a>
+    </div>
+</div>

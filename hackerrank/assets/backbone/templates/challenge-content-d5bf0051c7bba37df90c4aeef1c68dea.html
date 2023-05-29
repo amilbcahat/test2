@@ -1,0 +1,20 @@
+<% if (model.has_ended) { %> <strong> Submissions will no longer be placed on the leaderboard. You may still attempt this problem for practice. </strong><%}%>
+<% if (!model.has_started) { %> <strong> Hi Admin, this challenge is not yet open to the public. </strong><%}%>
+<div class="challenge-text light-wrap wrap">
+    <%= model.body_html %>
+    <p class="text-align-right"><a href="#" align="right" class="js-suggest-edits">Suggest Edits</a></p>
+</div>
+<div> 
+  <div class='formgroup clearfix m'>
+    <div class='alert error hide'></div>
+  </div>
+  <form id="suggestion-form" class="hide">
+    <p class="text-center"> Thanks for helping us refine this problem statement. Please address your suggestions below. </p>
+    <textarea id='suggestion' rows='10' class='span16' style="margin-top:10px"></textarea>
+    <div class='span5 access-buttons pull-right'>
+      <button class="btn btn-primary js-suggestion-save pull-right" data-analytics="Submit Suggestion" style="margin-left: 10px;">Submit Suggestion</button>
+      <button class="btn btn-white js-suggestion-cancel pull-right" data-analytics="Cancel Suggestion">Cancel</button>
+    </div>
+  </form>
+</div>
+<br>

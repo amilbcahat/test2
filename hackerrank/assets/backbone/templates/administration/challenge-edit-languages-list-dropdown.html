@@ -1,0 +1,65 @@
+<div class="cc_limits">
+    <div class="span11pct">
+        &nbsp;
+    </div>
+    <div class="span33pct">
+        <div class="timelimit-slider"></div>
+        <div class="timelimit-slider-markings">
+            <% for (i = language_data.min_time, ctr = 0; i <= language_data.max_time; i++, ctr++) { %>
+              <span class="slider-marking-step" style="
+                left: <%= (100.0/(time_period - 1))*ctr %>%;
+                margin-left: -0.<% if (i > 9) { %>4<% } else { %>2<%}%>em;
+                <% if (time_period > 16 && ctr % 2 == 1) { %>display: none;<% } %>;
+                ">
+                <%= i %>
+              </span>
+            <% } %>
+        </div>
+    </div>
+    <div class="span3pct">
+        &nbsp;
+    </div>
+    <div class="span33pct">
+        <div class="memlimit-slider"></div>
+        <div class="memlimit-slider-markings">
+            <% for (i = language_data.min_mem, ctr = 0; i <= language_data.max_mem; i++, ctr++) { %>
+              <% if ((ctr % 50 == 0 && ctr != parseInt((mem_period / 50))*50)|| i == language_data.max_mem) { %>
+                <span class="slider-marking-step" style="
+                  left: <%= (100.0/(mem_period - 1))*ctr %>%;
+                  margin-left: -0.<% if (i > 9) { %>4<% } else { %>2<%}%>em;
+                  ">
+                  <%= i %>
+                </span>
+              <% } %>
+            <% } %>
+        </div>
+    </div>
+    <div class="span3pct">
+        &nbsp;
+    </div>
+    <div class="clearfix"></div>
+</div>
+<p><b>Code Editor Templates</b><p>
+<div class="template-edit">
+    <textarea class="template_head"></textarea>
+    <div class="cm-label template_head">
+        <div class="cm-label-text">
+            Head
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <textarea class="template_body"></textarea>
+     <div class="cm-label template_body">
+         <div class="cm-label-text">
+             Body
+         </div>
+     </div>
+     <div class="clearfix"></div>
+     <textarea class="template_tail"></textarea>
+     <div class="cm-label template_tail">
+         <div class="cm-label-text">
+             Tail
+         </div>
+     </div>
+     <div class="clearfix"></div>
+</div>

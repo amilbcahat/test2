@@ -1,0 +1,58 @@
+
+  <div class="row block-center">
+    <div class="span11" style="min-height:120px;">
+        <p>
+          <h3><%- model.name %></h3>
+          <hr/>
+          <%= model.preview %>
+        </p>
+    </div>
+    <div class="span3 pull-right light-wrap text-center">
+        <h6>Challenge Rank</h3>
+        <h1><%= model.rank %></h1>
+        <h5><strong>Score: </strong><%= Math.round(model.score*100)/100 %></h5>
+    </div>
+  </div>
+  <div class="span14 block-center">
+    <ul class="nav nav-tabs">
+      <% for(index= model.submissions.length-1; index >= 0; index--) { %>
+        <% submission = model.submissions[index] %>
+        <% if(index > model.submissions.length-11 ) { %>
+          <li class="<%= index == 0 ? "active" : "" %>">
+            <a href="#submission-<%= submission.id %>" data-index="<%=index %>" data-toggle="tab">#<%= index+1 %></a>
+          </li>
+        <% } %>
+      <% } %>
+      <% if (model.submissions.length > 10) { %>
+        <li class="dropdown">
+          <a class="dropdown-toggle"
+             data-toggle="dropdown"
+             href="#">
+              More
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu" style="margin:0px; max-height:200px; overflow:auto; min-width:75px;">
+              <% for(index= model.submissions.length-1; index >= 0; index--) {
+                    submission = model.submissions[index]; %>
+                <% if(index <= model.submissions.length-11) { %>
+                  <li>
+                    <a href="#submission-<%= submission.id %>" data-index="<%=index %>" data-toggle="tab">#<%= index+1 %></a>
+                  </li>
+                <% } %>
+              <% } %>
+          </ul>
+        </li>
+      <% } %>
+    </ul>
+    <div class="span14 block-center tab-content" style="border-left: 1px solid #EEE; border-right: 1px solid #DDD; border-bottom: 1px solid #DDD; ">
+      <div class="row block-center" style="background-color:#DDD">
+        <div class="span3" id="language">
+          <strong><h5>PHP</h5></strong>
+        </div>
+        <div class="span4 pull-right" id="time_ago">
+          <h5>    </h5>
+        </div>
+      </div>
+      <textarea id="hacker_code"></textarea>
+    </div>
+  </div>

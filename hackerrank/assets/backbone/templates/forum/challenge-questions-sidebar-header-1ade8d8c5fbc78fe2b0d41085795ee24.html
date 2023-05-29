@@ -1,0 +1,4 @@
+<p class="text-center"><a class="btn btn-primary backbone head-btn btn-large" data-analytics="Ask Question" <% if (!profile.isLoggedIn()) { %>disabled="disabled" class="cursor" href="" <% } else { %> href="<%= HR.appController.get_contest_namespace() %>/challenges/<%= challenge.get('slug') %>/forum/questions/ask" <% } %> >Ask a New Question</a></p>
+<% if (!profile.isLoggedIn()) { %>
+    <p class="gray-text">You have to be loggedin in order to ask a question</p>
+<% } %>

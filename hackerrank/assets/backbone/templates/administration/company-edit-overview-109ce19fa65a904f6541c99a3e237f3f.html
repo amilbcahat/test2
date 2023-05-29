@@ -1,0 +1,26 @@
+<p class="aside block-margin margin-large">This is the basic information
+    that describes a company.</p>
+
+<div class="formgroup horizontal row">
+    <label for="name" class="pull-left span3">Company Name</label>
+    <div class="block span12 profile-input">
+        <input id="name" type="text" class="span12 auto-save"/>
+        <small class="error name span12"></small>
+    </div>
+</div>
+
+<div class="formgroup horizontal row">
+    <label for="website" class="pull-left span3">Company Website</label>
+    <div class="block span12 profile-input">
+        <input id="website" type="text" class="span12 auto-save"/>
+        <small class="error name span12"></small>
+    </div>
+</div>
+
+<div class="formgroup horizontal row">
+    <label for="pitch" class="pull-left span3">Company Pitch</label>
+    <div class="block span12 profile-input pull-left">
+        <textarea id="pitch" rows="6" class="pitch span12 auto-save"></textarea>
+        <small class="span12 pitch pull-left sub-help">Characters left: <%= model.max_limit.pitch %></small>
+    </div>
+</div>

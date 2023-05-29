@@ -1,0 +1,72 @@
+<style>
+    .ball-container
+    {
+        width:60px;
+        height:60px;
+        margin:10px 50px;
+        background-size: 60px 60px !important;
+        display: inline-block;
+    }
+    .ball1
+    {
+        background: url(assets/games/ball_black.png);
+    }
+    .ball2
+    {
+        background: url(assets/games/ball_red.png);
+    }
+    .ball3
+    {
+        background: url(assets/games/ball_blue.png);
+    }
+    .ball4
+    {
+        background: url(assets/games/ball_green.png);
+    }
+    .ball5
+    {
+        background: url(assets/games/ball_brown.png);
+    }
+    .oracle-computer
+    {
+        background: url(assets/games/oracle.png);
+        background-size: 150px 180px;
+        width:150px;
+        height:180px;
+        position: relative;
+    }
+    .oracle-text
+    {
+        position: absolute;
+        top:10px;
+        right:10px;
+        width:82px;
+        height:50px;
+    }
+</style>
+<div>
+    <div class="game-grid" style="display: block; margin: 20px auto; border-radius: 10px;">
+        <div class="span6 block-center row">
+            <div class="span3 text-center" style="margin-top:20px">
+                <div class="ball-container first">
+
+                </div>
+                <div class="ball-container second">
+
+                </div>
+            </div>
+            <div class="span3">
+                <div class="oracle-computer">
+                    <div class="oracle-text text-center">
+                        <h2>Yes</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="span6 block-center row text-center">
+            <div class="oracle-lied hide">
+                <h3>Oracle Lied</h3>
+            </div>
+        </div>
+    </div>
+</div>

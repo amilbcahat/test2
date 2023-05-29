@@ -1,0 +1,57 @@
+<style>
+  #graph-grid {
+    margin: 20px auto;
+    border: 1px solid #666;
+    background: #fff;
+  }
+
+  .graph-row {
+    background-color: none;
+    border: none;
+  }
+
+  .graph-col {
+    width: 22px;
+    height: 22px;
+    padding: 0px;
+    background-color: none;
+  }
+
+  .grass1 { background: url('assets/games/snake/grass1.jpg'); }
+  .grass2 { background: url('assets/games/snake/grass2.jpg'); }
+  .grass3 { background: url('assets/games/snake/grass3.jpg'); }
+  .grass4 { background: url('assets/games/snake/grass4.jpg'); }
+
+
+  .snake1 { background: url('assets/games/sprites-brownsnake.png') no-repeat; } 
+  .snake2 { background: url('assets/games/sprites-purplesnake.png') no-repeat; }
+
+  .snakebody-up-right, .snakebody-right-up { background-position: 0 -22px ; }
+  .snakebody-down-right, .snakebody-right-down { background-position: 0 0; }
+  .snakebody-up-left, .snakebody-left-up { background-position: -22px -22px ; }
+  .snakebody-down-left, .snakebody-left-down { background-position: -22px 0; }
+
+  .snakebody-up-down, .snakebody-down-up { background-position: -50px -22px ; }
+  .snakebody-left-right, .snakebody-right-left { background-position: -96px -46px ; }
+
+  .snakehead.down-oriented { background-position: -74px -22px ; }
+  .snakehead.up-oriented { background-position: -50px 0; }
+  .snakehead.right-oriented { background-position: -118px -46px ; }
+  .snakehead.left-oriented { background-position: -100px 0; }
+
+  .snaketail.up-oriented { background-position: -50px -44px ; }
+  .snaketail.down-oriented { background-position: -74px 0; }
+  .snaketail.right-oriented { background-position: -74px -46px ; }
+  .snaketail.left-oriented { background-position: -122px 0; }
+
+  .tadpole.right-oriented { background-position: -151px 0 !important; }
+  .tadpole.left-oriented { background-position: -176px 0 !important; }
+  .tadpole.up-oriented { background-position: -151px -26px !important; }
+  .tadpole.down-oriented { background-position: -176px -26px !important; }
+
+  .food { background: url('assets/games/snake/egg.jpg'); }
+</style>
+<div>
+    <div class="grid-placeholder" style="display: block; margin: auto; border-radius: 10px;">
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="modal modal-large" id="share-pad-modal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        Share Pad
+    </div>
+    <form class="share-pad-form" name="share-pad-form">
+        <div class="modal-body">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="txtbox_holder">
+                        <div class="txtbox_text">Enter Email Address</div>
+                        <input placeholder="enter email" type="text" name="email" class="txt_box input-large" value="">
+                    </div>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="txtbox_holder">
+                        <div class="txtbox_text">Subject</div>
+                        <input placeholder="enter subject" type="text" name="subject" class="txt_box input-large" value="Interview scheduled">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="txtbox_holder">
+                        <div class="txtbox_text">Email Content (optional)</div>
+                        <div class="txtbox_text">
+                            Note: Interviewers will need an access code to authenticate themselves. The access code for this pad is <%- model.access_code %>. Be sure to include the code in the email if you are sending this to an interviewer
+                        </div>
+                        <textarea class="editor_width texteditor" name="email-content" id="email-content">
+                            Hi,<br/><br/>
+                            I have created a CodePair interview pad for you. CodePair from HackerRank is a real-time shared programming environment we use for technical phone screens.<br/><br/>
+                            Join the CodePair interview pad by following this link: <a href="<%= model.interviewer_url %>"><%= model.interviewer_url %></a>
+                        </textarea>
+                    </div>
+                </div>
+            </div><!-- end .row-fluid -->
+
+            <div class="clear_float"></div>
+
+        </div><!-- end .modal-body -->
+        <div class="modal-footer">
+            <a href="javascript:void(0)" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+            <button type="submit" class="modal-button btn btn-primary" data-loading-text="Saving...">Send Email</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,24 @@
+<p style="padding-top: 10px;"><strong>Positions</strong></p>
+<ul style="list-style: none;">
+  <% _.each(model.positions, function(position) { %>
+    <% var _position = _.first(_.select(meta_model.company_positions, function(pos) { return pos.id == position})) %>
+    <li>
+      <p>&#10004; <%= _position.name %></p>
+    </li>
+  <% }); %>
+</ul>
+<p style="padding-top: 10px;"><strong>Offices</strong></p>
+<ul style="list-style: none;">
+  <% _.each(model.offices, function(visa_status, office) { %>
+    <% var _office = _.first(_.select(meta_model.company_offices, function(off) { return off.id == office})) %>
+    <li>
+      <p>&#10004;
+        <% if (_office.city && _office.city.name) { %><%= _office.city.name %>,<% } %>
+        <% if (_office.country && _office.city.name) { %><%= _office.country.name %><% } %>
+        <span style="font-size: 12px;">(<strong>VISA Status:</strong> <em><%= visa_statuses[visa_status]%></em>)</span></p>
+    </li>
+  <% }); %>
+</ul>
+<p style="padding-top: 10px;"><strong>Role:</strong> <%= _.capitalize(model.role) %></p>
+<p class="m" style="font-weight: bold; font-size: 14px; border: 2px solid #aaa; margin-top:10px;">
+  Please review your application. Once you confirm, you can't withdraw it.</p>

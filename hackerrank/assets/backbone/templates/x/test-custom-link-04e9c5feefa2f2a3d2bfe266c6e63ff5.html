@@ -1,0 +1,63 @@
+<div class="mjA">
+    <label class="label-title-underline">
+        CREATE CUSTOM LINK
+    </label>
+    <div class="row no-margin">
+        <div class="span-xs-16 span-md-8 no-padding">
+            <label>Short test URL</label>
+            <p class="txt-alt-grey">This link is generally shared with candidates. A password will be needed if you take the test using this link.</p>
+
+            <form name="short-test-url-form">
+                <div class="inline-block span8 no-padding mdT">
+                    http://istest.co/
+                    <div class="input-btn-group display-inline mdT" style="position:relative; top:5px;">
+                        <input type="text" placeholder="custom url" name="short-test-url">
+                        <button type="submit" class="btn btn-primary">Create link</a>
+                    </div>
+                </div>
+            </form>
+
+            <div class="short-url-validation-error hidden">
+                <div class="clear"></div>
+                <div class="error"></div>
+            </div>
+
+            <div class="clear"></div>
+            <% if (model.short_login_url) { %>
+            <div class="mdT test-custom-link-wrap">
+                <div class="cust_link_bg" id="current_short_pass">
+                    Current Test Link: &nbsp;&nbsp; <span id="current_short_login_url"><a href="<%- model.short_login_url %>" target="_blank"><%- model.short_login_url %></a></span>
+                </div>
+            </div>
+            <% } %>
+        </div>
+        <div class="span-xs-16 span-md-8">
+            <label>Public test URL (no password required)</label>
+            <p class="txt-alt-grey">This link is generally shared with test admins/recruiters. A password is <strong>NOT</strong> needed if you take the test using this link.</p>
+
+            <form name="public-test-url-form">
+                <div class="inline-block span8 no-padding  mdT">
+                    http://istest.co/
+                    <div class="input-btn-group display-inline mdT" style="position:relative; top:5px;">
+                        <input type="text" class="" placeholder="custom url" name="public-test-url">
+                        <button type="submit" class="btn btn-primary">Create link</a>
+                    </div>
+                </div>
+            </form>
+
+            <div class="public-url-validation-error hidden">
+                <div class="clear"></div>
+                <div class="error"></div>
+            </div>
+
+            <div class="clear"></div>
+            <% if (model.short_url) { %>
+            <div class="mdT test-custom-link-wrap">
+                <div class="cust_link_bg" id="current_short_pass">
+                    Current Test Link: &nbsp;&nbsp; <span id="current_short_login_url"><a href="<%- model.short_url %>" target="_blank"><%- model.short_url %></a></span>
+                </div>
+            </div>
+            <% } %>
+        </div>
+    </div><!-- end .row -->
+</div><!-- end mjA -->

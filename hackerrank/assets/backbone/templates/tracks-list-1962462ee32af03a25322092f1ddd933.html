@@ -1,0 +1,26 @@
+<div class="span5 shift content--card">
+    <header class="content--card_header">
+        <h4 class="track_card-title"><a href="/tracks/<%=model.slug%>"><%= model.name %></a></h4>
+        <p class="meta"><%= model.dynamic_data.challenges_count %> challenges &bull; <%= model.dynamic_data.submissions_count %> submissions</p>
+    </header>
+    <p class="content--card_body height3"><%= model.descriptions %></p>
+    <p class="text-center content--card_btnwrap"><a href="/tracks/<%=model.slug%>" class="btn btn-inverse backbone">View Challenges</a></p>
+    <footer class="content--card_footer plR">
+        <% if (model.hacker_progress) { %>
+        <div class="clearfix">
+            <div class="pull-left span4 psL">
+                <div class="progress-wrap" style="">
+                    <div class="progress-wrap--green" style="width: <%=parseFloat(model.hacker_progress.solved_challenges.length) * 100 / parseFloat(model.dynamic_data.challenges_count)%>%; ">
+                    </div>
+                </div>
+                <p class="margin-mini top">
+                    <small class="aside alpha margin-mini top">Your progress</small>
+                </p>
+            </div>
+            <div class="track_percentage pull-right">
+                <%=(parseFloat(model.hacker_progress.solved_challenges.length) * 100 / parseFloat(model.dynamic_data.challenges_count)).toFixed(1)%>%
+            </div>
+        </div>
+        <% } %>
+    </footer>
+</div>

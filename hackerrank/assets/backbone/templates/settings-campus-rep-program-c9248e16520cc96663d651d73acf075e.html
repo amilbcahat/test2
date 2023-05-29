@@ -1,0 +1,29 @@
+<div class="padded settings_content-pane">
+  <div class="settings_content-group">
+    <h3>University Partner Stats</h3>
+    <p class="aside msT mlB">University Partner Referral Statistics </p>
+    <% _.each(referrals, function (referral) { %>
+    <h4><%= referral.contest.name %></h4>
+    <% ref_url = document.location.protocol + '//' + document.location.host + '/' + referral.contest.slug + '?crp=' + referral.campus_rep.rep_code %>
+    <p>Referral URL: <a href='<%= ref_url %>' target='_blank'><%= ref_url %></a></p>
+    <div class="formgroup horizontal">
+      <label for="name" class="span4">Total Referrals: <span class="help-prompt"><i class="icon-help-circled icon-single"></i><span class="help-text">Total referrals made for this contest</span></span></label>
+      <div class="block span8"><p class="like-label-like-p"><%= referral.total %></p></div>
+    </div>
+    <div class="formgroup horizontal">
+      <label for="name" class="span4">Verified Referrals: <span class="help-prompt"><i class="icon-help-circled icon-single"></i><span class="help-text">Referrals which verfied their accounts</span></span></label>
+      <div class="block span8"><p class="like-label-like-p"><%= referral.confirmed %></p></div>
+    </div>
+    <div class="formgroup horizontal">
+      <label for="name" class="span4">University Referrals: <span class="help-prompt"><i class="icon-help-circled icon-single"></i><span class="help-text">Verfied accounts with university email addresses</span></span></label>
+      <div class="block span8"><p class="like-label-like-p"><%= referral.academic %></p></div>
+    </div>
+    <div class="formgroup horizontal">
+      <label for="name" class="span4">Last updated at:</label>
+      <% var d = (new Date(0)) %>
+      <% d.setUTCSeconds(referral.last_updated_at) %>
+      <div class="block span8"><p class="like-label-like-p"><%= $.format.date(d, 'dd-MM-yyyy HH:mm') %></p></div>
+    </div>
+    <% }); %>
+  </div>
+</div>

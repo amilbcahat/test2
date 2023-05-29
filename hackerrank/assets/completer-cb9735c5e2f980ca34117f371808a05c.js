@@ -1,0 +1,1 @@
+(function(a){a.fn.completer=function(b,c){var d=this;c=a.extend({source:function(c,d){a.getJSON("/autocomplete",{fq:"cat:"+b,q:d+"*"},function(a){c.process(_.map(a.models,function(a){return a.name}))})},matcher:function(a){return!0}},c),this.typeahead(c)}})(jQuery)

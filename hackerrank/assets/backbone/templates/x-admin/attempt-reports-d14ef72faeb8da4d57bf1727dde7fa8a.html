@@ -1,0 +1,35 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL">Attempts Report Generation Tool</h3>
+</div>
+
+<div class="overflow-content" id="control-overflow">
+    <form id="attempts-report-form" class="mjA">
+        <div class="msT msB">
+            <div class="span2">Search By :</div>
+            <div class="search-radio-grp">
+                <label class="span1">
+                    <input id="search-fields-id" name="search-field" type="radio" value="id" <% if(searchBy == 'id') { %> checked='checked' <% } %>/>ID
+                </label>
+                <label class="span1">
+                    <input id="search-fields-name" name="search-field" type="radio"
+                           value="name" <% if(searchBy == 'name') { %> checked='checked' <% } %> />Name
+                </label>
+                <label class="span5">
+                    <input id="search-fields-email" name="search-field" type="radio" value="email" <% if(searchBy == 'email') { %> checked='checked' <% } %>/>Email
+                </label>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <div class="msT msB">
+            <div class="span2 msT">Company: </div>
+            <input type="hidden" class="wide" id="company-select2">
+        </div>
+
+        <div class="company-action-section"></div>
+
+        <div class="report-link-section mlT">
+            <a href="" target="_blank" id="link-box" class="hidden"></a>
+        </div>
+    </form>
+</div>

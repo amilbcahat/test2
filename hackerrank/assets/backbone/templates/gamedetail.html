@@ -1,0 +1,16 @@
+<div class="container--inner">
+<header class="clearfix page-title">
+	<h1>
+		Game Details of Game # <%= model.id %>
+	</h1>
+
+  <p>
+    <ul>
+      <li>Score Status: <%= score_process_flag%></li>
+      <li>Process Flag: <%= process_flag%></li>
+      <li>Score: <%= model.get('score')%></li>
+      <li>Result: <%= model.get('result')%></li>
+    </ul>
+  </p>
+</header>
+

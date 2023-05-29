@@ -1,0 +1,28 @@
+<div id="detailed-results" class="mjT">
+    <% if(fromTime && toTime) { %>
+    <h2>Companies data(<%= fromTime %> - <%= toTime %>)</h2>
+
+    <div class="table-container">
+        <table cellpadding="0" cellspacing="0" border="0" class="trial-data-table table dt-sleektable">
+            <thead>
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Email</td>
+                <td>Creation Time</td>
+            </tr>
+            </thead>
+            <tbody>
+            <% _.each(data, function(company) { %>
+            <tr class="clickable company" data-company-id="<%= company.id %>">
+                <td><%= company.id %></td>
+                <td><%= company.name %></td>
+                <td><%= company.email %></td>
+                <td><%= company.created_at %></td>
+            </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    </div>
+    <% } %>
+</div>

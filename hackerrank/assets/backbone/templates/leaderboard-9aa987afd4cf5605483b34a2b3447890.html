@@ -1,0 +1,123 @@
+<% if(challenge) { %>
+<header class="page-title grey-header">
+<div class="container clearfix">
+  <div class="breadcrumbs"></div>
+  <h1 class="pull-left"><%= collection.challenge.get('name') %></h1>
+</div>
+<ul class="nav-tabs nav container">
+  <li><a class="hr-problem-link backbone" href="<%= challengePageURL %>"> Problem</a></li>
+  <li><a class="hr-submissions-link backbone" href="<%= challengePageURL %>/submissions"><i class="icon-list-bullet-small"></i> Submissions</a></li>
+  <li class="active"><a class="hr-leaderboard-link backbone" href="<%= challengePageURL %>/leaderboard"><i class="icon-trophy"></i> Leaderboard</a></li>
+  <li><a class="hr-forum-link backbone" href="<%= challengePageURL %>/forum/questions"><i class="icon-comment"></i> Discussions</a></li>
+</ul>
+<div class="clearfix"></div>
+</header>
+<% } else { %>
+    <header class="page-title container">
+        <div class="breadcrumbs">
+        </div>
+        <div class="clearfix"></div>
+        <div class="">
+            <h1 class="span6">Leaderboard</h1>
+        </div>
+    </header>
+<% } %>
+
+<section class="leaderboard container">
+  <div class="row">
+    <div class="span10 pull-right">
+      <% if (!(contest.kind !== undefined && contest.kind !== null && contest.kind == "acm")) { %>
+      <div class="leaderboard_filters group-filters pull-right margin-small top">
+        <% _.each(filterButtons, function(data, key) { %>
+        <a data-filter="<%= key %>" class="cursor <%= data['class'] || key %> leaderboard-sort backbone <%= filters[key] ? 'active' : '' %> filter-checkbox"><i class="status-indicator"></i>&ensp;<%= key %></a>
+        <% }) %>
+      </div>
+      <% } %>
+    </div>
+  </div>
+    <div class="row">
+        <div class="span16 filter-tags">
+            <!-- General Filters -->
+            <% _.each(filterKinds, function(filter) { %>
+            <div class="tag-group row <% if(!filters[filter]) { %>hide<% } %>" id="<%= filter %>-filter">
+                <div class="span14">
+                    <label class="pull-left" ><strong><%= filter.toTitleCase() %>:&emsp;</strong></label>
+                    <div class="tag-list">
+                        <% if (_.isArray(filters[filter])) { %>
+                        <% _.each(filters[filter], function(val) { %>
+                        <%= getTagElement(filter, val) %>
+                        <% })} %>
+                    </div>
+                    <div class="pull-left select-wrap large">
+                        <input class="<%= _.isEmpty(filters[filter]) ? '':'force-hide' %> filter-input" type="text" value="" data-filter='<%= filter %>' id="filter-input-<%= filter %>" placeholder="Add <%= filter %>" autocomplete="off"/>
+                    </div>
+                    <a class="btn btn-sub pull-left add-tag  <%= _.isEmpty(filters[filter]) ?'force-hide':'' %>" id="filter-show-input-<%= filter %>" data-filter='<%= filter %>'>+</a>
+                </div>
+            </div>
+            <% }) %>
+        </div><!--filter-tags-->
+    </div><!--row-->
+<div class="table-wrap" <% if (contest.leaderboard_format == "acm") { %> style="width:1100px" <% } %>>
+    <header class="text-center">
+    <% if (contest.leaderboard_format == 'acm' && collection.models[0] !== undefined && collection.models[0].get('challenges') !== undefined) { %>
+        <div class="span2">
+            <p>Rank</p>
+        </div>
+        <div class="span3">
+            <p>Team</p>
+        </div>
+        <div class="span2">
+            <p>Challenges solved</p>
+        </div>
+        <div class="span2">
+            <p>Total time</p>
+        </div>
+      <% if (collection.models.length > 0) { %>
+        <% _.times(collection.models[0].get('challenges').length, function (idx) { %>
+        <div class="span2">
+          <p><%= String.fromCharCode(65 + idx) %></p>
+        </div>
+        <% }); %>
+      <% } %>
+    <% } else { %>
+        <div class="span2">
+            <p>Rank <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span> </p>
+        </div>
+        <div class="span5">
+            <p>User <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span> </p>
+        </div>
+        <div class="span3">
+            <p>Score <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span> </p>
+        </div>
+        <% if (show_code) { %>
+        <div class="span3">
+            <p><%= (contest.leaderboard_type || "country").toProperCase() %><span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span> </p>
+        </div>
+        <!--div class="span2">
+            <p>Language <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span> </p>
+        </div-->
+        <div class="span4">
+            <p>Solution</p>
+        </div>
+        <% } else { %>
+
+        <div class="span5">
+            <p><%= (contest.leaderboard_type || "Country").toProperCase() %><span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span> </p>
+        </div>
+        <!--div class="span3">
+            <p>Language <span class="board-filter hide"><a href="" class="top caret-up caret"></a><a href="" class="bottom caret"></a></span> </p>
+        </div-->
+        <% } %>
+    <% } %>
+    </header>
+
+      <div id="leaders" class="table-body text-center">
+      </div>
+</div>
+
+<div class="light-wrap clearfix table-wrap text-center self-rank hide" id="leader-self">
+</div>
+<div class="pagination-wrap clearfix pagination-wrapper">
+</div><!--pagination-wrap-->
+<p class="gray">The leaderboard is updated every 5 minutes</p>
+</section><!--.leaderboard-->

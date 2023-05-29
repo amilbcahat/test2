@@ -1,0 +1,60 @@
+<div class="container--inner">
+    <header class="page-title">
+    <div class="clearfix">
+      <h1><%= _model.get('name') %></h1>
+    </div>
+    <ul class="nav-tabs nav">
+      <li><a class="hr-problem-link backbone" href="<%= challengePageURL %>"><i class="icon-doc-text"></i>Problem</a></li>
+      <li class="active"><a class="hr-submissions-link backbone" href="<%= challengePageURL %>/submissions"><i class="icon-list-bullet-small"></i> Submissions</a></li>
+      <li><a class="hr-forum-link backbone" href="<%= challengePageURL %>/forum/questions"><i class="icon-comment"></i> Discussions</a></li>
+    </ul>
+    <div class="clearfix"></div>
+    </header>
+
+    <section class="submissions-details">
+        <% if (model.view_by_owner === false) { %>
+            <div>
+                <p class="margin-large top padded light-wrap lifted">This <%= model.name %> submission belongs to <b><%= model.hacker_username %></b></p>
+            </div>
+        <% } %>
+        <header class="page_title">
+            <p><a class="btn btn-text backbone" href="<%= challengePageURL %>/submissions"><i class="icon-left-open"> View all <%= _model.get('name') %> submissions</i></a></p>
+        </header>
+        <% if (model.company) { %><div class="apply-blob"></div><% } %>
+        <div class="grey-header padded" id="submission-stats-wrapper"></div>
+        <% if (model.kind == 'game') { %>
+            <div class="clearfix margin-large padding-large bottom">
+                <div id="submission-manual-game-play-wrapper" class="pull-left margin-large top"></div>
+                <div class="pull-right margin-large top"><a href="download/submissiongames/<%= model.id %>" target="_blank" class="btn-text pull-right"><i class="icon-download"></i>Download All Games</a></div>
+            </div>
+            <div class="table-wrap">
+                <header>
+                    <p class="span6 padding-small left">Opponent</p>
+                    <p class="span6 padding-small left">Results</p>
+                </header>
+                <div id="submission-game-set-wrapper"></div>
+            </div>
+        <% } %>
+        <br>
+        <% if (model.code != null) { %>
+        	<h3 class="padding-large bottom">Submitted Code</h3>
+            <div class="submission_code-wrap light-wrap">
+                <div class="submission_code-header clearfix">
+                    <div class="pull-left">
+                        <p class="submission_code-language">Language: <%= lang_display_mapping[model.language] %></p>
+                    </div>
+                    <div class="pull-right submissions_code-copy">
+                        <button class="btn btn-green copy_to_clipboard"><i class="icon-edit"></i> Open in editor</button>
+                    </div>
+                </div>
+                <div id="submission-code"></div>
+            </div>
+        <% } %>
+        <% if (!model.slug) { %>
+            <div class='gray'>
+              <div style='background: url(/assets/ajax-view-loader.gif); height: 32px; width: 32px; display: inline-block;'></div>
+              <p class="msg m"></p>
+            </div>
+        <% } %>
+    </section>
+</div>

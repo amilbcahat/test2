@@ -1,0 +1,34 @@
+<% if (collection.length > 0) { %>
+<div class="span12">
+  <p>
+  Please save changes to each challenge seperately.<br>
+  All times are in UTC and follow the format YYYY-MM-DD HH:mm (ex: "2014-03-22 18:30")
+  </p>
+</div>
+<% } %>
+
+<div class="controls span12" style="padding-bottom: 25px;">
+  <label class="control-label span3" for="addnewca">Challenge</label>
+  <div class="span7">
+    <input id="addnewca" class="span4" placeholder="Challenge"></input>
+    <button class="btn add-ca-btn span2">Add</button>
+  </div>
+</div>
+
+<% if (collection.length > 0) { %>
+<table class="ca-table table-wrap light-wrap">
+  <thead class="table-head">
+    <tr>
+      <td>Name</td>
+      <td style="text-align: center">Weight</td>
+      <td style="text-align: center">Priority</td>
+      <td style="text-align: center">Binary</td>
+      <td style="text-align: center">Dynamic</td>
+      <td style="text-align: center">Timebound</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody class="challenges-list-wrapper">
+  </tbody>
+</table>
+<% } %>

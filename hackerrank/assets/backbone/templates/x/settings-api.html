@@ -1,0 +1,93 @@
+<div class="top-fixed-bar">
+    <h3 class="topbar-h3 mjL">Settings</h3>
+    <h3 class="topbar-h3"><i class="icon-right-open breadcrumb-chevron"></i>API Access</h3>
+</div>
+<div class="overflow-content" id="control-overflow">
+
+    <form id="settings-api-form" class="mjA">
+        
+        <h3>Registered Clients</h3>
+
+    <table class="sleektable" width="100%" border="0" cellpadding="0" cellspacing="0">
+        <thead>
+        <tr class="prominent txt-alt-grey">
+        <th colspan="5" style="width:100%;" class="font18 font-w-600 font-clr-black">
+                    
+                <a href="#" class="pull-right btn btn-small add-client mdR" >
+                    <i class="icon-plus"></i>&nbsp;Add Client
+                </a>
+            
+            </th>
+        </tr>
+        </thead>
+        
+        <tr class = "head">
+               
+                <td width="15%">
+
+                        Client Name
+
+                </td>
+                <td width="15%">
+
+                        Redirect URI
+
+                </td>
+                <td width="25%">
+
+                        Client ID
+
+                </td>
+                <td width="25%">
+
+                        Client Secret
+
+                </td>
+        </tr>
+
+        <% _.each(collection.models, function(model) { %>
+        <% model = model.toJSON() %>
+            <tr>
+               
+                <td width="15%">
+                <div class="text-ellipsis-200px">
+                    <%= model.name %>
+                </div>    
+                </td>
+
+                <td width="15%">
+                <div class="text-ellipsis-200px">
+                    <%= model.redirect_uri %>
+                </div>
+                </td>
+
+                <td width="25%">
+                <div class="text-ellipsis-200px">
+                    <%= model.uid %>
+                    </div>
+                </td>
+
+                <td width="25%">
+                <div class="text-ellipsis-200px">
+                    <%= model.secret %>
+                </div>        
+                </td>
+
+                <td width="20%" >
+
+                        <a href="#"
+                           data-client-id='<%= model.id %>'
+                           class="btn btn-small pull-right edit-client">Edit Client</a>
+                        <a href="#"
+                           data-client-id='<%= model.id %>'
+                           class="btn btn-alert btn-small pull-right remove-client">Remove Client</a>
+                </td>
+               
+            </tr>
+        <% }) %>
+
+        </table>
+
+    </form>
+    <div class="dialog-wrapper"></div>
+</div>

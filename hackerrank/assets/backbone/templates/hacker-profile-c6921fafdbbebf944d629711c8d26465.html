@@ -1,0 +1,117 @@
+<section class="container profile">
+    <div class="row">
+        <div class="span11 dashboard_left">
+            <div class="profile_header  profile_group light-wrap">
+            	<div class="clearfix">
+                    <img src="<%= model.avatar %>" height="75" width="75" class="pull-left avatar profile_avatar">
+	                <h2 class="pull-left profile_header-hackername"><%= model.username %>
+                        <% if (model.name) { %>
+                            <span class="alpha small profile_header-hackerhandle">(<%= model.name %>)</span>
+                        <% } %>
+                       <% if ( model.id === HR.profile().get('id') ) { %> <a class="btn btn-line btn-small" href="/settings/profile">Edit Profile</a> <% } %>
+                    </h2>
+                </div>
+                <p class="profile_biggesthack"> <%= _.escape(model.hack || "") %> </p>
+				<ul class="unstyled horizontal profile_social">
+                    <% if (model.website) { %>
+				        <li class="profile_social-link"><a href="<% if (model.website.indexOf("http") != 0) { %>http://<% } %><%= _.escape(model.website || "") %>"><i class="icon-globe"></i>
+                        <% if (model.website.indexOf("http") != 0) { %>http://<% } %><%= _.escape(model.website || "") %></a></li>
+                    <% } %>
+<!-- 					<li class="profile_social-link"><a href="http://www.elouwebdesign.com"><i class="icon-facebook"></i></a></li>
+					<li class="profile_social-link"><a href="http://www.elouwebdesign.com"><i class="icon-github"></i></a></li>
+					<li class="profile_social-link"><a href="http://www.elouwebdesign.com"><i class="icon-twitter"></i></a></li> -->
+				</ul>
+            </div>
+            <div class="profile_group profile-graph light-wrap">
+                <p class="profile_group-title">Progress Graph</p>
+                <div id="profile-graph-view" style="padding-top:10px;">                
+                <% if (_.isNumber(model.rank)) { %>
+                    <%= HR.appController.viewLoader(64) %>
+                <% } else { %>
+                    <% if ( model.id === HR.profile().get('id') ) { %>
+                        <p class="block-margin text-center">Solve your first challenge to see your progress graph.</p>
+                        <p class="text-center"><a href="/categories" class="btn btn-primary profile_blankstate-btn backbone">View Challenges</a></p>
+                    <% } else { %>
+                        <p class="block-margin text-center"><%= model.username %> has not solved any challenges yet.</p>
+                    <% } %>
+                <% } %>
+                </div>
+            </div>
+	        <div class="profile_group profile-events light-wrap">
+                <p class="profile_group-title">Event History<a id="event" class="view-more hide" href="#">View More</a></p>
+                <div class="profile-event-view" style="padding-top:10px;">
+                    <%= HR.appController.viewLoader(64) %>
+                </div>
+	        </div>
+	        <div id="test" class="profile_group light-wrap">
+                <p class="profile_group-title">Forum Activity<a id="post" class="view-more hide" href="#">View More</a></p>
+                <div class="profile-post-view">
+                    <%= HR.appController.viewLoader(64) %>
+                </div>
+            </div>
+        </div>
+        <div class="span5 dashboard_right">
+            <div class="dashboard_group light-wrap profile_stats">
+        		<ul class="clearfix unstyled horizontal">
+                    <li class="profile_stats-score profile_stats-group">Rank<span class="profile_stat-number"><%= (model.rank || "N/A") %></span></li>
+                    <li class="profile_stats-score profile_stats-group">Score<span class="profile_stat-number"><%= (model.score || 0).round() %></span></li>
+                </ul>
+                <p class="profile_stats-helplink"><a href="/scoring">How is this calculated?</a></p>
+			</div>
+
+            <div class="dashboard_group light-wrap profile_stats">
+                <p class="profile_group-title">Overall contest performance</p>
+                <ul class="clearfix unstyled horizontal">
+                    <li class="profile_stats-score profile_stats-group">Title<span class="profile_stat-number"><%= (model.overall_rating.title || "N/A") %></span></li>
+                    <li class="profile_stats-score profile_stats-group">Rank<span class="profile_stat-number"><%= (model.overall_rating.rank || "N/A") %></span></li>
+                    <li class="profile_stats-score profile_stats-group">Score<span class="profile_stat-number"><%= (model.overall_rating.rating || 0).round() %></span></li>
+                </ul>
+            </div>
+
+            <div class="light-wrap profile_group profile_networks">
+                <p class="profile_group-title">User Details</p>
+                <% if (model.country){ %>
+                    <p class="profile_networks-item" id="network-country" rel="tooltip" data-placement="right" >
+                        <span class="small alpha"><strong>Location:</strong></span>
+                        <span class="profile_networks-name"><%= model.country %></span>
+                    </p>
+                <% } if (model.school){ %>
+                    <p class="profile_networks-item" id="network-school" rel="tooltip" data-placement="right" >
+                        <span class="small alpha"><strong>School:</strong></span>
+                        <span class="profile_networks-name"><%= model.school %></span>
+                    </p>
+                <% } if (model.company){ %>
+                    <p class="profile_networks-item" id="network-company" rel="tooltip" data-placement="right" >
+                        <span class="small alpha"><strong>Company:</strong></span>
+                        <span class="profile_networks-name"><%= model.company %></span>
+                    </p>
+                <% } %>
+                <p>
+                    <% if (model.languages == "") { %>
+                        <% if (model.id === HR.profile().get('id')) { %>
+                            <span class="aside">You have not submitted any code.</span>
+                        <% } else { %>
+                            <span class="aside"><%= model.username %> has not yet submitted any code.</span>
+                        <% } %>
+                    <% } else { %>
+                        <% var languages = model.languages
+                           if (!_.isArray(languages)) {
+                               languages = languages.split(',');
+                           }
+                           %>
+                        <b>Codes in:</b> <%= _.map(languages, function(lang){ return lang_display_mapping[lang] }).join(', ')  %>
+                    <% } %>
+                </p>
+            </div>
+			<p class="text-center block-margin">
+<!--                 <a href="" class="btn btn-line btn-small"><i class="icon-download"></i>
+                    <% if ( model.id === HR.profile().get('id') ) { %>
+                        Download your solutions
+                    <% } else { %>
+                        Download <%= model.username %>'s solutions
+                    <% } %>
+                </a> -->
+            </p>
+        </div>
+    </div>
+</section>

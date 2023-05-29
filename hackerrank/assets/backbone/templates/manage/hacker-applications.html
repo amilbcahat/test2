@@ -1,0 +1,136 @@
+<style>
+.edit-contest
+{
+
+}
+.edit-contest .editor
+{
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  min-height: 200px;
+}
+.edit-contest .preview
+{
+  border:1px solid #CCC;
+  margin-left: 0px;
+  min-height: 200px;
+  float:none;
+  display: inline-block;
+  height: auto;
+  overflow-x:auto;
+  width:435px;
+  padding:10px 0 0 10px;
+  max-height: 600px;
+
+}
+.edit-contest .CodeMirror
+{
+  width:430px;
+  display: inline-block;
+  vertical-align: top;
+  border:1px solid #CCC;
+  box-shadow: 0 0 5px 0px #666 inset;
+  background-color: #FDFDFD;
+  font-size: 0.8em;
+  height: auto;
+  overflow-x:auto;
+  padding:5px;
+}
+.floating-message
+{
+  position:fixed;
+  top:10px;
+  right:0px;
+  z-index: 2000;
+  display: none;
+}
+</style>
+
+<section class="submissions container">
+  <header class="page-title container">
+    <div class="block">
+      <ul class="pull-left breadcrumb unstyled horizontal">
+          <li><a href="<%= HR.appController.get_current_contest_namespace() %>/" class="backbone">HackerRank</a><i class="icon-right-open-big divider"></i></li>
+          <li><a href="<%= HR.appController.get_current_contest_namespace() %>/manage/contest/" class="backbone">Hacker Applications</a><i class="icon-right-open-big divider"></i></li>
+      </ul>
+    </div>
+    <div class="row">
+        <h1 class="span16">
+            <div class="title-img"></div>
+            Hacker Applications
+        </h1>
+    </div>
+  </header>
+  <div class="row light-wrap wrap row" style="margin-left:0px; margin-top:20px;">
+    <div class="floating-message span6">
+      <div class="message span5" style="margin-left:20px; box-shadow:0 0 5px 0 #333">
+
+      </div>
+    </div>
+    <form class="edit-contest block-center" >
+      <div class="row block-center">
+        <div class="span2" style="padding:7px">
+          <lable>Filter By</label>
+        </div>
+        <div class="span3" style=" margin-left: 0px; ">
+          <div class="btn-group">
+            <a class="btn dropdown-toggle span2" data-toggle="dropdown" href="#">
+              <span data-title="country">Country</span>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu span2" style="margin:0px">
+              <li><a href="#" data-kind="country" data-filter="">All</a></li>
+              <li><a href="#" data-kind="country" data-filter="usa">US</a></li>
+              <li><a href="#" data-kind="country" data-filter="notusa">Non US</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="span3" style=" margin-left: 0px; ">
+          <div class="btn-group">
+            <a class="btn dropdown-toggle span2" data-toggle="dropdown" href="#">
+              <span data-title="visa">Visa Status</span>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu span3" style="margin:0px">
+              <li><a href="#" data-kind="visa" data-filter="">Any</a></li>
+              <li><a href="#" data-kind="visa" data-filter="valid">Valid VISA</a></li>
+              <li><a href="#" data-kind="visa" data-filter="not_valid">No VISA</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="span3" style=" margin-left: 0px; ">
+          <div class="btn-group">
+            <a class="btn dropdown-toggle span2" data-toggle="dropdown" href="#">
+              <span data-title="role">Role</span>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu span2" style="margin:0px">
+              <li><a href="#" data-kind="role" data-filter="">Any</a></li>
+              <li><a href="#" data-kind="role" data-filter="intern">Intern</a></li>
+              <li><a href="#" data-kind="role" data-filter="fulltime">Fulltime</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="span6 pull-right text-right" style="margin-left:0px;">
+          <a id="download" class="btn btn-blue span2" href="/rest/contests/<%= contest.get('slug') %>/companies/<%= company %>/hackerapplications/download_excel?key=<%= key %>" >Download Excel</a>
+        </div>
+      </div>
+      <div class="row block-center" style="margin-top:10px;">
+        <div id="filter_text" class="span15" style="padding:7px;">
+
+        </div>
+      </div>
+      <div class="row block-center" style="margin-top:10px;">
+          <hr/>
+      </div>
+    </form>
+    <div class="applications-list-wrapper">
+        <div class="block-center text-center">
+          <img src="https://d3rpyts3de3lx8.cloudfront.net/hackerrank/hackerrank_spinner_64x64.gif"><br/><br/>
+          Please Wait while we fetch the applications
+        </div>
+    </div>
+    <div class="pagination-wrap clearfix pagination-wrapper" style="margin-bottom:20px;">
+    </div>
+  </div>
+</section>

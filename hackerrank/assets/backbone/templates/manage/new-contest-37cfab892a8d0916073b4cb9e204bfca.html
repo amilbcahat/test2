@@ -1,0 +1,153 @@
+<header class="page-title container">
+    <ul class="breadcrumb unstyled horizontal">
+        <li><a href="/manage" class="backbone">Manage</a><i class="icon-right-open-big divider"></i></li>
+        <li><a href="/manage/contest/" class="backbone">Contests</a><i class="icon-right-open-big divider"></i></li>
+        <li><a href="/manage/contest/new" class="backbone">New</a></li>
+    </ul>
+
+    <h1>New Contest</h1>
+</header>
+
+<div class="container padded light-wrap">
+    <div id="presets-pane">
+        <h4 class="">Type</h4>
+        <p class="aside block-margin margin-large bottom">Choose the type of contest you want to host</p>
+        <div class="presets">
+            <div class="preset row margin-large bottom">
+                <label for="acm-preset" class="span7 row block-center btn btn-inverse">
+                    <div class="span1 hide">
+                        <input type="radio" name="preset-choice" value="acm" id="acm-preset" title-text="New ICPC Style Contest"/>
+                    </div>
+                    <div class="padded">
+                        <h4 class="margin-small bottom">ACM ICPC Style</h4>
+                        <ul class="unstyled">
+                            <li>Time penalty of 20 minutes.</li>
+                            <li>ACM style scoring. You either get the full score no score.</li>
+                        </ul>
+                    </div>
+                </label>
+            </div>
+            <!--div class="preset row margin-large bottom">
+                <label for="hiring-preset" class="span7 row block-center btn btn-inverse">
+                    <div class="span1 hide">
+                        <input type="radio" name="preset-choice" value="hiring" id="hiring-preset" />
+                    </div>
+                    <div class="padded">
+                        <h4 class="margin-small bottom">Hiring</h4>
+                        <ul class="unstyled">
+                            <li>Hacker applications</li>
+                            <li>Note: Please contact us to add your company and view applications</li>
+                        </ul>
+                    </div>
+                </label>
+            </div-->
+            <div class="preset row margin-large bottom">
+                <label for="custom-preset" class="span7 row block-center btn btn-inverse">
+                    <div class="span1 hide">
+                        <input type="radio" name="preset-choice" value="custom" id="custom-preset" title-text="New Contest"/>
+                    </div>
+                    <div class="padded">
+                        <h4 class="margin-small bottom">Custom</h4>
+                        <ul class="unstyled">
+                            <li>Minimal settings</li>
+                        </ul>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="hide" id="basic">
+        <h3>Details</h3>
+        <p class="aside block-margin margin-large bottom">Choose the type of contest you want to host</p>
+
+        <div class="formgroup horizontal">
+            <label class="span3" for="name">Name</label>
+            <div class="span8">
+                <input type="text" id="name" class="span8" placeholder="Contest Name" value="">
+            </div>
+        </div>
+
+        <div class="formgroup horizontal">
+            <label class="span3" for="slug">Slug</label>
+            <div class="controls span8">
+                <input id="slug" class="span8" type="text" placeholder="URL Friendly Name" value=""  />
+            </div>
+        </div>
+
+        <div class="formgroup horizontal slug-div">
+            <label class="span3" for="slug">URL</label>
+            <div class="span8" id="contest-url">
+                <span class="uneditable-input span8">https://hackerrank.com/</span>
+            </div>
+        </div>
+
+        <div class="formgroup horizontal">
+            <label class="span3" for="startDate">Duration</label>
+            <div class="span8">
+                <p class="margin-small bottom"><small class="sub-help">All times in UTC</small></p>
+                <div class="input-append" id="stdate" data-date=" <%= $.format.date( (new Date), "yyyy-MM-dd hh:mm" ) %> ">
+                    <input class="span6" id="startDate" value="" type="text" data-format="yyyy-MM-dd hh:mm" placeholder="Start"/>
+                    <span class="add-on btn btn-text btn-large margin-small left top"><i class="icon-th"></i></span>
+                </div>
+                <div class="input-append" id="endate" data-date=" <%= $.format.date( (new Date), "yyyy-MM-dd hh:mm" ) %> ">
+                    <input class="span6" id="endDate" type="text" value="" data-format="yyyy-MM-dd hh:mm" placeholder="End"/>
+                    <span class="add-on btn btn-text btn-large margin-small left top" style="vertical-align:top; width:18px;"><i class="icon-th"></i></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="formgroup horizontal">
+            <label class="span3" for="description">Tagline</label>
+            <div class="span8">
+              <input type="text" id="tagline" class="span8" placeholder="" value="" />
+              <small class="sub-help">A one-line tagline for the contest.</small>
+            </div>
+        </div>
+          
+        <div class="manage-description clearfix">
+            <label class="control-label span9" for="description">Description</label>
+            <div class="controls span15 margin-large bottom">
+                <ul id="description-tabs" class="unstyled nav nav-tabs">
+                    <li class="active"><a href="#descriptionEditTab" data-toggle="tab">Edit</a></li>
+                    <li><a href="#descriptionPreviewTab" data-toggle="tab">Preview</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="descriptionEditTab">
+                        <textarea id="description"></textarea>
+                    </div>
+                    <div class="tab-pane" id="descriptionPreviewTab">
+                        <div class="tab-pane span10 preview" id="descriptionPreview"></div>
+                    </div>
+                </div>
+
+                <script type="text/javascript">
+                    $('#description-tabs a').click(function (e) {
+                        e.preventDefault();
+                        $(this).tab('show');
+                    });
+                </script>
+            </div>
+        </div>
+
+          
+        <div>
+            <div class="clearfix"><button class="span4 block-center btn btn-green save">Create and Add Challenges</button></div>
+            <div class="message error text-center hide"></div>
+        </div>
+        
+    </div>
+    
+    <div class="container hide" id="challenges-pane">
+        <h3>Challenges</h3>
+        <p class="aside block-margin margin-large bottom">Add challenges to the contest.</p>
+
+        <div class="challenges">
+        </div>
+          
+        <div><button class="span4 block-center btn btn-green done">Finish</button></div>
+    
+    </div>
+</div>
+

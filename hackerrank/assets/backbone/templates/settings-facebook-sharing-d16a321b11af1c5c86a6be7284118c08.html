@@ -1,0 +1,23 @@
+<header class="page-title">
+    <h1>Settings &#47; Facebook Sharing</h1>
+</header>
+<div>
+    <div class="clearfix">
+        <h5 style="text-align: justify;">Hacker Rank can post your activities and achievements to facebook</h5>
+        <% if (model.facebook_opengraph_access_available == 1 && model.fb_uid) { %>
+        <div class="formgroup horizontal">
+	    <label class="pull-left" style="width: 360px; text-align: left">Allow HackerRank to post to Facebook</label>
+	    <div class="slider-wrap block pull-right">
+        <span class="pull-left"><div class='switch' data-on='success' data-off='info'><input id="facebook_allow_opengraph" type="checkbox" <% if (model.facebook_allow_opengraph != 1) { %>checked="checked"<% } %>></div></span>
+	    </div>
+	</div>
+        <% } else { %>
+        <br>
+        <div class="m">
+            <a class="btn-auth btn-facebook large" href="/hackers/auth/facebook">
+                Sign in with <b>facebook</b>
+            </a>
+        <div>
+        <% } %>
+    </div>
+</div>

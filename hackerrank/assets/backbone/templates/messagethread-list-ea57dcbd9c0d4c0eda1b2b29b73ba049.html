@@ -1,0 +1,16 @@
+<li class="psA sidebar_list-item message-thread media <%- model.unread_count > 0 ? 'unread' : ''%> <%- model.active ? 'active' : '' %>">
+    <img src="<%- model.user2.avatar %>" height="65" width="65" class="avatar media-el" onerror="$('div[data-thread-id=<%=model.id%>] img').attr('src','https://d3rpyts3de3lx8.cloudfront.net/hackerrank/assets/gravatar.jpg')"/>
+    <div class="media-content">
+        <p class="sidebar_item-heading">
+            <a class="backbone" href="/<%=model.user2.username%>">
+                <%- model.user2.username %>
+                <% if (model.unread_count > 0) { %>
+                    <small class="pull-right">
+                        <a href="/inbox/thread/<%=model.id%>" class="backbone small thread-count"><%= model.unread_count %> unread</a>
+                    </small>
+                <% } %>
+            </a>
+        </p>
+        <p class="sidebar_item-content"><% if (model.last_message.sender_id == profile.id) { %><i class="icon-reply"></i>&nbsp;<% } %><span><%- model.last_message.message %></span></p>
+    </div>
+</li>

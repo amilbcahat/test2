@@ -1,0 +1,20 @@
+<section class="container messaging">
+    <div class="content_wrap wide">
+        <div class="sidebar--inline">
+            <header class="sidebar_header">
+                <p class="psT">
+                    <strong>Conversations</strong>
+                    <a class="pull-right mmT btn btn-text btn-small hr_send_new_message"><i class="icon-edit cursor"></i> New</a>
+                </p>
+            </header>
+            <ul class="sidebar_list threads-list-wrap">
+                <%= HR.appController.viewLoader(64) %>
+            </ul>
+        </div>
+        <div>
+            <div class="content--inline padded messaging_content">
+                <%= HR.appController.viewLoader(64) %>
+            </div>
+        </div>
+    </div>
+</section>
